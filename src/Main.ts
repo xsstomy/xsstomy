@@ -114,11 +114,13 @@ class Main extends egret.DisplayObjectContainer {
 
         s.performQuack();
 
-        //var m:DesignPattern.StrategyPattern.ModelDuck = new DesignPattern.StrategyPattern.ModelDuck();
-        //this.addChild( m );
-        //m.performFly();
-        //m.setFlyBehavior(new DesignPattern.StrategyPattern.FlyRocketPowered());
-        //m.performFly();
+        var m:DesignPattern.StrategyPattern.ModelDuck = new DesignPattern.StrategyPattern.ModelDuck();
+        this.addChild( m );
+        m.performFly();
+        m.setFlyBehavior(new DesignPattern.StrategyPattern.FlyRocketPowered());
+        m.performFly();
+
+
 
         var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
         this.addChild(w);
