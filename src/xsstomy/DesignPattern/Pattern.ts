@@ -173,7 +173,7 @@ module DesignPattern
             public removeObserver(o:Observer):void {
                 var i = this.observers.indexOf(o);
                 if (i >= 0) {
-                    this.observers.splice(i);
+                    this.observers.splice(i,1);
                 }
             }
 
