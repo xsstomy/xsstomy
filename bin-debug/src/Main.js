@@ -96,18 +96,23 @@ var Main = (function (_super) {
         //this.addChild( three3 );
         var three4 = new ThreeD.Fireworks();
         //this.addChild( three4 );
-        var s = new DesignPattern.StrategyPattern.MallardDuck();
-        this.addChild(s);
-        //s.display();
-        s.performFly();
-        s.performQuack();
+        //var s:DesignPattern.StrategyPattern.MallardDuck = new DesignPattern.StrategyPattern.MallardDuck();
+        //this.addChild(s);
+        ////s.display();
+        //s.performFly();
+        //
+        //s.performQuack();
+        //
         //var m:DesignPattern.StrategyPattern.ModelDuck = new DesignPattern.StrategyPattern.ModelDuck();
         //this.addChild( m );
         //m.performFly();
         //m.setFlyBehavior(new DesignPattern.StrategyPattern.FlyRocketPowered());
         //m.performFly();
-        var w = new DesignPattern.Observer.WeatherStation();
-        this.addChild(w);
+        //
+        //var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
+        //this.addChild(w);
+        var star = new DesignPattern.Decorator.StarbuzzCoffee();
+        this.addChild(star);
     };
     Main.prototype.onTouchBegin = function (evt) {
         console.log('touch_begin');

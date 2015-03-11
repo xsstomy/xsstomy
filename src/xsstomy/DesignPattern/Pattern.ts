@@ -141,6 +141,9 @@ module DesignPattern
 
 module DesignPattern
 {
+    /**
+     * 观察者模式
+     */
     export module Observer
     {
         export class WeatherData extends egret.Sprite {
@@ -148,6 +151,7 @@ module DesignPattern
             private temperature:number;
             private humidity:number;
             private pressure:number;
+            private changed:boolean;
 
             public constructor() {
                 super();
@@ -179,12 +183,20 @@ module DesignPattern
 
 
             public notifyObservers():void {
-                for (var i = 0; i < this.observers.length; i++) {
-                    var o:Observer = this.observers[i];
-                    o.update(this.temperature, this.humidity, this.pressure);
+                if( this.changed )
+                {
+                    for (var i = 0; i < this.observers.length; i++) {
+                        var o:Observer = this.observers[i];
+                        o.update(this.temperature, this.humidity, this.pressure);
+                    }
                 }
+                this.changed = false;
             }
 
+            public setChanged()
+            {
+                this.changed = true;
+            }
             public setMeasurements(temperature:number, humidity:number, pressure:number):void
             {
                 this.humidity = humidity;
@@ -280,6 +292,162 @@ module DesignPattern
                 var cur:CurrentConditionsDisplay = new CurrentConditionsDisplay(weatherData);
                 var sta:StatisticsDisplay = new StatisticsDisplay(weatherData);
                 weatherData.setMeasurements( 80 , 65 , 20);
+            }
+        }
+    }
+}
+
+
+module DesignPattern
+{
+    /**
+     * 装饰者模式
+     */
+    export module Decorator
+    {
+        export class Beverage extends egret.Sprite
+        {
+            public constructor()
+            {
+                super();
+
+            }
+
+            public description:string = "Unkown Beverage";
+
+            public getDescription():string
+            {
+                return this.description;
+            }
+
+            public cost():number
+            {
+                return null;
+            }
+
+        }
+
+
+        export class CondimentDecorator extends Beverage
+        {
+            public constructor()
+            {
+                super();
+            }
+
+            public getDescription():string
+            {
+                return null;
+            }
+        }
+
+        export class Espresso extends Beverage
+        {
+            public constructor()
+            {
+                super();
+                this.description = "Espresso";
+            }
+
+            public cost():number
+            {
+                return 1.99;
+            }
+        }
+
+        export class HouseBlend extends Beverage
+        {
+            public constructor()
+            {
+                super();
+                this.description = "House Blend Coffee";
+            }
+
+            public cost():number {
+                return 0.89;
+            }
+
+        }
+
+        export class Mocha extends CondimentDecorator
+        {
+            public beverage:Beverage;
+            public constructor(beverage:Beverage)
+            {
+                super();
+                this.beverage = beverage;
+            }
+
+            public getDescription():string
+            {
+                return this.beverage.getDescription() +  " , Mocha";
+            }
+
+            public cost():number
+            {
+                return 0.2 + this.beverage.cost();
+            }
+        }
+
+        export class Soy extends CondimentDecorator
+        {
+            public beverage:Beverage;
+            public constructor(beverage:Beverage)
+            {
+                super();
+                this.beverage = beverage;
+            }
+
+            public getDescription():string
+            {
+                return this.beverage.getDescription() + " , Soy";
+            }
+
+            public cost():number
+            {
+                return 0.1 + this.beverage.cost();
+            }
+        }
+
+        export class Whip extends CondimentDecorator
+        {
+            public beverage:Beverage;
+            public constructor(beverage?:Beverage)
+            {
+                super();
+                this.beverage = beverage;
+            }
+
+            public getDescription():string
+            {
+                return this.beverage.getDescription() + " , Whip";
+            }
+
+            public cost():number
+            {
+                return 0.1 + this.beverage.cost();
+            }
+        }
+
+        export class StarbuzzCoffee extends egret.Sprite
+        {
+            public constructor()
+            {
+                super();
+                this.init();
+
+            }
+
+            public init():void
+            {
+                var beverage:Beverage = new Espresso();
+                console.log( beverage.getDescription() + "$ "+ beverage.cost());
+
+                var beverage2:Beverage = new HouseBlend();
+                beverage2 = new Mocha(beverage2);
+                beverage2 = new Whip(beverage2);
+
+                console.log( beverage2.getDescription() + " $ " + beverage2.cost() );
             }
         }
     }

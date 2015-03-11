@@ -138,6 +138,9 @@ var DesignPattern;
 })(DesignPattern || (DesignPattern = {}));
 var DesignPattern;
 (function (DesignPattern) {
+    /**
+     * 观察者模式
+     */
     var Observer;
     (function (Observer) {
         var WeatherData = (function (_super) {
@@ -163,14 +166,20 @@ var DesignPattern;
             WeatherData.prototype.removeObserver = function (o) {
                 var i = this.observers.indexOf(o);
                 if (i >= 0) {
-                    this.observers.splice(i);
+                    this.observers.splice(i, 1);
                 }
             };
             WeatherData.prototype.notifyObservers = function () {
-                for (var i = 0; i < this.observers.length; i++) {
-                    var o = this.observers[i];
-                    o.update(this.temperature, this.humidity, this.pressure);
+                if (this.changed) {
+                    for (var i = 0; i < this.observers.length; i++) {
+                        var o = this.observers[i];
+                        o.update(this.temperature, this.humidity, this.pressure);
+                    }
                 }
+                this.changed = false;
+            };
+            WeatherData.prototype.setChanged = function () {
+                this.changed = true;
             };
             WeatherData.prototype.setMeasurements = function (temperature, humidity, pressure) {
                 this.humidity = humidity;
@@ -213,7 +222,7 @@ var DesignPattern;
                 this.display();
             };
             StatisticsDisplay.prototype.display = function () {
-                console.log("Statistics condition : " + this.humidity + " F degrees and " + this.pressure + " pressure");
+                console.log("Statistics condition : " + this.humidity + "% humidity and " + this.pressure + " pressure");
             };
             return StatisticsDisplay;
         })();
@@ -239,4 +248,133 @@ var DesignPattern;
         Observer.WeatherStation = WeatherStation;
         WeatherStation.prototype.__class__ = "DesignPattern.Observer.WeatherStation";
     })(Observer = DesignPattern.Observer || (DesignPattern.Observer = {}));
+})(DesignPattern || (DesignPattern = {}));
+var DesignPattern;
+(function (DesignPattern) {
+    /**
+     * 装饰者模式
+     */
+    var Decorator;
+    (function (Decorator) {
+        var Beverage = (function (_super) {
+            __extends(Beverage, _super);
+            function Beverage() {
+                _super.call(this);
+                this.description = "Unkown Beverage";
+            }
+            Beverage.prototype.getDescription = function () {
+                return this.description;
+            };
+            Beverage.prototype.cost = function () {
+                return null;
+            };
+            return Beverage;
+        })(egret.Sprite);
+        Decorator.Beverage = Beverage;
+        Beverage.prototype.__class__ = "DesignPattern.Decorator.Beverage";
+        var CondimentDecorator = (function (_super) {
+            __extends(CondimentDecorator, _super);
+            function CondimentDecorator() {
+                _super.call(this);
+            }
+            CondimentDecorator.prototype.getDescription = function () {
+                return null;
+            };
+            return CondimentDecorator;
+        })(Beverage);
+        Decorator.CondimentDecorator = CondimentDecorator;
+        CondimentDecorator.prototype.__class__ = "DesignPattern.Decorator.CondimentDecorator";
+        var Espresso = (function (_super) {
+            __extends(Espresso, _super);
+            function Espresso() {
+                _super.call(this);
+                this.description = "Espresso";
+            }
+            Espresso.prototype.cost = function () {
+                return 1.99;
+            };
+            return Espresso;
+        })(Beverage);
+        Decorator.Espresso = Espresso;
+        Espresso.prototype.__class__ = "DesignPattern.Decorator.Espresso";
+        var HouseBlend = (function (_super) {
+            __extends(HouseBlend, _super);
+            function HouseBlend() {
+                _super.call(this);
+                this.description = "House Blend Coffee";
+            }
+            HouseBlend.prototype.cost = function () {
+                return 0.89;
+            };
+            return HouseBlend;
+        })(Beverage);
+        Decorator.HouseBlend = HouseBlend;
+        HouseBlend.prototype.__class__ = "DesignPattern.Decorator.HouseBlend";
+        var Mocha = (function (_super) {
+            __extends(Mocha, _super);
+            function Mocha(beverage) {
+                _super.call(this);
+                this.beverage = beverage;
+            }
+            Mocha.prototype.getDescription = function () {
+                return this.beverage.getDescription() + " , Mocha";
+            };
+            Mocha.prototype.cost = function () {
+                return 0.2 + this.beverage.cost();
+            };
+            return Mocha;
+        })(CondimentDecorator);
+        Decorator.Mocha = Mocha;
+        Mocha.prototype.__class__ = "DesignPattern.Decorator.Mocha";
+        var Soy = (function (_super) {
+            __extends(Soy, _super);
+            function Soy(beverage) {
+                _super.call(this);
+                this.beverage = beverage;
+            }
+            Soy.prototype.getDescription = function () {
+                return this.beverage.getDescription() + " , Soy";
+            };
+            Soy.prototype.cost = function () {
+                return 0.1 + this.beverage.cost();
+            };
+            return Soy;
+        })(CondimentDecorator);
+        Decorator.Soy = Soy;
+        Soy.prototype.__class__ = "DesignPattern.Decorator.Soy";
+        var Whip = (function (_super) {
+            __extends(Whip, _super);
+            function Whip(beverage) {
+                _super.call(this);
+                this.beverage = beverage;
+            }
+            Whip.prototype.getDescription = function () {
+                return this.beverage.getDescription() + " , Whip";
+            };
+            Whip.prototype.cost = function () {
+                return 0.1 + this.beverage.cost();
+            };
+            return Whip;
+        })(CondimentDecorator);
+        Decorator.Whip = Whip;
+        Whip.prototype.__class__ = "DesignPattern.Decorator.Whip";
+        var StarbuzzCoffee = (function (_super) {
+            __extends(StarbuzzCoffee, _super);
+            function StarbuzzCoffee() {
+                _super.call(this);
+                this.init();
+            }
+            StarbuzzCoffee.prototype.init = function () {
+                var beverage = new Espresso();
+                console.log(beverage.getDescription() + "$ " + beverage.cost());
+                var beverage2 = new HouseBlend();
+                beverage2 = new Mocha(beverage2);
+                beverage2 = new Whip(beverage2);
+                console.log(beverage2.getDescription() + " $ " + beverage2.cost());
+            };
+            return StarbuzzCoffee;
+        })(egret.Sprite);
+        Decorator.StarbuzzCoffee = StarbuzzCoffee;
+        StarbuzzCoffee.prototype.__class__ = "DesignPattern.Decorator.StarbuzzCoffee";
+    })(Decorator = DesignPattern.Decorator || (DesignPattern.Decorator = {}));
 })(DesignPattern || (DesignPattern = {}));

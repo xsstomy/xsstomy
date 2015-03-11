@@ -107,23 +107,26 @@ class Main extends egret.DisplayObjectContainer {
 
         var three4:ThreeD.Fireworks = new ThreeD.Fireworks();
         //this.addChild( three4 );
-        var s:DesignPattern.StrategyPattern.MallardDuck = new DesignPattern.StrategyPattern.MallardDuck();
-        this.addChild(s);
-        //s.display();
-        s.performFly();
+        //var s:DesignPattern.StrategyPattern.MallardDuck = new DesignPattern.StrategyPattern.MallardDuck();
+        //this.addChild(s);
+        ////s.display();
+        //s.performFly();
+        //
+        //s.performQuack();
+        //
+        //var m:DesignPattern.StrategyPattern.ModelDuck = new DesignPattern.StrategyPattern.ModelDuck();
+        //this.addChild( m );
+        //m.performFly();
+        //m.setFlyBehavior(new DesignPattern.StrategyPattern.FlyRocketPowered());
+        //m.performFly();
 
-        s.performQuack();
 
-        var m:DesignPattern.StrategyPattern.ModelDuck = new DesignPattern.StrategyPattern.ModelDuck();
-        this.addChild( m );
-        m.performFly();
-        m.setFlyBehavior(new DesignPattern.StrategyPattern.FlyRocketPowered());
-        m.performFly();
+        //
+        //var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
+        //this.addChild(w);
 
-
-
-        var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
-        this.addChild(w);
+        var star:DesignPattern.Decorator.StarbuzzCoffee = new DesignPattern.Decorator.StarbuzzCoffee();
+        this.addChild(star);
     }
 
     private onTouchBegin(evt:egret.TouchEvent) {
