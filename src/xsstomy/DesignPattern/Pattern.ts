@@ -340,7 +340,9 @@ module DesignPattern
                 return null;
             }
         }
-
+        /**
+         * 装饰者
+         */
         export class Espresso extends Beverage
         {
             public constructor()
@@ -355,6 +357,9 @@ module DesignPattern
             }
         }
 
+        /**
+         * 装饰者
+         */
         export class HouseBlend extends Beverage
         {
             public constructor()
@@ -368,6 +373,7 @@ module DesignPattern
             }
 
         }
+
 
         export class Mocha extends CondimentDecorator
         {
@@ -448,6 +454,146 @@ module DesignPattern
                 beverage2 = new Whip(beverage2);
 
                 console.log( beverage2.getDescription() + " $ " + beverage2.cost() );
+            }
+        }
+    }
+}
+
+
+module DesignPattern
+{
+    /**
+     * 工厂模式
+     */
+    export module FactoryPattern
+    {
+        /**
+         * 工厂基类
+         */
+        export class PizzaStore
+        {
+
+            public constructor()
+            {
+                super();
+            }
+
+            public orderPizza(type:string):Pizza
+            {
+                var pizza:Pizza;
+                pizza = this.createPizza(type);
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+
+                return pizza;
+            }
+
+            public createPizza(type:string):Pizza;
+        }
+        /**
+         * 披萨基类
+         */
+        export class Pizza
+        {
+            public name:string;
+            public dough:string;
+            public sauce:string;
+            public toppings:Array<any> = [];
+            public prepare()
+            {
+                console.log("Preparing " + this.name );
+                console.log("Tossing dough..." + this.dough);
+                console.log("Adding sauce..." + this.sauce );
+                console.log("Adding toppings: ");
+
+                for(var i = 0 ; i < this.toppings.length ; i = i + 1)
+                {
+                    console.log( " " + this.toppings[i]);
+                }
+
+            }
+            public bake()
+            {
+                console.log("Bake for 25 minutes at 350");
+            }
+            public cut()
+            {
+                console.log("Cutting the pizza into diagonal slices");
+            }
+            public box()
+            {
+                console.log("Place pizza in official PizzaStore box");
+            }
+            public getName():string
+            {
+                return this.name;
+            }
+        }
+        /**
+         * 工厂
+         */
+        export class NYPizzaStore extends PizzaStore
+        {
+            public constructor()
+            {
+                super();
+            }
+
+            public createPizza(type:string):Pizza
+            {
+                if(type === "cheese")
+                {
+                    return new NYStyleCheesePizza();
+                }
+                else if( type === "veggie" )
+                {
+
+                }
+                else if( type === "clam" )
+                {
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        /**
+         * 具体商品
+         */
+        export class NYStyleCheesePizza extends Pizza
+        {
+            public constructor()
+            {
+                super();
+                this.name = "NY Style Sauce and Cheese Pizza";
+                this.dough = "Thin Crust Dough";
+                this.sauce = "Marinara Sauce";
+
+                this.toppings.push("Grated Reggiano Cheese");
+            }
+
+        }
+        /**
+         * 具体产品
+         */
+        export class ChicagoStyleCheesePizza extends Pizza
+        {
+            public constructor()
+            {
+                super();
+                this.name = "Chicago Style Deep Dish Cheese Pizza";
+                this.dough = "Extre Thick Crust Dough";
+                this.sauce = "Plum Tomato Sauce";
+                this.toppings.push("Shredded Mozzarella Cheese");
+            }
+
+            public cut()
+            {
+                console.log("Cutting the pizza into square slices");
             }
         }
     }
