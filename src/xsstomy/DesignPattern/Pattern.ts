@@ -596,5 +596,23 @@ module DesignPattern
                 console.log("Cutting the pizza into square slices");
             }
         }
+        /**
+         * 例子调用
+         */
+        export class PizzaTestDrive extends egret.Sprite
+        {
+            public constructor()
+            {
+                super();
+                this.init();
+            }
+
+            public init()
+            {
+                var nyStore:PizzaStore = new NYPizzaStore();
+                var p:Pizza = nyStore.createPizza("cheese");
+                console.log("Ethan ordered a " + p.getName() + "\n");
+            }
+        }
     }
 }
