@@ -26,11 +26,24 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.SlotData
+     * @classdesc
+     * 插槽数据，插槽是由骨骼控制的，可以装入显示对象的容器，显示对象可以是图片或者子骨架
+     * 插槽可插入一个或者多个显示对象，但是同一时刻只能显示一个显示对象
+     * 插槽支持关键帧动画，如果有多个显示对象，可以指定哪一帧显示哪一个显示对象
+     */
     var SlotData = (function () {
+        /**
+         * 构造函数，实例化一个SlotData类
+         */
         function SlotData() {
             this._displayDataList = [];
             this.zOrder = 0;
         }
+        /**
+         * 释放资源
+         */
         SlotData.prototype.dispose = function () {
             var i = this._displayDataList.length;
             while (i--) {
@@ -38,6 +51,10 @@ var dragonBones;
             }
             this._displayDataList = null;
         };
+        /**
+         * 添加一个显示对象数据
+         * @param displayData
+         */
         SlotData.prototype.addDisplayData = function (displayData) {
             if (!displayData) {
                 throw new Error();
@@ -49,6 +66,11 @@ var dragonBones;
                 throw new Error();
             }
         };
+        /**
+         * 根据显示对象的名字获取显示对象数据
+         * @param displayName 想要获取的显示对象的名字
+         * @returns {*} 返回显示对象昂数据，如果没有返回null
+         */
         SlotData.prototype.getDisplayData = function (displayName) {
             var i = this._displayDataList.length;
             while (i--) {
@@ -59,6 +81,10 @@ var dragonBones;
             return null;
         };
         Object.defineProperty(SlotData.prototype, "displayDataList", {
+            /**
+             * 获取所有的显示对象
+             * @returns {Array<DisplayData>}
+             */
             get: function () {
                 return this._displayDataList;
             },

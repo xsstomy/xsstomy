@@ -26,9 +26,20 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.WorldClock
+     * @classdesc
+     * WorldClock 提供时钟的支持，为控制每个加入时钟的 IAnimatable 对象正确的播放动画。
+     * 一般来说，每当 Armature 被创建出来后，只需要将之加入 WorldClock,之后只需要控制 WorldClock 的前进，就可以实现所有 Armature 的动画前进了
+     * @see dragonBones.IAnimatable
+     * @see dragonBones.Armature
+     */
     var WorldClock = (function () {
         /**
-         * Creates a new WorldClock instance. (use the static var WorldClock.clock instead).
+         * 创建一个新的 WorldClock 实例。
+         * 一般来说，不需要单独创建 WorldClock 的实例，可以直接使用 WorldClock.clock 静态实例就可以了。
+         * @param time {number} 开始时间
+         * @param timeScale {number} 时间缩放系数
          */
         function WorldClock(time, timeScale) {
             if (time === void 0) { time = -1; }
@@ -46,8 +57,8 @@ var dragonBones;
         });
         Object.defineProperty(WorldClock.prototype, "timeScale", {
             /**
-             * The time scale to apply to the number of second passed to the advanceTime() method.
-             * @param A Number to use as a time scale.
+             * 时间缩放系数。用于实现动画的变速播放
+             * @member {number} dragonBones.WorldClock#timeScale
              */
             get: function () {
                 return this._timeScale;
@@ -62,16 +73,16 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Returns true if the IAnimatable instance is contained by WorldClock instance.
-         * @param An IAnimatable instance (Armature or custom)
-         * @return true if the IAnimatable instance is contained by WorldClock instance.
+         * 检查是否包含指定的 IAnimatable 实例
+         * @param animatable {IAnimatable} IAnimatable 实例
+         * @returns {boolean}
          */
         WorldClock.prototype.contains = function (animatable) {
             return this._animatableList.indexOf(animatable) >= 0;
         };
         /**
-         * Add a IAnimatable instance (Armature or custom) to this WorldClock instance.
-         * @param An IAnimatable instance (Armature, WorldClock or custom)
+         * 将一个 IAnimatable 实例加入到时钟
+         * @param animatable {IAnimatable} IAnimatable 实例
          */
         WorldClock.prototype.add = function (animatable) {
             if (animatable && this._animatableList.indexOf(animatable) == -1) {
@@ -79,8 +90,8 @@ var dragonBones;
             }
         };
         /**
-         * Remove a IAnimatable instance (Armature or custom) from this WorldClock instance.
-         * @param An IAnimatable instance (Armature or custom)
+         * 将一个 IAnimatable 实例从时钟中移除
+         * @param animatable {IAnimatable} IAnimatable 实例
          */
         WorldClock.prototype.remove = function (animatable) {
             var index = this._animatableList.indexOf(animatable);
@@ -89,14 +100,14 @@ var dragonBones;
             }
         };
         /**
-         * Remove all IAnimatable instance (Armature or custom) from this WorldClock instance.
+         * 从时钟中移除所有的 IAnimatable 实例.
          */
         WorldClock.prototype.clear = function () {
             this._animatableList.length = 0;
         };
         /**
-         * Update all registered IAnimatable instance animations using this method typically in an ENTERFRAME Event or with a Timer.
-         * @param The amount of second to move the playhead ahead.
+         * 更新所有包含的 IAnimatable 实例，将他们的动画向前播放指定的时间。一般来说，这个方法需要在 ENTERFRAME 事件的响应函数中被调用
+         * @param passedTime {number} 前进的时间
          */
         WorldClock.prototype.advanceTime = function (passedTime) {
             if (passedTime === void 0) { passedTime = -1; }
@@ -130,7 +141,8 @@ var dragonBones;
             }
         };
         /**
-         * A global static WorldClock instance ready to use.
+         * 可以直接使用的全局静态时钟实例.
+         * @type dragonBones.WorldClock
          */
         WorldClock.clock = new WorldClock();
         return WorldClock;

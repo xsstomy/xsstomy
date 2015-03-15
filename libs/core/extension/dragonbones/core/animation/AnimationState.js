@@ -26,6 +26,13 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.AnimationState
+     * @classdesc
+     * AnimationState 实例由 Animation 实例播放动画时产生， 用于控制单个动画的播放。
+     * @see dragonBones.Animation
+     * @see dragonBones.AnimationData
+     */
     var AnimationState = (function () {
         function AnimationState() {
             /** @private */
@@ -76,13 +83,19 @@ var dragonBones;
             this._clip = null;
         };
         //骨架装配
+        /**
+         * 检查指定名称的骨头是否在遮罩中。只有在遮罩中的骨头动画才会被播放
+         * @param boneName {string} dragonBones.AnimationState#containsBoneMask
+         * @returns {boolean}
+         */
         AnimationState.prototype.containsBoneMask = function (boneName) {
             return this._boneMasks.length == 0 || this._boneMasks.indexOf(boneName) >= 0;
         };
         /**
-         * Adds a bone which should be animated. This allows you to reduce the number of animations you have to create.
-         * @param boneName Bone's name.
-         * @param ifInvolveChildBones if involve child bone's animation.
+         * 将一个骨头加入遮罩。只有加入遮罩的骨头的动画才会被播放，如果没有骨头加入遮罩，则所有骨头的动画都会播放。通过这个API可以实现只播放角色的一部分.
+         * @param boneName {string} 骨头名称.
+         * @param ifInvolveChildBones {boolean} 是否影响子骨头。默认值：true.
+         * @returns {AnimationState} 动画播放状态实例
          */
         AnimationState.prototype.addBoneMask = function (boneName, ifInvolveChildBones) {
             if (ifInvolveChildBones === void 0) { ifInvolveChildBones = true; }
@@ -104,9 +117,10 @@ var dragonBones;
             return this;
         };
         /**
-         * Removes a bone which was supposed be animated.
-         * @param boneName Bone's timeline name.
-         * @param ifInvolveChildBones If involved child bone's timeline.
+         * 将一个指定名称的骨头从遮罩中移除.
+         * @param boneName {string} 骨头名称.
+         * @param ifInvolveChildBones {boolean} 是否影响子骨头。默认值：true.
+         * @returns {AnimationState} 动画播放状态实例
          */
         AnimationState.prototype.removeBoneMask = function (boneName, ifInvolveChildBones) {
             if (ifInvolveChildBones === void 0) { ifInvolveChildBones = true; }
@@ -127,6 +141,10 @@ var dragonBones;
             this._updateTimelineStates();
             return this;
         };
+        /**
+         * 清空骨头遮罩.
+         * @returns {AnimationState} 动画播放状态实例
+         */
         AnimationState.prototype.removeAllMixingTransform = function () {
             this._boneMasks.length = 0;
             this._updateTimelineStates();
@@ -197,14 +215,16 @@ var dragonBones;
         };
         //动画
         /**
-         * Play the current animation. 如果动画已经播放完毕, 将不会继续播放.
+         * 播放当前动画。如果动画已经播放完毕, 将不会继续播放.
+         * @returns {AnimationState} 动画播放状态实例
          */
         AnimationState.prototype.play = function () {
             this._isPlaying = true;
             return this;
         };
         /**
-         * Stop playing current animation.
+         * 暂停当前动画的播放。
+         * @returns {AnimationState} 动画播放状态实例
          */
         AnimationState.prototype.stop = function () {
             this._isPlaying = false;
@@ -251,9 +271,9 @@ var dragonBones;
             return this;
         };
         /**
-         * Fade out the animation state
-         * @param fadeTotalTime fadeOutTime
-         * @param pausePlayhead pauseBeforeFadeOutComplete pause the animation before fade out complete
+         * 淡出当前动画
+         * @param fadeTotalTime {number} 淡出时间
+         * @param pausePlayhead {boolean} 淡出时动画是否暂停。
          */
         AnimationState.prototype.fadeOut = function (fadeTotalTime, pausePlayhead) {
             if (!this._armature) {
@@ -584,7 +604,8 @@ var dragonBones;
         };
         Object.defineProperty(AnimationState.prototype, "name", {
             /**
-             * The name of the animation state.
+             * 动画的名字
+             * @member {string} dragonBones.AnimationState#name
              */
             get: function () {
                 return this._name;
@@ -594,7 +615,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "layer", {
             /**
-             * The layer of the animation. When calculating the final blend weights, animations in higher layers will get their weights.
+             * 动画所在的层
+             * @member {number} dragonBones.AnimationState#layer
              */
             get: function () {
                 return this._layer;
@@ -604,7 +626,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "group", {
             /**
-             * The group of the animation.
+             * 动画所在的组
+             * @member {string} dragonBones.AnimationState#group
              */
             get: function () {
                 return this._group;
@@ -614,8 +637,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "clip", {
             /**
-             * The clip that is being played by this animation state.
-             * @see dragonBones.objects.AnimationData.
+             * 动画包含的动画数据
+             * @member {AnimationData} dragonBones.AnimationState#clip
              */
             get: function () {
                 return this._clip;
@@ -625,7 +648,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "isComplete", {
             /**
-             * Is animation complete.
+             * 是否播放完成
+             * @member {boolean} dragonBones.AnimationState#isComplete
              */
             get: function () {
                 return this._isComplete;
@@ -635,7 +659,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "isPlaying", {
             /**
-             * Is animation playing.
+             * 是否正在播放
+             * @member {boolean} dragonBones.AnimationState#isPlaying
              */
             get: function () {
                 return (this._isPlaying && !this._isComplete);
@@ -645,7 +670,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "currentPlayTimes", {
             /**
-             * Current animation played times
+             * 当前播放次数
+             * @member {number} dragonBones.AnimationState#currentPlayTimes
              */
             get: function () {
                 return this._currentPlayTimes < 0 ? 0 : this._currentPlayTimes;
@@ -655,7 +681,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "totalTime", {
             /**
-             * The length of the animation clip in seconds.
+             * 动画总时长（单位：秒）
+             * @member {number} dragonBones.AnimationState#totalTime
              */
             get: function () {
                 return this._totalTime * 0.001;
@@ -665,7 +692,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "currentTime", {
             /**
-             * The current time of the animation.
+             * 动画当前播放时间（单位：秒）
+             * @member {number} dragonBones.AnimationState#currentTime
              */
             get: function () {
                 return this._currentTime < 0 ? 0 : this._currentTime * 0.001;
@@ -696,7 +724,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "timeScale", {
             /**
-             * The amount by which passed time should be scaled. Used to slow down or speed up the animation. Defaults to 1.
+             * 时间缩放系数。用于调节动画播放速度
+             * @member {number} dragonBones.AnimationState#timeScale
              */
             get: function () {
                 return this._timeScale;
@@ -706,7 +735,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationState.prototype, "playTimes", {
             /**
-             * playTimes Play times(0:loop forever, 1~+∞:play times, -1~-∞:will fade animation after play complete).
+             * 播放次数 (0:循环播放， >0:播放次数)
+             * @member {number} dragonBones.AnimationState#playTimes
              */
             get: function () {
                 return this._playTimes;

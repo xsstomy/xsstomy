@@ -26,9 +26,15 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.DBTransform
+     * @classdesc
+     * Dragonbones中使用的transform
+     * 可以表示位移，旋转，缩放三种属性
+     */
     var DBTransform = (function () {
         /**
-         * Creat a new DBTransform instance.
+         * 创建一个 DBTransform 实例.
          */
         function DBTransform() {
             this.x = 0;
@@ -40,7 +46,8 @@ var dragonBones;
         }
         Object.defineProperty(DBTransform.prototype, "rotation", {
             /**
-             * The rotation of that DBTransform instance.
+             * 旋转，用弧度表示
+             * @member {number} dragonBones.DBTransform#rotation
              */
             get: function () {
                 return this.skewX;
@@ -52,7 +59,7 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Copy all properties from this DBTransform instance to the passed DBTransform instance.
+         * 拷贝传入的transfrom实例的所有属性
          * @param node
          */
         DBTransform.prototype.copy = function (transform) {
@@ -64,8 +71,8 @@ var dragonBones;
             this.scaleY = transform.scaleY;
         };
         /**
-         * Get a string representing all DBTransform property values.
-         * @return String All property values in a formatted string.
+         * 把DBTransform的所有属性转成用String类型表示
+         * @return 一个字符串包含有DBTransform的所有属性
          */
         DBTransform.prototype.toString = function () {
             var string = "x:" + this.x + " y:" + this.y + " skewX:" + this.skewX + " skewY:" + this.skewY + " scaleX:" + this.scaleX + " scaleY:" + this.scaleY;

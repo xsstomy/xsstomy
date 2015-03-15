@@ -32,8 +32,17 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.TransformTimeline
+     * @extends dragonBones.Timeline
+     * @classdesc
+     * 骨骼的时间轴数据，包含一个和多个关键帧数据
+     */
     var TransformTimeline = (function (_super) {
         __extends(TransformTimeline, _super);
+        /**
+         * 构造函数，实例化一个TransformTimeline
+         */
         function TransformTimeline() {
             _super.call(this);
             this.originTransform = new dragonBones.DBTransform();
@@ -42,6 +51,9 @@ var dragonBones;
             this.originPivot = new dragonBones.Point();
             this.offset = 0;
         }
+        /**
+         * 释放资源
+         */
         TransformTimeline.prototype.dispose = function () {
             _super.prototype.dispose.call(this);
             this.originTransform = null;

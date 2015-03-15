@@ -32,11 +32,17 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.AnimationEvent
+     * @extends dragonBones.Event
+     * @classdesc
+     * 动画事件
+     */
     var AnimationEvent = (function (_super) {
         __extends(AnimationEvent, _super);
         /**
-         * Creates a new AnimationEvent instance.
-         * @param type
+         * 创建一个新的 AnimationEvent 的实例
+         * @param type 事件的类型
          * @param cancelable
          */
         function AnimationEvent(type, cancelable) {
@@ -56,6 +62,7 @@ var dragonBones;
         Object.defineProperty(AnimationEvent.prototype, "movementID", {
             /**
              * 不推荐的API.
+             * @member {string} dragonBones.AnimationEvent#movementID
              */
             get: function () {
                 return this.animationName;
@@ -65,7 +72,8 @@ var dragonBones;
         });
         Object.defineProperty(AnimationEvent.prototype, "armature", {
             /**
-             * The armature that is the taget of this event.
+             * 配发出事件的骨架
+             * @member {dragonBones.Armature} dragonBones.AnimationEvent#armature
              */
             get: function () {
                 return (this.target);
@@ -74,6 +82,11 @@ var dragonBones;
             configurable: true
         });
         Object.defineProperty(AnimationEvent.prototype, "animationName", {
+            /**
+             * 获取动画的名字
+             * @returns {string}
+             * @member {string} dragonBones.AnimationEvent#animationName
+             */
             get: function () {
                 return this.animationState.name;
             },
@@ -81,31 +94,31 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Dispatched when the playback of an animation fade in.
+         * 当动画缓入的时候派发
          */
         AnimationEvent.FADE_IN = "fadeIn";
         /**
-         * Dispatched when the playback of an animation fade out.
+         * 当动画缓出的时候派发
          */
         AnimationEvent.FADE_OUT = "fadeOut";
         /**
-         * Dispatched when the playback of an animation starts.
+         * 当动画开始播放时派发
          */
         AnimationEvent.START = "start";
         /**
-         * Dispatched when the playback of a animation stops.
+         * 当动画停止时派发
          */
         AnimationEvent.COMPLETE = "complete";
         /**
-         * Dispatched when the playback of a animation completes a loop.
+         * 当动画播放完一轮后派发
          */
         AnimationEvent.LOOP_COMPLETE = "loopComplete";
         /**
-         * Dispatched when the playback of an animation fade in complete.
+         * 当动画缓入完成时派发
          */
         AnimationEvent.FADE_IN_COMPLETE = "fadeInComplete";
         /**
-         * Dispatched when the playback of an animation fade out complete.
+         * 当动画缓出结束后派发
          */
         AnimationEvent.FADE_OUT_COMPLETE = "fadeOutComplete";
         return AnimationEvent;

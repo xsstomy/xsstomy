@@ -26,10 +26,21 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.DragonBones
+     * @classdesc
+     * DragonBones
+     */
     var DragonBones = (function () {
         function DragonBones() {
         }
+        /**
+         * 数据的版本号
+         */
         DragonBones.DATA_VERSION = "2.3";
+        /**
+         *
+         */
         DragonBones.PARENT_COORDINATE_DATA_VERSION = "3.0";
         return DragonBones;
     })();

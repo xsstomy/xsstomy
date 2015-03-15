@@ -26,6 +26,15 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.TimelineState
+     * @classdesc
+     * TimelineState 负责计算 Bone 的时间轴动画。
+     * TimelineState 实例隶属于 AnimationState. AnimationState在创建时会为每个包含动作的 Bone生成一个 TimelineState 实例.
+     * @see dragonBones.Animation
+     * @see dragonBones.AnimationState
+     * @see dragonBones.Bone
+     */
     var TimelineState = (function () {
         function TimelineState() {
             this._totalTime = 0; //duration

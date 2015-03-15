@@ -32,6 +32,12 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.BaseFactory
+     * @classdesc
+     * 工厂的基类
+     * @extends dragonBones.EventDispatcher
+     */
     var BaseFactory = (function (_super) {
         __extends(BaseFactory, _super);
         function BaseFactory(self) {
@@ -41,12 +47,12 @@ var dragonBones;
             /** @private */
             this.textureAtlasDic = {};
             if (self != this) {
-                throw new Error("Abstract class can not be instantiated!");
+                throw new Error(egret.getString(4001));
             }
         }
         /**
-         * Cleans up resources used by this BaseFactory instance.
-         * @param (optional) Destroy all internal references.
+         * 释放资源
+         * @param  disposeData {boolean} (optional) 是否释放所有内部的引用
          */
         BaseFactory.prototype.dispose = function (disposeData) {
             if (disposeData === void 0) { disposeData = true; }
@@ -66,23 +72,24 @@ var dragonBones;
             //_currentTextureAtlasName = null;
         };
         /**
-         * Returns a DragonBonesData instance.
-         * @param The name of an existing DragonBonesData instance.
-         * @return A DragonBonesData instance with given name (if exist).
+         * 根据名字获取一个DragonBonesData
+         * @param name {string} 想要获取的DragonBonesData的名字
+         * @returns {dragonBones.DragonBonesData} 返回指定名字的DragonBonesData（如果存在的话）
          */
         BaseFactory.prototype.getDragonBonesData = function (name) {
             return this.dragonBonesDataDic[name];
         };
         /**
-         * Recommend using getDragonBonesData API instead.
+         * 根据名字获取一个DragonBonesData（不推荐使用）
+         * 建议使用方法getDragonBonesData来代替这个方法
          */
         BaseFactory.prototype.getSkeletonData = function (name) {
             return this.getDragonBonesData(name);
         };
         /**
-         * Add a DragonBonesData instance to this BaseFactory instance.
-         * @param A DragonBonesData instance.
-         * @param (optional) A name for this DragonBonesData instance.
+         * 添加一个DragonBonesData实例
+         * @param data {dragonBones.DragonBonesData} 一个DragonBonesData实例
+         * @param name {string} (optional) DragonBonesData的名字
          */
         BaseFactory.prototype.addDragonBonesData = function (data, name) {
             if (name === void 0) { name = null; }
@@ -91,45 +98,48 @@ var dragonBones;
             }
             name = name || data.name;
             if (!name) {
-                throw new Error("Unnamed data!");
+                throw new Error(egret.getString(4002));
             }
-            if (this.dragonBonesDataDic[name]) {
+            /*
+            if(this.dragonBonesDataDic[name]){
                 throw new Error();
-            }
+            }*/
             this.dragonBonesDataDic[name] = data;
         };
         /**
-         * Recommend using addDragonBonesData API instead.
+         * 添加一个DragonBonesData实例（不推荐使用）
+         * 建议使用方法addDragonBonesData来代替
          */
         BaseFactory.prototype.addSkeletonData = function (data, name) {
             if (name === void 0) { name = null; }
             this.addDragonBonesData(data, name);
         };
         /**
-         * Remove a DragonBonesData instance from this BaseFactory instance.
-         * @param The name for the DragonBonesData instance to remove.
+         * 根据名字移除一个DragonBonesData实例.
+         * @param name {string} 想要移除的DragonBonesData的名字
          */
         BaseFactory.prototype.removeDragonBonesData = function (name) {
             delete this.dragonBonesDataDic[name];
         };
         /**
-         * Recommend using removeDragonBonesData API instead.
+         * 根据名字移除一个DragonBonesData实例.（不推荐使用）
+         * 建议使用方法removeDragonBonesData代替
          */
         BaseFactory.prototype.removeSkeletonData = function (name) {
             delete this.dragonBonesDataDic[name];
         };
         /**
-         * Return the TextureAtlas by name.
-         * @param The name of the TextureAtlas to return.
-         * @return A textureAtlas.
+         * 根据名字获取纹理集TextureAtlas
+         * @param name {string} 需要获取的纹理集TextureAtlas的名字
+         * @returns {any} 纹理集TextureAtlas
          */
         BaseFactory.prototype.getTextureAtlas = function (name) {
             return this.textureAtlasDic[name];
         };
         /**
-         * Add a textureAtlas to this BaseFactory instance.
-         * @param A textureAtlas to add to this BaseFactory instance.
-         * @param (optional) A name for this TextureAtlas.
+         * 添加一个纹理集
+         * @param textureAtlas {any} 需要被添加的纹理集
+         * @param name {string} (optional) 需要被添加的纹理集的名字
          */
         BaseFactory.prototype.addTextureAtlas = function (textureAtlas, name) {
             if (name === void 0) { name = null; }
@@ -145,27 +155,28 @@ var dragonBones;
                 name = textureAtlas.name;
             }
             if (!name) {
-                throw new Error("Unnamed data!");
+                throw new Error(egret.getString(4002));
             }
-            if (this.textureAtlasDic[name]) {
+            /*
+            if(this.textureAtlasDic[name]){
                 throw new Error();
-            }
+            }*/
             this.textureAtlasDic[name] = textureAtlas;
         };
         /**
-         * Remove a textureAtlas from this baseFactory instance.
-         * @param The name of the TextureAtlas to remove.
+         * 移除指定名字的纹理集
+         * @param name {string} 需要移除的纹理集的名字
          */
         BaseFactory.prototype.removeTextureAtlas = function (name) {
             delete this.textureAtlasDic[name];
         };
         /**
-         * Return the TextureDisplay.
-         * @param The name of this Texture.
-         * @param The name of the TextureAtlas.
-         * @param The registration pivotX position.
-         * @param The registration pivotY position.
-         * @return An Object.
+         * 获取TextureDisplay
+         * @param textureName {string} 纹理的名字
+         * @param textureAtlasName {string} 纹理集的名字
+         * @param pivotX {number} 轴点的x坐标
+         * @param pivotY {number} 轴点的y坐标
+         * @returns {any} 返回的TextureDisplay
          */
         BaseFactory.prototype.getTextureDisplay = function (textureName, textureAtlasName, pivotX, pivotY) {
             if (textureAtlasName === void 0) { textureAtlasName = null; }
@@ -201,8 +212,16 @@ var dragonBones;
             }
             return this._generateDisplay(targetTextureAtlas, textureName, pivotX, pivotY);
         };
-        //一般情况下dragonBonesData和textureAtlas是一对一的，通过相同的key对应。
-        //TO DO 以后会支持一对多的情况
+        /**
+         * 构建骨架
+         * 一般情况下dragonBonesData和textureAtlas是一对一的，通过相同的key对应。
+         * TO DO 以后会支持一对多的情况
+         * @param armatureName 骨架的名字
+         * @param fromDragonBonesDataName 骨架数据的名字 可选参数
+         * @param fromTextureAtlasName 纹理集的名字 可选参数
+         * @param skinName 皮肤的名字 可选参数
+         * @returns {*}
+         */
         BaseFactory.prototype.buildArmature = function (armatureName, fromDragonBonesDataName, fromTextureAtlasName, skinName) {
             if (fromDragonBonesDataName === void 0) { fromDragonBonesDataName = null; }
             if (fromTextureAtlasName === void 0) { fromTextureAtlasName = null; }
@@ -219,6 +238,14 @@ var dragonBones;
             }
             return this.buildArmatureUsingArmatureDataFromTextureAtlas(dragonBonesData, armatureData, textureAtlas, skinName);
         };
+        /**
+         * 用dragonBones数据，骨架数据，纹理集数据来构建骨架
+         * @param dragonBonesData dragonBones数据
+         * @param armatureData 骨架数据
+         * @param textureAtlas 纹理集
+         * @param skinName 皮肤名称 可选参数
+         * @returns {Armature}
+         */
         BaseFactory.prototype.buildArmatureUsingArmatureDataFromTextureAtlas = function (dragonBonesData, armatureData, textureAtlas, skinName) {
             if (skinName === void 0) { skinName = null; }
             var outputArmature = this._generateArmature();
@@ -232,7 +259,15 @@ var dragonBones;
             outputArmature.advanceTime(0);
             return outputArmature;
         };
-        //暂时不支持ifRemoveOriginalAnimationList为false的情况
+        /**
+         * 拷贝动画到骨架中
+         * 暂时不支持ifRemoveOriginalAnimationList为false的情况
+         * @param toArmature  拷贝到的那个骨架
+         * @param fromArmatreName 从哪个骨架里拷贝，骨架的名字
+         * @param fromDragonBonesDataName 从哪个DragonBones数据中拷贝，Dragonbones数据的名字
+         * @param ifRemoveOriginalAnimationList 是否移除原骨架里的动画，暂时不支持为false的情况
+         * @returns {boolean}
+         */
         BaseFactory.prototype.copyAnimationsToArmature = function (toArmature, fromArmatreName, fromDragonBonesDataName, ifRemoveOriginalAnimationList) {
             if (fromDragonBonesDataName === void 0) { fromDragonBonesDataName = null; }
             if (ifRemoveOriginalAnimationList === void 0) { ifRemoveOriginalAnimationList = true; }
@@ -383,7 +418,7 @@ var dragonBones;
         /**
          * @private
          * Generates an Armature instance.
-         * @return Armature An Armature instance.
+         * @returns {dragonBones.Armature} Armature An Armature instance.
          */
         BaseFactory.prototype._generateArmature = function () {
             return null;
@@ -391,7 +426,7 @@ var dragonBones;
         /**
          * @private
          * Generates an Slot instance.
-         * @return Slot An Slot instance.
+         * @returns {dragonBones.Slot} Slot An Slot instance.
          */
         BaseFactory.prototype._generateSlot = function () {
             return null;
@@ -399,11 +434,11 @@ var dragonBones;
         /**
          * @private
          * Generates a DisplayObject
-         * @param textureAtlas The TextureAtlas.
-         * @param fullName A qualified name.
-         * @param pivotX A pivot x based value.
-         * @param pivotY A pivot y based value.
-         * @return
+         * @param textureAtlas {any} The TextureAtlas.
+         * @param fullName {string} A qualified name.
+         * @param pivotX {number} A pivot x based value.
+         * @param pivotY {number} A pivot y based value.
+         * @returns {any}
          */
         BaseFactory.prototype._generateDisplay = function (textureAtlas, fullName, pivotX, pivotY) {
             return null;

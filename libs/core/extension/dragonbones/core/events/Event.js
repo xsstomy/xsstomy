@@ -26,7 +26,16 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Event
+     * @classdesc
+     * 事件
+     */
     var Event = (function () {
+        /**
+         * 创建一个Event实例
+         * @param type 事件的类型
+         */
         function Event(type) {
             this.type = type;
         }

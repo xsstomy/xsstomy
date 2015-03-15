@@ -32,13 +32,23 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.ArmatureEvent
+     * @extends dragonBones.Event
+     * @classdesc
+     * 骨架事件
+     */
     var ArmatureEvent = (function (_super) {
         __extends(ArmatureEvent, _super);
+        /**
+         * 创建一个 ArmatureEvent 的实例
+         * @param type 事件类型
+         */
         function ArmatureEvent(type) {
             _super.call(this, type);
         }
         /**
-         * Dispatched after a successful z order update.
+         * 当zOrder成功更新后派发
          */
         ArmatureEvent.Z_ORDER_UPDATED = "zOrderUpdated";
         return ArmatureEvent;

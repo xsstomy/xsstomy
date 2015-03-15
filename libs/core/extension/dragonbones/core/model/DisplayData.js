@@ -26,16 +26,34 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.DisplayData
+     * @classdesc
+     * 显示对象的数据，目前支持图片和子骨架
+     */
     var DisplayData = (function () {
+        /**
+         * 初始化变换矩阵为单位矩阵
+         * 注册点为{0，0}点
+         */
         function DisplayData() {
             this.transform = new dragonBones.DBTransform();
             this.pivot = new dragonBones.Point();
         }
+        /**
+         * 释放资源
+         */
         DisplayData.prototype.dispose = function () {
             this.transform = null;
             this.pivot = null;
         };
+        /**
+         * 子骨架类型
+         */
         DisplayData.ARMATURE = "armature";
+        /**
+         * 图片类型
+         */
         DisplayData.IMAGE = "image";
         return DisplayData;
     })();

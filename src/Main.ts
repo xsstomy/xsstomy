@@ -99,13 +99,13 @@ class Main extends egret.DisplayObjectContainer {
         //var three1:ThreeD.Perspective = new ThreeD.Perspective();
         //this.addChild( three1 );
 
-        var three2:ThreeD.Bounce3D = new ThreeD.Bounce3D();
+        //var three2:ThreeD.Bounce3D = new ThreeD.Bounce3D();
         //this.addChild( three2 );
 
-        var three3:ThreeD.MultiBounce3D = new ThreeD.MultiBounce3D();
+        //var three3:ThreeD.MultiBounce3D = new ThreeD.MultiBounce3D();
         //this.addChild( three3 );
 
-        var three4:ThreeD.Fireworks = new ThreeD.Fireworks();
+        //var three4:ThreeD.Fireworks = new ThreeD.Fireworks();
         //this.addChild( three4 );
         //var s:DesignPattern.StrategyPattern.MallardDuck = new DesignPattern.StrategyPattern.MallardDuck();
         //this.addChild(s);
@@ -126,7 +126,10 @@ class Main extends egret.DisplayObjectContainer {
         //this.addChild(w);
 
         var star:DesignPattern.Decorator.StarbuzzCoffee = new DesignPattern.Decorator.StarbuzzCoffee();
-        this.addChild(star);
+        //this.addChild(star);
+
+        var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
+        this.addChild( p );
     }
 
     private onTouchBegin(evt:egret.TouchEvent) {

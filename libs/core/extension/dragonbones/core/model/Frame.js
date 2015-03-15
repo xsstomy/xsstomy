@@ -26,13 +26,32 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Frame
+     * @classdesc
+     *关键帧数据
+     */
     var Frame = (function () {
+        /**
+         *构造函数
+         */
         function Frame() {
+            /**
+             *位置
+             * @member {number} dragonBones.Frame#position
+             */
             this.position = 0;
+            /**
+             *持续时间
+             * @member {number} dragonBones.Frame#duration
+             */
             this.duration = 0;
             this.position = 0;
             this.duration = 0;
         }
+        /**
+         *释放资源
+         */
         Frame.prototype.dispose = function () {
         };
         return Frame;

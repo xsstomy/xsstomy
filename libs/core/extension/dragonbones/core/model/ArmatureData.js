@@ -26,7 +26,18 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.ArmatureData
+     * @classdesc
+     * armature数据 一个armature数据包含一个角色的骨骼，皮肤，动画的数据
+     * @see  dragonBones.BoneData
+     * @see  dragonBones.SkinData
+     * @see  dragonBones.AnimationData
+     */
     var ArmatureData = (function () {
+        /**
+         * 创建一个ArmatureData实例
+         */
         function ArmatureData() {
             this._boneDataList = [];
             this._skinDataList = [];
@@ -39,6 +50,9 @@ var dragonBones;
         ArmatureData.sortBoneDataHelpArrayDescending = function (object1, object2) {
             return object1[0] > object2[0] ? -1 : 1;
         };
+        /**
+         * 释放资源
+         */
         ArmatureData.prototype.dispose = function () {
             var i = this._boneDataList.length;
             while (i--) {
@@ -56,6 +70,11 @@ var dragonBones;
             this._skinDataList = null;
             this._animationDataList = null;
         };
+        /**
+         * 根据骨骼的名字获取到骨骼数据
+         * @param boneName 骨骼的名字
+         * @returns {*} 骨骼数据
+         */
         ArmatureData.prototype.getBoneData = function (boneName) {
             var i = this._boneDataList.length;
             while (i--) {
@@ -65,6 +84,11 @@ var dragonBones;
             }
             return null;
         };
+        /**
+         * 根据皮肤的名字获取到皮肤数据
+         * @param skinName  皮肤的名字
+         * @returns {*}  皮肤数据
+         */
         ArmatureData.prototype.getSkinData = function (skinName) {
             if (!skinName && this._skinDataList.length > 0) {
                 return this._skinDataList[0];
@@ -77,6 +101,11 @@ var dragonBones;
             }
             return null;
         };
+        /**
+         * 根据动画的名字获取动画数据
+         * @param animationName 动画的名字
+         * @returns {*} 动画数据
+         */
         ArmatureData.prototype.getAnimationData = function (animationName) {
             var i = this._animationDataList.length;
             while (i--) {
@@ -86,6 +115,10 @@ var dragonBones;
             }
             return null;
         };
+        /**
+         *添加一个骨骼数据
+         * @param boneData
+         */
         ArmatureData.prototype.addBoneData = function (boneData) {
             if (!boneData) {
                 throw new Error();
@@ -97,6 +130,10 @@ var dragonBones;
                 throw new Error();
             }
         };
+        /**
+         * 添加一个皮肤数据
+         * @param skinData
+         */
         ArmatureData.prototype.addSkinData = function (skinData) {
             if (!skinData) {
                 throw new Error();
@@ -108,6 +145,10 @@ var dragonBones;
                 throw new Error();
             }
         };
+        /**
+         * 添加一个动画数据
+         * @param animationData
+         */
         ArmatureData.prototype.addAnimationData = function (animationData) {
             if (!animationData) {
                 throw new Error();
@@ -116,6 +157,9 @@ var dragonBones;
                 this._animationDataList[this._animationDataList.length] = animationData;
             }
         };
+        /**
+         * 对骨骼按照骨骼数的层级关系排序
+         */
         ArmatureData.prototype.sortBoneDataList = function () {
             var i = this._boneDataList.length;
             if (i == 0) {
@@ -139,6 +183,10 @@ var dragonBones;
             }
         };
         Object.defineProperty(ArmatureData.prototype, "boneDataList", {
+            /**
+             * 获取骨骼数据列表
+             * @returns {Array<BoneData>}
+             */
             get: function () {
                 return this._boneDataList;
             },
@@ -146,6 +194,10 @@ var dragonBones;
             configurable: true
         });
         Object.defineProperty(ArmatureData.prototype, "skinDataList", {
+            /**
+             * 获取皮肤数据列表
+             * @returns {Array<SkinData>}
+             */
             get: function () {
                 return this._skinDataList;
             },
@@ -153,6 +205,10 @@ var dragonBones;
             configurable: true
         });
         Object.defineProperty(ArmatureData.prototype, "animationDataList", {
+            /**
+             * 获得动画数据列表
+             * @returns {Array<AnimationData>}
+             */
             get: function () {
                 return this._animationDataList;
             },

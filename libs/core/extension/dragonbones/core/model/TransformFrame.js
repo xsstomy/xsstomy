@@ -32,12 +32,29 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.TransformFrame
+     * @extends dragonBones.Frame
+     * @classdesc
+     * 骨骼的关键帧数据，包含骨骼的缓动，旋转，transform数据和
+     * 插槽的显示序号，可见度，zOrder，colorTransform数据
+     */
     var TransformFrame = (function (_super) {
         __extends(TransformFrame, _super);
+        /**
+         *构造函数，实例化一个TransformFrame
+         */
         function TransformFrame() {
             _super.call(this);
-            //旋转几圈
+            /**
+             * 旋转几圈
+             * @member {number} dragonBones.TransformFrame#tweenRotate
+             */
             this.tweenRotate = 0;
+            /**
+             *绑定到该骨骼的插槽的显示序号，当插槽有多个显示对象时，指定显示哪一个显示对象
+             * @member {number} dragonBones.TransformFrame#displayIndex
+             */
             this.displayIndex = 0;
             this.tweenEasing = 10;
             this.tweenRotate = 0;
@@ -50,6 +67,9 @@ var dragonBones;
             this.pivot = new dragonBones.Point();
             this.scaleOffset = new dragonBones.Point();
         }
+        /**
+         *释放资源
+         */
         TransformFrame.prototype.dispose = function () {
             _super.prototype.dispose.call(this);
             this.global = null;

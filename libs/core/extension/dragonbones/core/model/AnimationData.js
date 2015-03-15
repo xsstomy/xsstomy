@@ -32,12 +32,33 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonbones.AnimationData
+     * @extends dragonbones.Timeline
+     * @classdesc
+     * 保存动画数据
+     */
     var AnimationData = (function (_super) {
         __extends(AnimationData, _super);
+        /**
+         * 创建一个AnimationData实例
+         */
         function AnimationData() {
             _super.call(this);
+            /**
+             * 动画的帧率，表示每一秒钟播放多少帧
+             * @member {number} dragonBones.AnimationData#frameRate
+             */
             this.frameRate = 0;
+            /**
+             * 	播放次数 0为一直播放，默认为0
+             * @member {number} dragonBones.AnimationData#playTimes
+             */
             this.playTimes = 0;
+            /**
+             * 最后一帧持续的帧数
+             * @member {number} dragonBones.AnimationData#lastFrameDuration
+             */
             this.lastFrameDuration = 0;
             this.fadeTime = 0;
             this.playTimes = 0;
@@ -47,12 +68,19 @@ var dragonBones;
             this._timelineList = [];
         }
         Object.defineProperty(AnimationData.prototype, "timelineList", {
+            /**
+             * 时间轴列表
+             * @returns {Array<TransformTimeline>}
+             */
             get: function () {
                 return this._timelineList;
             },
             enumerable: true,
             configurable: true
         });
+        /**
+         * 释放资源
+         */
         AnimationData.prototype.dispose = function () {
             _super.prototype.dispose.call(this);
             this.hideTimelineNameMap = null;
@@ -62,6 +90,11 @@ var dragonBones;
             }
             this._timelineList = null;
         };
+        /**
+         * 根据时间轴的名字获取时间轴数据
+         * @param timelineName 时间轴的名字
+         * @returns {*} 时间轴数据
+         */
         AnimationData.prototype.getTimeline = function (timelineName) {
             var i = this._timelineList.length;
             while (i--) {
@@ -71,6 +104,10 @@ var dragonBones;
             }
             return null;
         };
+        /**
+         * 添加一个时间轴数据
+         * @param timeline 需要被添加的时间轴数据
+         */
         AnimationData.prototype.addTimeline = function (timeline) {
             if (!timeline) {
                 throw new Error();

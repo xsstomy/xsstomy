@@ -26,9 +26,19 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.TransformUtils
+     * @classdesc
+     * 提供了一些常用的转换的静态方法
+     */
     var TransformUtil = (function () {
         function TransformUtil() {
         }
+        /**
+         * 全局坐标系转成成局部坐标系
+         * @param transform 全局坐标系下的变换
+         * @param parent 父亲的坐标变换
+         */
         TransformUtil.globalToLocal = function (transform, parent) {
             TransformUtil.transformToMatrix(transform, TransformUtil._helpTransformMatrix, true);
             TransformUtil.transformToMatrix(parent, TransformUtil._helpParentTransformMatrix, true);
@@ -36,6 +46,12 @@ var dragonBones;
             TransformUtil._helpTransformMatrix.concat(TransformUtil._helpParentTransformMatrix);
             TransformUtil.matrixToTransform(TransformUtil._helpTransformMatrix, transform, transform.scaleX * parent.scaleX >= 0, transform.scaleY * parent.scaleY >= 0);
         };
+        /**
+         *把transform数据转成成矩阵数据
+         * @param transform 需要转换的transform数据
+         * @param matrix 转换后的矩阵数据
+         * @param keepScale 是否保持缩放
+         */
         TransformUtil.transformToMatrix = function (transform, matrix, keepScale) {
             if (keepScale === void 0) { keepScale = false; }
             if (keepScale) {
@@ -55,6 +71,13 @@ var dragonBones;
                 matrix.ty = transform.y;
             }
         };
+        /**
+         *把 矩阵数据转成成transform数据
+         * @param matrix 需要转换的矩阵数据
+         * @param transform 转换后的transform数据
+         * @param scaleXF x方向的缩放
+         * @param scaleYF y方向的缩放
+         */
         TransformUtil.matrixToTransform = function (matrix, transform, scaleXF, scaleYF) {
             transform.x = matrix.tx;
             transform.y = matrix.ty;
@@ -83,6 +106,11 @@ var dragonBones;
                 transform.skewY = skewYArray[1];
             }
         };
+        /**
+         * 标准化弧度值，把弧度制换算到[-PI，PI]之间
+         * @param radian 输入一个弧度值
+         * @returns {number} 输出标准化后的弧度制
+         */
         TransformUtil.formatRadian = function (radian) {
             //radian %= DOUBLE_PI;
             if (radian > Math.PI) {

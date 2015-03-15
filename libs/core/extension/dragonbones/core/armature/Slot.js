@@ -32,13 +32,24 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Slot
+     * @classdesc
+     * Slot 实例是骨头上的一个插槽，是显示图片的容器。
+     * 一个 Bone 上可以有多个Slot，每个Slot中同一时间都会有一张图片用于显示，不同的Slot中的图片可以同时显示。
+     * 每个 Slot 中可以包含多张图片，同一个 Slot 中的不同图片不能同时显示，但是可以在动画进行的过程中切换，用于实现帧动画。
+     * @extends dragonBones.DBObject
+     * @see dragonBones.Armature
+     * @see dragonBones.Bone
+     * @see dragonBones.SlotData
+     */
     var Slot = (function (_super) {
         __extends(Slot, _super);
         function Slot(self) {
             _super.call(this);
             this._currentDisplayIndex = 0;
             if (self != this) {
-                throw new Error("Abstract class can not be instantiated!");
+                throw new Error(egret.getString(4001));
             }
             this._displayList = [];
             this._currentDisplayIndex = -1;
@@ -53,6 +64,10 @@ var dragonBones;
             this.inheritRotation = true;
             this.inheritScale = true;
         }
+        /**
+         * 通过传入 SlotData 初始化Slot
+         * @param slotData
+         */
         Slot.prototype.initWithSlotData = function (slotData) {
             this.name = slotData.name;
             this.blendMode = slotData.blendMode;
@@ -211,7 +226,8 @@ var dragonBones;
         });
         Object.defineProperty(Slot.prototype, "displayList", {
             /**
-             * The DisplayObject list belonging to this Slot instance (display or armature). Replace it to implement switch texture.
+             * 显示对象列表(包含 display 或者 子骨架)
+             * @member {any[]} dragonBones.Slot#displayList
              */
             get: function () {
                 return this._displayList;
@@ -238,7 +254,8 @@ var dragonBones;
         });
         Object.defineProperty(Slot.prototype, "display", {
             /**
-             * The DisplayObject belonging to this Slot instance. Instance type of this object varies from flash.display.DisplayObject to startling.display.DisplayObject and subclasses.
+             * 当前的显示对象(可能是 display 或者 子骨架)
+             * @member {any} dragonBones.Slot#display
              */
             get: function () {
                 return this._currentDisplay;
@@ -259,22 +276,21 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Unrecommended API. Please use .display instead.
-         * @returns {any}
+         * 不推荐的 API. 使用 display 属性代替
          */
         Slot.prototype.getDisplay = function () {
             return this.display;
         };
         /**
-         * Unrecommended API. Please use .display = instead.
-         * @returns {any}
+         * 不推荐的 API. 使用 display 属性代替
          */
         Slot.prototype.setDisplay = function (value) {
             this.display = value;
         };
         Object.defineProperty(Slot.prototype, "childArmature", {
             /**
-             * The sub-armature of this Slot instance.
+             * 当前的子骨架
+             * @member {Armature} dragonBones.Slot#childArmature
              */
             get: function () {
                 if (this._displayList[this._currentDisplayIndex] instanceof dragonBones.Armature) {
@@ -291,8 +307,8 @@ var dragonBones;
         });
         Object.defineProperty(Slot.prototype, "zOrder", {
             /**
-             * zOrder. Support decimal for ensure dynamically added slot work toghther with animation controled slot.
-             * @return zOrder.
+             * 显示顺序。(支持小数用于实现动态插入slot)
+             * @member {number} dragonBones.Slot#zOrder
              */
             get: function () {
                 return this._originZOrder + this._tweenZOrder + this._offsetZOrder;
@@ -310,8 +326,8 @@ var dragonBones;
         });
         Object.defineProperty(Slot.prototype, "blendMode", {
             /**
-             * blendMode
-             * @return blendMode.
+             * 混合模式
+             * @member {string} dragonBones.Slot#blendMode
              */
             get: function () {
                 return this._blendMode;
@@ -330,13 +346,13 @@ var dragonBones;
          * @private
          */
         Slot.prototype._updateDisplay = function (value) {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error("");
         };
         /**
          * @private
          */
         Slot.prototype._getDisplayIndex = function () {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         /**
          * @private
@@ -346,27 +362,27 @@ var dragonBones;
          */
         Slot.prototype._addDisplayToContainer = function (container, index) {
             if (index === void 0) { index = -1; }
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         /**
          * @private
          * remove the original display object from its parent.
          */
         Slot.prototype._removeDisplayFromContainer = function () {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         /**
          * @private
          * Updates the transform of the slot.
          */
         Slot.prototype._updateTransform = function () {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         /**
          * @private
          */
         Slot.prototype._updateDisplayVisible = function (value) {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         /**
          * @private
@@ -396,7 +412,7 @@ var dragonBones;
          * @param value The blend mode to use.
          */
         Slot.prototype._updateDisplayBlendMode = function (value) {
-            throw new Error("Abstract method needs to be implemented in subclass!");
+            throw new Error(egret.getString(4001));
         };
         return Slot;
     })(dragonBones.DBObject);

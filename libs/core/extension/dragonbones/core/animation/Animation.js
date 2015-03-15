@@ -26,10 +26,19 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Animation
+     * @classdesc
+     * Animation实例隶属于Armature,用于控制Armature的动画播放。
+     * @see dragonBones.Bone
+     * @see dragonBones.Armature
+     * @see dragonBones.AnimationState
+     * @see dragonBones.AnimationData.
+     */
     var Animation = (function () {
         /**
-         * Creates a new Animation instance and attaches it to the passed Armature.
-         * @param armature An Armature to attach this Animation instance to.
+         * 创建一个新的Animation实例并赋给传入的Armature实例
+         * @param armature {Armature} 纹理
          */
         function Animation(armature) {
             /** @private */
@@ -42,7 +51,7 @@ var dragonBones;
             this.tweenEnabled = true;
         }
         /**
-         * Qualifies all resources used by this Animation instance for garbage collection.
+         * 回收Animation实例用到的所有资源
          */
         Animation.prototype.dispose = function () {
             if (!this._armature) {
@@ -60,19 +69,19 @@ var dragonBones;
             this._animationStateList = null;
         };
         /**
-         * Fades the animation with name animation in over a period of time seconds and fades other animations out.
-         * @param animationName The name of the AnimationData to play.
-         * @param fadeInTime A fade time to apply (>= 0), -1 means use xml data's fadeInTime.
-         * @param duration The duration of that Animation. -1 means use xml data's duration.
-         * @param playTimes Play times(0:loop forever, >=1:play times, -1~-∞:will fade animation after play complete), 默认使用AnimationData.loop.
-         * @param layer The layer of the animation.
-         * @param group The group of the animation.
-         * @param fadeOutMode Fade out mode (none, sameLayer, sameGroup, sameLayerAndGroup, all).
-         * @param pauseFadeOut Pause other animation playing.
-         * @param pauseFadeIn Pause this animation playing before fade in complete.
-         * @return AnimationState.
-         * @see dragonBones.objects.AnimationData.
-         * @see dragonBones.animation.AnimationState.
+         * 开始播放指定名称的动画。
+         * 要播放的动画将经过指定时间的淡入过程，然后开始播放，同时之前播放的动画会经过相同时间的淡出过程。
+         * @param animationName {string} 指定播放动画的名称.
+         * @param fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+         * @param duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         * @param playTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+         * @param layer {number} 动画所处的层
+         * @param group {string} 动画所处的组
+         * @param fadeOutMode {string} 动画淡出模式 (none, sameLayer, sameGroup, sameLayerAndGroup, all).默认值：sameLayerAndGroup
+         * @param pauseFadeOut {boolean} 动画淡出时暂停播放
+         * @param pauseFadeIn {boolean} 动画淡入时暂停播放
+         * @returns {AnimationState} 动画播放状态实例
+         * @see dragonBones.AnimationState.
          */
         Animation.prototype.gotoAndPlay = function (animationName, fadeInTime, duration, playTimes, layer, group, fadeOutMode, pauseFadeOut, pauseFadeIn) {
             if (fadeInTime === void 0) { fadeInTime = -1; }
@@ -168,18 +177,17 @@ var dragonBones;
             return this._lastAnimationState;
         };
         /**
-         * Control the animation to stop with a specified time. If related animationState haven't been created, then create a new animationState.
-         * @param animationName The name of the animationState.
-         * @param time
-         * @param normalizedTime
-         * @param fadeInTime A fade time to apply (>= 0), -1 means use xml data's fadeInTime.
-         * @param duration The duration of that Animation. -1 means use xml data's duration.
-         * @param layer The layer of the animation.
-         * @param group The group of the animation.
-         * @param fadeOutMode Fade out mode (none, sameLayer, sameGroup, sameLayerAndGroup, all).
-         * @return AnimationState.
-         * @see dragonBones.objects.AnimationData.
-         * @see dragonBones.animation.AnimationState.
+         * 播放指定名称的动画并停止于某个时间点
+         * @param animationName {string} 指定播放的动画名称.
+         * @param time {number} 动画停止的绝对时间
+         * @param normalizedTime {number} 动画停止的相对动画总时间的系数，这个参数和time参数是互斥的（例如 0.2：动画停止总时间的20%位置） 默认值：-1 意味着使用绝对时间。
+         * @param fadeInTime {number} 动画淡入时间 (>= 0), 默认值：0
+         * @param duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         * @param layer {string} 动画所处的层
+         * @param group {string} 动画所处的组
+         * @param fadeOutMode {string} 动画淡出模式 (none, sameLayer, sameGroup, sameLayerAndGroup, all).默认值：sameLayerAndGroup
+         * @returns {AnimationState} 动画播放状态实例
+         * @see dragonBones..AnimationState.
          */
         Animation.prototype.gotoAndStop = function (animationName, time, normalizedTime, fadeInTime, duration, layer, group, fadeOutMode) {
             if (normalizedTime === void 0) { normalizedTime = -1; }
@@ -222,9 +230,9 @@ var dragonBones;
             this._isPlaying = false;
         };
         /**
-         * Returns the AnimationState named name.
-         * @return A AnimationState instance.
-         * @see dragonBones.animation.AnimationState.
+         * 获得指定名称的 AnimationState 实例.
+         * @returns {AnimationState} AnimationState 实例.
+         * @see dragonBones..AnimationState.
          */
         Animation.prototype.getState = function (name, layer) {
             if (layer === void 0) { layer = 0; }
@@ -238,9 +246,8 @@ var dragonBones;
             return null;
         };
         /**
-         * check if contains a AnimationData by name.
-         * @return Boolean.
-         * @see dragonBones.animation.AnimationData.
+         * 检查是否包含指定名称的动画.
+         * @returns {boolean}.
          */
         Animation.prototype.hasAnimation = function (animationName) {
             var i = this._animationDataList.length;
@@ -302,7 +309,7 @@ var dragonBones;
         };
         Object.defineProperty(Animation.prototype, "movementList", {
             /**
-            * Unrecommended API. Recommend use animationList.
+            * 不推荐的API.推荐使用 animationList.
             */
             get: function () {
                 return this._animationList;
@@ -312,7 +319,7 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "movementID", {
             /**
-            * Unrecommended API. Recommend use lastAnimationName.
+            * 不推荐的API.推荐使用 lastAnimationName.
             */
             get: function () {
                 return this.lastAnimationName;
@@ -322,8 +329,9 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "lastAnimationState", {
             /**
-             * The last AnimationState this Animation played.
-             * @see dragonBones.objects.AnimationData.
+             * 最近播放的 AnimationState 实例。
+             * @member {AnimationState} dragonBones.Animation#lastAnimationState
+             * @see dragonBones.AnimationState
              */
             get: function () {
                 return this._lastAnimationState;
@@ -333,8 +341,8 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "lastAnimationName", {
             /**
-             * The name of the last AnimationData played.
-             * @see dragonBones.objects.AnimationData.
+             * 最近播放的动画名称.
+             * @member {string} dragonBones.Animation#lastAnimationName
              */
             get: function () {
                 return this._lastAnimationState ? this._lastAnimationState.name : null;
@@ -344,8 +352,8 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "animationList", {
             /**
-             * An vector containing all AnimationData names the Animation can play.
-             * @see dragonBones.objects.AnimationData.
+             * 所有动画名称列表.
+             * @member {string[]} dragonBones.Animation#animationList
              */
             get: function () {
                 return this._animationList;
@@ -355,8 +363,8 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "isPlaying", {
             /**
-             * Is the animation playing.
-             * @see dragonBones.animation.AnimationState.
+             * 是否正在播放
+             * @member {boolean} dragonBones.Animation#isPlaying
              */
             get: function () {
                 return this._isPlaying && !this.isComplete;
@@ -366,8 +374,8 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "isComplete", {
             /**
-             * Is animation complete.
-             * @see dragonBones.animation.AnimationState.
+             * 最近播放的动画是否播放完成.
+             * @member {boolean} dragonBones.Animation#isComplete
              */
             get: function () {
                 if (this._lastAnimationState) {
@@ -389,7 +397,8 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "timeScale", {
             /**
-             * The amount by which passed time should be scaled. Used to slow down or speed up animations. Defaults to 1.
+             * 时间缩放倍数
+             * @member {number} dragonBones.Animation#timeScale
              */
             get: function () {
                 return this._timeScale;
@@ -405,8 +414,9 @@ var dragonBones;
         });
         Object.defineProperty(Animation.prototype, "animationDataList", {
             /**
-             * The AnimationData list associated with this Animation instance.
-             * @see dragonBones.objects.AnimationData.
+             * 包含的所有动画数据列表
+             * @member {AnimationData[]} dragonBones.Animation#animationDataList
+             * @see dragonBones.AnimationData.
              */
             get: function () {
                 return this._animationDataList;

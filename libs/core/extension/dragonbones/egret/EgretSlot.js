@@ -32,12 +32,24 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.EgretSlot
+     * @extends dragonBones.Slot
+     * @classdesc
+     * egret引擎使用的插槽
+     */
     var EgretSlot = (function (_super) {
         __extends(EgretSlot, _super);
+        /**
+         * 创建一个新的 EgretSlot 实例
+         */
         function EgretSlot() {
             _super.call(this, this);
             this._egretDisplay = null;
         }
+        /**
+         * 释放资源
+         */
         EgretSlot.prototype.dispose = function () {
             var length = this._displayList.length;
             for (var i = 0; i < length; i++) {

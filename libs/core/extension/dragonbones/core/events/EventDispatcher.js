@@ -26,15 +26,30 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.EventDispatcher
+     * @classdesc
+     * 事件派发者
+     */
     var EventDispatcher = (function () {
         function EventDispatcher() {
         }
+        /**
+         *是否有指定类型的事件侦听函数
+         * @param type 事件类型
+         * @returns {boolean}
+         */
         EventDispatcher.prototype.hasEventListener = function (type) {
             if (this._listenersMap && this._listenersMap[type]) {
                 return true;
             }
             return false;
         };
+        /**
+         *添加一个针对指定类型的事件侦听函数
+         * @param type 事件类型
+         * @param listener 事件侦听函数
+         */
         EventDispatcher.prototype.addEventListener = function (type, listener) {
             if (type && listener) {
                 if (!this._listenersMap) {
@@ -52,6 +67,11 @@ var dragonBones;
                 }
             }
         };
+        /**
+         *移除一个指定类型的事件侦听函数
+         * @param type 事件类型
+         * @param listener 需要移除的事件侦听函数
+         */
         EventDispatcher.prototype.removeEventListener = function (type, listener) {
             if (!this._listenersMap || !type || !listener) {
                 return;
@@ -72,6 +92,10 @@ var dragonBones;
                 }
             }
         };
+        /**
+         *移除指定类型的所有的事件侦听函数
+         * @param type 事件类型
+         */
         EventDispatcher.prototype.removeAllEventListeners = function (type) {
             if (type) {
                 delete this._listenersMap[type];
@@ -80,6 +104,10 @@ var dragonBones;
                 this._listenersMap = null;
             }
         };
+        /**
+         * 派发事件
+         * @param event 被派发的事件
+         */
         EventDispatcher.prototype.dispatchEvent = function (event) {
             if (event) {
                 var listeners = this._listenersMap[event.type];

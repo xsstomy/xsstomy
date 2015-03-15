@@ -473,11 +473,6 @@ module DesignPattern
         export class PizzaStore
         {
 
-            public constructor()
-            {
-                super();
-            }
-
             public orderPizza(type:string):Pizza
             {
                 var pizza:Pizza;
@@ -490,13 +485,30 @@ module DesignPattern
                 return pizza;
             }
 
-            public createPizza(type:string):Pizza;
+            public createPizza(type:string):Pizza
+            {
+
+                return null;
+            }
         }
         /**
          * 披萨基类
          */
-        export class Pizza
+        export class Pizza extends egret.Sprite
+
         {
+            public constructor()
+            {
+                super();
+                this.init();
+            }
+            public init()
+            {
+                this.prepare();
+                this.bake();
+                this.cut();
+                this.box();
+            }
             public name:string;
             public dough:string;
             public sauce:string;

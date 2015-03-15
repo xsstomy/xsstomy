@@ -32,6 +32,12 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.EgretFactory
+     * @extends dragonBones.BaseFactory
+     * @classdesc
+     * Egret引擎使用的dragonBones工厂
+     */
     var EgretFactory = (function (_super) {
         __extends(EgretFactory, _super);
         function EgretFactory() {

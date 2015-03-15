@@ -32,13 +32,16 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Armature
+     * @classdesc
+     * Armature 是 DragonBones 骨骼动画系统的核心。他包含需要加到场景的显示对象，所有的骨骼逻辑和动画系统
+     * A Armature instance is the core of the skeleton animation system. It contains the object to display, all sub-bones and the object animation(s).
+     * @extends dragonBones.EventDispatcher
+     * @see dragonBones.ArmatureData
+     */
     var Armature = (function (_super) {
         __extends(Armature, _super);
-        /**
-         * Creates a Armature blank instance.
-         * @param Instance type of this object varies from flash.display.DisplayObject to startling.display.DisplayObject and subclasses.
-         * @see #display
-         */
         function Armature(display) {
             _super.call(this);
             this._display = display;
@@ -53,8 +56,8 @@ var dragonBones;
         }
         Object.defineProperty(Armature.prototype, "armatureData", {
             /**
-             * ArmatureData.
-             * @see dragonBones.objects.ArmatureData.
+             * 骨架数据。
+             * @member {ArmatureData} dragonBones.Armature#armatureData
              */
             get: function () {
                 return this._armatureData;
@@ -64,7 +67,9 @@ var dragonBones;
         });
         Object.defineProperty(Armature.prototype, "display", {
             /**
-             * Armature's display object. It's instance type depends on render engine. For example "flash.display.DisplayObject" or "startling.display.DisplayObject"
+             * 骨架显示对象。骨架创建出来后，需要把该显示对象加到场景中才能显示骨架。
+             * 使用根据不同的渲染引擎，显示对象的类型可能不同。
+             * @member {any} dragonBones.Armature#display
              */
             get: function () {
                 return this._display;
@@ -73,16 +78,15 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Unrecommended API. Please use .display instead.
-         * @returns {any}
+         * 不推荐的API,使用 display 属性代替。
          */
         Armature.prototype.getDisplay = function () {
             return this._display;
         };
         Object.defineProperty(Armature.prototype, "animation", {
             /**
-             * An Animation instance
-             * @see dragonBones.animation.Animation
+             * 骨架的动画实例。
+             * @member {Animation} dragonBones.Armature#animation
              */
             get: function () {
                 return this._animation;
@@ -91,7 +95,7 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Cleans up any resources used by this instance.
+         * 清理骨架实例
          */
         Armature.prototype.dispose = function () {
             this._delayDispose = true;
@@ -116,7 +120,8 @@ var dragonBones;
             //_display = null;
         };
         /**
-         * Force update bones and slots. (When bone's animation play complete, it will not update)
+         * 在下一帧强制更新指定名称的 Bone 及其包含的所有 Slot 的动画。
+         * @param boneName {string} 骨头名。 默认值：null，相当于更新所有骨头。
          */
         Armature.prototype.invalidUpdate = function (boneName) {
             if (boneName === void 0) { boneName = null; }
@@ -134,8 +139,8 @@ var dragonBones;
             }
         };
         /**
-         * Update the animation using this method typically in an ENTERFRAME Event or with a Timer.
-         * @param The amount of second to move the playhead ahead.
+         * 使用这个方法更新动画状态。一般来说，这个方法需要在 ENTERFRAME 事件的响应函数中被调用
+         * @param passedTime 动画向前播放的时间（单位：秒）
          */
         Armature.prototype.advanceTime = function (passedTime) {
             this._lockDispose = true;
@@ -177,20 +182,18 @@ var dragonBones;
             }
         };
         /**
-         * Get all Slot instance associated with this armature.
-         * @param if return Vector copy
-         * @return A Vector.&lt;Slot&gt; instance.
-         * @see dragonBones.Slot
+         * 获取骨架包含的所有插槽
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {Slot[]}
          */
         Armature.prototype.getSlots = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._slotList.concat() : this._slotList;
         };
         /**
-         * Retrieves a Slot by name
-         * @param The name of the Bone to retrieve.
-         * @return A Slot instance or null if no Slot with that name exist.
-         * @see dragonBones.Slot
+         * 获取指定名称的 Slot
+         * @param slotName {string} Slot名称
+         * @returns {Slot}
          */
         Armature.prototype.getSlot = function (slotName) {
             var length = this._slotList.length;
@@ -203,10 +206,9 @@ var dragonBones;
             return null;
         };
         /**
-         * Gets the Slot associated with this DisplayObject.
-         * @param Instance type of this object varies from flash.display.DisplayObject to startling.display.DisplayObject and subclasses.
-         * @return A Slot instance or null if no Slot with that DisplayObject exist.
-         * @see dragonBones.Slot
+         * 获取包含指定显示对象的 Slot
+         * @param displayObj {any} 显示对象实例
+         * @returns {Slot}
          */
         Armature.prototype.getSlotByDisplay = function (displayObj) {
             if (displayObj) {
@@ -221,10 +223,10 @@ var dragonBones;
             return null;
         };
         /**
-         * Add a slot to a bone as child.
-         * @param slot A Slot instance
-         * @param boneName bone name
-         * @see dragonBones.core.DBObject
+         * 为指定名称的 Bone 添加一个子 Slot
+         * @param slot {Slot} Slot 实例
+         * @param boneName {string}
+         * @see dragonBones.Bone
          */
         Armature.prototype.addSlot = function (slot, boneName) {
             var bone = this.getBone(boneName);
@@ -236,9 +238,8 @@ var dragonBones;
             }
         };
         /**
-         * Remove a Slot instance from this Armature instance.
-         * @param The Slot instance to remove.
-         * @see dragonBones.Slot
+         * 移除指定的Slot
+         * @param slot {Slot} Slot 实例
          */
         Armature.prototype.removeSlot = function (slot) {
             if (!slot || slot.armature != this) {
@@ -247,9 +248,9 @@ var dragonBones;
             slot.parent.removeSlot(slot);
         };
         /**
-         * Remove a Slot instance from this Armature instance.
-         * @param The name of the Slot instance to remove.
-         * @see dragonBones.Slot
+         * 移除指定名称的Slot
+         * @param slotName {string} Slot 名称
+         * @returns {Slot} 被成功移除的 Slot 实例
          */
         Armature.prototype.removeSlotByName = function (slotName) {
             var slot = this.getSlot(slotName);
@@ -259,20 +260,18 @@ var dragonBones;
             return slot;
         };
         /**
-         * Get all Bone instance associated with this armature.
-         * @param if return Vector copy
-         * @return A Vector.&lt;Bone&gt; instance.
-         * @see dragonBones.Bone
+         * 获取骨架包含的所有Bone
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {Bone[]}
          */
         Armature.prototype.getBones = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._boneList.concat() : this._boneList;
         };
         /**
-         * Retrieves a Bone by name
-         * @param The name of the Bone to retrieve.
-         * @return A Bone instance or null if no Bone with that name exist.
-         * @see dragonBones.Bone
+         * 获取指定名称的 Bone
+         * @param boneName {string} Bone名称
+         * @returns {Bone}
          */
         Armature.prototype.getBone = function (boneName) {
             var length = this._boneList.length;
@@ -285,20 +284,19 @@ var dragonBones;
             return null;
         };
         /**
-         * Gets the Bone associated with this DisplayObject.
-         * @param Instance type of this object varies from flash.display.DisplayObject to startling.display.DisplayObject and subclasses.
-         * @return A Bone instance or null if no Bone with that DisplayObject exist..
-         * @see dragonBones.Bone
+         * 获取包含指定显示对象的 Bone
+         * @param display {any} 显示对象实例
+         * @returns {Bone}
          */
         Armature.prototype.getBoneByDisplay = function (display) {
             var slot = this.getSlotByDisplay(display);
             return slot ? slot.parent : null;
         };
         /**
-         * Add a Bone instance to this Armature instance.
-         * @param A Bone instance.
-         * @param (optional) The parent's name of this Bone instance.
-         * @see dragonBones.Bone
+         * 在股价中为指定名称的 Bone 添加一个子 Bone
+         * @param bone {Bone} Bone 实例
+         * @param parentName {string} 父骨头名称 默认：null
+         * @param updateLater {boolean} 是否延迟更新 默认：false，当需要一次添加很多Bone时，开启延迟更新能够提高效率
          */
         Armature.prototype.addBone = function (bone, parentName, updateLater) {
             if (parentName === void 0) { parentName = null; }
@@ -324,9 +322,9 @@ var dragonBones;
             }
         };
         /**
-         * Remove a Bone instance from this Armature instance.
-         * @param The Bone instance to remove.
-         * @see	dragonBones.Bone
+         * 移除指定的 Bone
+         * @param bone {Bone} Bone 实例
+         * @param updateLater {boolean} 是否延迟更新 默认：false，当需要一次移除很多Bone时，开启延迟更新能够提高效率
          */
         Armature.prototype.removeBone = function (bone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
@@ -344,9 +342,9 @@ var dragonBones;
             }
         };
         /**
-         * Remove a Bone instance from this Armature instance.
-         * @param The name of the Bone instance to remove.
-         * @see dragonBones.Bone
+         * 移除指定名称的 Bone
+         * @param boneName {string} Bone 名称
+         * @returns {Bone} 被成功移除的 Bone 实例
          */
         Armature.prototype.removeBoneByName = function (boneName) {
             var bone = this.getBone(boneName);
@@ -382,7 +380,7 @@ var dragonBones;
             }
         };
         /**
-         * Sort all slots based on zOrder
+         * 按照显示层级为所有 Slot 排序
          */
         Armature.prototype.updateSlotsZOrder = function () {
             this._slotList.sort(this.sortSlot);

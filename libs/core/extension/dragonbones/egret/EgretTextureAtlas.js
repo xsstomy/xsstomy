@@ -26,7 +26,19 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.EgretTextureAtlas
+     * @implements dragonBones.ITextureAtlas
+     * @classdesc
+     * egret引擎使用的纹理集
+     */
     var EgretTextureAtlas = (function () {
+        /**
+         * 创建一个新的EgretTextureAtlas实例
+         * @param texture 纹理集
+         * @param textureAtlasRawData 纹理集数据
+         * @param scale 缩放
+         */
         function EgretTextureAtlas(texture, textureAtlasRawData, scale) {
             if (scale === void 0) { scale = 1; }
             this.texture = texture;
@@ -37,6 +49,11 @@ var dragonBones;
             this.parseData(textureAtlasRawData);
             this.spriteSheet = new egret.SpriteSheet(texture);
         }
+        /**
+         * 根据名字获取纹理
+         * @param fullName 纹理的名字
+         * @returns {egret.Texture} 获取到的纹理
+         */
         EgretTextureAtlas.prototype.getTexture = function (fullName) {
             var result = this.spriteSheet.getTexture(fullName);
             if (!result) {
@@ -47,9 +64,17 @@ var dragonBones;
             }
             return result;
         };
+        /**
+         * 释放资源
+         */
         EgretTextureAtlas.prototype.dispose = function () {
             this.texture = null;
         };
+        /**
+         * 根据子纹理的名字获取子纹理所在的矩形区域
+         * @param subTextureName 子纹理的名字
+         * @returns {*} 子纹理所在的矩形区域
+         */
         EgretTextureAtlas.prototype.getRegion = function (subTextureName) {
             var textureData = this._textureDatas[subTextureName];
             if (textureData && textureData instanceof dragonBones.TextureData) {

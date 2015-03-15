@@ -26,9 +26,18 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.DBDataUtil
+     * @classdesc
+     * DragonBons的数据工具类，提供一些对数据处理的静态方法
+     */
     var DBDataUtil = (function () {
         function DBDataUtil() {
         }
+        /**
+         * 把ArmatureData的绝对数据转成成相对数据
+         * @param armatureData
+         */
         DBDataUtil.transformArmatureData = function (armatureData) {
             var boneDataList = armatureData.boneDataList;
             var i = boneDataList.length;
@@ -43,6 +52,11 @@ var dragonBones;
                 }
             }
         };
+        /**
+         * 转换骨架数据中的动画数据
+         * 把动画数据中的绝对的数据转换成相对的数据
+         * @param armatureData
+         */
         DBDataUtil.transformArmatureDataAnimations = function (armatureData) {
             var animationDataList = armatureData.animationDataList;
             var i = animationDataList.length;
@@ -50,8 +64,19 @@ var dragonBones;
                 DBDataUtil.transformAnimationData(animationDataList[i], armatureData, false);
             }
         };
+        /**
+         *
+         * @param animationData
+         * @param armatureData
+         */
         DBDataUtil.transformRelativeAnimationData = function (animationData, armatureData) {
         };
+        /**
+         * 把动画数据中的绝对的数据转换成相对的数据
+         * @param animationData 动画数据
+         * @param armatureData 骨架数据
+         * @param isGlobalData 是否是绝对数据
+         */
         DBDataUtil.transformAnimationData = function (animationData, armatureData, isGlobalData) {
             if (!isGlobalData) {
                 DBDataUtil.transformRelativeAnimationData(animationData, armatureData);
@@ -236,6 +261,11 @@ var dragonBones;
                 }
             }
         };
+        /**
+         * 添加进隐藏的时间轴
+         * @param animationData
+         * @param armatureData
+         */
         DBDataUtil.addHideTimeline = function (animationData, armatureData) {
             var boneDataList = armatureData.boneDataList;
             var i = boneDataList.length;

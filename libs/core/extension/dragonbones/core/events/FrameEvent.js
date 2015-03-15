@@ -32,11 +32,17 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.FrameEvent
+     * @extends dragonBones.Event
+     * @classdesc
+     * 帧事件
+     */
     var FrameEvent = (function (_super) {
         __extends(FrameEvent, _super);
         /**
-         * Creates a new FrameEvent instance.
-         * @param type
+         * 创建一个新的 FrameEvent 实例
+         * @param type 事件类型
          * @param cancelable
          */
         function FrameEvent(type, cancelable) {
@@ -52,7 +58,8 @@ var dragonBones;
         });
         Object.defineProperty(FrameEvent.prototype, "armature", {
             /**
-             * The armature that is the target of this event.
+             * 派发这个事件的骨架
+             * @member {dragonBones.Armature} dragonBones.FrameEvent#armature
              */
             get: function () {
                 return (this.target);
@@ -61,7 +68,7 @@ var dragonBones;
             configurable: true
         });
         /**
-         * Dispatched when the animation of the armatrue enter a frame.
+         * 当动画播放到一个关键帧时派发
          */
         FrameEvent.ANIMATION_FRAME_EVENT = "animationFrameEvent";
         /**

@@ -26,9 +26,20 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     *@class dragonBones.DataParser
+     * @classdesc
+     * 数据解析
+     */
     var DataParser = (function () {
         function DataParser() {
         }
+        /**
+         *解析纹理集数据
+         * @param rawData纹理集数据xml或者json
+         * @param scale纹理资源的缩放，默认为1，不缩放
+         * @returns {any}返回纹理集数据，存放TexutrueData的字典类型
+         */
         DataParser.parseTextureAtlasData = function (rawData, scale) {
             if (scale === void 0) { scale = 1; }
             var textureAtlasData = {};
@@ -59,6 +70,11 @@ var dragonBones;
             }
             return textureAtlasData;
         };
+        /**
+         * 解析DragonBones的数据，xml或者json，该数据包含了骨骼，皮肤，动画的数据
+         * @param rawDataToParse DragonBones的数据，xml或者json格式
+         * @returns {DragonBonesData} 返回DragonBones引擎使用的数据格式
+         */
         DataParser.parseDragonBonesData = function (rawDataToParse) {
             if (!rawDataToParse) {
                 throw new Error();
@@ -66,7 +82,7 @@ var dragonBones;
             var version = rawDataToParse[dragonBones.ConstValues.A_VERSION];
             version = version.toString();
             if (version.toString() != dragonBones.DragonBones.DATA_VERSION && version.toString() != dragonBones.DragonBones.PARENT_COORDINATE_DATA_VERSION) {
-                throw new Error("Nonsupport version!");
+                throw new Error(egret.getString(4003));
             }
             var frameRate = DataParser.getNumber(rawDataToParse, dragonBones.ConstValues.A_FRAME_RATE, 0) || 0;
             var outputDragonBonesData = new dragonBones.DragonBonesData();

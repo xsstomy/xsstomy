@@ -284,6 +284,9 @@ var DesignPattern;
         })(Beverage);
         Decorator.CondimentDecorator = CondimentDecorator;
         CondimentDecorator.prototype.__class__ = "DesignPattern.Decorator.CondimentDecorator";
+        /**
+         * 装饰者
+         */
         var Espresso = (function (_super) {
             __extends(Espresso, _super);
             function Espresso() {
@@ -297,6 +300,9 @@ var DesignPattern;
         })(Beverage);
         Decorator.Espresso = Espresso;
         Espresso.prototype.__class__ = "DesignPattern.Decorator.Espresso";
+        /**
+         * 装饰者
+         */
         var HouseBlend = (function (_super) {
             __extends(HouseBlend, _super);
             function HouseBlend() {
@@ -377,4 +383,153 @@ var DesignPattern;
         Decorator.StarbuzzCoffee = StarbuzzCoffee;
         StarbuzzCoffee.prototype.__class__ = "DesignPattern.Decorator.StarbuzzCoffee";
     })(Decorator = DesignPattern.Decorator || (DesignPattern.Decorator = {}));
+})(DesignPattern || (DesignPattern = {}));
+var DesignPattern;
+(function (DesignPattern) {
+    /**
+     * 工厂模式
+     */
+    var FactoryPattern;
+    (function (FactoryPattern) {
+        /**
+         * 工厂基类
+         */
+        var PizzaStore = (function () {
+            function PizzaStore() {
+            }
+            PizzaStore.prototype.orderPizza = function (type) {
+                var pizza;
+                pizza = this.createPizza(type);
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+                return pizza;
+            };
+            PizzaStore.prototype.createPizza = function (type) {
+                return null;
+            };
+            return PizzaStore;
+        })();
+        FactoryPattern.PizzaStore = PizzaStore;
+        PizzaStore.prototype.__class__ = "DesignPattern.FactoryPattern.PizzaStore";
+        /**
+         * 披萨基类
+         */
+        var Pizza = (function (_super) {
+            __extends(Pizza, _super);
+            function Pizza() {
+                _super.call(this);
+                this.toppings = [];
+                this.init();
+            }
+            Pizza.prototype.init = function () {
+                this.prepare();
+                this.bake();
+                this.cut();
+                this.box();
+            };
+            Pizza.prototype.prepare = function () {
+                console.log("Preparing " + this.name);
+                console.log("Tossing dough..." + this.dough);
+                console.log("Adding sauce..." + this.sauce);
+                console.log("Adding toppings: ");
+                for (var i = 0; i < this.toppings.length; i = i + 1) {
+                    console.log(" " + this.toppings[i]);
+                }
+            };
+            Pizza.prototype.bake = function () {
+                console.log("Bake for 25 minutes at 350");
+            };
+            Pizza.prototype.cut = function () {
+                console.log("Cutting the pizza into diagonal slices");
+            };
+            Pizza.prototype.box = function () {
+                console.log("Place pizza in official PizzaStore box");
+            };
+            Pizza.prototype.getName = function () {
+                return this.name;
+            };
+            return Pizza;
+        })(egret.Sprite);
+        FactoryPattern.Pizza = Pizza;
+        Pizza.prototype.__class__ = "DesignPattern.FactoryPattern.Pizza";
+        /**
+         * 工厂
+         */
+        var NYPizzaStore = (function (_super) {
+            __extends(NYPizzaStore, _super);
+            function NYPizzaStore() {
+                _super.call(this);
+            }
+            NYPizzaStore.prototype.createPizza = function (type) {
+                if (type === "cheese") {
+                    return new NYStyleCheesePizza();
+                }
+                else if (type === "veggie") {
+                }
+                else if (type === "clam") {
+                }
+                else {
+                    return null;
+                }
+            };
+            return NYPizzaStore;
+        })(PizzaStore);
+        FactoryPattern.NYPizzaStore = NYPizzaStore;
+        NYPizzaStore.prototype.__class__ = "DesignPattern.FactoryPattern.NYPizzaStore";
+        /**
+         * 具体商品
+         */
+        var NYStyleCheesePizza = (function (_super) {
+            __extends(NYStyleCheesePizza, _super);
+            function NYStyleCheesePizza() {
+                _super.call(this);
+                this.name = "NY Style Sauce and Cheese Pizza";
+                this.dough = "Thin Crust Dough";
+                this.sauce = "Marinara Sauce";
+                this.toppings.push("Grated Reggiano Cheese");
+            }
+            return NYStyleCheesePizza;
+        })(Pizza);
+        FactoryPattern.NYStyleCheesePizza = NYStyleCheesePizza;
+        NYStyleCheesePizza.prototype.__class__ = "DesignPattern.FactoryPattern.NYStyleCheesePizza";
+        /**
+         * 具体产品
+         */
+        var ChicagoStyleCheesePizza = (function (_super) {
+            __extends(ChicagoStyleCheesePizza, _super);
+            function ChicagoStyleCheesePizza() {
+                _super.call(this);
+                this.name = "Chicago Style Deep Dish Cheese Pizza";
+                this.dough = "Extre Thick Crust Dough";
+                this.sauce = "Plum Tomato Sauce";
+                this.toppings.push("Shredded Mozzarella Cheese");
+            }
+            ChicagoStyleCheesePizza.prototype.cut = function () {
+                console.log("Cutting the pizza into square slices");
+            };
+            return ChicagoStyleCheesePizza;
+        })(Pizza);
+        FactoryPattern.ChicagoStyleCheesePizza = ChicagoStyleCheesePizza;
+        ChicagoStyleCheesePizza.prototype.__class__ = "DesignPattern.FactoryPattern.ChicagoStyleCheesePizza";
+        /**
+         * 例子调用
+         */
+        var PizzaTestDrive = (function (_super) {
+            __extends(PizzaTestDrive, _super);
+            function PizzaTestDrive() {
+                _super.call(this);
+                this.init();
+            }
+            PizzaTestDrive.prototype.init = function () {
+                var nyStore = new NYPizzaStore();
+                var p = nyStore.createPizza("cheese");
+                console.log("Ethan ordered a " + p.getName() + "\n");
+            };
+            return PizzaTestDrive;
+        })(egret.Sprite);
+        FactoryPattern.PizzaTestDrive = PizzaTestDrive;
+        PizzaTestDrive.prototype.__class__ = "DesignPattern.FactoryPattern.PizzaTestDrive";
+    })(FactoryPattern = DesignPattern.FactoryPattern || (DesignPattern.FactoryPattern = {}));
 })(DesignPattern || (DesignPattern = {}));

@@ -26,13 +26,29 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Point
+     * @classdesc
+     * Point 对象表示二维坐标系统中的某个位置，其中 x 表示水平轴，y 表示垂直轴。
+     * 下面的代码在 (0,0) 处创建一个点：
+     *   var myPoint:Point = new Point();
+     */
     var Point = (function () {
+        /**
+         *创建一个新点。
+         * @param x 该点的水平坐标。
+         * @param y 该点的垂直坐标。
+         */
         function Point(x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             this.x = x;
             this.y = y;
         }
+        /**
+         *返回包含 x 和 y 坐标的值的字符串。
+         * @returns {string}
+         */
         Point.prototype.toString = function () {
             return "[Point (x=" + this.x + " y=" + this.y + ")]";
         };

@@ -26,8 +26,20 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Timeline
+     * @classdesc
+     * 保存时间轴相关的数据，包括关键帧，持续时间，时间缩放
+     */
     var Timeline = (function () {
+        /**
+         * 初始化数据duration为0，scale为1
+         */
         function Timeline() {
+            /**
+             * 持续时间，单位是帧
+             * @member {number} dragonBones.Timeline#duration
+             */
             this.duration = 0;
             this._frameList = [];
             this.duration = 0;
@@ -40,6 +52,11 @@ var dragonBones;
             }
             this._frameList = null;
         };
+        /**
+         * 添加一个关键帧数据
+         * @param frame 关键帧数据
+         * @see extension.dragonbones.model.Frame
+         */
         Timeline.prototype.addFrame = function (frame) {
             if (!frame) {
                 throw new Error();
@@ -52,6 +69,10 @@ var dragonBones;
             }
         };
         Object.defineProperty(Timeline.prototype, "frameList", {
+            /**
+             * 获取关键帧列表
+             * @returns {Array<Frame>}
+             */
             get: function () {
                 return this._frameList;
             },

@@ -32,12 +32,39 @@ var __extends = this.__extends || function (d, b) {
 };
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.Bone
+     * @classdesc
+     * Bone 实例代表 Armature 中的一个骨头。一个Armature实例可以由很多 Bone组成。
+     * @extends dragonBones.DBObject
+     * @see dragonBones.Armature
+     * @see dragonBones.Slot
+     * @see dragonBones.BoneData
+     */
     var Bone = (function (_super) {
         __extends(Bone, _super);
         function Bone() {
             _super.call(this);
+            /**
+             * 标记是否将offset中的平移分量作用到子骨头
+             * 默认值：true
+             * @member {true} dragonBones.Bone#applyOffsetTranslationToChild
+             * @see dragonBones.Bone#offset
+             */
             this.applyOffsetTranslationToChild = true;
+            /**
+             * 标记是否将offset中的旋转分量作用到子骨头
+             * 默认值：true
+             * @member {true} dragonBones.Bone#applyOffsetRotationToChild
+             * @see dragonBones.Bone#offset
+             */
             this.applyOffsetRotationToChild = true;
+            /**
+             * 标记是否将offset中的缩放分量作用到子骨头
+             * 默认值：true
+             * @member {true} dragonBones.Bone#applyOffsetScaleToChild
+             * @see dragonBones.Bone#offset
+             */
             this.applyOffsetScaleToChild = false;
             /** @private */
             this._needUpdate = 0;
@@ -82,10 +109,9 @@ var dragonBones;
         };
         //骨架装配
         /**
-         * If contains some bone or slot
-         * @param Slot or Bone instance
-         * @return Boolean
-         * @see dragonBones.core.DBObject
+         * 检查是否包含指定的 Bone 或者 Slot
+         * @param child {DBObject} Bone 实例 或者 Slot 实例
+         * @returns {boolean}
          */
         Bone.prototype.contains = function (child) {
             if (!child) {
@@ -100,13 +126,18 @@ var dragonBones;
             }
             return ancestor == this;
         };
+        /**
+         * 添加指定的 Bone 实例做为当前 Bone 实例的子骨头
+         * @param childBone {Bone} 需要添加的 Bone 实例
+         * @param updateLater {boolean} 是否延迟更新。默认false。当需要一次性添加很多 Bone 时，开启延迟更新能够提高效率
+         */
         Bone.prototype.addChildBone = function (childBone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
             if (!childBone) {
                 throw new Error();
             }
             if (childBone == this || childBone.contains(this)) {
-                throw new Error("An Bone cannot be added as a child to itself or one of its children (or children's children, etc.)");
+                throw new Error();
             }
             if (childBone.parent == this) {
                 return;
@@ -121,6 +152,11 @@ var dragonBones;
                 this._armature._updateAnimationAfterBoneListChanged();
             }
         };
+        /**
+         * 从当前 Bone 实例中移除指定的子骨头
+         * @param childBone {Bone} 需要移除的 Bone 实例
+         * @param updateLater {boolean} 是否延迟更新。默认false。当需要一次性移除很多 Bone 时，开启延迟更新能够提高效率
+         */
         Bone.prototype.removeChildBone = function (childBone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
             if (!childBone) {
@@ -137,6 +173,10 @@ var dragonBones;
                 this._armature._updateAnimationAfterBoneListChanged(false);
             }
         };
+        /**
+         * 向当前 Bone 实例中添加指定的 Slot 实例
+         * @param childSlot {Slot} 需要添加的 Slot 实例
+         */
         Bone.prototype.addSlot = function (childSlot) {
             if (!childSlot) {
                 throw new Error();
@@ -148,6 +188,10 @@ var dragonBones;
             childSlot._setParent(this);
             childSlot.setArmature(this._armature);
         };
+        /**
+         * 从当前 Bone 实例中移除指定的 Slot 实例
+         * @param childSlot {Slot} 需要移除的 Slot 实例
+         */
         Bone.prototype.removeSlot = function (childSlot) {
             if (!childSlot) {
                 throw new Error();
@@ -183,18 +227,18 @@ var dragonBones;
             }
         };
         /**
-         * Get all Bone instance associated with this bone.
-         * @return A Vector.&lt;Slot&gt; instance.
-         * @see dragonBones.Slot
+         * 获取当前骨头包含的所有 Bone 实例
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {Bone[]}
          */
         Bone.prototype.getBones = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._boneList.concat() : this._boneList;
         };
         /**
-         * Get all Slot instance associated with this bone.
-         * @return A Vector.&lt;Slot&gt; instance.
-         * @see dragonBones.Slot
+         * 获取当前骨头包含的所有 Slot 实例
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {Slot[]}
          */
         Bone.prototype.getSlots = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
@@ -202,7 +246,7 @@ var dragonBones;
         };
         //动画
         /**
-         * Force update the bone in next frame even if the bone is not moving.
+         * 在下一帧强制更新当前 Bone 实例及其包含的所有 Slot 的动画。
          */
         Bone.prototype.invalidUpdate = function () {
             this._needUpdate = 2;
@@ -432,7 +476,7 @@ var dragonBones;
         };
         Object.defineProperty(Bone.prototype, "childArmature", {
             /**
-             * Unrecommended API. Recommend use slot.childArmature.
+             * 不推荐的API,建议使用 slot.childArmature 替代
              */
             get: function () {
                 if (this.slot) {
@@ -445,7 +489,7 @@ var dragonBones;
         });
         Object.defineProperty(Bone.prototype, "display", {
             /**
-             * Unrecommended API. Recommend use slot.display.
+             * 不推荐的API,建议使用 slot.display 替代
              */
             get: function () {
                 if (this.slot) {
@@ -463,7 +507,7 @@ var dragonBones;
         });
         Object.defineProperty(Bone.prototype, "node", {
             /**
-             * Unrecommended API. Recommend use offset.
+             * 不推荐的API,建议使用 offset 替代
              */
             get: function () {
                 return this._offset;
@@ -487,6 +531,10 @@ var dragonBones;
             configurable: true
         });
         Object.defineProperty(Bone.prototype, "slot", {
+            /**
+             * 返回当前 Bone 实例包含的第一个 Slot 实例
+             * @member {Slot} dragonBones.Bone#slot
+             */
             get: function () {
                 return this._slotList.length > 0 ? this._slotList[0] : null;
             },

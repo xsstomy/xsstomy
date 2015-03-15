@@ -26,6 +26,11 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.MathUtil
+     * @classdesc
+     * 内部使用的有关数学计算的工具类
+     */
     var MathUtil = (function () {
         function MathUtil() {
         }

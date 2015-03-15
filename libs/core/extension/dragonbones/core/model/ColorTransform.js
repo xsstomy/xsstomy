@@ -26,6 +26,11 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.ColorTransform
+     * @classdesc
+     * 表示颜色的transform
+     */
     var ColorTransform = (function () {
         function ColorTransform() {
             this.alphaMultiplier = 1;

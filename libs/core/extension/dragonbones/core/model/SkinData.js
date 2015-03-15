@@ -26,10 +26,22 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.SkinData
+     * @classdesc
+     * 皮肤数据，皮肤是由一些插槽组成，每个插槽都有一个骨骼控制，骨骼的运动带动插槽的运动形成动画，
+     * 插槽里可以放置显示对象，目前支持的显示对象有图片和子骨架两种
+     */
     var SkinData = (function () {
+        /**
+         * 构造函数，实例化一个SkinData类
+         */
         function SkinData() {
             this._slotDataList = [];
         }
+        /**
+         * 释放资源
+         */
         SkinData.prototype.dispose = function () {
             var i = this._slotDataList.length;
             while (i--) {
@@ -37,6 +49,11 @@ var dragonBones;
             }
             this._slotDataList = null;
         };
+        /**
+         * 根据插槽的名字获取插槽数据
+         * @param slotName 想要获取的插槽的名字
+         * @returns {*} 返回的插槽数据
+         */
         SkinData.prototype.getSlotData = function (slotName) {
             var i = this._slotDataList.length;
             while (i--) {
@@ -46,6 +63,10 @@ var dragonBones;
             }
             return null;
         };
+        /**
+         * 添加一个插槽数据
+         * @param slotData
+         */
         SkinData.prototype.addSlotData = function (slotData) {
             if (!slotData) {
                 throw new Error();
@@ -58,6 +79,10 @@ var dragonBones;
             }
         };
         Object.defineProperty(SkinData.prototype, "slotDataList", {
+            /**
+             * 获取所有的插槽数据
+             * @returns {Array<SlotData>}
+             */
             get: function () {
                 return this._slotDataList;
             },

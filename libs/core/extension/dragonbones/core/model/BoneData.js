@@ -26,7 +26,15 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.BoneData
+     * @classdesc
+     * 骨骼数据
+     */
     var BoneData = (function () {
+        /**
+         * 初始化各个属性
+         */
         function BoneData() {
             this.length = 0;
             this.global = new dragonBones.DBTransform();
@@ -34,6 +42,9 @@ var dragonBones;
             this.inheritRotation = true;
             this.inheritScale = false;
         }
+        /**
+         *释放资源
+         */
         BoneData.prototype.dispose = function () {
             this.global = null;
             this.transform = null;

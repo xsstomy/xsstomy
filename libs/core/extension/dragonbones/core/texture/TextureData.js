@@ -26,7 +26,18 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.TextureData
+     * @classdesc
+     * 纹理数据
+     */
     var TextureData = (function () {
+        /**
+         *创建一个 TextureData 实例
+         * @param region 区域
+         * @param frame 帧的区域
+         * @param rotated
+         */
         function TextureData(region, frame, rotated) {
             this.region = region;
             this.frame = frame;

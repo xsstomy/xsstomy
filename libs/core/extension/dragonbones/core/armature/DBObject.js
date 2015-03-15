@@ -26,6 +26,13 @@
  */
 var dragonBones;
 (function (dragonBones) {
+    /**
+     * @class dragonBones.DBObject
+     * @classdesc
+     * DBObject 是 Bone 和 Slot 的基类
+     * @see dragonBones.Bone
+     * @see dragonBones.Slot
+     */
     var DBObject = (function () {
         function DBObject() {
             this._globalTransformMatrix = new dragonBones.Matrix();
@@ -43,8 +50,8 @@ var dragonBones;
         }
         Object.defineProperty(DBObject.prototype, "global", {
             /**
-             * This DBObject instance global transform instance.
-             * @see dragonBones.objects.DBTransform
+             * 相对世界坐标的 DBTransform 实例。
+             * @member {DBTransform} dragonBones.DBObject#global
              */
             get: function () {
                 return this._global;
@@ -54,8 +61,8 @@ var dragonBones;
         });
         Object.defineProperty(DBObject.prototype, "origin", {
             /**
-             * This DBObject instance related to parent transform instance.
-             * @see dragonBones.objects.DBTransform
+             * 骨架数据中的原始的相对父亲的 DBTransform 实例。
+             * @member {DBTransform} dragonBones.DBObject#origin
              */
             get: function () {
                 return this._origin;
@@ -65,8 +72,8 @@ var dragonBones;
         });
         Object.defineProperty(DBObject.prototype, "offset", {
             /**
-             * This DBObject instance offset transform instance (For manually control).
-             * @see dragonBones.objects.DBTransform
+             * 用于运行时动态调整的 DBTransform 实例。
+             * @member {DBTransform} dragonBones.DBObject#offset
              */
             get: function () {
                 return this._offset;
@@ -103,7 +110,7 @@ var dragonBones;
             this._parent = value;
         };
         /**
-         * Cleans up any resources used by this DBObject instance.
+         * 清理使用的资源用于垃圾回收
          */
         DBObject.prototype.dispose = function () {
             this.userData = null;
