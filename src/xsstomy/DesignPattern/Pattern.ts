@@ -628,3 +628,40 @@ module DesignPattern
         }
     }
 }
+
+
+
+module DesignPattern
+{
+    /**
+     * 单列模式
+     */
+   export module Singleton
+    {
+        export class SingletonContext extends egret.Sprite
+        {
+            private static iSingleton:ISingleton;
+            public constructor()
+            {
+                super();
+            }
+
+            public static getInstance():ISingleton
+            {
+                if( this.iSingleton === null)
+                {
+                    return new ISingleton();
+                }
+
+                return this.iSingleton;
+            }
+        }
+
+
+
+        export class ISingleton
+        {
+
+        }
+    }
+}

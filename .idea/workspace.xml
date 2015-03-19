@@ -27,7 +27,7 @@
       <file leaf-file-name="Main.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-56.56" vertical-offset="116" max-vertical-offset="3090">
+            <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="3090">
               <caret line="102" column="34" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
               <folding />
             </state>
@@ -47,7 +47,7 @@
       <file leaf-file-name="egretProperties.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/egretProperties.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="345">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
               <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
@@ -57,8 +57,8 @@
       <file leaf-file-name="Pattern.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xsstomy/DesignPattern/Pattern.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2200489" vertical-offset="7515" max-vertical-offset="9495">
-              <caret line="509" column="27" selection-start-line="509" selection-start-column="27" selection-end-line="509" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.5599022" vertical-offset="9641" max-vertical-offset="10050">
+              <caret line="660" column="0" selection-start-line="660" selection-start-column="0" selection-end-line="660" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -69,17 +69,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="70852" max-vertical-offset="108600">
               <caret line="4693" column="26" selection-start-line="4693" selection-start-column="26" selection-end-line="4693" selection-end-column="26" />
-              <folding>
-                <marker date="1426416181000" expanded="true" signature="1667:5070" placeholder="/** @classdesc ...*/" />
-                <marker date="1426416181000" expanded="true" signature="41751:44540" placeholder="/** @constant {string} egret.ProgressEvent.PROGRESS ...*/" />
-                <marker date="1426416181000" expanded="true" signature="61077:61218" placeholder="/** 滑动跑道模型，渲染部分 ...*/" />
-                <marker date="1426416181000" expanded="true" signature="120793:125366" placeholder="/** Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge, ...*/" />
-                <marker date="1426416181000" expanded="true" signature="136561:136781" placeholder="/** @private ...*/" />
-                <marker date="1426416181000" expanded="true" signature="151400:154279" placeholder="/** @class egret.Stage ...*/" />
-                <marker date="1426416181000" expanded="true" signature="159212:159740" placeholder="/** 创建一个 egret.ScrollView 对象 ...*/" />
-                <marker date="1426416181000" expanded="true" signature="253345:254093" placeholder="/** 变换Context的当前渲染矩阵 ...*/" />
-                <marker date="1426416181000" expanded="true" signature="282166:283101" placeholder="/** 在字节流中写入一个无符号的 32 位整数。 ...*/" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,8 +92,7 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-34" />
-    <option name="y" value="33" />
+    <option name="y" value="23" />
     <option name="width" value="1276" />
     <option name="height" value="777" />
   </component>
@@ -130,6 +119,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -218,11 +208,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/egret/xiyou" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="FullScreen" value="false" />
@@ -232,10 +221,14 @@
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -243,10 +236,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -285,11 +274,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-34" y="33" width="1276" height="777" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1276" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32554746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32554746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -301,11 +290,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -679,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.2" vertical-offset="0" max-vertical-offset="1305">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-210.6" vertical-offset="0" max-vertical-offset="6645">
           <caret line="353" column="48" selection-start-line="353" selection-start-column="48" selection-end-line="353" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!doc;n#ThreeD#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -697,23 +682,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="70852" max-vertical-offset="108600">
           <caret line="4693" column="26" selection-start-line="4693" selection-start-column="26" selection-end-line="4693" selection-end-column="26" />
-          <folding>
-            <marker date="1426416181000" expanded="true" signature="1667:5070" placeholder="/** @classdesc ...*/" />
-            <marker date="1426416181000" expanded="true" signature="41751:44540" placeholder="/** @constant {string} egret.ProgressEvent.PROGRESS ...*/" />
-            <marker date="1426416181000" expanded="true" signature="61077:61218" placeholder="/** 滑动跑道模型，渲染部分 ...*/" />
-            <marker date="1426416181000" expanded="true" signature="120793:125366" placeholder="/** Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge, ...*/" />
-            <marker date="1426416181000" expanded="true" signature="136561:136781" placeholder="/** @private ...*/" />
-            <marker date="1426416181000" expanded="true" signature="151400:154279" placeholder="/** @class egret.Stage ...*/" />
-            <marker date="1426416181000" expanded="true" signature="159212:159740" placeholder="/** 创建一个 egret.ScrollView 对象 ...*/" />
-            <marker date="1426416181000" expanded="true" signature="253345:254093" placeholder="/** 变换Context的当前渲染矩阵 ...*/" />
-            <marker date="1426416181000" expanded="true" signature="282166:283101" placeholder="/** 在字节流中写入一个无符号的 32 位整数。 ...*/" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/egretProperties.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="345">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
           <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
@@ -729,7 +704,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-56.56" vertical-offset="116" max-vertical-offset="3090">
+        <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="3090">
           <caret line="102" column="34" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
           <folding />
         </state>
@@ -737,8 +712,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xsstomy/DesignPattern/Pattern.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2200489" vertical-offset="7515" max-vertical-offset="9495">
-          <caret line="509" column="27" selection-start-line="509" selection-start-column="27" selection-end-line="509" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.5599022" vertical-offset="9641" max-vertical-offset="10050">
+          <caret line="660" column="0" selection-start-line="660" selection-start-column="0" selection-end-line="660" selection-end-column="0" />
           <folding />
         </state>
       </provider>
