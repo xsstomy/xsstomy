@@ -1,7 +1,7 @@
 /**
  * Created by xiashishi on 15/2/4.
  */
-module Util
+module Demo
 {
     /**
      * 原生绘制，绘制一张绘图画布
