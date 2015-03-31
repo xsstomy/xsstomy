@@ -124,12 +124,15 @@ class Main extends egret.DisplayObjectContainer {
         //
         //var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
         //this.addChild(w);
+        //
+        //var star:DesignPattern.Decorator.StarbuzzCoffee = new DesignPattern.Decorator.StarbuzzCoffee();
+        ////this.addChild(star);
+        //
+        //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
+        //this.addChild( p );
 
-        var star:DesignPattern.Decorator.StarbuzzCoffee = new DesignPattern.Decorator.StarbuzzCoffee();
-        //this.addChild(star);
-
-        var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
-        this.addChild( p );
+        var trees:ThreeD.Trees = new ThreeD.Trees();
+        this.addChild( trees );
     }
 
     private onTouchBegin(evt:egret.TouchEvent) {

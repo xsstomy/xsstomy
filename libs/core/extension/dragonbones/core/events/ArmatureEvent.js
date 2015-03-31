@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -47,6 +41,7 @@ var dragonBones;
         function ArmatureEvent(type) {
             _super.call(this, type);
         }
+        var __egretProto__ = ArmatureEvent.prototype;
         /**
          * 当zOrder成功更新后派发
          */

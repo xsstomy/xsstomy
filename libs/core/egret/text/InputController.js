@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 /**
  * Copyright (c) 2014,Egret-Labs.org
  * All rights reserved.
@@ -44,13 +38,14 @@ var egret;
             this._isFirst = true;
             this._isFirst = true;
         }
-        InputController.prototype.init = function (text) {
+        var __egretProto__ = InputController.prototype;
+        __egretProto__.init = function (text) {
             this._text = text;
             this.stageText = egret.StageText.create();
             var point = this._text.localToGlobal();
             this.stageText._open(point.x, point.y, this._text._explicitWidth, this._text._explicitHeight);
         };
-        InputController.prototype._addStageText = function () {
+        __egretProto__._addStageText = function () {
             if (!this._text._inputEnabled) {
                 this._text._touchEnabled = true;
             }
@@ -63,7 +58,7 @@ var egret;
             egret.MainContext.instance.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
             egret.MainContext.instance.stage.addEventListener(egret.Event.RESIZE, this.onResize, this);
         };
-        InputController.prototype._removeStageText = function () {
+        __egretProto__._removeStageText = function () {
             this.stageText._remove();
             this.stageText._removeListeners();
             if (!this._text._inputEnabled) {
@@ -76,24 +71,24 @@ var egret;
             egret.MainContext.instance.stage.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
             egret.MainContext.instance.stage.removeEventListener(egret.Event.RESIZE, this.onResize, this);
         };
-        InputController.prototype.onResize = function () {
+        __egretProto__.onResize = function () {
             this._isFirst = true;
         };
-        InputController.prototype._getText = function () {
+        __egretProto__._getText = function () {
             return this.stageText._getText();
         };
-        InputController.prototype._setText = function (value) {
+        __egretProto__._setText = function (value) {
             this.stageText._setText(value);
         };
-        InputController.prototype.onFocusHandler = function (event) {
+        __egretProto__.onFocusHandler = function (event) {
             this.hideText();
         };
         //显示文本
-        InputController.prototype.onBlurHandler = function (event) {
+        __egretProto__.onBlurHandler = function (event) {
             this.showText();
         };
         //点中文本
-        InputController.prototype.onMouseDownHandler = function (event) {
+        __egretProto__.onMouseDownHandler = function (event) {
             event.stopPropagation();
             if (!this._text._visible) {
                 return;
@@ -104,31 +99,31 @@ var egret;
             this.stageText._show();
         };
         //未点中文本
-        InputController.prototype.onStageDownHandler = function (event) {
+        __egretProto__.onStageDownHandler = function (event) {
             this.stageText._hide();
             this.showText();
         };
-        InputController.prototype.showText = function () {
+        __egretProto__.showText = function () {
             if (this._isFocus) {
                 this._isFocus = false;
                 this.resetText();
             }
         };
-        InputController.prototype.hideText = function () {
+        __egretProto__.hideText = function () {
             if (!this._isFocus) {
                 this._text._setBaseText("");
                 this._isFocus = true;
             }
         };
-        InputController.prototype.updateTextHandler = function (event) {
+        __egretProto__.updateTextHandler = function (event) {
             this.resetText();
             //抛出change事件
             this._text.dispatchEvent(new egret.Event(egret.Event.CHANGE));
         };
-        InputController.prototype.resetText = function () {
+        __egretProto__.resetText = function () {
             this._text._setBaseText(this.stageText._getText());
         };
-        InputController.prototype._updateTransform = function () {
+        __egretProto__._updateTransform = function () {
             //todo 等待worldTransform的性能优化完成，合并这块代码
             var oldTransFormA = this._text._worldTransform.a;
             var oldTransFormB = this._text._worldTransform.b;
@@ -148,7 +143,7 @@ var egret;
                 }, this);
             }
         };
-        InputController.prototype._updateProperties = function () {
+        __egretProto__._updateProperties = function () {
             var stage = this._text._stage;
             if (stage == null) {
                 this.stageText._setVisible(false);

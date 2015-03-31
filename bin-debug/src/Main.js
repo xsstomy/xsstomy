@@ -24,19 +24,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         _super.call(this);
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
-    Main.prototype.onAddToStage = function (event) {
+    var __egretProto__ = Main.prototype;
+    __egretProto__.onAddToStage = function (event) {
         //设置加载进度界面
         this.loadingView = new LoadingUI();
         this.stage.addChild(this.loadingView);
@@ -47,7 +42,7 @@ var Main = (function (_super) {
     /**
      * 配置文件加载完成,开始预加载preload资源组。
      */
-    Main.prototype.onConfigComplete = function (event) {
+    __egretProto__.onConfigComplete = function (event) {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -57,7 +52,7 @@ var Main = (function (_super) {
     /**
      * preload资源组加载完成
      */
-    Main.prototype.onResourceLoadComplete = function (event) {
+    __egretProto__.onResourceLoadComplete = function (event) {
         if (event.groupName == "preload") {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
@@ -69,7 +64,7 @@ var Main = (function (_super) {
     /**
     * 资源组加载出错
     */
-    Main.prototype.onResourceLoadError = function (event) {
+    __egretProto__.onResourceLoadError = function (event) {
         //TODO
         console.warn("Group:" + event.groupName + " 中有加载失败的项目");
         //忽略加载失败的项目
@@ -78,7 +73,7 @@ var Main = (function (_super) {
     /**
      * preload资源组加载进度
      */
-    Main.prototype.onResourceProgress = function (event) {
+    __egretProto__.onResourceProgress = function (event) {
         if (event.groupName == "preload") {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
@@ -86,7 +81,7 @@ var Main = (function (_super) {
     /**
      * 创建游戏场景
      */
-    Main.prototype.createGameScene = function () {
+    __egretProto__.createGameScene = function () {
         egret.Profiler.getInstance().run();
         //var three1:ThreeD.Perspective = new ThreeD.Perspective();
         //this.addChild( three1 );
@@ -111,27 +106,31 @@ var Main = (function (_super) {
         //
         //var w:DesignPattern.Observer.WeatherStation = new DesignPattern.Observer.WeatherStation();
         //this.addChild(w);
-        var star = new DesignPattern.Decorator.StarbuzzCoffee();
-        //this.addChild(star);
-        var p = new DesignPattern.FactoryPattern.PizzaTestDrive();
-        this.addChild(p);
+        //
+        //var star:DesignPattern.Decorator.StarbuzzCoffee = new DesignPattern.Decorator.StarbuzzCoffee();
+        ////this.addChild(star);
+        //
+        //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
+        //this.addChild( p );
+        var trees = new ThreeD.Trees();
+        this.addChild(trees);
     };
-    Main.prototype.onTouchBegin = function (evt) {
+    __egretProto__.onTouchBegin = function (evt) {
         console.log('touch_begin');
     };
-    Main.prototype.onTouchMove = function (evt) {
+    __egretProto__.onTouchMove = function (evt) {
         console.log('touch_move');
     };
-    Main.prototype.onTouchEnd = function (evt) {
+    __egretProto__.onTouchEnd = function (evt) {
         console.log('touch_end');
     };
-    Main.prototype.onReleaseOutside = function () {
+    __egretProto__.onReleaseOutside = function () {
         console.log('release_outside');
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      */
-    Main.prototype.createBitmapByName = function (name) {
+    __egretProto__.createBitmapByName = function (name) {
         var result = new egret.Bitmap();
         var texture = RES.getRes(name);
         result.texture = texture;
@@ -140,7 +139,7 @@ var Main = (function (_super) {
     /**
      * 描述文件加载成功，开始播放动画
      */
-    Main.prototype.startAnimation = function (result) {
+    __egretProto__.startAnimation = function (result) {
         var textContainer = this.textContainer;
         var count = -1;
         var self = this;
@@ -162,7 +161,7 @@ var Main = (function (_super) {
     /**
      * 切换描述内容
      */
-    Main.prototype.changeDescription = function (textContainer, lineArr) {
+    __egretProto__.changeDescription = function (textContainer, lineArr) {
         textContainer.removeChildren();
         var w = 0;
         for (var i = 0; i < lineArr.length; i++) {

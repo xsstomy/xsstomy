@@ -49,10 +49,11 @@ var dragonBones;
             this.position = 0;
             this.duration = 0;
         }
+        var __egretProto__ = Frame.prototype;
         /**
          *释放资源
          */
-        Frame.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
         };
         return Frame;
     })();

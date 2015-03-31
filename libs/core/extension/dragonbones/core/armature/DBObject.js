@@ -48,7 +48,8 @@ var dragonBones;
             this.inheritScale = true;
             this.inheritTranslation = true;
         }
-        Object.defineProperty(DBObject.prototype, "global", {
+        var __egretProto__ = DBObject.prototype;
+        Object.defineProperty(__egretProto__, "global", {
             /**
              * 相对世界坐标的 DBTransform 实例。
              * @member {DBTransform} dragonBones.DBObject#global
@@ -59,7 +60,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(DBObject.prototype, "origin", {
+        Object.defineProperty(__egretProto__, "origin", {
             /**
              * 骨架数据中的原始的相对父亲的 DBTransform 实例。
              * @member {DBTransform} dragonBones.DBObject#origin
@@ -70,7 +71,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(DBObject.prototype, "offset", {
+        Object.defineProperty(__egretProto__, "offset", {
             /**
              * 用于运行时动态调整的 DBTransform 实例。
              * @member {DBTransform} dragonBones.DBObject#offset
@@ -81,7 +82,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(DBObject.prototype, "armature", {
+        Object.defineProperty(__egretProto__, "armature", {
             /**
              * The armature this DBObject instance belongs to.
              */
@@ -92,10 +93,10 @@ var dragonBones;
             configurable: true
         });
         /** @private */
-        DBObject.prototype._setArmature = function (value) {
+        __egretProto__._setArmature = function (value) {
             this._armature = value;
         };
-        Object.defineProperty(DBObject.prototype, "parent", {
+        Object.defineProperty(__egretProto__, "parent", {
             /**
              * Indicates the Bone instance that directly contains this DBObject instance if any.
              */
@@ -106,13 +107,13 @@ var dragonBones;
             configurable: true
         });
         /** @private */
-        DBObject.prototype._setParent = function (value) {
+        __egretProto__._setParent = function (value) {
             this._parent = value;
         };
         /**
          * 清理使用的资源用于垃圾回收
          */
-        DBObject.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             this.userData = null;
             this._globalTransformMatrix = null;
             this._global = null;
@@ -121,9 +122,9 @@ var dragonBones;
             this._armature = null;
             this._parent = null;
         };
-        DBObject.prototype._calculateRelativeParentTransform = function () {
+        __egretProto__._calculateRelativeParentTransform = function () {
         };
-        DBObject.prototype._calculateParentTransform = function () {
+        __egretProto__._calculateParentTransform = function () {
             if (this.parent && (this.inheritTranslation || this.inheritRotation || this.inheritScale)) {
                 var parentGlobalTransform = this._parent._globalTransformForChild;
                 var parentGlobalTransformMatrix = this._parent._globalTransformMatrixForChild;
@@ -149,7 +150,7 @@ var dragonBones;
             }
             return null;
         };
-        DBObject.prototype._updateGlobal = function () {
+        __egretProto__._updateGlobal = function () {
             this._calculateRelativeParentTransform();
             dragonBones.TransformUtil.transformToMatrix(this._global, this._globalTransformMatrix, true);
             var output = this._calculateParentTransform();

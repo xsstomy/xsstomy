@@ -34,6 +34,7 @@ var dragonBones;
     var DragonBones = (function () {
         function DragonBones() {
         }
+        var __egretProto__ = DragonBones.prototype;
         /**
          * 数据的版本号
          */

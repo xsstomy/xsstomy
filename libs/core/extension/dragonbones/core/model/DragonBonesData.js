@@ -39,10 +39,11 @@ var dragonBones;
             this._armatureDataList = [];
             this._displayDataDictionary = {};
         }
+        var __egretProto__ = DragonBonesData.prototype;
         /**
          * 释放资源
          */
-        DragonBonesData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             for (var key in this._armatureDataList) {
                 var armatureData = this._armatureDataList[key];
                 armatureData.dispose();
@@ -51,7 +52,7 @@ var dragonBones;
             this.removeAllDisplayData();
             this._displayDataDictionary = null;
         };
-        Object.defineProperty(DragonBonesData.prototype, "armatureDataList", {
+        Object.defineProperty(__egretProto__, "armatureDataList", {
             /**
              * 获取所有的骨架数据
              * @returns {Array<ArmatureData>}
@@ -67,7 +68,7 @@ var dragonBones;
          * @param armatureName 想要获取的骨架的名字
          * @returns {*} 骨架数据 ArmatureData
          */
-        DragonBonesData.prototype.getArmatureDataByName = function (armatureName) {
+        __egretProto__.getArmatureDataByName = function (armatureName) {
             var i = this._armatureDataList.length;
             while (i--) {
                 if (this._armatureDataList[i].name == armatureName) {
@@ -80,7 +81,7 @@ var dragonBones;
          * 添加一个骨架数据
          * @param armatureData
          */
-        DragonBonesData.prototype.addArmatureData = function (armatureData) {
+        __egretProto__.addArmatureData = function (armatureData) {
             if (!armatureData) {
                 throw new Error();
             }
@@ -95,7 +96,7 @@ var dragonBones;
          * 移除一个骨架数据
          * @param armatureData
          */
-        DragonBonesData.prototype.removeArmatureData = function (armatureData) {
+        __egretProto__.removeArmatureData = function (armatureData) {
             var index = this._armatureDataList.indexOf(armatureData);
             if (index >= 0) {
                 this._armatureDataList.splice(index, 1);
@@ -105,7 +106,7 @@ var dragonBones;
          * 根据骨架的名字，移除该骨架的数据
          * @param armatureName 想要移除的骨架的名字
          */
-        DragonBonesData.prototype.removeArmatureDataByName = function (armatureName) {
+        __egretProto__.removeArmatureDataByName = function (armatureName) {
             var i = this._armatureDataList.length;
             while (i--) {
                 if (this._armatureDataList[i].name == armatureName) {
@@ -118,27 +119,27 @@ var dragonBones;
          * @param name 想要获取的显示对象数据的名字
          * @returns {any} 显示对象数据 DisplayData
          */
-        DragonBonesData.prototype.getDisplayDataByName = function (name) {
+        __egretProto__.getDisplayDataByName = function (name) {
             return this._displayDataDictionary[name];
         };
         /**
          *添加一个显示对象数据
          * @param displayData 需要被添加的显示对象数据
          */
-        DragonBonesData.prototype.addDisplayData = function (displayData) {
+        __egretProto__.addDisplayData = function (displayData) {
             this._displayDataDictionary[displayData.name] = displayData;
         };
         /**
          *根据显示对象的名字移除该显示对象数据
          * @param name 显示对象的名字
          */
-        DragonBonesData.prototype.removeDisplayDataByName = function (name) {
+        __egretProto__.removeDisplayDataByName = function (name) {
             delete this._displayDataDictionary[name];
         };
         /**
          *移除所有的显示对象数据
          */
-        DragonBonesData.prototype.removeAllDisplayData = function () {
+        __egretProto__.removeAllDisplayData = function () {
             for (var name in this._displayDataDictionary) {
                 delete this._displayDataDictionary[name];
             }

@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -49,6 +43,7 @@ var dragonBones;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type);
         }
+        var __egretProto__ = FrameEvent.prototype;
         Object.defineProperty(FrameEvent, "MOVEMENT_FRAME_EVENT", {
             get: function () {
                 return FrameEvent.ANIMATION_FRAME_EVENT;
@@ -56,7 +51,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(FrameEvent.prototype, "armature", {
+        Object.defineProperty(__egretProto__, "armature", {
             /**
              * 派发这个事件的骨架
              * @member {dragonBones.Armature} dragonBones.FrameEvent#armature

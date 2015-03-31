@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -54,7 +48,8 @@ var dragonBones;
             this._lockDispose = false;
             this._armatureData = null;
         }
-        Object.defineProperty(Armature.prototype, "armatureData", {
+        var __egretProto__ = Armature.prototype;
+        Object.defineProperty(__egretProto__, "armatureData", {
             /**
              * 骨架数据。
              * @member {ArmatureData} dragonBones.Armature#armatureData
@@ -65,7 +60,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Armature.prototype, "display", {
+        Object.defineProperty(__egretProto__, "display", {
             /**
              * 骨架显示对象。骨架创建出来后，需要把该显示对象加到场景中才能显示骨架。
              * 使用根据不同的渲染引擎，显示对象的类型可能不同。
@@ -80,10 +75,10 @@ var dragonBones;
         /**
          * 不推荐的API,使用 display 属性代替。
          */
-        Armature.prototype.getDisplay = function () {
+        __egretProto__.getDisplay = function () {
             return this._display;
         };
-        Object.defineProperty(Armature.prototype, "animation", {
+        Object.defineProperty(__egretProto__, "animation", {
             /**
              * 骨架的动画实例。
              * @member {Animation} dragonBones.Armature#animation
@@ -97,7 +92,7 @@ var dragonBones;
         /**
          * 清理骨架实例
          */
-        Armature.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             this._delayDispose = true;
             if (!this._animation || this._lockDispose) {
                 return;
@@ -123,7 +118,7 @@ var dragonBones;
          * 在下一帧强制更新指定名称的 Bone 及其包含的所有 Slot 的动画。
          * @param boneName {string} 骨头名。 默认值：null，相当于更新所有骨头。
          */
-        Armature.prototype.invalidUpdate = function (boneName) {
+        __egretProto__.invalidUpdate = function (boneName) {
             if (boneName === void 0) { boneName = null; }
             if (boneName) {
                 var bone = this.getBone(boneName);
@@ -142,7 +137,7 @@ var dragonBones;
          * 使用这个方法更新动画状态。一般来说，这个方法需要在 ENTERFRAME 事件的响应函数中被调用
          * @param passedTime 动画向前播放的时间（单位：秒）
          */
-        Armature.prototype.advanceTime = function (passedTime) {
+        __egretProto__.advanceTime = function (passedTime) {
             this._lockDispose = true;
             this._animation._advanceTime(passedTime);
             passedTime *= this._animation.timeScale; //_animation's time scale will impact childArmature
@@ -186,7 +181,7 @@ var dragonBones;
          * @param returnCopy {boolean} 是否返回拷贝。默认：true
          * @returns {Slot[]}
          */
-        Armature.prototype.getSlots = function (returnCopy) {
+        __egretProto__.getSlots = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._slotList.concat() : this._slotList;
         };
@@ -195,7 +190,7 @@ var dragonBones;
          * @param slotName {string} Slot名称
          * @returns {Slot}
          */
-        Armature.prototype.getSlot = function (slotName) {
+        __egretProto__.getSlot = function (slotName) {
             var length = this._slotList.length;
             for (var i = 0; i < length; i++) {
                 var slot = this._slotList[i];
@@ -210,7 +205,7 @@ var dragonBones;
          * @param displayObj {any} 显示对象实例
          * @returns {Slot}
          */
-        Armature.prototype.getSlotByDisplay = function (displayObj) {
+        __egretProto__.getSlotByDisplay = function (displayObj) {
             if (displayObj) {
                 var length = this._slotList.length;
                 for (var i = 0; i < length; i++) {
@@ -228,7 +223,7 @@ var dragonBones;
          * @param boneName {string}
          * @see dragonBones.Bone
          */
-        Armature.prototype.addSlot = function (slot, boneName) {
+        __egretProto__.addSlot = function (slot, boneName) {
             var bone = this.getBone(boneName);
             if (bone) {
                 bone.addSlot(slot);
@@ -241,7 +236,7 @@ var dragonBones;
          * 移除指定的Slot
          * @param slot {Slot} Slot 实例
          */
-        Armature.prototype.removeSlot = function (slot) {
+        __egretProto__.removeSlot = function (slot) {
             if (!slot || slot.armature != this) {
                 throw new Error();
             }
@@ -252,7 +247,7 @@ var dragonBones;
          * @param slotName {string} Slot 名称
          * @returns {Slot} 被成功移除的 Slot 实例
          */
-        Armature.prototype.removeSlotByName = function (slotName) {
+        __egretProto__.removeSlotByName = function (slotName) {
             var slot = this.getSlot(slotName);
             if (slot) {
                 this.removeSlot(slot);
@@ -264,7 +259,7 @@ var dragonBones;
          * @param returnCopy {boolean} 是否返回拷贝。默认：true
          * @returns {Bone[]}
          */
-        Armature.prototype.getBones = function (returnCopy) {
+        __egretProto__.getBones = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._boneList.concat() : this._boneList;
         };
@@ -273,7 +268,7 @@ var dragonBones;
          * @param boneName {string} Bone名称
          * @returns {Bone}
          */
-        Armature.prototype.getBone = function (boneName) {
+        __egretProto__.getBone = function (boneName) {
             var length = this._boneList.length;
             for (var i = 0; i < length; i++) {
                 var bone = this._boneList[i];
@@ -288,7 +283,7 @@ var dragonBones;
          * @param display {any} 显示对象实例
          * @returns {Bone}
          */
-        Armature.prototype.getBoneByDisplay = function (display) {
+        __egretProto__.getBoneByDisplay = function (display) {
             var slot = this.getSlotByDisplay(display);
             return slot ? slot.parent : null;
         };
@@ -298,7 +293,7 @@ var dragonBones;
          * @param parentName {string} 父骨头名称 默认：null
          * @param updateLater {boolean} 是否延迟更新 默认：false，当需要一次添加很多Bone时，开启延迟更新能够提高效率
          */
-        Armature.prototype.addBone = function (bone, parentName, updateLater) {
+        __egretProto__.addBone = function (bone, parentName, updateLater) {
             if (parentName === void 0) { parentName = null; }
             if (updateLater === void 0) { updateLater = false; }
             var parentBone;
@@ -326,7 +321,7 @@ var dragonBones;
          * @param bone {Bone} Bone 实例
          * @param updateLater {boolean} 是否延迟更新 默认：false，当需要一次移除很多Bone时，开启延迟更新能够提高效率
          */
-        Armature.prototype.removeBone = function (bone, updateLater) {
+        __egretProto__.removeBone = function (bone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
             if (!bone || bone.armature != this) {
                 throw new Error();
@@ -346,7 +341,7 @@ var dragonBones;
          * @param boneName {string} Bone 名称
          * @returns {Bone} 被成功移除的 Bone 实例
          */
-        Armature.prototype.removeBoneByName = function (boneName) {
+        __egretProto__.removeBoneByName = function (boneName) {
             var bone = this.getBone(boneName);
             if (bone) {
                 this.removeBone(bone);
@@ -354,26 +349,26 @@ var dragonBones;
             return bone;
         };
         /** @private */
-        Armature.prototype._addBoneToBoneList = function (bone) {
+        __egretProto__._addBoneToBoneList = function (bone) {
             if (this._boneList.indexOf(bone) < 0) {
                 this._boneList[this._boneList.length] = bone;
             }
         };
         /** @private */
-        Armature.prototype._removeBoneFromBoneList = function (bone) {
+        __egretProto__._removeBoneFromBoneList = function (bone) {
             var index = this._boneList.indexOf(bone);
             if (index >= 0) {
                 this._boneList.splice(index, 1);
             }
         };
         /** @private */
-        Armature.prototype._addSlotToSlotList = function (slot) {
+        __egretProto__._addSlotToSlotList = function (slot) {
             if (this._slotList.indexOf(slot) < 0) {
                 this._slotList[this._slotList.length] = slot;
             }
         };
         /** @private */
-        Armature.prototype._removeSlotFromSlotList = function (slot) {
+        __egretProto__._removeSlotFromSlotList = function (slot) {
             var index = this._slotList.indexOf(slot);
             if (index >= 0) {
                 this._slotList.splice(index, 1);
@@ -382,7 +377,7 @@ var dragonBones;
         /**
          * 按照显示层级为所有 Slot 排序
          */
-        Armature.prototype.updateSlotsZOrder = function () {
+        __egretProto__.updateSlotsZOrder = function () {
             this._slotList.sort(this.sortSlot);
             var i = this._slotList.length;
             while (i--) {
@@ -394,14 +389,14 @@ var dragonBones;
             }
             this._slotsZOrderChanged = false;
         };
-        Armature.prototype._updateAnimationAfterBoneListChanged = function (ifNeedSortBoneList) {
+        __egretProto__._updateAnimationAfterBoneListChanged = function (ifNeedSortBoneList) {
             if (ifNeedSortBoneList === void 0) { ifNeedSortBoneList = true; }
             if (ifNeedSortBoneList) {
                 this.sortBoneList();
             }
             this._animation._updateAnimationStates();
         };
-        Armature.prototype.sortBoneList = function () {
+        __egretProto__.sortBoneList = function () {
             var i = this._boneList.length;
             if (i == 0) {
                 return;
@@ -425,7 +420,7 @@ var dragonBones;
             helpArray.length = 0;
         };
         /** @private When AnimationState enter a key frame, call this func*/
-        Armature.prototype._arriveAtFrame = function (frame, timelineState, animationState, isCross) {
+        __egretProto__._arriveAtFrame = function (frame, timelineState, animationState, isCross) {
             if (frame.event && this.hasEventListener(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT)) {
                 var frameEvent = new dragonBones.FrameEvent(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT);
                 frameEvent.animationState = animationState;
@@ -450,7 +445,7 @@ var dragonBones;
                 }
             }
         };
-        Armature.prototype.sortSlot = function (slot1, slot2) {
+        __egretProto__.sortSlot = function (slot1, slot2) {
             return slot1.zOrder < slot2.zOrder ? 1 : -1;
         };
         return Armature;

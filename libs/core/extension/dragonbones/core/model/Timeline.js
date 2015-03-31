@@ -45,7 +45,8 @@ var dragonBones;
             this.duration = 0;
             this.scale = 1;
         }
-        Timeline.prototype.dispose = function () {
+        var __egretProto__ = Timeline.prototype;
+        __egretProto__.dispose = function () {
             var i = this._frameList.length;
             while (i--) {
                 this._frameList[i].dispose();
@@ -57,7 +58,7 @@ var dragonBones;
          * @param frame 关键帧数据
          * @see extension.dragonbones.model.Frame
          */
-        Timeline.prototype.addFrame = function (frame) {
+        __egretProto__.addFrame = function (frame) {
             if (!frame) {
                 throw new Error();
             }
@@ -68,7 +69,7 @@ var dragonBones;
                 throw new Error();
             }
         };
-        Object.defineProperty(Timeline.prototype, "frameList", {
+        Object.defineProperty(__egretProto__, "frameList", {
             /**
              * 获取关键帧列表
              * @returns {Array<Frame>}

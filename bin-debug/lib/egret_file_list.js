@@ -1,5 +1,6 @@
 var egret_file_list = [
 	"core/egret/i18n/cn.js",
+	"core/egret/utils/extends.js",
 	"core/egret/utils/Logger.js",
 	"core/egret/utils/HashObject.js",
 	"core/egret/utils/Recycler.js",

@@ -49,12 +49,13 @@ var dragonBones;
             this.spriteSheet = new egret.SpriteSheet(texture);
             this._textureDatas = textureData["frames"];
         }
+        var __egretProto__ = EgretSheetAtlas.prototype;
         /**
          *通过纹理的名字来获取纹理
          * @param fullName 纹理的名字
          * @returns {egret.Texture} 获取到的纹理
          */
-        EgretSheetAtlas.prototype.getTexture = function (fullName) {
+        __egretProto__.getTexture = function (fullName) {
             var result = this.spriteSheet.getTexture(fullName);
             if (!result) {
                 var config = this._textureDatas[fullName];
@@ -65,7 +66,7 @@ var dragonBones;
         /**
          *释放资源
          */
-        EgretSheetAtlas.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             this.texture = null;
         };
         /**
@@ -73,7 +74,7 @@ var dragonBones;
          * @param subTextureName 子纹理的名字
          * @returns {*} 获取到的矩形区域
          */
-        EgretSheetAtlas.prototype.getRegion = function (subTextureName) {
+        __egretProto__.getRegion = function (subTextureName) {
             var textureData = this._textureDatas[subTextureName];
             if (textureData) {
                 return EgretSheetAtlas.Region;

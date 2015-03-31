@@ -24,35 +24,3 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var egret;
-(function (egret) {
-    /**
-     */
-    var ExternalInterface = (function () {
-        function ExternalInterface() {
-        }
-        var __egretProto__ = ExternalInterface.prototype;
-        /**
-         * 将信息传递给 Egret 外层容器。
-         * 如果该容器是 HTML 页，则此方法不可用。
-         * 如果该容器是某个 App 容器，该容器将处理该事件。
-         * @method egret.ExternalInterface#call
-         * @param functionName {string}
-         * @param value {string}
-         */
-        ExternalInterface.call = function (functionName, value) {
-        };
-        /**
-         * 添加外层容器调用侦听，该容器将传递一个字符串给 Egret 容器
-         * 如果该容器是 HTML 页，则此方法不可用。
-         * @method egret.ExternalInterface#addCallBack
-         * @param functionName {string}
-         * @param listener {Function}
-         */
-        ExternalInterface.addCallback = function (functionName, listener) {
-        };
-        return ExternalInterface;
-    })();
-    egret.ExternalInterface = ExternalInterface;
-    ExternalInterface.prototype.__class__ = "egret.ExternalInterface";
-})(egret || (egret = {}));

@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 /**
  * Created by xiashishi on 15/1/17.
  */
@@ -23,7 +17,8 @@ var DemoObject;
             this.color = color || 0xff0000;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Ball.prototype.init = function () {
+        var __egretProto__ = Ball.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             var spr = new egret.Sprite();
             spr.graphics.beginFill(this.color, 0.5);
@@ -47,7 +42,8 @@ var DemoObject;
             this.color = color;
             this.init();
         }
-        Segment.prototype.init = function () {
+        var __egretProto__ = Segment.prototype;
+        __egretProto__.init = function () {
             this.graphics.lineStyle(0);
             this.graphics.beginFill(this.color);
             this.graphics.drawRoundRect(-this.segmentHeight * 0.5, -this.segmentHeight * 0.5, this.segmentHeight + this.segmentWidth, this.segmentHeight, this.segmentHeight, this.segmentHeight);
@@ -59,7 +55,7 @@ var DemoObject;
             this.graphics.drawCircle(this.segmentWidth, 0, 2);
             this.graphics.endFill();
         };
-        Segment.prototype.getPoint = function () {
+        __egretProto__.getPoint = function () {
             var angle = this.rotation * Math.PI / 180;
             var posX = this.x + Math.cos(angle) * this.segmentWidth;
             var posY = this.y + Math.sin(angle) * this.segmentHeight;
@@ -69,6 +65,9 @@ var DemoObject;
     })(egret.Sprite);
     DemoObject.Segment = Segment;
     Segment.prototype.__class__ = "DemoObject.Segment";
+    /**
+     * 3d球
+     */
     var Ball3D = (function (_super) {
         __extends(Ball3D, _super);
         function Ball3D(radius, color) {
@@ -86,7 +85,8 @@ var DemoObject;
             this.radius = radius;
             this.init();
         }
-        Ball3D.prototype.init = function () {
+        var __egretProto__ = Ball3D.prototype;
+        __egretProto__.init = function () {
             this.graphics.beginFill(this.color);
             this.graphics.drawCircle(0, 0, this.radius);
             this.graphics.endFill();
@@ -95,4 +95,31 @@ var DemoObject;
     })(egret.Sprite);
     DemoObject.Ball3D = Ball3D;
     Ball3D.prototype.__class__ = "DemoObject.Ball3D";
+    /**
+     * 树
+     */
+    var Tree = (function (_super) {
+        __extends(Tree, _super);
+        function Tree(color) {
+            if (color === void 0) { color = 0xffffff; }
+            _super.call(this);
+            this.xPos = 0;
+            this.yPos = 0;
+            this.zPos = 0;
+            this._color = color;
+            this.init();
+        }
+        var __egretProto__ = Tree.prototype;
+        __egretProto__.init = function () {
+            this.graphics.lineStyle(2, this._color);
+            this.graphics.lineTo(0, -140 - Math.random() * 20);
+            this.graphics.moveTo(0, -30 - Math.random() * 30);
+            this.graphics.lineTo(Math.random() * 80 - 40, -100 - Math.random() * 40);
+            this.graphics.moveTo(0, -60 - Math.random() * 40);
+            this.graphics.lineTo(Math.random() * 60 - 30, -110 - Math.random() * 20);
+        };
+        return Tree;
+    })(egret.Sprite);
+    DemoObject.Tree = Tree;
+    Tree.prototype.__class__ = "DemoObject.Tree";
 })(DemoObject || (DemoObject = {}));

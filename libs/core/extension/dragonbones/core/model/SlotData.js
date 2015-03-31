@@ -41,10 +41,11 @@ var dragonBones;
             this._displayDataList = [];
             this.zOrder = 0;
         }
+        var __egretProto__ = SlotData.prototype;
         /**
          * 释放资源
          */
-        SlotData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             var i = this._displayDataList.length;
             while (i--) {
                 this._displayDataList[i].dispose();
@@ -55,7 +56,7 @@ var dragonBones;
          * 添加一个显示对象数据
          * @param displayData
          */
-        SlotData.prototype.addDisplayData = function (displayData) {
+        __egretProto__.addDisplayData = function (displayData) {
             if (!displayData) {
                 throw new Error();
             }
@@ -71,7 +72,7 @@ var dragonBones;
          * @param displayName 想要获取的显示对象的名字
          * @returns {*} 返回显示对象昂数据，如果没有返回null
          */
-        SlotData.prototype.getDisplayData = function (displayName) {
+        __egretProto__.getDisplayData = function (displayName) {
             var i = this._displayDataList.length;
             while (i--) {
                 if (this._displayDataList[i].name == displayName) {
@@ -80,7 +81,7 @@ var dragonBones;
             }
             return null;
         };
-        Object.defineProperty(SlotData.prototype, "displayDataList", {
+        Object.defineProperty(__egretProto__, "displayDataList", {
             /**
              * 获取所有的显示对象
              * @returns {Array<DisplayData>}

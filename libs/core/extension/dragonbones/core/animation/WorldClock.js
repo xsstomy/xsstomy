@@ -48,14 +48,15 @@ var dragonBones;
             this._timeScale = isNaN(timeScale) ? 1 : timeScale;
             this._animatableList = [];
         }
-        Object.defineProperty(WorldClock.prototype, "time", {
+        var __egretProto__ = WorldClock.prototype;
+        Object.defineProperty(__egretProto__, "time", {
             get: function () {
                 return this._time;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(WorldClock.prototype, "timeScale", {
+        Object.defineProperty(__egretProto__, "timeScale", {
             /**
              * 时间缩放系数。用于实现动画的变速播放
              * @member {number} dragonBones.WorldClock#timeScale
@@ -77,14 +78,14 @@ var dragonBones;
          * @param animatable {IAnimatable} IAnimatable 实例
          * @returns {boolean}
          */
-        WorldClock.prototype.contains = function (animatable) {
+        __egretProto__.contains = function (animatable) {
             return this._animatableList.indexOf(animatable) >= 0;
         };
         /**
          * 将一个 IAnimatable 实例加入到时钟
          * @param animatable {IAnimatable} IAnimatable 实例
          */
-        WorldClock.prototype.add = function (animatable) {
+        __egretProto__.add = function (animatable) {
             if (animatable && this._animatableList.indexOf(animatable) == -1) {
                 this._animatableList.push(animatable);
             }
@@ -93,7 +94,7 @@ var dragonBones;
          * 将一个 IAnimatable 实例从时钟中移除
          * @param animatable {IAnimatable} IAnimatable 实例
          */
-        WorldClock.prototype.remove = function (animatable) {
+        __egretProto__.remove = function (animatable) {
             var index = this._animatableList.indexOf(animatable);
             if (index >= 0) {
                 this._animatableList[index] = null;
@@ -102,14 +103,14 @@ var dragonBones;
         /**
          * 从时钟中移除所有的 IAnimatable 实例.
          */
-        WorldClock.prototype.clear = function () {
+        __egretProto__.clear = function () {
             this._animatableList.length = 0;
         };
         /**
          * 更新所有包含的 IAnimatable 实例，将他们的动画向前播放指定的时间。一般来说，这个方法需要在 ENTERFRAME 事件的响应函数中被调用
          * @param passedTime {number} 前进的时间
          */
-        WorldClock.prototype.advanceTime = function (passedTime) {
+        __egretProto__.advanceTime = function (passedTime) {
             if (passedTime === void 0) { passedTime = -1; }
             if (passedTime < 0) {
                 passedTime = new Date().getTime() - this._time;

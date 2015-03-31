@@ -50,6 +50,7 @@ var dragonBones;
             this._durationPivot = new dragonBones.Point();
             this._durationColor = new dragonBones.ColorTransform();
         }
+        var __egretProto__ = TimelineState.prototype;
         /** @private */
         TimelineState._borrowObject = function () {
             if (TimelineState._pool.length == 0) {
@@ -72,7 +73,7 @@ var dragonBones;
             }
             TimelineState._pool.length = 0;
         };
-        TimelineState.prototype.clear = function () {
+        __egretProto__.clear = function () {
             if (this._bone) {
                 this._bone._removeState(this);
                 this._bone = null;
@@ -86,7 +87,7 @@ var dragonBones;
         };
         //动画开始结束
         /** @private */
-        TimelineState.prototype._fadeIn = function (bone, animationState, timelineData) {
+        __egretProto__._fadeIn = function (bone, animationState, timelineData) {
             this._bone = bone;
             this._armature = this._bone.armature;
             this._animation = this._armature.animation;
@@ -136,13 +137,13 @@ var dragonBones;
             this._bone._addState(this);
         };
         /** @private */
-        TimelineState.prototype._fadeOut = function () {
+        __egretProto__._fadeOut = function () {
             this._transform.skewX = dragonBones.TransformUtil.formatRadian(this._transform.skewX);
             this._transform.skewY = dragonBones.TransformUtil.formatRadian(this._transform.skewY);
         };
         //动画进行中
         /** @private */
-        TimelineState.prototype._update = function (progress) {
+        __egretProto__._update = function (progress) {
             if (this._updateMode == -1) {
                 this.updateMultipleFrame(progress);
             }
@@ -151,7 +152,7 @@ var dragonBones;
                 this.updateSingleFrame();
             }
         };
-        TimelineState.prototype.updateMultipleFrame = function (progress) {
+        __egretProto__.updateMultipleFrame = function (progress) {
             var currentPlayTimes = 0;
             progress /= this._timelineData.scale;
             progress += this._timelineData.offset;
@@ -249,7 +250,7 @@ var dragonBones;
                 }
             }
         };
-        TimelineState.prototype.updateToNextFrame = function (currentPlayTimes) {
+        __egretProto__.updateToNextFrame = function (currentPlayTimes) {
             if (currentPlayTimes === void 0) { currentPlayTimes = 0; }
             var nextFrameIndex = this._currentFrameIndex + 1;
             if (nextFrameIndex >= this._timelineData.frameList.length) {
@@ -409,7 +410,7 @@ var dragonBones;
                 }
             }
         };
-        TimelineState.prototype.updateTween = function () {
+        __egretProto__.updateTween = function () {
             var progress = (this._currentTime - this._currentFramePosition) / this._currentFrameDuration;
             if (this._tweenEasing) {
                 progress = dragonBones.MathUtil.getEaseValue(progress, this._tweenEasing);
@@ -455,7 +456,7 @@ var dragonBones;
                 }
             }
         };
-        TimelineState.prototype.updateSingleFrame = function () {
+        __egretProto__.updateSingleFrame = function () {
             var currentFrame = (this._timelineData.frameList[0]);
             this._bone._arriveAtFrame(currentFrame, this, this._animationState, false);
             this._isComplete = true;

@@ -45,11 +45,12 @@ var dragonBones;
             this.x = x;
             this.y = y;
         }
+        var __egretProto__ = Point.prototype;
         /**
          *返回包含 x 和 y 坐标的值的字符串。
          * @returns {string}
          */
-        Point.prototype.toString = function () {
+        __egretProto__.toString = function () {
             return "[Point (x=" + this.x + " y=" + this.y + ")]";
         };
         return Point;

@@ -43,6 +43,7 @@ var dragonBones;
             this.frame = frame;
             this.rotated = rotated;
         }
+        var __egretProto__ = TextureData.prototype;
         return TextureData;
     })();
     dragonBones.TextureData = TextureData;

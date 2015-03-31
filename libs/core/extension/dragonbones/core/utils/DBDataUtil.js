@@ -34,6 +34,7 @@ var dragonBones;
     var DBDataUtil = (function () {
         function DBDataUtil() {
         }
+        var __egretProto__ = DBDataUtil.prototype;
         /**
          * 把ArmatureData的绝对数据转成成相对数据
          * @param armatureData

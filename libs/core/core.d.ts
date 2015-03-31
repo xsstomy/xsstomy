@@ -27,6 +27,33 @@ declare module egret {
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+declare var __extends: any;
+/**
+ * Copyright (c) 2014,Egret-Labs.org
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the Egret-Labs.org nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 declare module egret {
     /**
      * @class egret.Logger
@@ -36,6 +63,18 @@ declare module egret {
      * todo:GitHub文档，如何利用日志帮助游戏持续改进
      */
     class Logger {
+        static ALL: string;
+        static DEBUG: string;
+        static INFO: string;
+        static WARN: string;
+        static ERROR: string;
+        static OFF: string;
+        private static logFuncs;
+        /**
+         * @private
+         * @param logType
+         */
+        static openLogByType(logType: string): void;
         /**
          * 表示出现了致命错误，开发者必须修复错误
          * @method egret.Logger.fatal
@@ -3767,6 +3806,7 @@ declare module egret {
          * @param value {egret.ContentStrategy} 适配模式
          * @param override {boolean} 是否覆盖
          * @method egret.Stage#registerScaleMode
+         * @private
          */
         static registerScaleMode(key: string, value: ContentStrategy, override?: boolean): void;
     }
@@ -6920,7 +6960,10 @@ declare module egret {
         private passive;
         /**
          * 激活一个对象，对其添加 Tween 动画
-         * @param target 要激活的对象
+         * @param target {any} 要激活 Tween 的对象
+         * @param props {any} 参数，例如：{loop:true}
+         * @param pluginData {any} 暂未实现
+         * @param override {boolean} 是否移除对象之前添加的tween，默认值false
          */
         static get(target: any, props?: any, pluginData?: any, override?: boolean): Tween;
         /**
@@ -6947,6 +6990,7 @@ declare module egret {
         static removeAllTweens(): void;
         /**
          * 创建一个 egret.Tween 对象
+         * @private
          */
         constructor(target: any, props: any, pluginData: any);
         private initialize(target, props, pluginData);

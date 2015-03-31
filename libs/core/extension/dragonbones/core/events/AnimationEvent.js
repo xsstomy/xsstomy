@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -49,6 +43,7 @@ var dragonBones;
             if (cancelable === void 0) { cancelable = false; }
             _super.call(this, type);
         }
+        var __egretProto__ = AnimationEvent.prototype;
         Object.defineProperty(AnimationEvent, "MOVEMENT_CHANGE", {
             /**
              * 不推荐使用.
@@ -59,7 +54,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(AnimationEvent.prototype, "movementID", {
+        Object.defineProperty(__egretProto__, "movementID", {
             /**
              * 不推荐的API.
              * @member {string} dragonBones.AnimationEvent#movementID
@@ -70,7 +65,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(AnimationEvent.prototype, "armature", {
+        Object.defineProperty(__egretProto__, "armature", {
             /**
              * 配发出事件的骨架
              * @member {dragonBones.Armature} dragonBones.AnimationEvent#armature
@@ -81,7 +76,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(AnimationEvent.prototype, "animationName", {
+        Object.defineProperty(__egretProto__, "animationName", {
             /**
              * 获取动画的名字
              * @returns {string}

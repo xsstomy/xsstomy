@@ -39,10 +39,11 @@ var dragonBones;
         function SkinData() {
             this._slotDataList = [];
         }
+        var __egretProto__ = SkinData.prototype;
         /**
          * 释放资源
          */
-        SkinData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             var i = this._slotDataList.length;
             while (i--) {
                 this._slotDataList[i].dispose();
@@ -54,7 +55,7 @@ var dragonBones;
          * @param slotName 想要获取的插槽的名字
          * @returns {*} 返回的插槽数据
          */
-        SkinData.prototype.getSlotData = function (slotName) {
+        __egretProto__.getSlotData = function (slotName) {
             var i = this._slotDataList.length;
             while (i--) {
                 if (this._slotDataList[i].name == slotName) {
@@ -67,7 +68,7 @@ var dragonBones;
          * 添加一个插槽数据
          * @param slotData
          */
-        SkinData.prototype.addSlotData = function (slotData) {
+        __egretProto__.addSlotData = function (slotData) {
             if (!slotData) {
                 throw new Error();
             }
@@ -78,7 +79,7 @@ var dragonBones;
                 throw new Error();
             }
         };
-        Object.defineProperty(SkinData.prototype, "slotDataList", {
+        Object.defineProperty(__egretProto__, "slotDataList", {
             /**
              * 获取所有的插槽数据
              * @returns {Array<SlotData>}

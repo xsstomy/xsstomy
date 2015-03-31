@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -67,7 +61,8 @@ var dragonBones;
             this.hideTimelineNameMap = [];
             this._timelineList = [];
         }
-        Object.defineProperty(AnimationData.prototype, "timelineList", {
+        var __egretProto__ = AnimationData.prototype;
+        Object.defineProperty(__egretProto__, "timelineList", {
             /**
              * 时间轴列表
              * @returns {Array<TransformTimeline>}
@@ -81,7 +76,7 @@ var dragonBones;
         /**
          * 释放资源
          */
-        AnimationData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             _super.prototype.dispose.call(this);
             this.hideTimelineNameMap = null;
             for (var key in this._timelineList) {
@@ -95,7 +90,7 @@ var dragonBones;
          * @param timelineName 时间轴的名字
          * @returns {*} 时间轴数据
          */
-        AnimationData.prototype.getTimeline = function (timelineName) {
+        __egretProto__.getTimeline = function (timelineName) {
             var i = this._timelineList.length;
             while (i--) {
                 if (this._timelineList[i].name == timelineName) {
@@ -108,7 +103,7 @@ var dragonBones;
          * 添加一个时间轴数据
          * @param timeline 需要被添加的时间轴数据
          */
-        AnimationData.prototype.addTimeline = function (timeline) {
+        __egretProto__.addTimeline = function (timeline) {
             if (!timeline) {
                 throw new Error();
             }

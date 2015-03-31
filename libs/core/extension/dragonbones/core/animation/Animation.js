@@ -50,10 +50,11 @@ var dragonBones;
             this._isPlaying = false;
             this.tweenEnabled = true;
         }
+        var __egretProto__ = Animation.prototype;
         /**
          * 回收Animation实例用到的所有资源
          */
-        Animation.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             if (!this._armature) {
                 return;
             }
@@ -83,7 +84,7 @@ var dragonBones;
          * @returns {AnimationState} 动画播放状态实例
          * @see dragonBones.AnimationState.
          */
-        Animation.prototype.gotoAndPlay = function (animationName, fadeInTime, duration, playTimes, layer, group, fadeOutMode, pauseFadeOut, pauseFadeIn) {
+        __egretProto__.gotoAndPlay = function (animationName, fadeInTime, duration, playTimes, layer, group, fadeOutMode, pauseFadeOut, pauseFadeIn) {
             if (fadeInTime === void 0) { fadeInTime = -1; }
             if (duration === void 0) { duration = -1; }
             if (playTimes === void 0) { playTimes = NaN; }
@@ -189,7 +190,7 @@ var dragonBones;
          * @returns {AnimationState} 动画播放状态实例
          * @see dragonBones..AnimationState.
          */
-        Animation.prototype.gotoAndStop = function (animationName, time, normalizedTime, fadeInTime, duration, layer, group, fadeOutMode) {
+        __egretProto__.gotoAndStop = function (animationName, time, normalizedTime, fadeInTime, duration, layer, group, fadeOutMode) {
             if (normalizedTime === void 0) { normalizedTime = -1; }
             if (fadeInTime === void 0) { fadeInTime = 0; }
             if (duration === void 0) { duration = -1; }
@@ -212,7 +213,7 @@ var dragonBones;
         /**
          * Play the animation from the current position.
          */
-        Animation.prototype.play = function () {
+        __egretProto__.play = function () {
             if (!this._animationDataList || this._animationDataList.length == 0) {
                 return;
             }
@@ -226,7 +227,7 @@ var dragonBones;
                 this.gotoAndPlay(this._lastAnimationState.name);
             }
         };
-        Animation.prototype.stop = function () {
+        __egretProto__.stop = function () {
             this._isPlaying = false;
         };
         /**
@@ -234,7 +235,7 @@ var dragonBones;
          * @returns {AnimationState} AnimationState 实例.
          * @see dragonBones..AnimationState.
          */
-        Animation.prototype.getState = function (name, layer) {
+        __egretProto__.getState = function (name, layer) {
             if (layer === void 0) { layer = 0; }
             var i = this._animationStateList.length;
             while (i--) {
@@ -249,7 +250,7 @@ var dragonBones;
          * 检查是否包含指定名称的动画.
          * @returns {boolean}.
          */
-        Animation.prototype.hasAnimation = function (animationName) {
+        __egretProto__.hasAnimation = function (animationName) {
             var i = this._animationDataList.length;
             while (i--) {
                 if (this._animationDataList[i].name == animationName) {
@@ -259,7 +260,7 @@ var dragonBones;
             return false;
         };
         /** @private */
-        Animation.prototype._advanceTime = function (passedTime) {
+        __egretProto__._advanceTime = function (passedTime) {
             if (!this._isPlaying) {
                 return;
             }
@@ -279,19 +280,19 @@ var dragonBones;
         };
         /** @private */
         //当动画播放过程中Bonelist改变时触发
-        Animation.prototype._updateAnimationStates = function () {
+        __egretProto__._updateAnimationStates = function () {
             var i = this._animationStateList.length;
             while (i--) {
                 this._animationStateList[i]._updateTimelineStates();
             }
         };
-        Animation.prototype.addState = function (animationState) {
+        __egretProto__.addState = function (animationState) {
             if (this._animationStateList.indexOf(animationState) < 0) {
                 this._animationStateList.unshift(animationState);
                 this._animationStateCount = this._animationStateList.length;
             }
         };
-        Animation.prototype.removeState = function (animationState) {
+        __egretProto__.removeState = function (animationState) {
             var index = this._animationStateList.indexOf(animationState);
             if (index >= 0) {
                 this._animationStateList.splice(index, 1);
@@ -307,7 +308,7 @@ var dragonBones;
                 this._animationStateCount = this._animationStateList.length;
             }
         };
-        Object.defineProperty(Animation.prototype, "movementList", {
+        Object.defineProperty(__egretProto__, "movementList", {
             /**
             * 不推荐的API.推荐使用 animationList.
             */
@@ -317,7 +318,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "movementID", {
+        Object.defineProperty(__egretProto__, "movementID", {
             /**
             * 不推荐的API.推荐使用 lastAnimationName.
             */
@@ -327,7 +328,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "lastAnimationState", {
+        Object.defineProperty(__egretProto__, "lastAnimationState", {
             /**
              * 最近播放的 AnimationState 实例。
              * @member {AnimationState} dragonBones.Animation#lastAnimationState
@@ -339,7 +340,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "lastAnimationName", {
+        Object.defineProperty(__egretProto__, "lastAnimationName", {
             /**
              * 最近播放的动画名称.
              * @member {string} dragonBones.Animation#lastAnimationName
@@ -350,7 +351,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "animationList", {
+        Object.defineProperty(__egretProto__, "animationList", {
             /**
              * 所有动画名称列表.
              * @member {string[]} dragonBones.Animation#animationList
@@ -361,7 +362,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "isPlaying", {
+        Object.defineProperty(__egretProto__, "isPlaying", {
             /**
              * 是否正在播放
              * @member {boolean} dragonBones.Animation#isPlaying
@@ -372,7 +373,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "isComplete", {
+        Object.defineProperty(__egretProto__, "isComplete", {
             /**
              * 最近播放的动画是否播放完成.
              * @member {boolean} dragonBones.Animation#isComplete
@@ -395,7 +396,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "timeScale", {
+        Object.defineProperty(__egretProto__, "timeScale", {
             /**
              * 时间缩放倍数
              * @member {number} dragonBones.Animation#timeScale
@@ -412,7 +413,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Animation.prototype, "animationDataList", {
+        Object.defineProperty(__egretProto__, "animationDataList", {
             /**
              * 包含的所有动画数据列表
              * @member {AnimationData[]} dragonBones.Animation#animationDataList

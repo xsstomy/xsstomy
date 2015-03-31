@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -94,10 +88,11 @@ var egret;
             this.worldTransform = new egret.Matrix();
             this.initAll();
         }
-        WebGLRenderer.prototype.onRenderFinish = function () {
+        var __egretProto__ = WebGLRenderer.prototype;
+        __egretProto__.onRenderFinish = function () {
             this._draw();
         };
-        WebGLRenderer.prototype.initAll = function () {
+        __egretProto__.initAll = function () {
             if (WebGLRenderer.isInit) {
                 return;
             }
@@ -350,7 +345,7 @@ var egret;
             //    this._dirty = false;
             //}
         };
-        WebGLRenderer.prototype.createCanvas = function () {
+        __egretProto__.createCanvas = function () {
             var canvas = egret.Browser.getInstance().$("#egretCanvas");
             if (!canvas) {
                 var container = document.getElementById(egret.StageDelegate.canvas_div_name);
@@ -361,7 +356,7 @@ var egret;
             egret.MainContext.instance.stage.addEventListener(egret.Event.RESIZE, this.onResize, this);
             return canvas;
         };
-        WebGLRenderer.prototype.onResize = function () {
+        __egretProto__.onResize = function () {
             //设置canvas宽高
             var container = document.getElementById(egret.StageDelegate.canvas_div_name);
             if (this.canvas) {
@@ -380,15 +375,15 @@ var egret;
                 this.html5Canvas.style.height = container.style.height;
             }
         };
-        WebGLRenderer.prototype.handleContextLost = function () {
+        __egretProto__.handleContextLost = function () {
             this.contextLost = true;
         };
-        WebGLRenderer.prototype.handleContextRestored = function () {
+        __egretProto__.handleContextRestored = function () {
             this.initWebGL();
             this.shaderManager.setContext(this.gl);
             this.contextLost = false;
         };
-        WebGLRenderer.prototype.initWebGL = function () {
+        __egretProto__.initWebGL = function () {
             var options = {};
             var gl;
             var names = ["experimental-webgl", "webgl"];
@@ -409,7 +404,7 @@ var egret;
             this.glID = WebGLRenderer.glID;
             this.setContext(gl);
         };
-        WebGLRenderer.prototype.setContext = function (gl) {
+        __egretProto__.setContext = function (gl) {
             this.gl = gl;
             gl.id = this.glContextId++;
             this.vertexBuffer = gl.createBuffer();
@@ -423,7 +418,7 @@ var egret;
             gl.enable(gl.BLEND);
             gl.colorMask(true, true, true, true);
         };
-        WebGLRenderer.prototype.start = function () {
+        __egretProto__.start = function () {
             if (this.contextLost) {
                 return;
             }
@@ -449,7 +444,7 @@ var egret;
             gl.vertexAttribPointer(shader.aTextureCoord, 2, gl.FLOAT, false, stride, 2 * 4);
             gl.vertexAttribPointer(shader.colorAttribute, 2, gl.FLOAT, false, stride, 4 * 4);
         };
-        WebGLRenderer.prototype.clearScreen = function () {
+        __egretProto__.clearScreen = function () {
             var gl = this.gl;
             gl.colorMask(true, true, true, true);
             var list = egret.RenderFilter.getInstance().getDrawAreaList();
@@ -464,7 +459,7 @@ var egret;
             gl.viewport(0, 0, stage.stageWidth, stage.stageHeight);
             this.renderCost = 0;
         };
-        WebGLRenderer.prototype.setBlendMode = function (blendMode) {
+        __egretProto__.setBlendMode = function (blendMode) {
             if (!blendMode) {
                 blendMode = egret.BlendMode.NORMAL;
             }
@@ -477,7 +472,7 @@ var egret;
                 }
             }
         };
-        WebGLRenderer.prototype.drawRepeatImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+        __egretProto__.drawRepeatImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
             var texture_scale_factor = egret.MainContext.instance.rendererContext._texture_scale_factor;
             sourceWidth = sourceWidth * texture_scale_factor;
             sourceHeight = sourceHeight * texture_scale_factor;
@@ -489,7 +484,7 @@ var egret;
                 }
             }
         };
-        WebGLRenderer.prototype.drawImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+        __egretProto__.drawImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
             if (repeat === void 0) { repeat = undefined; }
             if (this.contextLost) {
                 return;
@@ -575,7 +570,7 @@ var egret;
             vertices[index++] = alpha;
             this.currentBatchSize++;
         };
-        WebGLRenderer.prototype._draw = function () {
+        __egretProto__._draw = function () {
             if (this.currentBatchSize == 0 || this.contextLost) {
                 return;
             }
@@ -590,7 +585,7 @@ var egret;
             this.renderCost += egret.getTimer() - beforeDraw;
             egret.Profiler.getInstance().onDrawImage();
         };
-        WebGLRenderer.prototype.setTransform = function (matrix) {
+        __egretProto__.setTransform = function (matrix) {
             var locWorldTransform = this.worldTransform;
             locWorldTransform.a = matrix.a;
             locWorldTransform.b = matrix.b;
@@ -599,11 +594,11 @@ var egret;
             locWorldTransform.tx = matrix.tx;
             locWorldTransform.ty = matrix.ty;
         };
-        WebGLRenderer.prototype.setAlpha = function (value, blendMode) {
+        __egretProto__.setAlpha = function (value, blendMode) {
             this.worldAlpha = value;
             this.setBlendMode(blendMode);
         };
-        WebGLRenderer.prototype.createWebGLTexture = function (texture) {
+        __egretProto__.createWebGLTexture = function (texture) {
             var bitmapData = texture._bitmapData;
             if (!bitmapData.webGLTexture) {
                 bitmapData.webGLTexture = {};
@@ -621,7 +616,7 @@ var egret;
                 gl.bindTexture(gl.TEXTURE_2D, null);
             }
         };
-        WebGLRenderer.prototype.pushMask = function (mask) {
+        __egretProto__.pushMask = function (mask) {
             this._draw();
             var gl = this.gl;
             if (this.maskList.length == 0) {
@@ -631,7 +626,7 @@ var egret;
             this.maskList.push(maskData);
             this.scissor(maskData.x, maskData.y, maskData.width, maskData.height);
         };
-        WebGLRenderer.prototype.getScissorRect = function (mask) {
+        __egretProto__.getScissorRect = function (mask) {
             var prevMask = this.maskList[this.maskList.length - 1];
             var x;
             var y;
@@ -669,7 +664,7 @@ var egret;
             }
             return maskData;
         };
-        WebGLRenderer.prototype.popMask = function () {
+        __egretProto__.popMask = function () {
             this._draw();
             var gl = this.gl;
             var maskData = this.maskList.pop();
@@ -685,7 +680,7 @@ var egret;
                 gl.disable(gl.SCISSOR_TEST);
             }
         };
-        WebGLRenderer.prototype.scissor = function (x, y, w, h) {
+        __egretProto__.scissor = function (x, y, w, h) {
             var gl = this.gl;
             if (w < 0) {
                 w = 0;
@@ -695,7 +690,7 @@ var egret;
             }
             gl.scissor(x, -y + egret.MainContext.instance.stage.stageHeight - h, w, h);
         };
-        WebGLRenderer.prototype.setGlobalColorTransform = function (colorTransformMatrix) {
+        __egretProto__.setGlobalColorTransform = function (colorTransformMatrix) {
             if (this.colorTransformMatrix != colorTransformMatrix) {
                 this._draw();
                 this.colorTransformMatrix = colorTransformMatrix;
@@ -710,11 +705,11 @@ var egret;
                 }
             }
         };
-        WebGLRenderer.prototype.setGlobalFilter = function (filterData) {
+        __egretProto__.setGlobalFilter = function (filterData) {
             this._draw();
             this.setFilterProperties(filterData);
         };
-        WebGLRenderer.prototype.setFilterProperties = function (filterData) {
+        __egretProto__.setFilterProperties = function (filterData) {
             if (filterData) {
                 this.filterType = filterData.type;
                 switch (filterData.type) {
@@ -729,14 +724,14 @@ var egret;
                 this.filterType = null;
             }
         };
-        WebGLRenderer.prototype.setupFont = function (textField, style) {
+        __egretProto__.setupFont = function (textField, style) {
             if (style === void 0) { style = null; }
             this.canvasContext.setupFont(textField, style);
         };
-        WebGLRenderer.prototype.measureText = function (text) {
+        __egretProto__.measureText = function (text) {
             return this.canvasContext.measureText(text);
         };
-        WebGLRenderer.prototype.renderGraphics = function (graphics) {
+        __egretProto__.renderGraphics = function (graphics) {
             this._draw();
             var gl = this.gl;
             var shader = this.shaderManager.primitiveShader;
@@ -765,7 +760,7 @@ var egret;
             gl.drawElements(gl.TRIANGLE_STRIP, this.graphicsIndices.length, gl.UNSIGNED_SHORT, 0);
             this.shaderManager.activateShader(this.shaderManager.defaultShader);
         };
-        WebGLRenderer.prototype.updateGraphics = function (graphics) {
+        __egretProto__.updateGraphics = function (graphics) {
             var gl = this.gl;
             this.buildRectangle(graphics);
             gl.bindBuffer(gl.ARRAY_BUFFER, this.graphicsBuffer);
@@ -773,7 +768,7 @@ var egret;
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.graphicsIndexBuffer);
             gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.graphicsIndices), gl.STATIC_DRAW);
         };
-        WebGLRenderer.prototype.buildRectangle = function (graphicsData) {
+        __egretProto__.buildRectangle = function (graphicsData) {
             var x = graphicsData.x;
             var y = graphicsData.y;
             var width = graphicsData.w;
@@ -795,7 +790,7 @@ var egret;
             verts.push(r, g, b, alpha);
             indices.push(vertPos, vertPos, vertPos + 1, vertPos + 2, vertPos + 3, vertPos + 3);
         };
-        WebGLRenderer.prototype.setGraphicsStyle = function (r, g, b, a) {
+        __egretProto__.setGraphicsStyle = function (r, g, b, a) {
             this.graphicsStyle.r = r;
             this.graphicsStyle.g = g;
             this.graphicsStyle.b = b;
@@ -888,6 +883,7 @@ var egret_webgl_graphics;
             this.thisObject = thisObject;
             this.args = args;
         }
+        var __egretProto__ = Command.prototype;
         return Command;
     })();
     Command.prototype.__class__ = "egret_webgl_graphics.Command";

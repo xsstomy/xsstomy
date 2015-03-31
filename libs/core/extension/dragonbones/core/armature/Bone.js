@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -77,6 +71,7 @@ var dragonBones;
             this._needUpdate = 2;
             this._isColorChanged = false;
         }
+        var __egretProto__ = Bone.prototype;
         Bone.initWithBoneData = function (boneData) {
             var outputBone = new Bone();
             outputBone.name = boneData.name;
@@ -88,7 +83,7 @@ var dragonBones;
         /**
          * @inheritDoc
          */
-        Bone.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             if (!this._boneList) {
                 return;
             }
@@ -113,7 +108,7 @@ var dragonBones;
          * @param child {DBObject} Bone 实例 或者 Slot 实例
          * @returns {boolean}
          */
-        Bone.prototype.contains = function (child) {
+        __egretProto__.contains = function (child) {
             if (!child) {
                 throw new Error();
             }
@@ -131,7 +126,7 @@ var dragonBones;
          * @param childBone {Bone} 需要添加的 Bone 实例
          * @param updateLater {boolean} 是否延迟更新。默认false。当需要一次性添加很多 Bone 时，开启延迟更新能够提高效率
          */
-        Bone.prototype.addChildBone = function (childBone, updateLater) {
+        __egretProto__.addChildBone = function (childBone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
             if (!childBone) {
                 throw new Error();
@@ -157,7 +152,7 @@ var dragonBones;
          * @param childBone {Bone} 需要移除的 Bone 实例
          * @param updateLater {boolean} 是否延迟更新。默认false。当需要一次性移除很多 Bone 时，开启延迟更新能够提高效率
          */
-        Bone.prototype.removeChildBone = function (childBone, updateLater) {
+        __egretProto__.removeChildBone = function (childBone, updateLater) {
             if (updateLater === void 0) { updateLater = false; }
             if (!childBone) {
                 throw new Error();
@@ -177,7 +172,7 @@ var dragonBones;
          * 向当前 Bone 实例中添加指定的 Slot 实例
          * @param childSlot {Slot} 需要添加的 Slot 实例
          */
-        Bone.prototype.addSlot = function (childSlot) {
+        __egretProto__.addSlot = function (childSlot) {
             if (!childSlot) {
                 throw new Error();
             }
@@ -192,7 +187,7 @@ var dragonBones;
          * 从当前 Bone 实例中移除指定的 Slot 实例
          * @param childSlot {Slot} 需要移除的 Slot 实例
          */
-        Bone.prototype.removeSlot = function (childSlot) {
+        __egretProto__.removeSlot = function (childSlot) {
             if (!childSlot) {
                 throw new Error();
             }
@@ -205,7 +200,7 @@ var dragonBones;
             childSlot.setArmature(null);
         };
         /** @private */
-        Bone.prototype._setArmature = function (value) {
+        __egretProto__._setArmature = function (value) {
             if (this._armature == value) {
                 return;
             }
@@ -231,7 +226,7 @@ var dragonBones;
          * @param returnCopy {boolean} 是否返回拷贝。默认：true
          * @returns {Bone[]}
          */
-        Bone.prototype.getBones = function (returnCopy) {
+        __egretProto__.getBones = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._boneList.concat() : this._boneList;
         };
@@ -240,7 +235,7 @@ var dragonBones;
          * @param returnCopy {boolean} 是否返回拷贝。默认：true
          * @returns {Slot[]}
          */
-        Bone.prototype.getSlots = function (returnCopy) {
+        __egretProto__.getSlots = function (returnCopy) {
             if (returnCopy === void 0) { returnCopy = true; }
             return returnCopy ? this._slotList.concat() : this._slotList;
         };
@@ -248,10 +243,10 @@ var dragonBones;
         /**
          * 在下一帧强制更新当前 Bone 实例及其包含的所有 Slot 的动画。
          */
-        Bone.prototype.invalidUpdate = function () {
+        __egretProto__.invalidUpdate = function () {
             this._needUpdate = 2;
         };
-        Bone.prototype._calculateRelativeParentTransform = function () {
+        __egretProto__._calculateRelativeParentTransform = function () {
             this._global.scaleX = this._origin.scaleX * this._tween.scaleX * this._offset.scaleX;
             this._global.scaleY = this._origin.scaleY * this._tween.scaleY * this._offset.scaleY;
             this._global.skewX = this._origin.skewX + this._tween.skewX + this._offset.skewX;
@@ -260,7 +255,7 @@ var dragonBones;
             this._global.y = this._origin.y + this._tween.y + this._offset.y;
         };
         /** @private */
-        Bone.prototype._update = function (needUpdate) {
+        __egretProto__._update = function (needUpdate) {
             if (needUpdate === void 0) { needUpdate = false; }
             this._needUpdate--;
             if (needUpdate || this._needUpdate > 0 || (this._parent && this._parent._needUpdate > 0)) {
@@ -317,7 +312,7 @@ var dragonBones;
             }
         };
         /** @private */
-        Bone.prototype._updateColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier, colorChanged) {
+        __egretProto__._updateColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier, colorChanged) {
             var length = this._slotList.length;
             for (var i = 0; i < length; i++) {
                 var childSlot = this._slotList[i];
@@ -326,7 +321,7 @@ var dragonBones;
             this._isColorChanged = colorChanged;
         };
         /** @private */
-        Bone.prototype._hideSlots = function () {
+        __egretProto__._hideSlots = function () {
             var length = this._slotList.length;
             for (var i = 0; i < length; i++) {
                 var childSlot = this._slotList[i];
@@ -334,7 +329,7 @@ var dragonBones;
             }
         };
         /** @private When bone timeline enter a key frame, call this func*/
-        Bone.prototype._arriveAtFrame = function (frame, timelineState, animationState, isCross) {
+        __egretProto__._arriveAtFrame = function (frame, timelineState, animationState, isCross) {
             var displayControl = animationState.displayControl && (!this.displayController || this.displayController == animationState.name) && animationState.containsBoneMask(this.name);
             if (displayControl) {
                 var tansformFrame = frame;
@@ -385,20 +380,20 @@ var dragonBones;
             }
         };
         /** @private */
-        Bone.prototype._addState = function (timelineState) {
+        __egretProto__._addState = function (timelineState) {
             if (this._timelineStateList.indexOf(timelineState) < 0) {
                 this._timelineStateList.push(timelineState);
                 this._timelineStateList.sort(this.sortState);
             }
         };
         /** @private */
-        Bone.prototype._removeState = function (timelineState) {
+        __egretProto__._removeState = function (timelineState) {
             var index = this._timelineStateList.indexOf(timelineState);
             if (index >= 0) {
                 this._timelineStateList.splice(index, 1);
             }
         };
-        Bone.prototype.blendingTimeline = function () {
+        __egretProto__.blendingTimeline = function () {
             var timelineState;
             var transform;
             var pivot;
@@ -424,8 +419,8 @@ var dragonBones;
                 var y = 0;
                 var skewX = 0;
                 var skewY = 0;
-                var scaleX = 0;
-                var scaleY = 0;
+                var scaleX = 1;
+                var scaleY = 1;
                 var pivotX = 0;
                 var pivotY = 0;
                 var weigthLeft = 1;
@@ -471,10 +466,10 @@ var dragonBones;
                 this._tweenPivot.y = pivotY;
             }
         };
-        Bone.prototype.sortState = function (state1, state2) {
+        __egretProto__.sortState = function (state1, state2) {
             return state1._animationState.layer < state2._animationState.layer ? -1 : 1;
         };
-        Object.defineProperty(Bone.prototype, "childArmature", {
+        Object.defineProperty(__egretProto__, "childArmature", {
             /**
              * 不推荐的API,建议使用 slot.childArmature 替代
              */
@@ -487,7 +482,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Bone.prototype, "display", {
+        Object.defineProperty(__egretProto__, "display", {
             /**
              * 不推荐的API,建议使用 slot.display 替代
              */
@@ -505,7 +500,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Bone.prototype, "node", {
+        Object.defineProperty(__egretProto__, "node", {
             /**
              * 不推荐的API,建议使用 offset 替代
              */
@@ -515,7 +510,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Bone.prototype, "visible", {
+        Object.defineProperty(__egretProto__, "visible", {
             /** @private */
             set: function (value) {
                 if (this._visible != value) {
@@ -530,7 +525,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Bone.prototype, "slot", {
+        Object.defineProperty(__egretProto__, "slot", {
             /**
              * 返回当前 Bone 实例包含的第一个 Slot 实例
              * @member {Slot} dragonBones.Bone#slot

@@ -72,10 +72,11 @@ var dragonBones;
             this.tx = 0;
             this.ty = 0;
         }
+        var __egretProto__ = Matrix.prototype;
         /**
          *执行原始矩阵的逆转换。逆矩阵和单位矩阵相乘会得到的单位矩阵
          */
-        Matrix.prototype.invert = function () {
+        __egretProto__.invert = function () {
             var a1 = this.a;
             var b1 = this.b;
             var c1 = this.c;
@@ -94,7 +95,7 @@ var dragonBones;
          * 右乘，其几何意义是将两次几何变换变成一次
          * @param m
          */
-        Matrix.prototype.concat = function (m) {
+        __egretProto__.concat = function (m) {
             var ma = m.a;
             var mb = m.b;
             var mc = m.c;

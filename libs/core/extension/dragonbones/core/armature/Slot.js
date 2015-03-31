@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -64,11 +58,12 @@ var dragonBones;
             this.inheritRotation = true;
             this.inheritScale = true;
         }
+        var __egretProto__ = Slot.prototype;
         /**
          * 通过传入 SlotData 初始化Slot
          * @param slotData
          */
-        Slot.prototype.initWithSlotData = function (slotData) {
+        __egretProto__.initWithSlotData = function (slotData) {
             this.name = slotData.name;
             this.blendMode = slotData.blendMode;
             this._originZOrder = slotData.zOrder;
@@ -77,7 +72,7 @@ var dragonBones;
         /**
          * @inheritDoc
          */
-        Slot.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             if (!this._displayList) {
                 return;
             }
@@ -90,7 +85,7 @@ var dragonBones;
         };
         //骨架装配
         /** @private */
-        Slot.prototype.setArmature = function (value) {
+        __egretProto__.setArmature = function (value) {
             if (this._armature == value) {
                 return;
             }
@@ -109,14 +104,14 @@ var dragonBones;
         };
         //动画
         /** @private */
-        Slot.prototype._update = function () {
+        __egretProto__._update = function () {
             if (this._parent._needUpdate <= 0) {
                 return;
             }
             this._updateGlobal();
             this._updateTransform();
         };
-        Slot.prototype._calculateRelativeParentTransform = function () {
+        __egretProto__._calculateRelativeParentTransform = function () {
             this._global.scaleX = this._origin.scaleX * this._offset.scaleX;
             this._global.scaleY = this._origin.scaleY * this._offset.scaleY;
             this._global.skewX = this._origin.skewX + this._offset.skewX;
@@ -124,7 +119,7 @@ var dragonBones;
             this._global.x = this._origin.x + this._offset.x + this._parent._tweenPivot.x;
             this._global.y = this._origin.y + this._offset.y + this._parent._tweenPivot.y;
         };
-        Slot.prototype.updateChildArmatureAnimation = function () {
+        __egretProto__.updateChildArmatureAnimation = function () {
             if (this.childArmature) {
                 if (this._isShowDisplay) {
                     if (this._armature && this._armature.animation.lastAnimationState && this.childArmature.animation.hasAnimation(this._armature.animation.lastAnimationState.name)) {
@@ -141,7 +136,7 @@ var dragonBones;
             }
         };
         /** @private */
-        Slot.prototype._changeDisplay = function (displayIndex) {
+        __egretProto__._changeDisplay = function (displayIndex) {
             if (displayIndex === void 0) { displayIndex = 0; }
             if (displayIndex < 0) {
                 if (this._isShowDisplay) {
@@ -177,7 +172,7 @@ var dragonBones;
         /** @private
          * Updates the display of the slot.
          */
-        Slot.prototype._updateSlotDisplay = function () {
+        __egretProto__._updateSlotDisplay = function () {
             var currentDisplayIndex = -1;
             if (this._currentDisplay) {
                 currentDisplayIndex = this._getDisplayIndex();
@@ -213,7 +208,7 @@ var dragonBones;
                 this._updateDisplayVisible(this._visible);
             }
         };
-        Object.defineProperty(Slot.prototype, "visible", {
+        Object.defineProperty(__egretProto__, "visible", {
             /** @private */
             set: function (value) {
                 if (this._visible != value) {
@@ -224,7 +219,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Slot.prototype, "displayList", {
+        Object.defineProperty(__egretProto__, "displayList", {
             /**
              * 显示对象列表(包含 display 或者 子骨架)
              * @member {any[]} dragonBones.Slot#displayList
@@ -252,7 +247,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Slot.prototype, "display", {
+        Object.defineProperty(__egretProto__, "display", {
             /**
              * 当前的显示对象(可能是 display 或者 子骨架)
              * @member {any} dragonBones.Slot#display
@@ -278,16 +273,16 @@ var dragonBones;
         /**
          * 不推荐的 API. 使用 display 属性代替
          */
-        Slot.prototype.getDisplay = function () {
+        __egretProto__.getDisplay = function () {
             return this.display;
         };
         /**
          * 不推荐的 API. 使用 display 属性代替
          */
-        Slot.prototype.setDisplay = function (value) {
+        __egretProto__.setDisplay = function (value) {
             this.display = value;
         };
-        Object.defineProperty(Slot.prototype, "childArmature", {
+        Object.defineProperty(__egretProto__, "childArmature", {
             /**
              * 当前的子骨架
              * @member {Armature} dragonBones.Slot#childArmature
@@ -305,7 +300,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Slot.prototype, "zOrder", {
+        Object.defineProperty(__egretProto__, "zOrder", {
             /**
              * 显示顺序。(支持小数用于实现动态插入slot)
              * @member {number} dragonBones.Slot#zOrder
@@ -324,7 +319,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Slot.prototype, "blendMode", {
+        Object.defineProperty(__egretProto__, "blendMode", {
             /**
              * 混合模式
              * @member {string} dragonBones.Slot#blendMode
@@ -345,13 +340,13 @@ var dragonBones;
         /**
          * @private
          */
-        Slot.prototype._updateDisplay = function (value) {
+        __egretProto__._updateDisplay = function (value) {
             throw new Error("");
         };
         /**
          * @private
          */
-        Slot.prototype._getDisplayIndex = function () {
+        __egretProto__._getDisplayIndex = function () {
             throw new Error(egret.getString(4001));
         };
         /**
@@ -360,7 +355,7 @@ var dragonBones;
          * @param container
          * @param index
          */
-        Slot.prototype._addDisplayToContainer = function (container, index) {
+        __egretProto__._addDisplayToContainer = function (container, index) {
             if (index === void 0) { index = -1; }
             throw new Error(egret.getString(4001));
         };
@@ -368,20 +363,20 @@ var dragonBones;
          * @private
          * remove the original display object from its parent.
          */
-        Slot.prototype._removeDisplayFromContainer = function () {
+        __egretProto__._removeDisplayFromContainer = function () {
             throw new Error(egret.getString(4001));
         };
         /**
          * @private
          * Updates the transform of the slot.
          */
-        Slot.prototype._updateTransform = function () {
+        __egretProto__._updateTransform = function () {
             throw new Error(egret.getString(4001));
         };
         /**
          * @private
          */
-        Slot.prototype._updateDisplayVisible = function (value) {
+        __egretProto__._updateDisplayVisible = function (value) {
             throw new Error(egret.getString(4001));
         };
         /**
@@ -396,7 +391,7 @@ var dragonBones;
          * @param gM
          * @param bM
          */
-        Slot.prototype._updateDisplayColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier) {
+        __egretProto__._updateDisplayColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier) {
             this._colorTransform.alphaOffset = aOffset;
             this._colorTransform.redOffset = rOffset;
             this._colorTransform.greenOffset = gOffset;
@@ -411,7 +406,7 @@ var dragonBones;
          * Update the blend mode of the display object.
          * @param value The blend mode to use.
          */
-        Slot.prototype._updateDisplayBlendMode = function (value) {
+        __egretProto__._updateDisplayBlendMode = function (value) {
             throw new Error(egret.getString(4001));
         };
         return Slot;

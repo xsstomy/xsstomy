@@ -6,6 +6,7 @@ var Const;
     var Const = (function () {
         function Const() {
         }
+        var __egretProto__ = Const.prototype;
         Const.stageWidth = 480;
         Const.stageHeigth = 800;
         return Const;

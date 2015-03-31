@@ -74,6 +74,9 @@ module DemoObject
         }
     }
 
+    /**
+     * 3d球
+     */
     export class Ball3D extends egret.Sprite
     {
         public constructor(radius:number = 40,color:any = 0xff0000)
@@ -99,6 +102,33 @@ module DemoObject
             this.graphics.beginFill(this.color);
             this.graphics.drawCircle(0,0,this.radius);
             this.graphics.endFill();
+        }
+    }
+
+    /**
+     * 树
+     */
+    export class Tree extends egret.Sprite
+    {
+         xPos:number = 0;
+         yPos:number = 0;
+         zPos:number = 0;
+        private _color:any;
+        constructor(color:any = 0xffffff)
+        {
+            super();
+            this._color = color;
+            this.init();
+        }
+
+        private init()
+        {
+            this.graphics.lineStyle(2,this._color);
+            this.graphics.lineTo(0,-140 - Math.random()*20);
+            this.graphics.moveTo(0,-30 - Math.random()*30 );
+            this.graphics.lineTo(Math.random() * 80 - 40, -100 - Math.random() * 40 );
+            this.graphics.moveTo( 0, -60 - Math.random() * 40 );
+            this.graphics.lineTo( Math.random() * 60 - 30, -110 - Math.random() * 20 );
         }
     }
 }

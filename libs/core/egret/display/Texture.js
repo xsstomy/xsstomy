@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -85,7 +79,8 @@ var egret;
             this._sourceHeight = 0;
             this._bitmapData = null;
         }
-        Object.defineProperty(Texture.prototype, "textureWidth", {
+        var __egretProto__ = Texture.prototype;
+        Object.defineProperty(__egretProto__, "textureWidth", {
             /**
              * 纹理宽度
              * @member {number} egret.Texture#textureWidth
@@ -96,7 +91,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Texture.prototype, "textureHeight", {
+        Object.defineProperty(__egretProto__, "textureHeight", {
             /**
              * 纹理高度
              * @member {number} egret.Texture#textureHeight
@@ -107,7 +102,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Texture.prototype, "bitmapData", {
+        Object.defineProperty(__egretProto__, "bitmapData", {
             /**
              * 纹理对象中得位图数据
              * @member {any} egret.Texture#bitmapData
@@ -118,7 +113,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        Texture.prototype._setBitmapData = function (value) {
+        __egretProto__._setBitmapData = function (value) {
             var scale = egret.MainContext.instance.rendererContext._texture_scale_factor;
             this._bitmapData = value;
             this._sourceWidth = value.width;
@@ -136,7 +131,7 @@ var egret;
          * @param y {number} 像素点的Y轴坐标
          * @returns {number} 指定像素点的颜色值
          */
-        Texture.prototype.getPixel32 = function (x, y) {
+        __egretProto__.getPixel32 = function (x, y) {
             var result = this._bitmapData.getContext("2d").getImageData(x, y, 1, 1);
             return result.data;
         };

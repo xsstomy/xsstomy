@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -50,11 +44,12 @@ var dragonBones;
                 throw new Error(egret.getString(4001));
             }
         }
+        var __egretProto__ = BaseFactory.prototype;
         /**
          * 释放资源
          * @param  disposeData {boolean} (optional) 是否释放所有内部的引用
          */
-        BaseFactory.prototype.dispose = function (disposeData) {
+        __egretProto__.dispose = function (disposeData) {
             if (disposeData === void 0) { disposeData = true; }
             if (disposeData) {
                 for (var skeletonName in this.dragonBonesDataDic) {
@@ -76,14 +71,14 @@ var dragonBones;
          * @param name {string} 想要获取的DragonBonesData的名字
          * @returns {dragonBones.DragonBonesData} 返回指定名字的DragonBonesData（如果存在的话）
          */
-        BaseFactory.prototype.getDragonBonesData = function (name) {
+        __egretProto__.getDragonBonesData = function (name) {
             return this.dragonBonesDataDic[name];
         };
         /**
          * 根据名字获取一个DragonBonesData（不推荐使用）
          * 建议使用方法getDragonBonesData来代替这个方法
          */
-        BaseFactory.prototype.getSkeletonData = function (name) {
+        __egretProto__.getSkeletonData = function (name) {
             return this.getDragonBonesData(name);
         };
         /**
@@ -91,7 +86,7 @@ var dragonBones;
          * @param data {dragonBones.DragonBonesData} 一个DragonBonesData实例
          * @param name {string} (optional) DragonBonesData的名字
          */
-        BaseFactory.prototype.addDragonBonesData = function (data, name) {
+        __egretProto__.addDragonBonesData = function (data, name) {
             if (name === void 0) { name = null; }
             if (!data) {
                 throw new Error();
@@ -110,7 +105,7 @@ var dragonBones;
          * 添加一个DragonBonesData实例（不推荐使用）
          * 建议使用方法addDragonBonesData来代替
          */
-        BaseFactory.prototype.addSkeletonData = function (data, name) {
+        __egretProto__.addSkeletonData = function (data, name) {
             if (name === void 0) { name = null; }
             this.addDragonBonesData(data, name);
         };
@@ -118,14 +113,14 @@ var dragonBones;
          * 根据名字移除一个DragonBonesData实例.
          * @param name {string} 想要移除的DragonBonesData的名字
          */
-        BaseFactory.prototype.removeDragonBonesData = function (name) {
+        __egretProto__.removeDragonBonesData = function (name) {
             delete this.dragonBonesDataDic[name];
         };
         /**
          * 根据名字移除一个DragonBonesData实例.（不推荐使用）
          * 建议使用方法removeDragonBonesData代替
          */
-        BaseFactory.prototype.removeSkeletonData = function (name) {
+        __egretProto__.removeSkeletonData = function (name) {
             delete this.dragonBonesDataDic[name];
         };
         /**
@@ -133,7 +128,7 @@ var dragonBones;
          * @param name {string} 需要获取的纹理集TextureAtlas的名字
          * @returns {any} 纹理集TextureAtlas
          */
-        BaseFactory.prototype.getTextureAtlas = function (name) {
+        __egretProto__.getTextureAtlas = function (name) {
             return this.textureAtlasDic[name];
         };
         /**
@@ -141,7 +136,7 @@ var dragonBones;
          * @param textureAtlas {any} 需要被添加的纹理集
          * @param name {string} (optional) 需要被添加的纹理集的名字
          */
-        BaseFactory.prototype.addTextureAtlas = function (textureAtlas, name) {
+        __egretProto__.addTextureAtlas = function (textureAtlas, name) {
             if (name === void 0) { name = null; }
             if (!textureAtlas) {
                 throw new Error();
@@ -167,7 +162,7 @@ var dragonBones;
          * 移除指定名字的纹理集
          * @param name {string} 需要移除的纹理集的名字
          */
-        BaseFactory.prototype.removeTextureAtlas = function (name) {
+        __egretProto__.removeTextureAtlas = function (name) {
             delete this.textureAtlasDic[name];
         };
         /**
@@ -178,7 +173,7 @@ var dragonBones;
          * @param pivotY {number} 轴点的y坐标
          * @returns {any} 返回的TextureDisplay
          */
-        BaseFactory.prototype.getTextureDisplay = function (textureName, textureAtlasName, pivotX, pivotY) {
+        __egretProto__.getTextureDisplay = function (textureName, textureAtlasName, pivotX, pivotY) {
             if (textureAtlasName === void 0) { textureAtlasName = null; }
             if (pivotX === void 0) { pivotX = NaN; }
             if (pivotY === void 0) { pivotY = NaN; }
@@ -222,7 +217,7 @@ var dragonBones;
          * @param skinName 皮肤的名字 可选参数
          * @returns {*}
          */
-        BaseFactory.prototype.buildArmature = function (armatureName, fromDragonBonesDataName, fromTextureAtlasName, skinName) {
+        __egretProto__.buildArmature = function (armatureName, fromDragonBonesDataName, fromTextureAtlasName, skinName) {
             if (fromDragonBonesDataName === void 0) { fromDragonBonesDataName = null; }
             if (fromTextureAtlasName === void 0) { fromTextureAtlasName = null; }
             if (skinName === void 0) { skinName = null; }
@@ -246,7 +241,7 @@ var dragonBones;
          * @param skinName 皮肤名称 可选参数
          * @returns {Armature}
          */
-        BaseFactory.prototype.buildArmatureUsingArmatureDataFromTextureAtlas = function (dragonBonesData, armatureData, textureAtlas, skinName) {
+        __egretProto__.buildArmatureUsingArmatureDataFromTextureAtlas = function (dragonBonesData, armatureData, textureAtlas, skinName) {
             if (skinName === void 0) { skinName = null; }
             var outputArmature = this._generateArmature();
             outputArmature.name = armatureData.name;
@@ -268,7 +263,7 @@ var dragonBones;
          * @param ifRemoveOriginalAnimationList 是否移除原骨架里的动画，暂时不支持为false的情况
          * @returns {boolean}
          */
-        BaseFactory.prototype.copyAnimationsToArmature = function (toArmature, fromArmatreName, fromDragonBonesDataName, ifRemoveOriginalAnimationList) {
+        __egretProto__.copyAnimationsToArmature = function (toArmature, fromArmatreName, fromDragonBonesDataName, ifRemoveOriginalAnimationList) {
             if (fromDragonBonesDataName === void 0) { fromDragonBonesDataName = null; }
             if (ifRemoveOriginalAnimationList === void 0) { ifRemoveOriginalAnimationList = true; }
             var buildArmatureDataPackage = {};
@@ -306,7 +301,7 @@ var dragonBones;
             }
             return true;
         };
-        BaseFactory.prototype.fillBuildArmatureDataPackageArmatureInfo = function (armatureName, dragonBonesDataName, outputBuildArmatureDataPackage) {
+        __egretProto__.fillBuildArmatureDataPackageArmatureInfo = function (armatureName, dragonBonesDataName, outputBuildArmatureDataPackage) {
             if (dragonBonesDataName) {
                 outputBuildArmatureDataPackage.dragonBonesDataName = dragonBonesDataName;
                 outputBuildArmatureDataPackage.dragonBonesData = this.dragonBonesDataDic[dragonBonesDataName];
@@ -325,10 +320,10 @@ var dragonBones;
             }
             return false;
         };
-        BaseFactory.prototype.fillBuildArmatureDataPackageTextureInfo = function (fromTextureAtlasName, outputBuildArmatureDataPackage) {
+        __egretProto__.fillBuildArmatureDataPackageTextureInfo = function (fromTextureAtlasName, outputBuildArmatureDataPackage) {
             outputBuildArmatureDataPackage.textureAtlas = this.textureAtlasDic[fromTextureAtlasName ? fromTextureAtlasName : outputBuildArmatureDataPackage.dragonBonesDataName];
         };
-        BaseFactory.prototype.findFirstDragonBonesData = function () {
+        __egretProto__.findFirstDragonBonesData = function () {
             for (var key in this.dragonBonesDataDic) {
                 var outputDragonBonesData = this.dragonBonesDataDic[key];
                 if (outputDragonBonesData) {
@@ -337,7 +332,7 @@ var dragonBones;
             }
             return null;
         };
-        BaseFactory.prototype.findFirstTextureAtlas = function () {
+        __egretProto__.findFirstTextureAtlas = function () {
             for (var key in this.textureAtlasDic) {
                 var outputTextureAtlas = this.textureAtlasDic[key];
                 if (outputTextureAtlas) {
@@ -346,7 +341,7 @@ var dragonBones;
             }
             return null;
         };
-        BaseFactory.prototype._buildBones = function (armature) {
+        __egretProto__._buildBones = function (armature) {
             //按照从属关系的顺序建立
             var boneDataList = armature.armatureData.boneDataList;
             var boneData;
@@ -364,7 +359,7 @@ var dragonBones;
             }
             armature._updateAnimationAfterBoneListChanged();
         };
-        BaseFactory.prototype._buildSlots = function (armature, skinName, textureAtlas) {
+        __egretProto__._buildSlots = function (armature, skinName, textureAtlas) {
             var skinData = armature.armatureData.getSkinData(skinName);
             if (!skinData) {
                 return;
@@ -420,7 +415,7 @@ var dragonBones;
          * Generates an Armature instance.
          * @returns {dragonBones.Armature} Armature An Armature instance.
          */
-        BaseFactory.prototype._generateArmature = function () {
+        __egretProto__._generateArmature = function () {
             return null;
         };
         /**
@@ -428,7 +423,7 @@ var dragonBones;
          * Generates an Slot instance.
          * @returns {dragonBones.Slot} Slot An Slot instance.
          */
-        BaseFactory.prototype._generateSlot = function () {
+        __egretProto__._generateSlot = function () {
             return null;
         };
         /**
@@ -440,7 +435,7 @@ var dragonBones;
          * @param pivotY {number} A pivot y based value.
          * @returns {any}
          */
-        BaseFactory.prototype._generateDisplay = function (textureAtlas, fullName, pivotX, pivotY) {
+        __egretProto__._generateDisplay = function (textureAtlas, fullName, pivotX, pivotY) {
             return null;
         };
         BaseFactory._helpMatrix = new dragonBones.Matrix();

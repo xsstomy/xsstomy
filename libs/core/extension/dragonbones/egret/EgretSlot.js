@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -47,10 +41,11 @@ var dragonBones;
             _super.call(this, this);
             this._egretDisplay = null;
         }
+        var __egretProto__ = EgretSlot.prototype;
         /**
          * 释放资源
          */
-        EgretSlot.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             var length = this._displayList.length;
             for (var i = 0; i < length; i++) {
                 var content = this._displayList[i];
@@ -62,19 +57,19 @@ var dragonBones;
             this._egretDisplay = null;
         };
         /** @private */
-        EgretSlot.prototype._updateDisplay = function (value) {
+        __egretProto__._updateDisplay = function (value) {
             this._egretDisplay = value;
         };
         //Abstract method
         /** @private */
-        EgretSlot.prototype._getDisplayIndex = function () {
+        __egretProto__._getDisplayIndex = function () {
             if (this._egretDisplay && this._egretDisplay.parent) {
                 return this._egretDisplay.parent.getChildIndex(this._egretDisplay);
             }
             return -1;
         };
         /** @private */
-        EgretSlot.prototype._addDisplayToContainer = function (container, index) {
+        __egretProto__._addDisplayToContainer = function (container, index) {
             if (index === void 0) { index = -1; }
             var egretContainer = container;
             if (this._egretDisplay && egretContainer) {
@@ -87,32 +82,32 @@ var dragonBones;
             }
         };
         /** @private */
-        EgretSlot.prototype._removeDisplayFromContainer = function () {
+        __egretProto__._removeDisplayFromContainer = function () {
             if (this._egretDisplay && this._egretDisplay.parent) {
                 this._egretDisplay.parent.removeChild(this._egretDisplay);
             }
         };
         /** @private */
-        EgretSlot.prototype._updateTransform = function () {
+        __egretProto__._updateTransform = function () {
             if (this._egretDisplay) {
                 this._egretDisplay.__hack_local_matrix = this._globalTransformMatrix;
             }
         };
         /** @private */
-        EgretSlot.prototype._updateDisplayVisible = function (value) {
+        __egretProto__._updateDisplayVisible = function (value) {
             if (this._egretDisplay && this._parent) {
                 this._egretDisplay.visible = this._parent._visible && this._visible && value;
             }
         };
         /** @private */
-        EgretSlot.prototype._updateDisplayColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier) {
+        __egretProto__._updateDisplayColor = function (aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier) {
             _super.prototype._updateDisplayColor.call(this, aOffset, rOffset, gOffset, bOffset, aMultiplier, rMultiplier, gMultiplier, bMultiplier);
             if (this._egretDisplay) {
                 this._egretDisplay.alpha = aMultiplier;
             }
         };
         /** @private */
-        EgretSlot.prototype._updateDisplayBlendMode = function (value) {
+        __egretProto__._updateDisplayBlendMode = function (value) {
             if (this._egretDisplay && value) {
                 this._egretDisplay.blendMode = value;
             }

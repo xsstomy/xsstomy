@@ -420,20 +420,144 @@ module ThreeD
          */
         private arraySort(array:Array<any>,property?:string):void
         {
-            var z:number = 0;
-            var ball:DemoObject.Ball3D;
+            var ball:any;
             for(var i:number = 0 ; i < array.length ; i = i + 1)
             {
                 for( var j:number = i + 1 ; j < array.length ; j = j + 1)
                 {
 
-                    if( this.balls[j-1].zpos > this.balls[j].zpos )
+                    if( array[j-1].zpos > array[j].zpos )
                     {
-                        ball = this.balls[j];
-                        this.balls[j] = this.balls[j-1];
-                        this.balls[j-1] = ball;
+                        ball = array[j];
+                        array[j] = array[j-1];
+                        array[j-1] = ball;
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * 森林
+     */
+    export class Trees extends egret.Sprite
+    {
+        private trees:Array<any>;
+        private numTrees:number = 100;
+        private fl:number = 250;
+        private vpX:number = 0;
+        private vpY:number = 0;
+        private floor:number = 50;
+        private vz:number = 0;
+        private friction:number = 0.98;
+
+        constructor()
+        {
+            super();
+            this.init();
+        }
+
+        private init()
+        {
+            this.width = egret.MainContext.instance.stage.stageWidth;
+            this.height = egret.MainContext.instance.stage.stageHeight;
+            this.vpX = this.width * 0.5;
+            this.vpY = this.height * 0.5;
+            this.trees = [];
+            for(var i = 0,tree:DemoObject.Tree; i < this.numTrees ; i = i + 1)
+            {
+                tree = new DemoObject.Tree(Math.random()*0xffffff);
+                this.trees.push( tree );
+                tree.xPos = Math.random()*2000 - 1000;
+                tree.yPos = this.floor;
+                tree.zPos = Math.random()*10000;
+                this.addChild( tree );
+            }
+
+            this.addEventListener(egret.Event.ENTER_FRAME,this.onEnterFrame,this);
+            this.touchEnabled = true;
+            this.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.onTouchBegin,this);
+            this.addEventListener(egret.TouchEvent.TOUCH_END,this.onTouchEnd,this);
+        }
+
+
+        private onEnterFrame(evt:egret.Event)
+        {
+            for(var i = 0 , tree:DemoObject.Tree; i < this.numTrees ; i = i + 1)
+            {
+                tree = this.trees[i];
+                this.move(tree);
+
+            }
+
+            this.vz *= this.friction;
+            this.sortZ();
+
+            this.vz += 1;
+            if( this.vz > 100)
+                this.vz = -100;
+        }
+
+        private onTouchBegin(evt:egret.TouchEvent)
+        {
+            this.vz -= 10;
+        }
+
+        private onTouchEnd(evt:egret.TouchEvent)
+        {
+            this.vz += 10;
+        }
+
+        private move(tree:DemoObject.Tree)
+        {
+            tree.zPos += this.vz;
+
+            if( tree.zPos < -this.fl )
+            {
+                tree.zPos += 10000;
+            }
+
+            if( tree.zPos > 10000 - this.fl )
+            {
+                tree.zPos -= 10000;
+            }
+
+            var scale:number = this.fl/(this.fl + tree.zPos);
+            tree.scaleX = tree.scaleY = scale;
+
+            tree.x = this.vpX + tree.xPos * scale;
+            tree.y = this.vpY + tree.yPos * scale;
+            tree.alpha = scale*0.7 + 0.3;
+        }
+
+        /**
+         * 数组中对象的某一属性排序
+         * @param array
+         */
+        private arraySort(array:Array<any>,property?:string):void
+        {
+            var ball:any;
+            for(var i:number = 0 ; i < array.length ; i = i + 1)
+            {
+                for( var j:number = i + 1 ; j < array.length ; j = j + 1)
+                {
+
+                    if( array[j-1].zpos > array[j].zpos )
+                    {
+                        ball = array[j];
+                        array[j] = array[j-1];
+                        array[j-1] = ball;
+                    }
+                }
+            }
+        }
+        private sortZ()
+        {
+            this.arraySort(this.trees);
+            for(var i = 0 ,tree:DemoObject.Tree ; i < this.numTrees ; i = i + 1 )
+            {
+                tree = this.trees[i];
+                this.setChildIndex(tree,i);
             }
         }
     }

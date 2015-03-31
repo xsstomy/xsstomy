@@ -1,5 +1,6 @@
 var egret_file_list = [
 	"core/egret/i18n/cn.js",
+	"core/egret/utils/extends.js",
 	"core/egret/utils/Logger.js",
 	"core/egret/utils/HashObject.js",
 	"core/egret/utils/Recycler.js",
@@ -85,9 +86,9 @@ var egret_file_list = [
 	"core/egret/context/interactive/NativeTouchContext.js",
 	"core/egret/context/PromiseObject.js",
 	"core/egret/context/net/NativeNetContext.js",
-	"core/egret/context/net/NativeResourceLoader.js",
-	"core/egret/context/net/VersionController.js",
 	"core/egret/context/display/NativeStageText.js",
+	"core/egret/context/net/VersionController.js",
+	"core/egret/context/net/NativeResourceLoader.js",
 	"core/extension/resource/events/ResourceEvent.js",
 	"core/extension/resource/core/ResourceItem.js",
 	"core/extension/resource/core/ResourceConfig.js",

@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 /**
  * Created by xiashishi on 15/2/8.
  */
@@ -26,7 +20,8 @@ var ThreeD;
             this.touchY = 0;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Perspective.prototype.init = function (evt) {
+        var __egretProto__ = Perspective.prototype;
+        __egretProto__.init = function (evt) {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -36,23 +31,23 @@ var ThreeD;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Perspective.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Perspective.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
         };
-        Perspective.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Perspective.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.xpos = this.touchX - this.vpX;
             this.ypos = this.touchY - this.vpY;
             this.zpos = Math.sqrt(this.xpos * this.xpos + this.ypos * this.ypos);
@@ -95,7 +90,8 @@ var ThreeD;
             this.bounce = 1;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Bounce3D.prototype.init = function (evt) {
+        var __egretProto__ = Bounce3D.prototype;
+        __egretProto__.init = function (evt) {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -103,7 +99,7 @@ var ThreeD;
             this.addChild(this.ball);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Bounce3D.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.xpos += this.vx;
             this.ypos += this.vy;
             this.zpos += this.vz;
@@ -167,7 +163,8 @@ var ThreeD;
             this.bounce = 1;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        MultiBounce3D.prototype.init = function () {
+        var __egretProto__ = MultiBounce3D.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -182,7 +179,7 @@ var ThreeD;
             }
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        MultiBounce3D.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             for (var i = 0; i < this.numBalls; i = i + 1) {
                 var ball = this.balls[i];
                 this.move(ball);
@@ -194,7 +191,7 @@ var ThreeD;
          * 路径移动规则
          * @param ball
          */
-        MultiBounce3D.prototype.move = function (ball) {
+        __egretProto__.move = function (ball) {
             ball.xpos += ball.vx;
             ball.ypos += ball.vy;
             ball.zpos += ball.vz;
@@ -237,7 +234,7 @@ var ThreeD;
         /**
          * z轴排序
          */
-        MultiBounce3D.prototype.sortZ = function () {
+        __egretProto__.sortZ = function () {
             this.arraySort(this.balls);
             for (var i = 0; i < this.numBalls; i = i + 1) {
                 var ball = this.balls[i];
@@ -248,7 +245,7 @@ var ThreeD;
          * 数组中对象的某一属性排序
          * @param array
          */
-        MultiBounce3D.prototype.arraySort = function (array, property) {
+        __egretProto__.arraySort = function (array, property) {
             var z = 0;
             var ball;
             for (var i = 0; i < array.length; i = i + 1) {
@@ -281,7 +278,8 @@ var ThreeD;
             this.bounce = -0.6;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Fireworks.prototype.init = function () {
+        var __egretProto__ = Fireworks.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -296,7 +294,7 @@ var ThreeD;
             }
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Fireworks.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             for (var i = 0; i < this.numBalls; i = i + 1) {
                 var ball = this.balls[i];
                 this.move(ball);
@@ -308,7 +306,7 @@ var ThreeD;
          * 路径移动规则
          * @param ball
          */
-        Fireworks.prototype.move = function (ball) {
+        __egretProto__.move = function (ball) {
             ball.vy += this.gravity;
             ball.xpos += ball.vx;
             ball.ypos += ball.vy;
@@ -331,7 +329,7 @@ var ThreeD;
         /**
          * z轴排序
          */
-        Fireworks.prototype.sortZ = function () {
+        __egretProto__.sortZ = function () {
             this.arraySort(this.balls);
             for (var i = 0; i < this.numBalls; i = i + 1) {
                 var ball = this.balls[i];
@@ -342,15 +340,14 @@ var ThreeD;
          * 数组中对象的某一属性排序
          * @param array
          */
-        Fireworks.prototype.arraySort = function (array, property) {
-            var z = 0;
+        __egretProto__.arraySort = function (array, property) {
             var ball;
             for (var i = 0; i < array.length; i = i + 1) {
                 for (var j = i + 1; j < array.length; j = j + 1) {
-                    if (this.balls[j - 1].zpos > this.balls[j].zpos) {
-                        ball = this.balls[j];
-                        this.balls[j] = this.balls[j - 1];
-                        this.balls[j - 1] = ball;
+                    if (array[j - 1].zpos > array[j].zpos) {
+                        ball = array[j];
+                        array[j] = array[j - 1];
+                        array[j - 1] = ball;
                     }
                 }
             }
@@ -359,4 +356,98 @@ var ThreeD;
     })(egret.Sprite);
     ThreeD.Fireworks = Fireworks;
     Fireworks.prototype.__class__ = "ThreeD.Fireworks";
+    /**
+     * 森林
+     */
+    var Trees = (function (_super) {
+        __extends(Trees, _super);
+        function Trees() {
+            _super.call(this);
+            this.numTrees = 100;
+            this.fl = 250;
+            this.vpX = 0;
+            this.vpY = 0;
+            this.floor = 50;
+            this.vz = 0;
+            this.friction = 0.98;
+            this.init();
+        }
+        var __egretProto__ = Trees.prototype;
+        __egretProto__.init = function () {
+            this.width = egret.MainContext.instance.stage.stageWidth;
+            this.height = egret.MainContext.instance.stage.stageHeight;
+            this.vpX = this.width * 0.5;
+            this.vpY = this.height * 0.5;
+            this.trees = [];
+            for (var i = 0, tree; i < this.numTrees; i = i + 1) {
+                tree = new DemoObject.Tree(Math.random() * 0xffffff);
+                this.trees.push(tree);
+                tree.xPos = Math.random() * 2000 - 1000;
+                tree.yPos = this.floor;
+                tree.zPos = Math.random() * 10000;
+                this.addChild(tree);
+            }
+            this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
+            this.touchEnabled = true;
+            this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
+            this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
+        };
+        __egretProto__.onEnterFrame = function (evt) {
+            for (var i = 0, tree; i < this.numTrees; i = i + 1) {
+                tree = this.trees[i];
+                this.move(tree);
+            }
+            this.vz *= this.friction;
+            this.sortZ();
+            this.vz += 1;
+            if (this.vz > 100)
+                this.vz = -100;
+        };
+        __egretProto__.onTouchBegin = function (evt) {
+            this.vz -= 10;
+        };
+        __egretProto__.onTouchEnd = function (evt) {
+            this.vz += 10;
+        };
+        __egretProto__.move = function (tree) {
+            tree.zPos += this.vz;
+            if (tree.zPos < -this.fl) {
+                tree.zPos += 10000;
+            }
+            if (tree.zPos > 10000 - this.fl) {
+                tree.zPos -= 10000;
+            }
+            var scale = this.fl / (this.fl + tree.zPos);
+            tree.scaleX = tree.scaleY = scale;
+            tree.x = this.vpX + tree.xPos * scale;
+            tree.y = this.vpY + tree.yPos * scale;
+            tree.alpha = scale * 0.7 + 0.3;
+        };
+        /**
+         * 数组中对象的某一属性排序
+         * @param array
+         */
+        __egretProto__.arraySort = function (array, property) {
+            var ball;
+            for (var i = 0; i < array.length; i = i + 1) {
+                for (var j = i + 1; j < array.length; j = j + 1) {
+                    if (array[j - 1].zpos > array[j].zpos) {
+                        ball = array[j];
+                        array[j] = array[j - 1];
+                        array[j - 1] = ball;
+                    }
+                }
+            }
+        };
+        __egretProto__.sortZ = function () {
+            this.arraySort(this.trees);
+            for (var i = 0, tree; i < this.numTrees; i = i + 1) {
+                tree = this.trees[i];
+                this.setChildIndex(tree, i);
+            }
+        };
+        return Trees;
+    })(egret.Sprite);
+    ThreeD.Trees = Trees;
+    Trees.prototype.__class__ = "ThreeD.Trees";
 })(ThreeD || (ThreeD = {}));

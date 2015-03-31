@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -53,26 +47,27 @@ var egret;
             this._multiline = false;
             this._maxChars = 0;
         }
+        var __egretProto__ = StageText.prototype;
         /**
          * @returns {string}
          */
-        StageText.prototype._getText = function () {
+        __egretProto__._getText = function () {
             return null;
         };
         /**
          * @param value {string}
          */
-        StageText.prototype._setText = function (value) {
+        __egretProto__._setText = function (value) {
         };
         /**
          * @param type {string}
          */
-        StageText.prototype._setTextType = function (type) {
+        __egretProto__._setTextType = function (type) {
         };
         /**
          * @returns {string}
          */
-        StageText.prototype._getTextType = function () {
+        __egretProto__._getTextType = function () {
             return null;
         };
         /**
@@ -81,60 +76,60 @@ var egret;
          * @param width {number}
          * @param height {number}
          */
-        StageText.prototype._open = function (x, y, width, height) {
+        __egretProto__._open = function (x, y, width, height) {
             if (width === void 0) { width = 160; }
             if (height === void 0) { height = 21; }
         };
-        StageText.prototype._show = function () {
+        __egretProto__._show = function () {
         };
-        StageText.prototype._add = function () {
+        __egretProto__._add = function () {
         };
-        StageText.prototype._remove = function () {
+        __egretProto__._remove = function () {
         };
-        StageText.prototype._hide = function () {
+        __egretProto__._hide = function () {
         };
-        StageText.prototype._addListeners = function () {
+        __egretProto__._addListeners = function () {
         };
-        StageText.prototype._removeListeners = function () {
+        __egretProto__._removeListeners = function () {
         };
-        StageText.prototype._setScale = function (x, y) {
+        __egretProto__._setScale = function (x, y) {
             this._scaleX = x;
             this._scaleY = y;
         };
-        StageText.prototype.changePosition = function (x, y) {
+        __egretProto__.changePosition = function (x, y) {
         };
-        StageText.prototype._setSize = function (value) {
+        __egretProto__._setSize = function (value) {
             this._size = value;
         };
-        StageText.prototype._setTextColor = function (value) {
+        __egretProto__._setTextColor = function (value) {
             this._color = value;
         };
-        StageText.prototype._setTextFontFamily = function (value) {
+        __egretProto__._setTextFontFamily = function (value) {
             this._fontFamily = value;
         };
-        StageText.prototype._setBold = function (value) {
+        __egretProto__._setBold = function (value) {
             this._bold = value;
         };
-        StageText.prototype._setItalic = function (value) {
+        __egretProto__._setItalic = function (value) {
             this._italic = value;
         };
-        StageText.prototype._setTextAlign = function (value) {
+        __egretProto__._setTextAlign = function (value) {
             this._textAlign = value;
         };
-        StageText.prototype._setVisible = function (value) {
+        __egretProto__._setVisible = function (value) {
             this._visible = value;
         };
-        StageText.prototype._setWidth = function (value) {
+        __egretProto__._setWidth = function (value) {
         };
-        StageText.prototype._setHeight = function (value) {
+        __egretProto__._setHeight = function (value) {
         };
-        StageText.prototype._setMultiline = function (value) {
+        __egretProto__._setMultiline = function (value) {
             this._multiline = value;
         };
-        StageText.prototype._setMaxChars = function (value) {
+        __egretProto__._setMaxChars = function (value) {
             this._maxChars = value;
         };
-        StageText.prototype._resetStageText = function () {
+        __egretProto__._resetStageText = function () {
         };
         StageText.create = function () {
             return null;

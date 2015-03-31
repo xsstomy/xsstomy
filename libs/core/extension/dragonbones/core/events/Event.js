@@ -39,6 +39,7 @@ var dragonBones;
         function Event(type) {
             this.type = type;
         }
+        var __egretProto__ = Event.prototype;
         return Event;
     })();
     dragonBones.Event = Event;

@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -73,6 +67,7 @@ var egret;
             this._shape = shape;
             this.getStageDelegateDiv().appendChild(this.div);
         }
+        var __egretProto__ = HTML5StageText.prototype;
         /**
          * 获取当前浏览器类型
          * @type {string}
@@ -97,7 +92,7 @@ var egret;
             }
             return transArr[0];
         };
-        HTML5StageText.prototype.getStageDelegateDiv = function () {
+        __egretProto__.getStageDelegateDiv = function () {
             var stageDelegateDiv = egret.Browser.getInstance().$("#StageDelegateDiv");
             if (!stageDelegateDiv) {
                 stageDelegateDiv = egret.Browser.getInstance().$new("div");
@@ -109,19 +104,19 @@ var egret;
             }
             return stageDelegateDiv;
         };
-        HTML5StageText.prototype._setMultiline = function (value) {
+        __egretProto__._setMultiline = function (value) {
             _super.prototype._setMultiline.call(this, value);
             this.createInput();
         };
-        HTML5StageText.prototype.callHandler = function (e) {
+        __egretProto__.callHandler = function (e) {
             e.stopPropagation();
         };
-        HTML5StageText.prototype._add = function () {
+        __egretProto__._add = function () {
             if (this.div && this.div.parentNode == null) {
                 this.getStageDelegateDiv().appendChild(this.div);
             }
         };
-        HTML5StageText.prototype._remove = function () {
+        __egretProto__._remove = function () {
             if (this._shape && this._shape.parent) {
                 this._shape.parent.removeChild(this._shape);
             }
@@ -129,7 +124,7 @@ var egret;
                 this.div.parentNode.removeChild(this.div);
             }
         };
-        HTML5StageText.prototype._addListeners = function () {
+        __egretProto__._addListeners = function () {
             if (this.inputElement && !this._hasListeners) {
                 this._hasListeners = true;
                 this.inputElement.addEventListener("mousedown", this.callHandler);
@@ -137,7 +132,7 @@ var egret;
                 this.inputElement.addEventListener("MSPointerDown", this.callHandler);
             }
         };
-        HTML5StageText.prototype._removeListeners = function () {
+        __egretProto__._removeListeners = function () {
             if (this.inputElement && this._hasListeners) {
                 this._hasListeners = false;
                 this.inputElement.removeEventListener("mousedown", this.callHandler);
@@ -145,7 +140,7 @@ var egret;
                 this.inputElement.removeEventListener("MSPointerDown", this.callHandler);
             }
         };
-        HTML5StageText.prototype.createInput = function () {
+        __egretProto__.createInput = function () {
             var type = this._multiline ? "textarea" : "input";
             if (this._inputType == type) {
                 return;
@@ -178,11 +173,11 @@ var egret;
             this.setElementStyle("wordBreak", "break-all");
             this.setElementStyle("overflow", "hidden");
         };
-        HTML5StageText.prototype._open = function (x, y, width, height) {
+        __egretProto__._open = function (x, y, width, height) {
             if (width === void 0) { width = 160; }
             if (height === void 0) { height = 21; }
         };
-        HTML5StageText.prototype._setScale = function (x, y) {
+        __egretProto__._setScale = function (x, y) {
             _super.prototype._setScale.call(this, x, y);
             var scaleX = egret.StageDelegate.getInstance().getScaleX();
             var scaleY = egret.StageDelegate.getInstance().getScaleY();
@@ -190,7 +185,7 @@ var egret;
             this.div.scale.y = scaleY * y;
             this.div.transforms();
         };
-        HTML5StageText.prototype.changePosition = function (x, y) {
+        __egretProto__.changePosition = function (x, y) {
             //            if (this._isShow) {
             var scaleX = egret.StageDelegate.getInstance().getScaleX();
             var scaleY = egret.StageDelegate.getInstance().getScaleY();
@@ -199,7 +194,7 @@ var egret;
             this.div.transforms();
             //            }
         };
-        HTML5StageText.prototype.setStyles = function () {
+        __egretProto__.setStyles = function () {
             //修改属性
             this.setElementStyle("fontStyle", this._italic ? "italic" : "normal");
             this.setElementStyle("fontWeight", this._bold ? "bold" : "normal");
@@ -213,7 +208,7 @@ var egret;
             //            this.setElementStyle("border", "1px solid red");
             this.setElementStyle("display", "block");
         };
-        HTML5StageText.prototype._show = function () {
+        __egretProto__._show = function () {
             egret.MainContext.instance.stage._changeSizeDispatchFlag = false;
             if (this._maxChars > 0) {
                 this.inputElement.setAttribute("maxlength", this._maxChars);
@@ -240,7 +235,7 @@ var egret;
                 egret.MainContext.instance.stage.addChild(this._shape);
             }
         };
-        HTML5StageText.prototype._hide = function () {
+        __egretProto__._hide = function () {
             egret.MainContext.instance.stage._changeSizeDispatchFlag = true;
             if (this.inputElement == null) {
                 return;
@@ -263,28 +258,28 @@ var egret;
                 this._shape.parent.removeChild(this._shape);
             }
         };
-        HTML5StageText.prototype._getText = function () {
+        __egretProto__._getText = function () {
             if (!this.textValue) {
                 this.textValue = "";
             }
             return this.textValue;
         };
-        HTML5StageText.prototype._setText = function (value) {
+        __egretProto__._setText = function (value) {
             this.textValue = value;
             this.resetText();
         };
-        HTML5StageText.prototype.resetText = function () {
+        __egretProto__.resetText = function () {
             if (this.inputElement) {
                 this.inputElement.value = this.textValue;
             }
         };
-        HTML5StageText.prototype._setWidth = function (value) {
+        __egretProto__._setWidth = function (value) {
             this._width = value;
         };
-        HTML5StageText.prototype._setHeight = function (value) {
+        __egretProto__._setHeight = function (value) {
             this._height = value;
         };
-        HTML5StageText.prototype.setElementStyle = function (style, value) {
+        __egretProto__.setElementStyle = function (style, value) {
             if (this.inputElement) {
                 if (this._styleInfoes[style] != value) {
                     this.inputElement.style[style] = value;

@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -74,16 +68,17 @@ var egret;
             this._linesArr = [];
             this.needDraw = true;
         }
-        TextField.prototype.isInput = function () {
+        var __egretProto__ = TextField.prototype;
+        __egretProto__.isInput = function () {
             return this._type == egret.TextFieldType.INPUT;
         };
-        TextField.prototype._setTouchEnabled = function (value) {
+        __egretProto__._setTouchEnabled = function (value) {
             _super.prototype._setTouchEnabled.call(this, value);
             if (this.isInput()) {
                 this._inputEnabled = true;
             }
         };
-        Object.defineProperty(TextField.prototype, "type", {
+        Object.defineProperty(__egretProto__, "type", {
             get: function () {
                 return this._type;
             },
@@ -99,7 +94,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setType = function (value) {
+        __egretProto__._setType = function (value) {
             if (this._type != value) {
                 this._type = value;
                 if (this._type == egret.TextFieldType.INPUT) {
@@ -127,7 +122,7 @@ var egret;
                 }
             }
         };
-        Object.defineProperty(TextField.prototype, "text", {
+        Object.defineProperty(__egretProto__, "text", {
             get: function () {
                 return this._getText();
             },
@@ -141,20 +136,20 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._getText = function () {
+        __egretProto__._getText = function () {
             if (this._type == egret.TextFieldType.INPUT) {
                 return this._inputUtils._getText();
             }
             return this._text;
         };
-        TextField.prototype._setSizeDirty = function () {
+        __egretProto__._setSizeDirty = function () {
             _super.prototype._setSizeDirty.call(this);
             this._isArrayChanged = true;
         };
-        TextField.prototype._setTextDirty = function () {
+        __egretProto__._setTextDirty = function () {
             this._setSizeDirty();
         };
-        TextField.prototype._setBaseText = function (value) {
+        __egretProto__._setBaseText = function (value) {
             if (value == null) {
                 value = "";
             }
@@ -172,7 +167,7 @@ var egret;
                 this.setMiddleStyle([{ text: text }]);
             }
         };
-        TextField.prototype._setText = function (value) {
+        __egretProto__._setText = function (value) {
             if (value == null) {
                 value = "";
             }
@@ -181,7 +176,7 @@ var egret;
                 this._inputUtils._setText(this._text);
             }
         };
-        Object.defineProperty(TextField.prototype, "displayAsPassword", {
+        Object.defineProperty(__egretProto__, "displayAsPassword", {
             get: function () {
                 return this._displayAsPassword;
             },
@@ -197,7 +192,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setDisplayAsPassword = function (value) {
+        __egretProto__._setDisplayAsPassword = function (value) {
             if (this._displayAsPassword != value) {
                 this._displayAsPassword = value;
                 this._setTextDirty();
@@ -211,7 +206,7 @@ var egret;
                 this.setMiddleStyle([{ text: text }]);
             }
         };
-        Object.defineProperty(TextField.prototype, "fontFamily", {
+        Object.defineProperty(__egretProto__, "fontFamily", {
             get: function () {
                 return this._fontFamily;
             },
@@ -226,13 +221,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setFontFamily = function (value) {
+        __egretProto__._setFontFamily = function (value) {
             if (this._fontFamily != value) {
                 this._setTextDirty();
                 this._fontFamily = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "size", {
+        Object.defineProperty(__egretProto__, "size", {
             get: function () {
                 return this._size;
             },
@@ -247,13 +242,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setSize = function (value) {
+        __egretProto__._setSize = function (value) {
             if (this._size != value) {
                 this._setTextDirty();
                 this._size = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "italic", {
+        Object.defineProperty(__egretProto__, "italic", {
             get: function () {
                 return this._italic;
             },
@@ -269,13 +264,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setItalic = function (value) {
+        __egretProto__._setItalic = function (value) {
             if (this._italic != value) {
                 this._setTextDirty();
                 this._italic = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "bold", {
+        Object.defineProperty(__egretProto__, "bold", {
             get: function () {
                 return this._bold;
             },
@@ -291,13 +286,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setBold = function (value) {
+        __egretProto__._setBold = function (value) {
             if (this._bold != value) {
                 this._setTextDirty();
                 this._bold = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "textColor", {
+        Object.defineProperty(__egretProto__, "textColor", {
             get: function () {
                 return this._textColor;
             },
@@ -313,14 +308,14 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setTextColor = function (value) {
+        __egretProto__._setTextColor = function (value) {
             if (this._textColor != value) {
                 this._setTextDirty();
                 this._textColor = value;
                 this._textColorString = egret.toColorString(value);
             }
         };
-        Object.defineProperty(TextField.prototype, "strokeColor", {
+        Object.defineProperty(__egretProto__, "strokeColor", {
             get: function () {
                 return this._strokeColor;
             },
@@ -336,14 +331,14 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setStrokeColor = function (value) {
+        __egretProto__._setStrokeColor = function (value) {
             if (this._strokeColor != value) {
                 this._setTextDirty();
                 this._strokeColor = value;
                 this._strokeColorString = egret.toColorString(value);
             }
         };
-        Object.defineProperty(TextField.prototype, "stroke", {
+        Object.defineProperty(__egretProto__, "stroke", {
             get: function () {
                 return this._stroke;
             },
@@ -359,13 +354,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setStroke = function (value) {
+        __egretProto__._setStroke = function (value) {
             if (this._stroke != value) {
                 this._setTextDirty();
                 this._stroke = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "textAlign", {
+        Object.defineProperty(__egretProto__, "textAlign", {
             get: function () {
                 return this._textAlign;
             },
@@ -381,13 +376,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setTextAlign = function (value) {
+        __egretProto__._setTextAlign = function (value) {
             if (this._textAlign != value) {
                 this._setTextDirty();
                 this._textAlign = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "verticalAlign", {
+        Object.defineProperty(__egretProto__, "verticalAlign", {
             get: function () {
                 return this._verticalAlign;
             },
@@ -403,13 +398,13 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setVerticalAlign = function (value) {
+        __egretProto__._setVerticalAlign = function (value) {
             if (this._verticalAlign != value) {
                 this._setTextDirty();
                 this._verticalAlign = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "maxChars", {
+        Object.defineProperty(__egretProto__, "maxChars", {
             get: function () {
                 return this._maxChars;
             },
@@ -424,12 +419,12 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setMaxChars = function (value) {
+        __egretProto__._setMaxChars = function (value) {
             if (this._maxChars != value) {
                 this._maxChars = value;
             }
         };
-        Object.defineProperty(TextField.prototype, "scrollV", {
+        Object.defineProperty(__egretProto__, "scrollV", {
             /**
              * 文本在文本字段中的垂直位置。scrollV 属性可帮助用户定位到长篇文章的特定段落，还可用于创建滚动文本字段。
              * 垂直滚动的单位是行，而水平滚动的单位是像素。
@@ -443,37 +438,37 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "maxScrollV", {
+        Object.defineProperty(__egretProto__, "maxScrollV", {
             get: function () {
                 return this._maxScrollV;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "selectionBeginIndex", {
+        Object.defineProperty(__egretProto__, "selectionBeginIndex", {
             get: function () {
                 return 0;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "selectionEndIndex", {
+        Object.defineProperty(__egretProto__, "selectionEndIndex", {
             get: function () {
                 return 0;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "caretIndex", {
+        Object.defineProperty(__egretProto__, "caretIndex", {
             get: function () {
                 return 0;
             },
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setSelection = function (beginIndex, endIndex) {
+        __egretProto__._setSelection = function (beginIndex, endIndex) {
         };
-        Object.defineProperty(TextField.prototype, "lineSpacing", {
+        Object.defineProperty(__egretProto__, "lineSpacing", {
             get: function () {
                 return this._lineSpacing;
             },
@@ -489,16 +484,16 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setLineSpacing = function (value) {
+        __egretProto__._setLineSpacing = function (value) {
             if (this._lineSpacing != value) {
                 this._setTextDirty();
                 this._lineSpacing = value;
             }
         };
-        TextField.prototype._getLineHeight = function () {
+        __egretProto__._getLineHeight = function () {
             return this._lineSpacing + this._size;
         };
-        Object.defineProperty(TextField.prototype, "numLines", {
+        Object.defineProperty(__egretProto__, "numLines", {
             /**
              * 文本行数。
              * @member {number} egret.TextField#numLines
@@ -509,7 +504,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "multiline", {
+        Object.defineProperty(__egretProto__, "multiline", {
             get: function () {
                 return this._multiline;
             },
@@ -525,36 +520,36 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype._setMultiline = function (value) {
+        __egretProto__._setMultiline = function (value) {
             this._multiline = value;
             this._setDirty();
         };
-        TextField.prototype.setFocus = function () {
+        __egretProto__.setFocus = function () {
             //todo:
             egret.Logger.warningWithErrorId(1013);
         };
-        TextField.prototype._onRemoveFromStage = function () {
+        __egretProto__._onRemoveFromStage = function () {
             _super.prototype._onRemoveFromStage.call(this);
             this._removeEvent();
             if (this._type == egret.TextFieldType.INPUT) {
                 this._inputUtils._removeStageText();
             }
         };
-        TextField.prototype._onAddToStage = function () {
+        __egretProto__._onAddToStage = function () {
             _super.prototype._onAddToStage.call(this);
             this._addEvent();
             if (this._type == egret.TextFieldType.INPUT) {
                 this._inputUtils._addStageText();
             }
         };
-        TextField.prototype._updateBaseTransform = function () {
+        __egretProto__._updateBaseTransform = function () {
             this._getLinesArr();
             if (this._textMaxWidth == 0) {
                 return;
             }
             _super.prototype._updateTransform.call(this);
         };
-        TextField.prototype._updateTransform = function () {
+        __egretProto__._updateTransform = function () {
             if (this._type == egret.TextFieldType.INPUT) {
                 if (this._normalDirty) {
                     //this._clearDirty();
@@ -568,7 +563,7 @@ var egret;
                 this._updateBaseTransform();
             }
         };
-        TextField.prototype._draw = function (renderContext) {
+        __egretProto__._draw = function (renderContext) {
             if (this._textMaxWidth == 0) {
                 return;
             }
@@ -578,21 +573,21 @@ var egret;
          * @see egret.DisplayObject._render
          * @param renderContext
          */
-        TextField.prototype._render = function (renderContext) {
+        __egretProto__._render = function (renderContext) {
             this.drawText(renderContext);
             this._clearDirty();
         };
         /**
          * 测量显示对象坐标与大小
          */
-        TextField.prototype._measureBounds = function () {
+        __egretProto__._measureBounds = function () {
             this._getLinesArr();
             if (this._textMaxWidth == 0) {
                 return egret.Rectangle.identity.initialize(0, 0, 0, 0);
             }
             return egret.Rectangle.identity.initialize(0, 0, this._textMaxWidth, this._textMaxHeight + (this._numLines - 1) * this._lineSpacing);
         };
-        Object.defineProperty(TextField.prototype, "textFlow", {
+        Object.defineProperty(__egretProto__, "textFlow", {
             get: function () {
                 return this._textArr;
             },
@@ -620,7 +615,7 @@ var egret;
             enumerable: true,
             configurable: true
         });
-        TextField.prototype.changeToPassText = function (text) {
+        __egretProto__.changeToPassText = function (text) {
             if (this._displayAsPassword) {
                 var passText = "";
                 for (var i = 0, num = text.length; i < num; i++) {
@@ -638,33 +633,33 @@ var egret;
             }
             return text;
         };
-        TextField.prototype.setMiddleStyle = function (textArr) {
+        __egretProto__.setMiddleStyle = function (textArr) {
             this._isArrayChanged = true;
             this._textArr = textArr;
             this._setSizeDirty();
         };
-        Object.defineProperty(TextField.prototype, "textWidth", {
+        Object.defineProperty(__egretProto__, "textWidth", {
             get: function () {
                 return this._textMaxWidth;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(TextField.prototype, "textHeight", {
+        Object.defineProperty(__egretProto__, "textHeight", {
             get: function () {
                 return this._textMaxHeight;
             },
             enumerable: true,
             configurable: true
         });
-        TextField.prototype.appendText = function (text) {
+        __egretProto__.appendText = function (text) {
             this.appendElement({ text: text });
         };
-        TextField.prototype.appendElement = function (element) {
+        __egretProto__.appendElement = function (element) {
             this._textArr.push(element);
             this.setMiddleStyle(this._textArr);
         };
-        TextField.prototype._getLinesArr = function () {
+        __egretProto__._getLinesArr = function () {
             var self = this;
             if (!self._isArrayChanged) {
                 return self._linesArr;
@@ -770,7 +765,7 @@ var egret;
          * @param renderContext
          * @returns {Rectangle}
          */
-        TextField.prototype.drawText = function (renderContext) {
+        __egretProto__.drawText = function (renderContext) {
             var self = this;
             var lines = self._getLinesArr();
             if (self._textMaxWidth == 0) {
@@ -826,15 +821,15 @@ var egret;
             }
         };
         //增加点击事件
-        TextField.prototype._addEvent = function () {
+        __egretProto__._addEvent = function () {
             this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
         };
         //释放点击事件
-        TextField.prototype._removeEvent = function () {
+        __egretProto__._removeEvent = function () {
             this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
         };
         //处理富文本中有href的
-        TextField.prototype.onTapHandler = function (e) {
+        __egretProto__.onTapHandler = function (e) {
             if (this._type == egret.TextFieldType.INPUT) {
                 return;
             }
@@ -852,7 +847,7 @@ var egret;
                 }
             }
         };
-        TextField.prototype._getTextElement = function (x, y) {
+        __egretProto__._getTextElement = function (x, y) {
             var hitTextEle = this._getHit(x, y);
             var lineArr = this._getLinesArr();
             if (hitTextEle && lineArr[hitTextEle.lineIndex] && lineArr[hitTextEle.lineIndex].elements[hitTextEle.textElementIndex]) {
@@ -860,7 +855,7 @@ var egret;
             }
             return null;
         };
-        TextField.prototype._getHit = function (x, y) {
+        __egretProto__._getHit = function (x, y) {
             var lineArr = this._getLinesArr();
             if (this._textMaxWidth == 0) {
                 return null;

@@ -42,6 +42,7 @@ var dragonBones;
             this.redMultiplier = 1;
             this.redOffset = 0;
         }
+        var __egretProto__ = ColorTransform.prototype;
         return ColorTransform;
     })();
     dragonBones.ColorTransform = ColorTransform;

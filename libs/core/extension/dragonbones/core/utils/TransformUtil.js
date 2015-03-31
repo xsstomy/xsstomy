@@ -34,6 +34,7 @@ var dragonBones;
     var TransformUtil = (function () {
         function TransformUtil() {
         }
+        var __egretProto__ = TransformUtil.prototype;
         /**
          * 全局坐标系转成成局部坐标系
          * @param transform 全局坐标系下的变换
@@ -55,18 +56,26 @@ var dragonBones;
         TransformUtil.transformToMatrix = function (transform, matrix, keepScale) {
             if (keepScale === void 0) { keepScale = false; }
             if (keepScale) {
-                matrix.a = transform.scaleX * Math.cos(transform.skewY);
-                matrix.b = transform.scaleX * Math.sin(transform.skewY);
-                matrix.c = -transform.scaleY * Math.sin(transform.skewX);
-                matrix.d = transform.scaleY * Math.cos(transform.skewX);
+                matrix.a = transform.scaleX * dragonBones.MathUtil.cos(transform.skewY);
+                matrix.b = transform.scaleX * dragonBones.MathUtil.sin(transform.skewY);
+                matrix.c = -transform.scaleY * dragonBones.MathUtil.sin(transform.skewX);
+                matrix.d = transform.scaleY * dragonBones.MathUtil.cos(transform.skewX);
+                //                matrix.a = transform.scaleX * Math.cos(transform.skewY);
+                //                matrix.b = transform.scaleX * Math.sin(transform.skewY);
+                //                matrix.c = -transform.scaleY * Math.sin(transform.skewX);
+                //                matrix.d = transform.scaleY * Math.cos(transform.skewX);
                 matrix.tx = transform.x;
                 matrix.ty = transform.y;
             }
             else {
-                matrix.a = Math.cos(transform.skewY);
-                matrix.b = Math.sin(transform.skewY);
-                matrix.c = -Math.sin(transform.skewX);
-                matrix.d = Math.cos(transform.skewX);
+                matrix.a = dragonBones.MathUtil.cos(transform.skewY);
+                matrix.b = dragonBones.MathUtil.sin(transform.skewY);
+                matrix.c = -dragonBones.MathUtil.sin(transform.skewX);
+                matrix.d = dragonBones.MathUtil.cos(transform.skewX);
+                //                matrix.a = Math.cos(transform.skewY);
+                //                matrix.b = Math.sin(transform.skewY);
+                //                matrix.c = -Math.sin(transform.skewX);
+                //                matrix.d = Math.cos(transform.skewX);
                 matrix.tx = transform.x;
                 matrix.ty = transform.y;
             }

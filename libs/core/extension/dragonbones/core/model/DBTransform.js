@@ -44,7 +44,8 @@ var dragonBones;
             this.scaleX = 1;
             this.scaleY = 1;
         }
-        Object.defineProperty(DBTransform.prototype, "rotation", {
+        var __egretProto__ = DBTransform.prototype;
+        Object.defineProperty(__egretProto__, "rotation", {
             /**
              * 旋转，用弧度表示
              * @member {number} dragonBones.DBTransform#rotation
@@ -62,7 +63,7 @@ var dragonBones;
          * 拷贝传入的transfrom实例的所有属性
          * @param node
          */
-        DBTransform.prototype.copy = function (transform) {
+        __egretProto__.copy = function (transform) {
             this.x = transform.x;
             this.y = transform.y;
             this.skewX = transform.skewX;
@@ -74,7 +75,7 @@ var dragonBones;
          * 把DBTransform的所有属性转成用String类型表示
          * @return 一个字符串包含有DBTransform的所有属性
          */
-        DBTransform.prototype.toString = function () {
+        __egretProto__.toString = function () {
             var string = "x:" + this.x + " y:" + this.y + " skewX:" + this.skewX + " skewY:" + this.skewY + " scaleX:" + this.scaleX + " scaleY:" + this.scaleY;
             return string;
         };

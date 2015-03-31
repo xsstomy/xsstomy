@@ -1,5 +1,6 @@
 {
 	"file_list": [
+		"egret/utils/extends.js",
 		"egret/utils/Logger.js",
 		"egret/utils/HashObject.js",
 		"egret/utils/Recycler.js",

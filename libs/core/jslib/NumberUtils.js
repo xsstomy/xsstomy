@@ -29,6 +29,7 @@ var egret;
     var NumberUtils = (function () {
         function NumberUtils() {
         }
+        var __egretProto__ = NumberUtils.prototype;
         NumberUtils.isNumber = function (value) {
             return typeof (value) === "number" && !isNaN(value);
         };

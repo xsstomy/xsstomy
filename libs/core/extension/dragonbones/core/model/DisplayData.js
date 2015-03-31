@@ -40,10 +40,11 @@ var dragonBones;
             this.transform = new dragonBones.DBTransform();
             this.pivot = new dragonBones.Point();
         }
+        var __egretProto__ = DisplayData.prototype;
         /**
          * 释放资源
          */
-        DisplayData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             this.transform = null;
             this.pivot = null;
         };

@@ -42,10 +42,11 @@ var dragonBones;
             this.inheritRotation = true;
             this.inheritScale = false;
         }
+        var __egretProto__ = BoneData.prototype;
         /**
          *释放资源
          */
-        BoneData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             this.global = null;
             this.transform = null;
         };

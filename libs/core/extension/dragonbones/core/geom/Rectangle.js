@@ -50,6 +50,7 @@ var dragonBones;
             this.width = width;
             this.height = height;
         }
+        var __egretProto__ = Rectangle.prototype;
         return Rectangle;
     })();
     dragonBones.Rectangle = Rectangle;

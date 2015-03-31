@@ -44,6 +44,7 @@ var dragonBones;
             this._animationDataList = [];
             //_areaDataList = new Vector.<IAreaData>(0, true);
         }
+        var __egretProto__ = ArmatureData.prototype;
         ArmatureData.sortBoneDataHelpArray = function (object1, object2) {
             return object1[0] > object2[0] ? 1 : -1;
         };
@@ -53,7 +54,7 @@ var dragonBones;
         /**
          * 释放资源
          */
-        ArmatureData.prototype.dispose = function () {
+        __egretProto__.dispose = function () {
             var i = this._boneDataList.length;
             while (i--) {
                 this._boneDataList[i].dispose();
@@ -75,7 +76,7 @@ var dragonBones;
          * @param boneName 骨骼的名字
          * @returns {*} 骨骼数据
          */
-        ArmatureData.prototype.getBoneData = function (boneName) {
+        __egretProto__.getBoneData = function (boneName) {
             var i = this._boneDataList.length;
             while (i--) {
                 if (this._boneDataList[i].name == boneName) {
@@ -89,7 +90,7 @@ var dragonBones;
          * @param skinName  皮肤的名字
          * @returns {*}  皮肤数据
          */
-        ArmatureData.prototype.getSkinData = function (skinName) {
+        __egretProto__.getSkinData = function (skinName) {
             if (!skinName && this._skinDataList.length > 0) {
                 return this._skinDataList[0];
             }
@@ -106,7 +107,7 @@ var dragonBones;
          * @param animationName 动画的名字
          * @returns {*} 动画数据
          */
-        ArmatureData.prototype.getAnimationData = function (animationName) {
+        __egretProto__.getAnimationData = function (animationName) {
             var i = this._animationDataList.length;
             while (i--) {
                 if (this._animationDataList[i].name == animationName) {
@@ -119,7 +120,7 @@ var dragonBones;
          *添加一个骨骼数据
          * @param boneData
          */
-        ArmatureData.prototype.addBoneData = function (boneData) {
+        __egretProto__.addBoneData = function (boneData) {
             if (!boneData) {
                 throw new Error();
             }
@@ -134,7 +135,7 @@ var dragonBones;
          * 添加一个皮肤数据
          * @param skinData
          */
-        ArmatureData.prototype.addSkinData = function (skinData) {
+        __egretProto__.addSkinData = function (skinData) {
             if (!skinData) {
                 throw new Error();
             }
@@ -149,7 +150,7 @@ var dragonBones;
          * 添加一个动画数据
          * @param animationData
          */
-        ArmatureData.prototype.addAnimationData = function (animationData) {
+        __egretProto__.addAnimationData = function (animationData) {
             if (!animationData) {
                 throw new Error();
             }
@@ -160,7 +161,7 @@ var dragonBones;
         /**
          * 对骨骼按照骨骼数的层级关系排序
          */
-        ArmatureData.prototype.sortBoneDataList = function () {
+        __egretProto__.sortBoneDataList = function () {
             var i = this._boneDataList.length;
             if (i == 0) {
                 return;
@@ -182,7 +183,7 @@ var dragonBones;
                 this._boneDataList[i] = helpArray[i][1];
             }
         };
-        Object.defineProperty(ArmatureData.prototype, "boneDataList", {
+        Object.defineProperty(__egretProto__, "boneDataList", {
             /**
              * 获取骨骼数据列表
              * @returns {Array<BoneData>}
@@ -193,7 +194,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(ArmatureData.prototype, "skinDataList", {
+        Object.defineProperty(__egretProto__, "skinDataList", {
             /**
              * 获取皮肤数据列表
              * @returns {Array<SkinData>}
@@ -204,7 +205,7 @@ var dragonBones;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(ArmatureData.prototype, "animationDataList", {
+        Object.defineProperty(__egretProto__, "animationDataList", {
             /**
              * 获得动画数据列表
              * @returns {Array<AnimationData>}

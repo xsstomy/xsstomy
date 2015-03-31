@@ -34,6 +34,7 @@ var dragonBones;
     var ConstValues = (function () {
         function ConstValues() {
         }
+        var __egretProto__ = ConstValues.prototype;
         /**
          * 角度转换为弧度
          */

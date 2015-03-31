@@ -624,8 +624,8 @@ declare module dragonBones {
     /**
      * @class dragonBones.IAnimatable
      * @classdesc
-     * TimelineState 负责计算 Bone 的时间轴动画。
-     * TimelineState 实例隶属于 AnimationState. AnimationState在创建时会为每个包含动作的 Bone生成一个 TimelineState 实例.
+     * 可播放动画组件接口，Armature 和 WordClock都实现了该接口
+     * 实现该接口的实例可以加到WorldClock时钟中统一由时钟控制动画的播放
      * @see dragonBones.WorldClock
      * @see dragonBones.Armature
      */
@@ -3110,8 +3110,31 @@ declare module dragonBones {
     class MathUtil {
         /** @private */
         static getEaseValue(value: number, easing: number): number;
+        /**
+         * 角度转换为弧度
+         */
+        static ANGLE_TO_RADIAN: number;
+        /**
+         * 弧度转换为角度
+         */
+        static RADIAN_TO_ANGLE: number;
+        static isNumber(value: any): boolean;
+        /**
+         * 得到对应角度值的sin近似值
+         * @param value {number} 角度值
+         * @returns {number} sin值
+         */
+        static sin(value: number): number;
+        private static sinInt(value);
+        /**
+         * 得到对应角度值的cos近似值
+         * @param value {number} 角度值
+         * @returns {number} cos值
+         */
+        static cos(value: number): number;
     }
 }
+declare var db_sin_map: {};
 /**
  * Copyright (c) 2014,Egret-Labs.org
  * All rights reserved.
