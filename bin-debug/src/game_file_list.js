@@ -1,7 +1,5 @@
 var game_file_list = [
-	"xsstomy/flashAnimation/Const.js",
-	"xsstomy/flashAnimation/DemoObject.js",
 	"LoadingUI.js",
-	"xsstomy/flashAnimation/ThreeD.js",
+	"xsstomy/Function/Jump.js",
 	"Main.js"
 ];

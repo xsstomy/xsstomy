@@ -1,7 +1,5 @@
 [
-	"xsstomy/flashAnimation/Const.ts",
-	"xsstomy/flashAnimation/DemoObject.ts",
 	"LoadingUI.ts",
-	"xsstomy/flashAnimation/ThreeD.ts",
+	"xsstomy\\Function\\Jump.ts",
 	"Main.ts"
 ]

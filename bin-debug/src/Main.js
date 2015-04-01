@@ -112,8 +112,21 @@ var Main = (function (_super) {
         //
         //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
         //this.addChild( p );
-        var trees = new ThreeD.Trees();
-        this.addChild(trees);
+        //var trees:ThreeD.Trees = new ThreeD.Trees();
+        //this.addChild( trees );
+        var btm = new egret.Bitmap(RES.getRes("egretIcon"));
+        var jmp = new Fun.Jump(btm);
+        jmp.active();
+        this.addChild(jmp);
+        console.log("........" + jmp.width);
+        //var spr:egret.Sprite = new egret.Sprite();
+        //spr.width = 480;
+        //spr.height = 800;
+        //this.addChild(spr);
+        //spr.touchEnabled = true;
+        //spr.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+        //    console.log("...........");
+        //},this);
     };
     __egretProto__.onTouchBegin = function (evt) {
         console.log('touch_begin');

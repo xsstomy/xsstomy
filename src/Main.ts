@@ -131,8 +131,14 @@ class Main extends egret.DisplayObjectContainer {
         //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
         //this.addChild( p );
 
-        var trees:ThreeD.Trees = new ThreeD.Trees();
-        this.addChild( trees );
+        //var trees:ThreeD.Trees = new ThreeD.Trees();
+        //this.addChild( trees );
+
+        var btm:egret.Bitmap = new egret.Bitmap(RES.getRes("egretIcon"));
+        var jmp:Fun.Jump = new Fun.Jump(btm);
+        jmp.active();
+        this.addChild(jmp);
+
     }
 
     private onTouchBegin(evt:egret.TouchEvent) {
