@@ -14,8 +14,8 @@ module ThreeD
             this.addEventListener(egret.Event.ADDED_TO_STAGE,this.init,this);
         }
         private ball:DemoObject.Ball;
-        private xpos:number = 0;
-        private ypos:number = 0;
+        private xpos:number = Const.Const.stageWidth/2;
+        private ypos:number = Const.Const.stageHeigth/2;
         private zpos:number = 0;
         private fl:number = 250;
         private vpX:number = Const.Const.stageWidth/2;
@@ -34,31 +34,31 @@ module ThreeD
             this.addEventListener(egret.Event.ENTER_FRAME,this.onEnterFrame,this);
         }
 
-        private touchX:number = 0;
-        private touchY:number = 0;
+        private touchX:number = Const.Const.stageWidth/2;
+        private touchY:number = Const.Const.stageHeigth/2;
         private onTouchBegin(evt:egret.TouchEvent):void
         {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.onTouchMove,this);
             this.addEventListener(egret.TouchEvent.TOUCH_END,this.onTouchEnd,this);
         }
         private onTouchMove(evt:egret.TouchEvent):void
         {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
         }
         private onTouchEnd(evt:egret.TouchEvent):void
         {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE,this.onTouchMove,this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END,this.onTouchEnd,this);
         }
         private onEnterFrame(evt:egret.Event):void
         {
             this.xpos = this.touchX - this.vpX;
-            this.ypos = this.touchY - this.vpY;
+            //this.ypos = this.touchY - this.vpY;
             this.zpos = Math.sqrt(this.xpos*this.xpos + this.ypos*this.ypos);
             //this.zpos = Math.min(Math.abs(this.xpos),Math.abs(this.ypos));
             var scale:number = this.fl/(this.fl + this.zpos);

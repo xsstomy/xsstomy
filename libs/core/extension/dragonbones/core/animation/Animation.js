@@ -1,29 +1,31 @@
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 var dragonBones;
 (function (dragonBones) {
     /**
@@ -34,11 +36,78 @@ var dragonBones;
      * @see dragonBones.Armature
      * @see dragonBones.AnimationState
      * @see dragonBones.AnimationData.
+     *
+     * @example
+       <pre>
+       //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 500;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+
+
+        
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName:string = armature.animation.animationList[0];
+
+        var animation:dragonBones.Animation = armature.animation;
+
+        //gotoAndPlay的用法：动画播放，播放一遍
+        animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+        //gotoAndStop的用法：
+        //curAnimationName = armature.animation.animationList[1];
+        //动画停在第二个动画的第0.2秒的位置
+        //animation.gotoAndStop(curAnimationName,0.2);
+        //动画停在第二个动画的一半的位置，如果第三个参数大于0，会忽略第二个参数
+        //animation.gotoAndStop(curAnimationName,0, 0.5);
+        //继续播放
+        //animation.play();
+        //暂停播放
+        //animation.stop();
+
+        //动画融合
+        //animation.gotoAndPlay(curAnimationName,0,-1,0,0,"group1");
+
+        //var animationState:dragonBones.AnimationState = armature.animation.getState(curAnimationName);
+        //animationState.addBoneMask("neck",true);
+        //播放第二个动画， 放到group "Squat"里
+        //curAnimationName = armature.animation.animationList[1];
+        //armature.animation.gotoAndPlay(curAnimationName,0,-1,0,0,"group2",dragonBones.Animation.SAME_GROUP);
+        //animationState = armature.animation.getState(curAnimationName);
+        //animationState.addBoneMask("hip",true);//“hip”是骨架的根骨骼的名字
+        //animationState.removeBoneMask("neck",true);
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     var Animation = (function () {
         /**
          * 创建一个新的Animation实例并赋给传入的Armature实例
-         * @param armature {Armature} 纹理
+         * @param armature {Armature} 骨架实例
          */
         function Animation(armature) {
             /** @private */
@@ -58,16 +127,22 @@ var dragonBones;
             if (!this._armature) {
                 return;
             }
-            var i = this._animationStateList.length;
-            while (i--) {
-                dragonBones.AnimationState._returnObject(this._animationStateList[i]);
-            }
+            this._resetAnimationStateList();
             this._animationList.length = 0;
-            this._animationStateList.length = 0;
             this._armature = null;
             this._animationDataList = null;
             this._animationList = null;
             this._animationStateList = null;
+        };
+        __egretProto__._resetAnimationStateList = function () {
+            var i = this._animationStateList.length;
+            var animationState;
+            while (i--) {
+                animationState = this._animationStateList[i];
+                animationState._resetTimelineStateList();
+                dragonBones.AnimationState._returnObject(animationState);
+            }
+            this._animationStateList.length = 0;
         };
         /**
          * 开始播放指定名称的动画。
@@ -107,6 +182,7 @@ var dragonBones;
             if (!animationData) {
                 return null;
             }
+            var needUpdate = this._isPlaying == false;
             this._isPlaying = true;
             this._isFading = true;
             //
@@ -175,6 +251,9 @@ var dragonBones;
                     slot.childArmature.animation.gotoAndPlay(animationName, fadeInTime);
                 }
             }
+            if (needUpdate) {
+                this._armature.advanceTime(0);
+            }
             return this._lastAnimationState;
         };
         /**
@@ -188,7 +267,7 @@ var dragonBones;
          * @param group {string} 动画所处的组
          * @param fadeOutMode {string} 动画淡出模式 (none, sameLayer, sameGroup, sameLayerAndGroup, all).默认值：sameLayerAndGroup
          * @returns {AnimationState} 动画播放状态实例
-         * @see dragonBones..AnimationState.
+         * @see dragonBones.AnimationState.
          */
         __egretProto__.gotoAndStop = function (animationName, time, normalizedTime, fadeInTime, duration, layer, group, fadeOutMode) {
             if (normalizedTime === void 0) { normalizedTime = -1; }
@@ -211,7 +290,7 @@ var dragonBones;
             return animationState;
         };
         /**
-         * Play the animation from the current position.
+         * 从当前位置继续播放动画
          */
         __egretProto__.play = function () {
             if (!this._animationDataList || this._animationDataList.length == 0) {
@@ -227,6 +306,9 @@ var dragonBones;
                 this.gotoAndPlay(this._lastAnimationState.name);
             }
         };
+        /**
+         * 暂停动画播放
+         */
         __egretProto__.stop = function () {
             this._isPlaying = false;
         };
@@ -425,8 +507,8 @@ var dragonBones;
             set: function (value) {
                 this._animationDataList = value;
                 this._animationList.length = 0;
-                for (var key in this._animationDataList) {
-                    var animationData = this._animationDataList[key];
+                for (var i = 0, len = this._animationDataList.length; i < len; i++) {
+                    var animationData = this._animationDataList[i];
                     this._animationList[this._animationList.length] = animationData.name;
                 }
             },

@@ -1,37 +1,90 @@
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 var dragonBones;
 (function (dragonBones) {
     /**
      * @class dragonBones.AnimationState
      * @classdesc
-     * AnimationState 实例由 Animation 实例播放动画时产生， 用于控制单个动画的播放。
+     * AnimationState 实例由 Animation 实例播放动画时产生， 可以对单个动画的播放进行最细致的调节。
      * @see dragonBones.Animation
      * @see dragonBones.AnimationData
+     *
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 500;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+      
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName:string = armature.animation.animationList[0];
+        //播放这个动画
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //获取animationState可以对动画进行更多控制；
+        var animationState:dragonBones.AnimationState = armature.animation.getState(curAnimationName);
+      
+        //下面的代码实现人物的脖子和头动，但是其他部位不动
+        animationState.addBoneMask("neck",true);
+        //下面的代码实现人物的身体动，但是脖子和头不动
+        //animationState.addBoneMask("hip",true);//“hip”是骨架的根骨骼的名字
+        //animationState.removeBoneMask("neck",true);
+        //下面的代码实现动画幅度减小的效果
+        //animationState.weight = 0.5;
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+           dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     var AnimationState = (function () {
         function AnimationState() {
@@ -43,10 +96,12 @@ var dragonBones;
             this._currentPlayTimes = 0;
             this._totalTime = 0;
             this._currentTime = 0;
+            this._lastTime = 0;
             //-1 beforeFade, 0 fading, 1 fadeComplete
             this._fadeState = 0;
             this._playTimes = 0;
             this._timelineStateList = [];
+            this._slotTimelineStateList = [];
             this._boneMasks = [];
         }
         var __egretProto__ = AnimationState.prototype;
@@ -74,14 +129,22 @@ var dragonBones;
             dragonBones.TimelineState._clear();
         };
         __egretProto__.clear = function () {
+            this._resetTimelineStateList();
+            this._boneMasks.length = 0;
+            this._armature = null;
+            this._clip = null;
+        };
+        __egretProto__._resetTimelineStateList = function () {
             var i = this._timelineStateList.length;
             while (i--) {
                 dragonBones.TimelineState._returnObject(this._timelineStateList[i]);
             }
             this._timelineStateList.length = 0;
-            this._boneMasks.length = 0;
-            this._armature = null;
-            this._clip = null;
+            i = this._slotTimelineStateList.length;
+            while (i--) {
+                dragonBones.SlotTimelineState._returnObject(this._slotTimelineStateList[i]);
+            }
+            this._slotTimelineStateList.length = 0;
         };
         //骨架装配
         /**
@@ -100,7 +163,7 @@ var dragonBones;
          */
         __egretProto__.addBoneMask = function (boneName, ifInvolveChildBones) {
             if (ifInvolveChildBones === void 0) { ifInvolveChildBones = true; }
-            this.addBoneToBoneMask(currentBone.name);
+            this.addBoneToBoneMask(boneName);
             if (ifInvolveChildBones) {
                 var currentBone = this._armature.getBone(boneName);
                 if (currentBone) {
@@ -109,7 +172,7 @@ var dragonBones;
                     while (i--) {
                         var tempBone = boneList[i];
                         if (currentBone.contains(tempBone)) {
-                            this.addBoneToBoneMask(currentBone.name);
+                            this.addBoneToBoneMask(tempBone.name);
                         }
                     }
                 }
@@ -134,7 +197,7 @@ var dragonBones;
                     while (i--) {
                         var tempBone = boneList[i];
                         if (currentBone.contains(tempBone)) {
-                            this.removeBoneFromBoneMask(currentBone.name);
+                            this.removeBoneFromBoneMask(tempBone.name);
                         }
                     }
                 }
@@ -168,11 +231,20 @@ var dragonBones;
          */
         __egretProto__._updateTimelineStates = function () {
             var timelineState;
+            var slotTimelineState;
             var i = this._timelineStateList.length;
+            var len;
             while (i--) {
                 timelineState = this._timelineStateList[i];
                 if (!this._armature.getBone(timelineState.name)) {
                     this.removeTimelineState(timelineState);
+                }
+            }
+            i = this._slotTimelineStateList.length;
+            while (i--) {
+                slotTimelineState = this._slotTimelineStateList[i];
+                if (!this._armature.getSlot(slotTimelineState.name)) {
+                    this.removeSlotTimelineState(slotTimelineState);
                 }
             }
             if (this._boneMasks.length > 0) {
@@ -183,23 +255,27 @@ var dragonBones;
                         this.removeTimelineState(timelineState);
                     }
                 }
-                for (var key in this._boneMasks) {
-                    var timelineName = this._boneMasks[key];
+                for (i = 0, len = this._boneMasks.length; i < len; i++) {
+                    var timelineName = this._boneMasks[i];
                     this.addTimelineState(timelineName);
                 }
             }
             else {
-                for (var key in this._clip.timelineList) {
-                    var timeline = this._clip.timelineList[key];
+                for (i = 0, len = this._clip.timelineList.length; i < len; i++) {
+                    var timeline = this._clip.timelineList[i];
                     this.addTimelineState(timeline.name);
                 }
+            }
+            for (i = 0, len = this._clip.slotTimelineList.length; i < len; i++) {
+                var slotTimeline = this._clip.slotTimelineList[i];
+                this.addSlotTimelineState(slotTimeline.name);
             }
         };
         __egretProto__.addTimelineState = function (timelineName) {
             var bone = this._armature.getBone(timelineName);
             if (bone) {
-                for (var key in this._timelineStateList) {
-                    var eachState = this._timelineStateList[key];
+                for (var i = 0, len = this._timelineStateList.length; i < len; i++) {
+                    var eachState = this._timelineStateList[i];
                     if (eachState.name == timelineName) {
                         return;
                     }
@@ -213,6 +289,25 @@ var dragonBones;
             var index = this._timelineStateList.indexOf(timelineState);
             this._timelineStateList.splice(index, 1);
             dragonBones.TimelineState._returnObject(timelineState);
+        };
+        __egretProto__.addSlotTimelineState = function (timelineName) {
+            var slot = this._armature.getSlot(timelineName);
+            if (slot) {
+                for (var i = 0, len = this._slotTimelineStateList.length; i < len; i++) {
+                    var eachState = this._slotTimelineStateList[i];
+                    if (eachState.name == timelineName) {
+                        return;
+                    }
+                }
+                var timelineState = dragonBones.SlotTimelineState._borrowObject();
+                timelineState._fadeIn(slot, this, this._clip.getSlotTimeline(timelineName));
+                this._slotTimelineStateList.push(timelineState);
+            }
+        };
+        __egretProto__.removeSlotTimelineState = function (timelineState) {
+            var index = this._slotTimelineStateList.indexOf(timelineState);
+            this._slotTimelineStateList.splice(index, 1);
+            dragonBones.SlotTimelineState._returnObject(timelineState);
         };
         //动画
         /**
@@ -292,8 +387,8 @@ var dragonBones;
                 }
             }
             else {
-                for (var key in this._timelineStateList) {
-                    var timelineState = this._timelineStateList[key];
+                for (var i = 0, len = this._timelineStateList.length; i < len; i++) {
+                    var timelineState = this._timelineStateList[i];
                     timelineState._fadeOut();
                 }
             }
@@ -450,9 +545,16 @@ var dragonBones;
             //update timeline
             this._isComplete = isThisComplete;
             var progress = this._time * 1000 / this._totalTime;
-            for (var key in this._timelineStateList) {
-                var timeline = this._timelineStateList[key];
+            var i = 0;
+            var len = 0;
+            for (i = 0, len = this._timelineStateList.length; i < len; i++) {
+                var timeline = this._timelineStateList[i];
                 timeline._update(progress);
+                this._isComplete = timeline._isComplete && this._isComplete;
+            }
+            for (i = 0, len = this._slotTimelineStateList.length; i < len; i++) {
+                var slotTimeline = this._slotTimelineStateList[i];
+                slotTimeline._update(progress);
                 this._isComplete = timeline._isComplete && this._isComplete;
             }
             //update main timeline
@@ -469,6 +571,7 @@ var dragonBones;
                 if (this._isComplete) {
                     completeFlg = true;
                 }
+                this._lastTime = this._currentTime;
                 this._currentTime = currentTime;
                 /*
                 if(isThisComplete)
@@ -514,8 +617,9 @@ var dragonBones;
                     if (this._currentFrameIndex < 0) {
                         this._currentFrameIndex = 0;
                     }
-                    else if (this._currentTime < this._currentFramePosition || this._currentTime >= this._currentFramePosition + this._currentFrameDuration) {
+                    else if (this._currentTime < this._currentFramePosition || this._currentTime >= this._currentFramePosition + this._currentFrameDuration || this._currentTime < this._lastTime) {
                         this._currentFrameIndex++;
+                        this._lastTime = this._currentTime;
                         if (this._currentFrameIndex >= frameList.length) {
                             if (isThisComplete) {
                                 this._currentFrameIndex--;
@@ -543,8 +647,8 @@ var dragonBones;
             }
         };
         __egretProto__.hideBones = function () {
-            for (var key in this._clip.hideTimelineNameMap) {
-                var timelineName = this._clip.hideTimelineNameMap[key];
+            for (var i = 0, len = this._clip.hideTimelineNameMap.length; i < len; i++) {
+                var timelineName = this._clip.hideTimelineNameMap[i];
                 var bone = this._armature.getBone(timelineName);
                 if (bone) {
                     bone._hideSlots();

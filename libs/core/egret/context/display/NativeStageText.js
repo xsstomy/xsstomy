@@ -1,32 +1,31 @@
-/**
- * Created by wander on 14-9-15.
- */
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 var egret;
 (function (egret) {
     /**
@@ -115,10 +114,6 @@ var egret;
         __egretProto__._getTextType = function () {
             return this.textType;
         };
-        __egretProto__._open = function (x, y, width, height) {
-            if (width === void 0) { width = 160; }
-            if (height === void 0) { height = 21; }
-        };
         __egretProto__.resetText = function () {
             if (this.textType == "password") {
                 var passwordStr = "";
@@ -148,6 +143,8 @@ var egret;
         //全屏键盘
         __egretProto__.showScreenKeyboard = function () {
             var self = this;
+            self.dispatchEvent(new egret.Event("focus"));
+            egret.Event.dispatchEvent(self, "focus", false, { "showing": true });
             egret_native.EGT_TextInput = function (appendText) {
                 if (self._multiline) {
                     if (self.isFinishDown) {
@@ -163,6 +160,7 @@ var egret;
                     //关闭软键盘
                     egret_native.TextInputOp.setKeybordOpen(false);
                     self.dispatchEvent(new egret.Event("updateText"));
+                    self.dispatchEvent(new egret.Event("blur"));
                 }
             };
             //点击完成
@@ -170,20 +168,23 @@ var egret;
                 if (self._multiline) {
                     self.isFinishDown = true;
                 }
+                self.dispatchEvent(new egret.Event("blur"));
             };
         };
         __egretProto__.showPartKeyboard = function () {
+            var self = this;
+            self.dispatchEvent(new egret.Event("focus"));
             var container = this.container;
             var stage = egret.MainContext.instance.stage;
             stage.addChild(container);
             this.createText();
-            var self = this;
             egret_native.EGT_TextInput = function (appendText) {
                 if (self._multiline) {
                 }
                 else {
                     if (appendText == "\n") {
                         if (container && container.parent) {
+                            self.dispatchEvent(new egret.Event("blur"));
                             container.parent.removeChild(container);
                         }
                         egret_native.TextInputOp.setKeybordOpen(false);
@@ -204,11 +205,12 @@ var egret;
             //系统关闭键盘
             egret_native.EGT_keyboardDidHide = function () {
                 if (container && container.parent) {
+                    self.dispatchEvent(new egret.Event("blur"));
                     container.parent.removeChild(container);
                 }
             };
         };
-        __egretProto__._show = function () {
+        __egretProto__._show = function (multiline, size, width, height) {
             var self = this;
             egret_native.EGT_getTextEditerContentText = function () {
                 return self._getText();
@@ -223,8 +225,12 @@ var egret;
                 egret_native.EGT_keyboardDidShow = function () {
                 };
             };
-            egret_native.TextInputOp.setInputTextMaxLenght(self._maxChars > 0 ? self._maxChars : -1);
-            egret_native.TextInputOp.setKeybordOpen(true);
+            var textfield = this._textfield;
+            var inputMode = textfield.multiline ? 0 : 6;
+            var inputFlag = -1; //textfield.displayAsPassword ? 0 : -1;
+            var returnType = 1;
+            var maxLength = textfield.maxChars <= 0 ? -1 : textfield.maxChars;
+            egret_native.TextInputOp.setKeybordOpen(true, JSON.stringify({ "inputMode": inputMode, "inputFlag": inputFlag, "returnType": returnType, "maxLength": maxLength }));
         };
         __egretProto__._remove = function () {
             var container = this.container;
@@ -234,6 +240,7 @@ var egret;
         };
         __egretProto__._hide = function () {
             this._remove();
+            this.dispatchEvent(new egret.Event("blur"));
             egret_native.TextInputOp.setKeybordOpen(false);
         };
         return NativeStageText;

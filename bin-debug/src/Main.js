@@ -83,8 +83,8 @@ var Main = (function (_super) {
      */
     __egretProto__.createGameScene = function () {
         egret.Profiler.getInstance().run();
-        //var three1:ThreeD.Perspective = new ThreeD.Perspective();
-        //this.addChild( three1 );
+        var three1 = new ThreeD.Perspective();
+        this.addChild(three1);
         //var three2:ThreeD.Bounce3D = new ThreeD.Bounce3D();
         //this.addChild( three2 );
         //var three3:ThreeD.MultiBounce3D = new ThreeD.MultiBounce3D();
@@ -114,19 +114,10 @@ var Main = (function (_super) {
         //this.addChild( p );
         //var trees:ThreeD.Trees = new ThreeD.Trees();
         //this.addChild( trees );
-        var btm = new egret.Bitmap(RES.getRes("egretIcon"));
-        var jmp = new Fun.Jump(btm);
-        jmp.active();
-        this.addChild(jmp);
-        console.log("........" + jmp.width);
-        //var spr:egret.Sprite = new egret.Sprite();
-        //spr.width = 480;
-        //spr.height = 800;
-        //this.addChild(spr);
-        //spr.touchEnabled = true;
-        //spr.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-        //    console.log("...........");
-        //},this);
+        //var btm:egret.Bitmap = new egret.Bitmap(RES.getRes("egretIcon"));
+        //var jmp:Fun.Jump = new Fun.Jump(btm);
+        //jmp.active();
+        //this.addChild(jmp);
     };
     __egretProto__.onTouchBegin = function (evt) {
         console.log('touch_begin');

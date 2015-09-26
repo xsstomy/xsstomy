@@ -1,29 +1,31 @@
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
 var egret;
 (function (egret) {
     /**
@@ -57,8 +59,13 @@ var egret;
      * @classdesc
      * ByteArray 类提供用于优化读取、写入以及处理二进制数据的方法和属性。
      * 注意：ByteArray 类适用于需要在字节层访问数据的高级 开发人员。
+     * @includeExample egret/utils/ByteArray.ts
      */
     var ByteArray = (function () {
+        /**
+         * 创建一个 egret.ByteArray 对象以引用指定的 ArrayBuffer 对象
+         * @param buffer {ArrayBuffer} 数据源
+         */
         function ByteArray(buffer) {
             this.BUFFER_EXT_SIZE = 0; //Buffer expansion size
             this.EOF_byte = -1;
@@ -72,23 +79,13 @@ var egret;
             this.data = new DataView(buffer);
             this._position = 0;
         };
-        /**
-         * @deprecated
-         */
-        __egretProto__.setArrayBuffer = function (buffer) {
-        };
         Object.defineProperty(__egretProto__, "buffer", {
-            // getter setter
             get: function () {
                 return this.data.buffer;
             },
-            //public get bufferCopy():ArrayBuffer {
-            //    var newarraybuffer = new ArrayBuffer(this.length);
-            //    var view = new Uint8Array(this.data.buffer, 0, this.length);
-            //    var newview = new Uint8Array(newarraybuffer, 0, this.length);
-            //    newview.set(view);      // memcpy
-            //    return newarraybuffer;
-            //}
+            /**
+             * @private
+             */
             set: function (value) {
                 this.data = new DataView(value);
             },
@@ -99,6 +96,9 @@ var egret;
             get: function () {
                 return this.data;
             },
+            /**
+             * @private
+             */
             set: function (value) {
                 this.data = value;
                 this.write_position = value.byteLength;
@@ -107,9 +107,9 @@ var egret;
             configurable: true
         });
         Object.defineProperty(__egretProto__, "bufferOffset", {
-            //public get phyPosition():number {
-            //    return this._position + this.data.byteOffset;
-            //}
+            /**
+             * @private
+             */
             get: function () {
                 return this.data.byteOffset;
             },
@@ -117,15 +117,19 @@ var egret;
             configurable: true
         });
         Object.defineProperty(__egretProto__, "position", {
+            /**
+             * 将文件指针的当前位置（以字节为单位）移动或返回到 ByteArray 对象中。下一次调用读取方法时将在此位置开始读取，或者下一次调用写入方法时将在此位置开始写入。
+             * @member {number} egret.ByteArray#position
+             */
             get: function () {
                 return this._position;
             },
             set: function (value) {
-                if (this._position < value) {
-                    if (!this.validate(value - this._position)) {
-                        return;
-                    }
-                }
+                //if (this._position < value) {
+                //    if (!this.validate(value - this._position)) {
+                //        return;
+                //    }
+                //}
                 this._position = value;
                 this.write_position = value > this.write_position ? value : this.write_position;
             },
@@ -133,23 +137,45 @@ var egret;
             configurable: true
         });
         Object.defineProperty(__egretProto__, "length", {
+            /**
+             * ByteArray 对象的长度（以字节为单位）。
+             * 如果将长度设置为大于当前长度的值，则用零填充字节数组的右侧。
+             * 如果将长度设置为小于当前长度的值，将会截断该字节数组。
+             * @member {number} egret.ByteArray#length
+             */
             get: function () {
                 return this.write_position;
             },
             set: function (value) {
-                this.validateBuffer(value);
+                this.write_position = value;
+                var tmp = new Uint8Array(new ArrayBuffer(value));
+                var byteLength = this.data.buffer.byteLength;
+                if (byteLength > value) {
+                    this._position = value;
+                }
+                var length = Math.min(byteLength, value);
+                tmp.set(new Uint8Array(this.data.buffer, 0, length));
+                this.buffer = tmp.buffer;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(__egretProto__, "bytesAvailable", {
+            /**
+             * 可从字节数组的当前位置到数组末尾读取的数据的字节数。
+             * 每次访问 ByteArray 对象时，将 bytesAvailable 属性与读取方法结合使用，以确保读取有效的数据。
+             * @member {number} egret.ByteArray#bytesAvailable
+             */
             get: function () {
                 return this.data.byteLength - this._position;
             },
             enumerable: true,
             configurable: true
         });
-        //end
+        /**
+         * 清除字节数组的内容，并将 length 和 position 属性重置为 0。
+         * @method egret.ByteArray#clear
+         */
         __egretProto__.clear = function () {
             //this._position = 0;
             this._setArrayBuffer(new ArrayBuffer(this.BUFFER_EXT_SIZE));
@@ -267,11 +293,11 @@ var egret;
          * @return UTF-8 编码的字符串
          * @method egret.ByteArray#readMultiByte
          */
-        __egretProto__.readMultiByte = function (length, charSet) {
-            if (!this.validate(length))
-                return null;
-            return "";
-        };
+        //public readMultiByte(length:number, charSet?:string):string {
+        //    if (!this.validate(length)) return null;
+        //
+        //    return "";
+        //}
         /**
          * 从字节流中读取一个带符号的 16 位整数
          * @return 介于 -32768 和 32767 之间的 16 位带符号整数
@@ -567,24 +593,29 @@ var egret;
                 this.data.setUint8(this.position++, bytes[i]);
             }
         };
+        /**
+         * @private
+         */
         __egretProto__.validate = function (len) {
             //len += this.data.byteOffset;
             if (this.data.byteLength > 0 && this._position + len <= this.data.byteLength) {
                 return true;
             }
             else {
-                throw egret.getString(1025);
+                egret.$error(1025);
             }
         };
         /**********************/
         /*  PRIVATE METHODS   */
         /**********************/
-        __egretProto__.validateBuffer = function (len) {
+        __egretProto__.validateBuffer = function (len, needReplace) {
+            if (needReplace === void 0) { needReplace = false; }
             this.write_position = len > this.write_position ? len : this.write_position;
             len += this._position;
-            if (this.data.byteLength < len) {
+            if (this.data.byteLength < len || needReplace) {
                 var tmp = new Uint8Array(new ArrayBuffer(len + this.BUFFER_EXT_SIZE));
-                tmp.set(new Uint8Array(this.data.buffer));
+                var length = Math.min(this.data.buffer.byteLength, len + this.BUFFER_EXT_SIZE);
+                tmp.set(new Uint8Array(this.data.buffer, 0, length));
                 this.buffer = tmp.buffer;
             }
         };
@@ -720,11 +751,11 @@ var egret;
             return result;
         };
         __egretProto__.encoderError = function (code_point) {
-            throw egret.getString(1026, code_point);
+            egret.$error(1026, code_point);
         };
         __egretProto__.decoderError = function (fatal, opt_code_point) {
             if (fatal) {
-                throw egret.getString(1027);
+                egret.$error(1027);
             }
             return opt_code_point || 0xFFFD;
         };

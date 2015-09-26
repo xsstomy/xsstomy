@@ -10,14 +10,14 @@ var ThreeD;
         __extends(Perspective, _super);
         function Perspective() {
             _super.call(this);
-            this.xpos = 0;
-            this.ypos = 0;
+            this.xpos = Const.Const.stageWidth / 2;
+            this.ypos = Const.Const.stageHeigth / 2;
             this.zpos = 0;
             this.fl = 250;
             this.vpX = Const.Const.stageWidth / 2;
             this.vpY = Const.Const.stageHeigth / 2;
-            this.touchX = 0;
-            this.touchY = 0;
+            this.touchX = Const.Const.stageWidth / 2;
+            this.touchY = Const.Const.stageHeigth / 2;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
         var __egretProto__ = Perspective.prototype;
@@ -33,17 +33,17 @@ var ThreeD;
         };
         __egretProto__.onTouchBegin = function (evt) {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
         __egretProto__.onTouchMove = function (evt) {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
         };
         __egretProto__.onTouchEnd = function (evt) {
             this.touchX = evt.stageX;
-            this.touchY = evt.stageY;
+            //this.touchY = evt.stageY;
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };

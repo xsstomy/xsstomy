@@ -1,20 +1,3 @@
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
 declare module RES {
     /**
      * @class RES.ResourceEvent
@@ -58,6 +41,7 @@ declare module RES {
          * @param type {string}
          * @param bubbles {boolean}
          * @param cancelable {boolean}
+         * @private
          */
         constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
@@ -89,27 +73,12 @@ declare module RES {
          * @param resItem {egret.ResourceItem}
          * @param itemsLoaded {number}
          * @param itemsTotal {number}
+         * @private
          */
         static dispatchResourceEvent(target: egret.IEventDispatcher, type: string, groupName?: string, resItem?: ResourceItem, itemsLoaded?: number, itemsTotal?: number): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * @class RES.ResourceItem
@@ -129,6 +98,7 @@ declare module RES {
         /**
          * 二进制流文件
          * @constant {string} RES.ResourceItem.TYPE_BIN
+         * @platform Web
          */
         static TYPE_BIN: string;
         /**
@@ -162,68 +132,61 @@ declare module RES {
          * @param name {string} 加载项名称
          * @param url {string} 要加载的文件地址
          * @param type {string} 加载项文件类型
+         * @private
          */
         constructor(name: string, url: string, type: string);
         /**
          * 加载项名称
          * @member {string} RES.ResourceItem#name
+         * @private
          */
         name: string;
         /**
          * 要加载的文件地址
          * @member {string} RES.ResourceItem#url
+         * @private
          */
         url: string;
         /**
          * 加载项文件类型
          * @member {string} RES.ResourceItem#type
+         * @private
          */
         type: string;
         /**
          * 所属组名
          * @member {string} RES.ResourceItem#groupName
+         * @private
          */
         groupName: string;
         /**
          * 被引用的原始数据对象
          * @member {any} RES.ResourceItem#data
+         * @private
          */
         data: any;
         private _loaded;
         /**
          * 加载完成的标志
          * @member {boolean} RES.ResourceItem#loaded
+         * @private
          */
         loaded: boolean;
         /**
          * 转成字符串
          * @method RES.ResourceItem#toString
          * @returns {string}
+         * @private
          */
         toString(): string;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * @class RES.ResourceConfig
      * @classdesc
+     * @private
      */
     class ResourceConfig {
         constructor();
@@ -305,28 +268,13 @@ declare module RES {
         private parseResourceItem(data);
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * @class RES.ResourceLoader
      * @classdesc
      * @extends egret.EventDispatcher
+     * @private
      */
     class ResourceLoader extends egret.EventDispatcher {
         /**
@@ -426,26 +374,11 @@ declare module RES {
         private removeGroupName(groupName);
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * @classic
+     * @private
      */
     class AnalyzerBase extends egret.HashObject {
         constructor();
@@ -486,24 +419,11 @@ declare module RES {
         static getStringTail(name: string): string;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class BinAnalyzer extends AnalyzerBase {
         /**
          * 构造函数
@@ -550,52 +470,28 @@ declare module RES {
          * @inheritDoc
          */
         destroyRes(name: string): boolean;
+        protected onResourceDestroy(resource: any): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class ImageAnalyzer extends BinAnalyzer {
         constructor();
         /**
          * 解析并缓存加载成功的数据
          */
         analyzeData(resItem: ResourceItem, data: any): void;
+        protected onResourceDestroy(texture: any): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class JsonAnalyzer extends BinAnalyzer {
         constructor();
         /**
@@ -604,48 +500,20 @@ declare module RES {
         analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class TextAnalyzer extends BinAnalyzer {
         constructor();
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * SpriteSheet解析器
+     * @private
      */
     class SheetAnalyzer extends BinAnalyzer {
         constructor();
@@ -676,96 +544,37 @@ declare module RES {
          * @inheritDoc
          */
         destroyRes(name: string): boolean;
+        protected onResourceDestroy(sheet: any): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class FontAnalyzer extends SheetAnalyzer {
         constructor();
         analyzeConfig(resItem: ResourceItem, data: string): string;
         analyzeBitmap(resItem: ResourceItem, data: egret.Texture): void;
         private getTexturePath(url, fntText);
-        /**
-         * @inheritDoc
-         */
-        destroyRes(name: string): boolean;
+        protected onResourceDestroy(font: egret.BitmapFont): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class SoundAnalyzer extends BinAnalyzer {
         constructor();
         analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
+    /**
+     * @private
+     */
     class XMLAnalyzer extends BinAnalyzer {
         constructor();
         /**
@@ -774,23 +583,7 @@ declare module RES {
         analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
-/**
- * Copyright (c) Egret-Labs.org. Permission is hereby granted, free of charge,
- * to any person obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 declare module RES {
     /**
      * 加载配置文件并解析
@@ -798,6 +591,7 @@ declare module RES {
      * @param url {string} 配置文件路径(resource.json的路径)
      * @param resourceRoot {string} 资源根路径。配置中的所有url都是这个路径的相对值。最终url是这个字符串与配置里资源项的url相加的值。
      * @param type {string} 配置文件的格式。确定要用什么解析器来解析配置文件。默认"json"
+     * @see #setMaxRetryTimes
      */
     function loadConfig(url: string, resourceRoot?: string, type?: string): void;
     /**
@@ -806,6 +600,7 @@ declare module RES {
      * @param name {string} 要加载资源组的组名
      * @param priority {number} 加载优先级,可以为负数,默认值为0。
      * 低优先级的组必须等待高优先级组完全加载结束才能开始，同一优先级的组会同时加载。
+     * @see #setMaxRetryTimes
      */
     function loadGroup(name: string, priority?: number): void;
     /**
@@ -813,6 +608,7 @@ declare module RES {
      * @method RES.isGroupLoaded
      * @param name {string} 组名
      * @returns {boolean}
+     * @see #setMaxRetryTimes
      */
     function isGroupLoaded(name: string): boolean;
     /**
@@ -820,6 +616,7 @@ declare module RES {
      * @method RES.getGroupByName
      * @param name {string} 组名
      * @returns {egret.ResourceItem}
+     * @see #setMaxRetryTimes
      */
     function getGroupByName(name: string): Array<ResourceItem>;
     /**
@@ -830,6 +627,7 @@ declare module RES {
      * @param keys {egret.Array<string>} 要包含的键名列表，key对应配置文件里的name属性或sbuKeys属性的一项或一个资源组名。
      * @param override {boolean} 是否覆盖已经存在的同名资源组,默认false。
      * @returns {boolean}
+     * @see #setMaxRetryTimes
      */
     function createGroup(name: string, keys: Array<string>, override?: boolean): boolean;
     /**
@@ -837,6 +635,7 @@ declare module RES {
      * @method RES.hasRes
      * @param key {string} 对应配置文件里的name属性或sbuKeys属性的一项。
      * @returns {boolean}
+     * @see #setMaxRetryTimes
      */
     function hasRes(key: string): boolean;
     /**
@@ -844,6 +643,7 @@ declare module RES {
      * @method RES.parseConfig
      * @param data {any} 配置文件数据，请参考resource.json的配置文件格式。传入对应的json对象即可。
      * @param folder {string} 加载项的路径前缀。
+     * @see #setMaxRetryTimes
      */
     function parseConfig(data: any, folder?: string): void;
     /**
@@ -851,6 +651,7 @@ declare module RES {
      * @method RES.getRes
      * @param key {string} 对应配置文件里的name属性或sbuKeys属性的一项。
      * @returns {any}
+     * @see #setMaxRetryTimes
      */
     function getRes(key: string): any;
     /**
@@ -859,6 +660,7 @@ declare module RES {
      * @param key {string} 对应配置文件里的name属性或sbuKeys属性的一项。
      * @param compFunc {Function} 回调函数。示例：compFunc(data,key):void。
      * @param thisObject {any} 回调函数的this引用
+     * @see #setMaxRetryTimes
      */
     function getResAsync(key: string, compFunc: Function, thisObject: any): void;
     /**
@@ -868,24 +670,29 @@ declare module RES {
      * @param compFunc {Function} 回调函数。示例：compFunc(data,url):void。
      * @param thisObject {any} 回调函数的this引用
      * @param type {string} 文件类型(可选)。请使用ResourceItem类中定义的静态常量。若不设置将根据文件扩展名生成。
+     * @includeExample extension/resource/GetResByUrl.ts
      */
     function getResByUrl(url: string, compFunc: Function, thisObject: any, type?: string): void;
     /**
      * 销毁单个资源文件或一组资源的缓存数据,返回是否删除成功。
      * @method RES.destroyRes
      * @param name {string} 配置文件中加载项的name属性或资源组名
+     * @param force {boolean} 销毁一个资源组时其他资源组有同样资源情况资源是否会被删除，默认值true
      * @returns {boolean}
+     * @see #setMaxRetryTimes
      */
-    function destroyRes(name: string): boolean;
+    function destroyRes(name: string, force?: boolean): boolean;
     /**
      * 设置最大并发加载线程数量，默认值是2.
      * @method RES.setMaxLoadingThread
      * @param thread {number} 要设置的并发加载数。
+     * @see #setMaxRetryTimes
      */
     function setMaxLoadingThread(thread: number): void;
     /**
      * 设置资源加载失败时的重试次数，默认值是 3。
      * @param retry 要设置的重试次数。
+     * @includeExample extension/resource/Resource.ts
      */
     function setMaxRetryTimes(retry: number): void;
     /**
@@ -900,6 +707,7 @@ declare module RES {
      * 要在所有三个阶段都侦听事件，请调用 addEventListener 两次：一次将 useCapture 设置为 true，一次将 useCapture 设置为 false。
      * @param priority {number} 事件侦听器的优先级。优先级由一个带符号的 32 位整数指定。数字越大，优先级越高。优先级为 n 的所有侦听器会在
      * 优先级为 n -1 的侦听器之前得到处理。如果两个或更多个侦听器共享相同的优先级，则按照它们的添加顺序进行处理。默认优先级为 0。
+     * @see #setMaxRetryTimes
      */
     function addEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void;
     /**
@@ -909,6 +717,8 @@ declare module RES {
      * @param listener {Function} 侦听函数
      * @param thisObject {any} 侦听函数绑定的this对象
      * @param useCapture {boolean} 是否使用捕获，这个属性只在显示列表中生效。
+     * @see #setMaxRetryTimes
      */
     function removeEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean): void;
 }
+

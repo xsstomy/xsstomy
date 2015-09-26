@@ -1,29 +1,3 @@
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 declare module dragonBones {
     /**
      * @class dragonBones.DragonBones
@@ -32,42 +6,18 @@ declare module dragonBones {
      */
     class DragonBones {
         /**
-         * 数据的版本号
+         * DragonBones当前数据格式版本
          */
         static DATA_VERSION: string;
         /**
          *
          */
-        static PARENT_COORDINATE_DATA_VERSION: String;
+        static PARENT_COORDINATE_DATA_VERSION: string;
+        static VERSION: string;
         constructor();
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Point
@@ -100,32 +50,7 @@ declare module dragonBones {
         toString(): string;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.geom
@@ -164,32 +89,7 @@ declare module dragonBones {
         constructor(x?: number, y?: number, width?: number, height?: number);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Matrix
@@ -270,155 +170,129 @@ declare module dragonBones {
          * @param m
          */
         concat(m: Matrix): void;
+        copyFrom(m: Matrix): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.EventDispatcher
      * @classdesc
      * 事件派发者
      */
-    class EventDispatcher {
-        private _listenersMap;
-        constructor();
-        /**
-         *是否有指定类型的事件侦听函数
-         * @param type 事件类型
-         * @returns {boolean}
-         */
-        hasEventListener(type: string): boolean;
-        /**
-         *添加一个针对指定类型的事件侦听函数
-         * @param type 事件类型
-         * @param listener 事件侦听函数
-         */
-        addEventListener(type: string, listener: Function): void;
-        /**
-         *移除一个指定类型的事件侦听函数
-         * @param type 事件类型
-         * @param listener 需要移除的事件侦听函数
-         */
-        removeEventListener(type: string, listener: Function): void;
-        /**
-         *移除指定类型的所有的事件侦听函数
-         * @param type 事件类型
-         */
-        removeAllEventListeners(type: string): void;
-        /**
-         * 派发事件
-         * @param event 被派发的事件
-         */
-        dispatchEvent(event: Event): void;
+    class EventDispatcher extends egret.EventDispatcher {
+        constructor(target?: egret.IEventDispatcher);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Event
      * @classdesc
      * 事件
      */
-    class Event {
-        /**
-         * 事件的类型
-         * @member {string} dragonBones.Event#type
-         */
-        type: string;
-        /**
-         * 派发事件的对象
-         * @member {dragonBones.EventDispatcher} dragonBones.Event#target
-         */
-        target: EventDispatcher;
+    class Event extends egret.Event {
         /**
          * 创建一个Event实例
          * @param type 事件的类型
          */
-        constructor(type: string);
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.AnimationEvent
      * @extends dragonBones.Event
      * @classdesc
      * 动画事件
+     *
+     * @example
+       <pre>
+        private exampleEvent():void
+        {
+            //获取动画数据
+            var skeletonData = RES.getRes("skeleton");
+            //获取纹理集数据
+            var textureData = RES.getRes("textureConfig");
+            //获取纹理集图片
+            var texture = RES.getRes("texture");
+
+            //创建一个工厂，用来创建Armature
+            var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+            //把动画数据添加到工厂里
+            factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+            //把纹理集数据和图片添加到工厂里
+            factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+            //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+            var armatureName:string = skeletonData.armature[0].name;
+            //从工厂里创建出Armature
+            var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+            //获取装载Armature的容器
+            var armatureDisplay = armature.display;
+            armatureDisplay.x = 200;
+            armatureDisplay.y = 400;
+            //把它添加到舞台上
+            this.addChild(armatureDisplay);
+
+            //监听事件时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT, this.onFrameEvent,this);
+            //监听骨骼时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.BONE_FRAME_EVENT, this.onFrameEvent,this);
+            //监听动画完成事件
+            armature.addEventListener(dragonBones.AnimationEvent.COMPLETE, this.onAnimationEvent,this);
+            //监听动画开始事件
+            armature.addEventListener(dragonBones.AnimationEvent.START, this.onAnimationEvent,this);
+            //监听循环动画，播放完一遍的事件
+            armature.addEventListener(dragonBones.AnimationEvent.LOOP_COMPLETE, this.onAnimationEvent,this);
+            //监听声音事件
+            var soundManager:dragonBones.SoundEventManager = dragonBones.SoundEventManager.getInstance();
+            soundManager.addEventListener(dragonBones.SoundEvent.SOUND, this.onSoundEvent,this);
+
+            //取得这个Armature动画列表中的第一个动画的名字
+            var curAnimationName = armature.animation.animationList[0];
+            //播放一遍动画
+            armature.animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+            //把Armature添加到心跳时钟里
+            dragonBones.WorldClock.clock.add(armature);
+            //心跳时钟开启
+            egret.Ticker.getInstance().register(function (advancedTime) {
+                dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+            }, this);
+        }
+        private onFrameEvent(evt: dragonBones.FrameEvent):void
+        {
+            //打印出事件的类型，和事件的帧标签
+            console.log(evt.type, evt.frameLabel);
+        }
+
+        private onAnimationEvent(evt: dragonBones.AnimationEvent):void
+        {
+            switch(evt.type)
+            {
+                case dragonBones.AnimationEvent.START:
+                     break;
+                case dragonBones.AnimationEvent.LOOP_COMPLETE:
+                     break;
+                case dragonBones.AnimationEvent.COMPLETE:
+                     //动画完成后销毁这个armature
+                     this.removeChild(evt.armature.display);
+                     dragonBones.WorldClock.clock.remove(evt.armature);
+                     evt.armature.dispose();
+                     break;
+            }
+        }
+
+        private onSoundEvent(evt: dragonBones.SoundEvent):void
+        {
+            //播放声音
+            var flySound:egret.Sound = RES.getRes(evt.sound);
+            console.log("soundEvent",evt.sound);
+        }
+
+       </pre>
      */
     class AnimationEvent extends Event {
         /**
@@ -462,7 +336,7 @@ declare module dragonBones {
          * animationState 的实例.
          * @member {dragonBones.AnimationState} dragonBones.AnimationEvent#animationState
          */
-        animationState: AnimationState;
+        animationState: any;
         /**
          * 配发出事件的骨架
          * @member {dragonBones.Armature} dragonBones.AnimationEvent#armature
@@ -482,32 +356,7 @@ declare module dragonBones {
         constructor(type: string, cancelable?: boolean);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.ArmatureEvent
@@ -527,38 +376,100 @@ declare module dragonBones {
         constructor(type: string);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.FrameEvent
      * @extends dragonBones.Event
      * @classdesc
      * 帧事件
+     *
+     * @example
+     * <pre>
+     *  private exampleEvent():void
+        {
+            //获取动画数据
+            var skeletonData = RES.getRes("skeleton");
+            //获取纹理集数据
+            var textureData = RES.getRes("textureConfig");
+            //获取纹理集图片
+            var texture = RES.getRes("texture");
+
+            //创建一个工厂，用来创建Armature
+            var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+            //把动画数据添加到工厂里
+            factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+            //把纹理集数据和图片添加到工厂里
+            factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+            //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+            var armatureName:string = skeletonData.armature[0].name;
+            //从工厂里创建出Armature
+            var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+            //获取装载Armature的容器
+            var armatureDisplay = armature.display;
+            armatureDisplay.x = 200;
+            armatureDisplay.y = 400;
+            //把它添加到舞台上
+            this.addChild(armatureDisplay);
+
+            //监听事件时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT, this.onFrameEvent,this);
+            //监听骨骼时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.BONE_FRAME_EVENT, this.onFrameEvent,this);
+            //监听动画完成事件
+            armature.addEventListener(dragonBones.AnimationEvent.COMPLETE, this.onAnimationEvent,this);
+            //监听动画开始事件
+            armature.addEventListener(dragonBones.AnimationEvent.START, this.onAnimationEvent,this);
+            //监听循环动画，播放完一遍的事件
+            armature.addEventListener(dragonBones.AnimationEvent.LOOP_COMPLETE, this.onAnimationEvent,this);
+            //监听声音事件
+            var soundManager:dragonBones.SoundEventManager = dragonBones.SoundEventManager.getInstance();
+            soundManager.addEventListener(dragonBones.SoundEvent.SOUND, this.onSoundEvent,this);
+
+            //取得这个Armature动画列表中的第一个动画的名字
+            var curAnimationName = armature.animation.animationList[0];
+            //播放一遍动画
+            armature.animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+            //把Armature添加到心跳时钟里
+            dragonBones.WorldClock.clock.add(armature);
+            //心跳时钟开启
+            egret.Ticker.getInstance().register(function (advancedTime) {
+                dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+            }, this);
+        }
+        private onFrameEvent(evt: dragonBones.FrameEvent):void
+        {
+            //打印出事件的类型，和事件的帧标签
+            console.log(evt.type, evt.frameLabel);
+        }
+
+        private onAnimationEvent(evt: dragonBones.AnimationEvent):void
+        {
+            switch(evt.type)
+            {
+                case dragonBones.AnimationEvent.START:
+                     break;
+                case dragonBones.AnimationEvent.LOOP_COMPLETE:
+                     break;
+                case dragonBones.AnimationEvent.COMPLETE:
+                     //动画完成后销毁这个armature
+                     this.removeChild(evt.armature.display);
+                     dragonBones.WorldClock.clock.remove(evt.armature);
+                     evt.armature.dispose();
+                     break;
+            }
+        }
+
+        private onSoundEvent(evt: dragonBones.SoundEvent):void
+        {
+            //播放声音
+            var flySound:egret.Sound = RES.getRes(evt.sound);
+            console.log("soundEvent",evt.sound);
+        }
+
+     * </pre>
      */
     class FrameEvent extends Event {
         static MOVEMENT_FRAME_EVENT: string;
@@ -575,7 +486,7 @@ declare module dragonBones {
          * @member {string} dragonBones.FrameEvent#frameLabel
          */
         frameLabel: string;
-        bone: Bone;
+        bone: any;
         /**
          * 派发这个事件的骨架
          * @member {dragonBones.Armature} dragonBones.FrameEvent#armature
@@ -585,7 +496,7 @@ declare module dragonBones {
          * animationState的实例
          * @member {dragonBones.AnimationState} dragonBones.FrameEvent#animationState
          */
-        animationState: AnimationState;
+        animationState: any;
         /**
          * 创建一个新的 FrameEvent 实例
          * @param type 事件类型
@@ -594,32 +505,231 @@ declare module dragonBones {
         constructor(type: string, cancelable?: boolean);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SoundEvent
+     * @extends dragonBones.Event
+     * @classdesc
+     * 声音事件
+     *
+     * @example
+       <pre>
+        private exampleEvent():void
+        {
+            //获取动画数据
+            var skeletonData = RES.getRes("skeleton");
+            //获取纹理集数据
+            var textureData = RES.getRes("textureConfig");
+            //获取纹理集图片
+            var texture = RES.getRes("texture");
+
+            //创建一个工厂，用来创建Armature
+            var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+            //把动画数据添加到工厂里
+            factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+            //把纹理集数据和图片添加到工厂里
+            factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+            //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+            var armatureName:string = skeletonData.armature[0].name;
+            //从工厂里创建出Armature
+            var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+            //获取装载Armature的容器
+            var armatureDisplay = armature.display;
+            armatureDisplay.x = 200;
+            armatureDisplay.y = 400;
+            //把它添加到舞台上
+            this.addChild(armatureDisplay);
+
+            //监听事件时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT, this.onFrameEvent,this);
+            //监听骨骼时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.BONE_FRAME_EVENT, this.onFrameEvent,this);
+            //监听动画完成事件
+            armature.addEventListener(dragonBones.AnimationEvent.COMPLETE, this.onAnimationEvent,this);
+            //监听动画开始事件
+            armature.addEventListener(dragonBones.AnimationEvent.START, this.onAnimationEvent,this);
+            //监听循环动画，播放完一遍的事件
+            armature.addEventListener(dragonBones.AnimationEvent.LOOP_COMPLETE, this.onAnimationEvent,this);
+            //监听声音事件
+            var soundManager:dragonBones.SoundEventManager = dragonBones.SoundEventManager.getInstance();
+            soundManager.addEventListener(dragonBones.SoundEvent.SOUND, this.onSoundEvent,this);
+
+            //取得这个Armature动画列表中的第一个动画的名字
+            var curAnimationName = armature.animation.animationList[0];
+            //播放一遍动画
+            armature.animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+            //把Armature添加到心跳时钟里
+            dragonBones.WorldClock.clock.add(armature);
+            //心跳时钟开启
+            egret.Ticker.getInstance().register(function (advancedTime) {
+                dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+            }, this);
+        }
+        private onFrameEvent(evt: dragonBones.FrameEvent):void
+        {
+            //打印出事件的类型，和事件的帧标签
+            console.log(evt.type, evt.frameLabel);
+        }
+
+        private onAnimationEvent(evt: dragonBones.AnimationEvent):void
+        {
+            switch(evt.type)
+            {
+                case dragonBones.AnimationEvent.START:
+                     break;
+                case dragonBones.AnimationEvent.LOOP_COMPLETE:
+                     break;
+                case dragonBones.AnimationEvent.COMPLETE:
+                     //动画完成后销毁这个armature
+                     this.removeChild(evt.armature.display);
+                     dragonBones.WorldClock.clock.remove(evt.armature);
+                     evt.armature.dispose();
+                     break;
+            }
+        }
+
+        private onSoundEvent(evt: dragonBones.SoundEvent):void
+        {
+            //播放声音
+            var flySound:egret.Sound = RES.getRes(evt.sound);
+            console.log("soundEvent",evt.sound);
+        }
+
+       </pre>
+     */
+    class SoundEvent extends Event {
+        /**
+         * Dispatched when the animation of the animation enter a frame containing sound labels.
+         */
+        static SOUND: string;
+        /**
+         * The armature that is the target of this event.
+         */
+        armature: Armature;
+        animationState: AnimationState;
+        sound: string;
+        /**
+         * Creates a new SoundEvent instance.
+         * @param type
+         * @param cancelable
+         */
+        constructor(type: string, cancelable?: boolean);
+    }
+}
+
+declare module dragonBones {
+    /**
+     *
+     *
+     * @example
+       <pre>
+        private exampleEvent():void
+        {
+            //获取动画数据
+            var skeletonData = RES.getRes("skeleton");
+            //获取纹理集数据
+            var textureData = RES.getRes("textureConfig");
+            //获取纹理集图片
+            var texture = RES.getRes("texture");
+
+            //创建一个工厂，用来创建Armature
+            var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+            //把动画数据添加到工厂里
+            factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+            //把纹理集数据和图片添加到工厂里
+            factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+            //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+            var armatureName:string = skeletonData.armature[0].name;
+            //从工厂里创建出Armature
+            var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+            //获取装载Armature的容器
+            var armatureDisplay = armature.display;
+            armatureDisplay.x = 200;
+            armatureDisplay.y = 400;
+            //把它添加到舞台上
+            this.addChild(armatureDisplay);
+
+            //监听事件时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.ANIMATION_FRAME_EVENT, this.onFrameEvent,this);
+            //监听骨骼时间轴上的事件
+            armature.addEventListener(dragonBones.FrameEvent.BONE_FRAME_EVENT, this.onFrameEvent,this);
+            //监听动画完成事件
+            armature.addEventListener(dragonBones.AnimationEvent.COMPLETE, this.onAnimationEvent,this);
+            //监听动画开始事件
+            armature.addEventListener(dragonBones.AnimationEvent.START, this.onAnimationEvent,this);
+            //监听循环动画，播放完一遍的事件
+            armature.addEventListener(dragonBones.AnimationEvent.LOOP_COMPLETE, this.onAnimationEvent,this);
+            //监听声音事件
+            var soundManager:dragonBones.SoundEventManager = dragonBones.SoundEventManager.getInstance();
+            soundManager.addEventListener(dragonBones.SoundEvent.SOUND, this.onSoundEvent,this);
+
+            //取得这个Armature动画列表中的第一个动画的名字
+            var curAnimationName = armature.animation.animationList[0];
+            //播放一遍动画
+            armature.animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+            //把Armature添加到心跳时钟里
+            dragonBones.WorldClock.clock.add(armature);
+            //心跳时钟开启
+            egret.Ticker.getInstance().register(function (advancedTime) {
+                dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+            }, this);
+        }
+        private onFrameEvent(evt: dragonBones.FrameEvent):void
+        {
+            //打印出事件的类型，和事件的帧标签
+            console.log(evt.type, evt.frameLabel);
+        }
+
+        private onAnimationEvent(evt: dragonBones.AnimationEvent):void
+        {
+            switch(evt.type)
+            {
+                case dragonBones.AnimationEvent.START:
+                     break;
+                case dragonBones.AnimationEvent.LOOP_COMPLETE:
+                     break;
+                case dragonBones.AnimationEvent.COMPLETE:
+                     //动画完成后销毁这个armature
+                     this.removeChild(evt.armature.display);
+                     dragonBones.WorldClock.clock.remove(evt.armature);
+                     evt.armature.dispose();
+                     break;
+            }
+        }
+
+        private onSoundEvent(evt: dragonBones.SoundEvent):void
+        {
+            //播放声音
+            var flySound:egret.Sound = RES.getRes(evt.sound);
+            console.log("soundEvent",evt.sound);
+        }
+
+       </pre>
+     */
+    class SoundEventManager extends EventDispatcher {
+        private static _instance;
+        static getInstance(): SoundEventManager;
+        constructor();
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.IAnimationState
+     * @classdesc
+     * 动画状态接口，目前只在动画缓存管理器中生成动画数据时使用
+     * @see dragonBones.AnimationCacheManager
+     */
+    interface IAnimationState {
+        progress: number;
+    }
+}
+
 declare module dragonBones {
     /**
      * @class dragonBones.IAnimatable
@@ -637,32 +747,7 @@ declare module dragonBones {
         advanceTime(passedTime: number): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.WorldClock
@@ -716,37 +801,12 @@ declare module dragonBones {
         clear(): void;
         /**
          * 更新所有包含的 IAnimatable 实例，将他们的动画向前播放指定的时间。一般来说，这个方法需要在 ENTERFRAME 事件的响应函数中被调用
-         * @param passedTime {number} 前进的时间
+         * @param passedTime {number} 前进的时间，默认值为-1，DragonBones会自动为你计算当前帧与上一帧的时间差
          */
         advanceTime(passedTime?: number): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.TimelineState
@@ -782,6 +842,7 @@ declare module dragonBones {
         _animationState: AnimationState;
         private _totalTime;
         private _currentTime;
+        private _lastTime;
         private _currentFrameIndex;
         private _currentFramePosition;
         private _currentFrameDuration;
@@ -789,6 +850,7 @@ declare module dragonBones {
         private _tweenTransform;
         private _tweenScale;
         private _tweenColor;
+        private _tweenCurve;
         private _rawAnimationScale;
         private _updateMode;
         private _armature;
@@ -814,39 +876,124 @@ declare module dragonBones {
         private updateSingleFrame();
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SlotTimelineState
+     * @classdesc
+     * SlotTimelineState 负责计算 Slot 的时间轴动画。
+     * SlotTimelineState 实例隶属于 AnimationState. AnimationState在创建时会为每个包含动作的 Slot生成一个 SlotTimelineState 实例.
+     * @see dragonBones.Animation
+     * @see dragonBones.AnimationState
+     * @see dragonBones.Slot
+     */
+    class SlotTimelineState {
+        private static HALF_PI;
+        private static DOUBLE_PI;
+        private static _pool;
+        /** @private */
+        static _borrowObject(): SlotTimelineState;
+        /** @private */
+        static _returnObject(timeline: SlotTimelineState): void;
+        /** @private */
+        static _clear(): void;
+        name: string;
+        /** @private */
+        _weight: number;
+        /** @private */
+        _blendEnabled: boolean;
+        /** @private */
+        _isComplete: boolean;
+        /** @private */
+        _animationState: AnimationState;
+        private _totalTime;
+        private _currentTime;
+        private _currentFrameIndex;
+        private _currentFramePosition;
+        private _currentFrameDuration;
+        private _tweenEasing;
+        private _tweenCurve;
+        private _tweenColor;
+        private _rawAnimationScale;
+        private _updateMode;
+        private _armature;
+        private _animation;
+        private _slot;
+        private _timelineData;
+        private _durationColor;
+        constructor();
+        private clear();
+        /** @private */
+        _fadeIn(slot: Slot, animationState: AnimationState, timelineData: SlotTimeline): void;
+        /** @private */
+        _fadeOut(): void;
+        /** @private */
+        _update(progress: number): void;
+        private updateMultipleFrame(progress);
+        private updateToNextFrame(currentPlayTimes?);
+        private updateTween();
+        private updateSingleFrame();
+    }
+}
+
 declare module dragonBones {
     /**
      * @class dragonBones.AnimationState
      * @classdesc
-     * AnimationState 实例由 Animation 实例播放动画时产生， 用于控制单个动画的播放。
+     * AnimationState 实例由 Animation 实例播放动画时产生， 可以对单个动画的播放进行最细致的调节。
      * @see dragonBones.Animation
      * @see dragonBones.AnimationData
+     *
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 500;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+      
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName:string = armature.animation.animationList[0];
+        //播放这个动画
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //获取animationState可以对动画进行更多控制；
+        var animationState:dragonBones.AnimationState = armature.animation.getState(curAnimationName);
+      
+        //下面的代码实现人物的脖子和头动，但是其他部位不动
+        animationState.addBoneMask("neck",true);
+        //下面的代码实现人物的身体动，但是脖子和头不动
+        //animationState.addBoneMask("hip",true);//“hip”是骨架的根骨骼的名字
+        //animationState.removeBoneMask("neck",true);
+        //下面的代码实现动画幅度减小的效果
+        //animationState.weight = 0.5;
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+           dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     class AnimationState {
         private static _pool;
@@ -900,6 +1047,7 @@ declare module dragonBones {
         _group: string;
         private _armature;
         private _timelineStateList;
+        private _slotTimelineStateList;
         private _boneMasks;
         private _isPlaying;
         private _time;
@@ -918,12 +1066,14 @@ declare module dragonBones {
         private _currentPlayTimes;
         private _totalTime;
         private _currentTime;
+        private _lastTime;
         private _fadeState;
         private _fadeTotalTime;
         private _timeScale;
         private _playTimes;
         constructor();
         private clear();
+        _resetTimelineStateList(): void;
         /**
          * 检查指定名称的骨头是否在遮罩中。只有在遮罩中的骨头动画才会被播放
          * @param boneName {string} dragonBones.AnimationState#containsBoneMask
@@ -958,6 +1108,8 @@ declare module dragonBones {
         _updateTimelineStates(): void;
         private addTimelineState(timelineName);
         private removeTimelineState(timelineState);
+        private addSlotTimelineState(timelineName);
+        private removeSlotTimelineState(timelineState);
         /**
          * 播放当前动画。如果动画已经播放完毕, 将不会继续播放.
          * @returns {AnimationState} 动画播放状态实例
@@ -1049,32 +1201,7 @@ declare module dragonBones {
         playTimes: number;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Animation
@@ -1084,6 +1211,73 @@ declare module dragonBones {
      * @see dragonBones.Armature
      * @see dragonBones.AnimationState
      * @see dragonBones.AnimationData.
+     *
+     * @example
+       <pre>
+       //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 500;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+
+
+        
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName:string = armature.animation.animationList[0];
+
+        var animation:dragonBones.Animation = armature.animation;
+
+        //gotoAndPlay的用法：动画播放，播放一遍
+        animation.gotoAndPlay(curAnimationName,0,-1,1);
+
+        //gotoAndStop的用法：
+        //curAnimationName = armature.animation.animationList[1];
+        //动画停在第二个动画的第0.2秒的位置
+        //animation.gotoAndStop(curAnimationName,0.2);
+        //动画停在第二个动画的一半的位置，如果第三个参数大于0，会忽略第二个参数
+        //animation.gotoAndStop(curAnimationName,0, 0.5);
+        //继续播放
+        //animation.play();
+        //暂停播放
+        //animation.stop();
+
+        //动画融合
+        //animation.gotoAndPlay(curAnimationName,0,-1,0,0,"group1");
+
+        //var animationState:dragonBones.AnimationState = armature.animation.getState(curAnimationName);
+        //animationState.addBoneMask("neck",true);
+        //播放第二个动画， 放到group "Squat"里
+        //curAnimationName = armature.animation.animationList[1];
+        //armature.animation.gotoAndPlay(curAnimationName,0,-1,0,0,"group2",dragonBones.Animation.SAME_GROUP);
+        //animationState = armature.animation.getState(curAnimationName);
+        //animationState.addBoneMask("hip",true);//“hip”是骨架的根骨骼的名字
+        //animationState.removeBoneMask("neck",true);
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     class Animation {
         static NONE: string;
@@ -1112,13 +1306,14 @@ declare module dragonBones {
         _animationStateCount: number;
         /**
          * 创建一个新的Animation实例并赋给传入的Armature实例
-         * @param armature {Armature} 纹理
+         * @param armature {Armature} 骨架实例
          */
         constructor(armature: Armature);
         /**
          * 回收Animation实例用到的所有资源
          */
         dispose(): void;
+        _resetAnimationStateList(): void;
         /**
          * 开始播放指定名称的动画。
          * 要播放的动画将经过指定时间的淡入过程，然后开始播放，同时之前播放的动画会经过相同时间的淡出过程。
@@ -1146,13 +1341,16 @@ declare module dragonBones {
          * @param group {string} 动画所处的组
          * @param fadeOutMode {string} 动画淡出模式 (none, sameLayer, sameGroup, sameLayerAndGroup, all).默认值：sameLayerAndGroup
          * @returns {AnimationState} 动画播放状态实例
-         * @see dragonBones..AnimationState.
+         * @see dragonBones.AnimationState.
          */
         gotoAndStop(animationName: string, time: number, normalizedTime?: number, fadeInTime?: number, duration?: number, layer?: number, group?: string, fadeOutMode?: string): AnimationState;
         /**
-         * Play the animation from the current position.
+         * 从当前位置继续播放动画
          */
         play(): void;
+        /**
+         * 暂停动画播放
+         */
         stop(): void;
         /**
          * 获得指定名称的 AnimationState 实例.
@@ -1218,32 +1416,7 @@ declare module dragonBones {
         animationDataList: Array<AnimationData>;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.ColorTransform
@@ -1294,32 +1467,7 @@ declare module dragonBones {
         constructor();
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.DBTransform
@@ -1373,38 +1521,24 @@ declare module dragonBones {
          */
         copy(transform: DBTransform): void;
         /**
+         * transform加法
+         * @param node
+         */
+        add(transform: DBTransform): void;
+        /**
+         * transform减法
+         * @param node
+         */
+        minus(transform: DBTransform): void;
+        normalizeRotation(): void;
+        /**
          * 把DBTransform的所有属性转成用String类型表示
          * @return 一个字符串包含有DBTransform的所有属性
          */
         toString(): string;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Frame
@@ -1428,7 +1562,7 @@ declare module dragonBones {
          */
         action: string;
         /**
-         *帧时间
+         *帧事件
          * @member {string} dragonBones.Frame#event
          */
         event: string;
@@ -1437,6 +1571,7 @@ declare module dragonBones {
          * @member {string} dragonBones.Frame#sound
          */
         sound: string;
+        curve: CurveData;
         /**
          *构造函数
          */
@@ -1447,32 +1582,7 @@ declare module dragonBones {
         dispose(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.TransformFrame
@@ -1554,32 +1664,7 @@ declare module dragonBones {
         dispose(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Timeline
@@ -1616,32 +1701,7 @@ declare module dragonBones {
         frameList: Array<Frame>;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.TransformTimeline
@@ -1685,32 +1745,41 @@ declare module dragonBones {
         dispose(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SlotTimeline
+     * @extends dragonBones.Timeline
+     * @classdesc
+     * 插槽的时间轴数据，包含一个和多个关键帧数据
+     */
+    class SlotTimeline extends Timeline {
+        /**
+         *时间轴的名称
+         * @member {string} dragonBones.SlotTimeline#name
+         */
+        name: string;
+        /**
+         * 是否有动画
+         * @member {boolean} dragonBones.SlotTimeline#transformed
+         */
+        transformed: boolean;
+        /**
+         * 偏移量
+         * @member {number} dragonBones.SlotTimeline#offset
+         */
+        offset: number;
+        /**
+         * 构造函数，实例化一个SlotTimeline
+         */
+        constructor();
+        /**
+         * 释放资源
+         */
+        dispose(): void;
+    }
+}
+
 declare module dragonBones {
     /**
      * @class dragonbones.AnimationData
@@ -1762,6 +1831,8 @@ declare module dragonBones {
          * @returns {Array<TransformTimeline>}
          */
         timelineList: Array<TransformTimeline>;
+        private _slotTimelineList;
+        slotTimelineList: Array<SlotTimeline>;
         /**
          * 创建一个AnimationData实例
          */
@@ -1781,34 +1852,11 @@ declare module dragonBones {
          * @param timeline 需要被添加的时间轴数据
          */
         addTimeline(timeline: TransformTimeline): void;
+        getSlotTimeline(timelineName: string): SlotTimeline;
+        addSlotTimeline(timeline: SlotTimeline): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.DisplayData
@@ -1855,32 +1903,7 @@ declare module dragonBones {
         dispose(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.SlotData
@@ -1911,6 +1934,11 @@ declare module dragonBones {
          * @member {string} dragonBones.SlotData#blendMode
          */
         blendMode: string;
+        /**
+         * 初始的显示图片的序号
+         * @member {string} dragonBones.SlotData#displayIndex
+         */
+        displayIndex: number;
         private _displayDataList;
         /**
          * 构造函数，实例化一个SlotData类
@@ -1938,32 +1966,7 @@ declare module dragonBones {
         displayDataList: Array<DisplayData>;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.BoneData
@@ -2016,32 +2019,7 @@ declare module dragonBones {
         dispose(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.SkinData
@@ -2082,32 +2060,7 @@ declare module dragonBones {
         slotDataList: Array<SlotData>;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.ArmatureData
@@ -2125,6 +2078,7 @@ declare module dragonBones {
         name: string;
         private _boneDataList;
         private _skinDataList;
+        private _slotDataList;
         private _animationDataList;
         static sortBoneDataHelpArray(object1: any, object2: any): number;
         static sortBoneDataHelpArrayDescending(object1: any, object2: any): number;
@@ -2132,6 +2086,7 @@ declare module dragonBones {
          * 创建一个ArmatureData实例
          */
         constructor();
+        setSkinData(skinName: String): void;
         /**
          * 释放资源
          */
@@ -2142,6 +2097,7 @@ declare module dragonBones {
          * @returns {*} 骨骼数据
          */
         getBoneData(boneName: string): BoneData;
+        getSlotData(slotName: string): SlotData;
         /**
          * 根据皮肤的名字获取到皮肤数据
          * @param skinName  皮肤的名字
@@ -2159,6 +2115,7 @@ declare module dragonBones {
          * @param boneData
          */
         addBoneData(boneData: BoneData): void;
+        addSlotData(slotData: SlotData): void;
         /**
          * 添加一个皮肤数据
          * @param skinData
@@ -2178,6 +2135,7 @@ declare module dragonBones {
          * @returns {Array<BoneData>}
          */
         boneDataList: Array<BoneData>;
+        slotDataList: Array<SlotData>;
         /**
          * 获取皮肤数据列表
          * @returns {Array<SkinData>}
@@ -2190,32 +2148,7 @@ declare module dragonBones {
         animationDataList: Array<AnimationData>;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.DragonBonesData
@@ -2291,37 +2224,134 @@ declare module dragonBones {
         removeAllDisplayData(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
+declare module dragonBones {
+    /**
+     *@class dragonBones.DataParser
+     * @classdesc
+     * 老版本数据解析
+     */
+    class Data3Parser {
+        private static tempDragonBonesData;
+        static parseDragonBonesData(rawDataToParse: any): DragonBonesData;
+        private static parseArmatureData(armatureDataToParse, frameRate);
+        private static parseBoneData(boneObject);
+        private static parseSkinData(skinObject);
+        private static parseSkinSlotData(slotObject);
+        private static parseSlotData(slotObject);
+        private static parseDisplayData(displayObject);
+        /** @private */
+        private static parseAnimationData(animationObject, frameRate);
+        private static parseSlotTimeline(timelineObject, duration, frameRate);
+        private static parseSlotFrame(frameObject, frameRate);
+        private static parseTransformTimeline(timelineObject, duration, frameRate);
+        private static parseTransformFrame(frameObject, frameRate);
+        private static parseTimeline(timelineObject, outputTimeline);
+        private static parseFrame(frameObject, outputFrame, frameRate?);
+        private static parseTransform(transformObject, transform, pivot?);
+        private static parseColorTransform(colorTransformObject, colorTransform);
+        private static getBoolean(data, key, defaultValue);
+        private static getNumber(data, key, defaultValue);
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SlotFrame
+     * @extends dragonBones.Frame
+     * @classdesc
+     * 插槽的关键帧数据，包含
+     * 插槽的显示序号，可见度，zOrder，colorTransform数据
+     */
+    class SlotFrame extends Frame {
+        /**
+         * NaN:no tween, 10:auto tween, [-1, 0):ease in, 0:line easing, (0, 1]:ease out, (1, 2]:ease in out
+         * 缓动值，
+         * 当值为NaN时，没有缓动
+         * 当值为10时，为自动
+         * 当值为[-1,0)时，为缓进
+         * 当值为0时，为线性缓动
+         * 当值为(0, 1]时，为缓出
+         * 当值为(1, 2]时，为缓进缓出
+         * @member {number} dragonBones.TransformFrame#tweenEasing
+         */
+        tweenEasing: number;
+        /**
+         *绑定到该插槽的显示序号，当插槽有多个显示对象时，指定显示哪一个显示对象
+         * @member {number} dragonBones.SlotFrame#displayIndex
+         */
+        displayIndex: number;
+        /**
+         *是否可见
+         * @member {boolean} dragonBones.SlotFrame#visible
+         */
+        visible: boolean;
+        /**
+         *绑定到该插槽的zOrder值
+         * @member {number} dragonBones.SlotFrame#zOrder
+         */
+        zOrder: number;
+        /**
+         *绑定到插槽的颜色transform，颜色的transform可以表示颜色在红蓝绿透明四个通道的变化
+         * @member {dragonBones.ColorTransform} dragonBones.SlotFrame#color
+         */
+        color: ColorTransform;
+        /**
+         *构造函数，实例化一个SlotFrame
+         */
+        constructor();
+        /**
+         *释放资源
+         */
+        dispose(): void;
+    }
+}
+
 declare module dragonBones {
     /**
      *@class dragonBones.DataParser
      * @classdesc
      * 数据解析
+     *
+     * @example
+       <pre>
+         //获取动画数据
+         var skeletonData = RES.getRes("skeleton");
+         //获取纹理集数据
+         var textureData = RES.getRes("textureConfig");
+         //获取纹理集图片
+         var texture = RES.getRes("texture");
+      
+         //创建一个工厂，用来创建Armature
+         var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+         //把动画数据添加到工厂里
+         factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+         //把纹理集数据和图片添加到工厂里
+         factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+         //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+         var armatureName:string = skeletonData.armature[0].name;
+         //从工厂里创建出Armature
+         var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+         //获取装载Armature的容器
+         var armatureDisplay = armature.display;
+         //把它添加到舞台上
+         this.addChild(armatureDisplay);
+         //取得这个Armature动画列表中的第一个动画的名字
+         var curAnimationName = armature.animation.animationList[0];
+         //播放这个动画，gotoAndPlay参数说明,具体详见Animation类
+         //第一个参数 animationName {string} 指定播放动画的名称.
+         //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+         //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+         armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+         //把Armature添加到心跳时钟里
+         dragonBones.WorldClock.clock.add(armature);
+         //心跳时钟开启
+         egret.Ticker.getInstance().register(function (advancedTime) {
+             dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+         }, this);
+       </pre>
      */
     class DataParser {
         private static tempDragonBonesData;
@@ -2342,11 +2372,14 @@ declare module dragonBones {
         private static parseBoneData(boneObject);
         private static parseSkinData(skinObject);
         private static parseSlotData(slotObject);
+        private static parseSlotDisplayData(slotObject);
         private static parseDisplayData(displayObject);
         /** @private */
         private static parseAnimationData(animationObject, frameRate);
         private static parseTransformTimeline(timelineObject, duration, frameRate);
+        private static parseSlotTimeline(timelineObject, duration, frameRate);
         private static parseTransformFrame(frameObject, frameRate);
+        private static parseSlotFrame(frameObject, frameRate);
         private static parseTimeline(timelineObject, outputTimeline);
         private static parseFrame(frameObject, outputFrame, frameRate?);
         private static parseTransform(transformObject, transform, pivot?);
@@ -2355,32 +2388,7 @@ declare module dragonBones {
         private static getNumber(data, key, defaultValue);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.ITextureAltas
@@ -2404,37 +2412,52 @@ declare module dragonBones {
         getRegion(name: string): Rectangle;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.TextureData
      * @classdesc
      * 纹理数据
+     *
+     * @example
+     * <pre>
+     *   //获取动画数据
+     *   var skeletonData = RES.getRes("skeleton");
+     *   //获取纹理集数据
+     *   var textureData = RES.getRes("textureConfig");
+     *   //获取纹理集图片
+     *   var texture = RES.getRes("texture");
+     *
+     *   //创建一个工厂，用来创建Armature
+     *   var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+     *   //把动画数据添加到工厂里
+     *   factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+     *   //把纹理集数据和图片添加到工厂里
+     *   factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+     *   //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+     *   var armatureName:string = skeletonData.armature[0].name;
+     *   //从工厂里创建出Armature
+     *   var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+     *   //获取装载Armature的容器
+     *   var armatureDisplay = armature.display;
+     *   //把它添加到舞台上
+     *   this.addChild(armatureDisplay);
+     *   //取得这个Armature动画列表中的第一个动画的名字
+     *   var curAnimationName = armature.animation.animationList[0];
+     *   //播放这个动画，gotoAndPlay参数说明,具体详见Animation类
+     *   //第一个参数 animationName {string} 指定播放动画的名称.
+     *   //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+     *   //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+     *   //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+     *   armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+     *
+     *   //把Armature添加到心跳时钟里
+     *   dragonBones.WorldClock.clock.add(armature);
+     *   //心跳时钟开启
+     *   egret.Ticker.getInstance().register(function (advancedTime) {
+     *       dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+     *   }, this);
+     * </pre>
      */
     class TextureData {
         /**
@@ -2460,38 +2483,53 @@ declare module dragonBones {
         constructor(region: Rectangle, frame: Rectangle, rotated: boolean);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.BaseFactory
      * @classdesc
      * 工厂的基类
      * @extends dragonBones.EventDispatcher
+     *
+     * @example
+       <pre>
+         //获取动画数据
+         var skeletonData = RES.getRes("skeleton");
+         //获取纹理集数据
+         var textureData = RES.getRes("textureConfig");
+         //获取纹理集图片
+         var texture = RES.getRes("texture");
+      
+         //创建一个工厂，用来创建Armature
+         var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+         //把动画数据添加到工厂里
+         factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+         //把纹理集数据和图片添加到工厂里
+         factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+         //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+         var armatureName:string = skeletonData.armature[0].name;
+         //从工厂里创建出Armature
+         var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+         //获取装载Armature的容器
+         var armatureDisplay = armature.display;
+         //把它添加到舞台上
+         this.addChild(armatureDisplay);
+         //取得这个Armature动画列表中的第一个动画的名字
+         var curAnimationName = armature.animation.animationList[0];
+         //播放这个动画，gotoAndPlay参数说明,具体详见Animation类
+         //第一个参数 animationName {string} 指定播放动画的名称.
+         //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+         //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+         armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+         //把Armature添加到心跳时钟里
+         dragonBones.WorldClock.clock.add(armature);
+         //心跳时钟开启
+         egret.Ticker.getInstance().register(function (advancedTime) {
+             dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+         }, this);
+       </pre>
      */
     class BaseFactory extends EventDispatcher {
         static _helpMatrix: Matrix;
@@ -2575,6 +2613,17 @@ declare module dragonBones {
          */
         buildArmature(armatureName: string, fromDragonBonesDataName?: string, fromTextureAtlasName?: string, skinName?: string): Armature;
         /**
+         * 构建fast骨架
+         * 一般情况下dragonBonesData和textureAtlas是一对一的，通过相同的key对应。
+         * TO DO 以后会支持一对多的情况
+         * @param armatureName 骨架的名字
+         * @param fromDragonBonesDataName 骨架数据的名字 可选参数
+         * @param fromTextureAtlasName 纹理集的名字 可选参数
+         * @param skinName 皮肤的名字 可选参数
+         * @returns {*}
+         */
+        buildFastArmature(armatureName: string, fromDragonBonesDataName?: string, fromTextureAtlasName?: string, skinName?: string): FastArmature;
+        /**
          * 用dragonBones数据，骨架数据，纹理集数据来构建骨架
          * @param dragonBonesData dragonBones数据
          * @param armatureData 骨架数据
@@ -2583,6 +2632,15 @@ declare module dragonBones {
          * @returns {Armature}
          */
         buildArmatureUsingArmatureDataFromTextureAtlas(dragonBonesData: DragonBonesData, armatureData: ArmatureData, textureAtlas: any, skinName?: string): Armature;
+        /**
+         * 用dragonBones数据，骨架数据，纹理集数据来构建骨架
+         * @param dragonBonesData dragonBones数据
+         * @param armatureData 骨架数据
+         * @param textureAtlas 纹理集
+         * @param skinName 皮肤名称 可选参数
+         * @returns {Armature}
+         */
+        buildFastArmatureUsingArmatureDataFromTextureAtlas(dragonBonesData: DragonBonesData, armatureData: ArmatureData, textureAtlas: any, skinName?: string): FastArmature;
         /**
          * 拷贝动画到骨架中
          * 暂时不支持ifRemoveOriginalAnimationList为false的情况
@@ -2599,6 +2657,8 @@ declare module dragonBones {
         private findFirstTextureAtlas();
         _buildBones(armature: Armature): void;
         _buildSlots(armature: Armature, skinName: string, textureAtlas: any): void;
+        _buildFastBones(armature: FastArmature): void;
+        _buildFastSlots(armature: FastArmature, skinName: string, textureAtlas: any): void;
         /**
          * @private
          * Generates an Armature instance.
@@ -2613,6 +2673,18 @@ declare module dragonBones {
         _generateSlot(): Slot;
         /**
          * @private
+         * Generates an Armature instance.
+         * @returns {dragonBones.Armature} Armature An Armature instance.
+         */
+        _generateFastArmature(): FastArmature;
+        /**
+         * @private
+         * Generates an Slot instance.
+         * @returns {dragonBones.Slot} Slot An Slot instance.
+         */
+        _generateFastSlot(): FastSlot;
+        /**
+         * @private
          * Generates a DisplayObject
          * @param textureAtlas {any} The TextureAtlas.
          * @param fullName {string} A qualified name.
@@ -2622,33 +2694,14 @@ declare module dragonBones {
          */
         _generateDisplay(textureAtlas: any, fullName: string, pivotX: number, pivotY: number): any;
     }
+    class BuildArmatureDataPackage {
+        dragonBonesDataName: string;
+        dragonBonesData: DragonBonesData;
+        armatureData: ArmatureData;
+        textureAtlas: any;
+    }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.ConstValues
@@ -2708,6 +2761,7 @@ declare module dragonBones {
          * 颜色变换
          */
         static COLOR_TRANSFORM: string;
+        static COLOR: string;
         /**
          * 矩形
          */
@@ -2796,6 +2850,7 @@ declare module dragonBones {
          * 循环
          */
         static A_LOOP: string;
+        static A_PLAY_TIMES: string;
         /**
          * 事件
          */
@@ -2925,6 +2980,10 @@ declare module dragonBones {
          */
         static A_BLUE_MULTIPLIER: string;
         /**
+         * 动画曲线
+         */
+        static A_CURVE: string;
+        /**
          * x方向缩放的偏移
          */
         static A_SCALE_X_OFFSET: string;
@@ -2942,32 +3001,7 @@ declare module dragonBones {
         static A_FIXED_ROTATION: string;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.TransformUtils
@@ -3006,34 +3040,13 @@ declare module dragonBones {
          * @returns {number} 输出标准化后的弧度制
          */
         static formatRadian(radian: number): number;
+        /**
+         *  确保角度在-180到180之间
+         */
+        static normalizeRotation(rotation: number): number;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.DBDataUtil
@@ -3075,32 +3088,7 @@ declare module dragonBones {
         static addHideTimeline(animationData: AnimationData, armatureData: ArmatureData): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.MathUtil
@@ -3135,32 +3123,19 @@ declare module dragonBones {
     }
 }
 declare var db_sin_map: {};
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.ITextureAltas
+     * @classdesc
+     * 纹理集的接口
+     */
+    interface IArmature extends IAnimatable {
+        getAnimation(): any;
+        resetAnimation(): void;
+    }
+}
+
 declare module dragonBones {
     /**
      * @class dragonBones.DBObject
@@ -3244,32 +3219,7 @@ declare module dragonBones {
         _updateGlobal(): any;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Slot
@@ -3281,6 +3231,66 @@ declare module dragonBones {
      * @see dragonBones.Armature
      * @see dragonBones.Bone
      * @see dragonBones.SlotData
+     *
+     * @example
+       <pre>
+        //获取动画数据 本例使用Knight例子.
+        //资源下载地址http://dragonbones.github.io/download_forwarding.html?download_url=downloads/dragonbonesdemos_v2.4.zip
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+        //这个资源需要自己准备
+        var horseHat = RES.getRes("horseHat");
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[1].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 300;
+        this.addChild(armatureDisplay);
+
+        //以下四句代码，实现给骨骼添加slot的功能
+        //1.获取马头的骨骼
+        var horseHead:dragonBones.Bone = armature.getBone("horseHead");
+        //2.创建一个slot
+        var horseHatSlot:dragonBones.EgretSlot = new dragonBones.EgretSlot();
+        //3.给这个slot赋一个图片
+        horseHatSlot.display = new egret.Bitmap(horseHat);
+        //4.把这个slot添加到骨骼上
+        horseHead.addSlot(horseHatSlot);
+
+        //以下3句代码，实现了子骨骼的获取和播放子骨架的动画
+        //1.获取包含子骨架的骨骼
+        var weaponBone:dragonBones.Bone = armature.getBone("armOutside");
+        //2.获取骨骼上的子骨架
+        var childArmature:dragonBones.Armature = weaponBone.childArmature;
+        //3.播放子骨架的动画
+        childArmature.animation.gotoAndPlay("attack_sword_1",0,-1,0);
+
+
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     class Slot extends DBObject {
         /** @private Need to keep the reference of DisplayData. When slot switch displayObject, it need to restore the display obect's origional pivot. */
@@ -3297,6 +3307,8 @@ declare module dragonBones {
         _currentDisplay: any;
         _isShowDisplay: boolean;
         _blendMode: string;
+        _isColorChanged: boolean;
+        _timelineStateList: Array<SlotTimelineState>;
         constructor(self: Slot);
         /**
          * 通过传入 SlotData 初始化Slot
@@ -3307,6 +3319,11 @@ declare module dragonBones {
          * @inheritDoc
          */
         dispose(): void;
+        private sortState(state1, state2);
+        /** @private */
+        _addState(timelineState: SlotTimelineState): void;
+        /** @private */
+        _removeState(timelineState: SlotTimelineState): void;
         /** @private */
         setArmature(value: Armature): void;
         /** @private */
@@ -3336,7 +3353,8 @@ declare module dragonBones {
          */
         getDisplay(): any;
         /**
-         * 不推荐的 API. 使用 display 属性代替
+         * Unrecommended API. Please use .display = instead.
+         * @returns {any}
          */
         setDisplay(value: any): void;
         /**
@@ -3395,52 +3413,95 @@ declare module dragonBones {
          * @param gM
          * @param bM
          */
-        _updateDisplayColor(aOffset: number, rOffset: number, gOffset: number, bOffset: number, aMultiplier: number, rMultiplier: number, gMultiplier: number, bMultiplier: number): void;
+        _updateDisplayColor(aOffset: number, rOffset: number, gOffset: number, bOffset: number, aMultiplier: number, rMultiplier: number, gMultiplier: number, bMultiplier: number, colorChanged?: boolean): void;
         /**
          * @private
          * Update the blend mode of the display object.
          * @param value The blend mode to use.
          */
         _updateDisplayBlendMode(value: string): void;
+        /** @private When bone timeline enter a key frame, call this func*/
+        _arriveAtFrame(frame: Frame, timelineState: SlotTimelineState, animationState: AnimationState, isCross: boolean): void;
+        _updateGlobal(): any;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Bone
      * @classdesc
      * Bone 实例代表 Armature 中的一个骨头。一个Armature实例可以由很多 Bone组成。
+     * Bone 在骨骼动画体系中是最重要的逻辑单元之一，负责动画中的平移旋转缩放的实现
      * @extends dragonBones.DBObject
      * @see dragonBones.Armature
      * @see dragonBones.Slot
      * @see dragonBones.BoneData
+     *
+     * @example
+       <pre>
+        //获取动画数据 本例使用Knight例子.
+        //资源下载地址http://dragonbones.github.io/download_forwarding.html?download_url=downloads/dragonbonesdemos_v2.4.zip
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+        //这个资源需要自己准备
+        var horseHat = RES.getRes("horseHat");
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[1].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        armatureDisplay.x = 200;
+        armatureDisplay.y = 300;
+        this.addChild(armatureDisplay);
+
+        //以下四句代码，实现给骨骼添加slot的功能
+        //1.获取马头的骨骼
+        var horseHead:dragonBones.Bone = armature.getBone("horseHead");
+        //2.创建一个slot
+        var horseHatSlot:dragonBones.EgretSlot = new dragonBones.EgretSlot();
+        //3.给这个slot赋一个图片
+        horseHatSlot.display = new egret.Bitmap(horseHat);
+        //4.把这个slot添加到骨骼上
+        horseHead.addSlot(horseHatSlot);
+
+        //以下3句代码，实现了子骨骼的获取和播放子骨架的动画
+        //1.获取包含子骨架的骨骼
+        var weaponBone:dragonBones.Bone = armature.getBone("armOutside");
+        //2.获取骨骼上的子骨架
+        var childArmature:dragonBones.Armature = weaponBone.childArmature;
+        //3.播放子骨架的动画
+        childArmature.animation.gotoAndPlay("attack_sword_1",0,-1,0);
+
+
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     class Bone extends DBObject {
+        /**
+         * The instance dispatch sound event.
+         */
+        private static _soundManager;
         static initWithBoneData(boneData: BoneData): Bone;
         /**
          * display控制者的名字，该名字对应一个 AnimationState 实例。
@@ -3555,6 +3616,8 @@ declare module dragonBones {
         _addState(timelineState: TimelineState): void;
         /** @private */
         _removeState(timelineState: TimelineState): void;
+        /** @private */
+        _removeAllStates(): void;
         private blendingTimeline();
         private sortState(state1, state2);
         /**
@@ -3578,32 +3641,7 @@ declare module dragonBones {
         slot: Slot;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.Armature
@@ -3612,12 +3650,52 @@ declare module dragonBones {
      * A Armature instance is the core of the skeleton animation system. It contains the object to display, all sub-bones and the object animation(s).
      * @extends dragonBones.EventDispatcher
      * @see dragonBones.ArmatureData
+     * @example
+     * <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.Armature = factory.buildArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay参数说明,具体详见Animation类
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
      */
     class Armature extends EventDispatcher implements IAnimatable {
         __dragonBonesData: DragonBonesData;
         /**
          * The instance dispatch sound event.
          */
+        private static _soundManager;
         /**
          * 骨架名。
          * 骨架名一般等于 ArmatureData 的名字
@@ -3681,6 +3759,7 @@ declare module dragonBones {
          * @param passedTime 动画向前播放的时间（单位：秒）
          */
         advanceTime(passedTime: number): void;
+        resetAnimation(): void;
         /**
          * 获取骨架包含的所有插槽
          * @param returnCopy {boolean} 是否返回拷贝。默认：true
@@ -3736,7 +3815,7 @@ declare module dragonBones {
          */
         getBoneByDisplay(display: any): Bone;
         /**
-         * 在股价中为指定名称的 Bone 添加一个子 Bone
+         * 在骨架中为指定名称的 Bone 添加一个子 Bone
          * @param bone {Bone} Bone 实例
          * @param parentName {string} 父骨头名称 默认：null
          * @param updateLater {boolean} 是否延迟更新 默认：false，当需要一次添加很多Bone时，开启延迟更新能够提高效率
@@ -3771,40 +3850,20 @@ declare module dragonBones {
         /** @private When AnimationState enter a key frame, call this func*/
         _arriveAtFrame(frame: Frame, timelineState: TimelineState, animationState: AnimationState, isCross: boolean): void;
         private sortSlot(slot1, slot2);
+        /**
+         * 获取Animation实例
+         * @returns {any} Animation实例
+         */
+        getAnimation(): any;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.EgretFactory
      * @extends dragonBones.BaseFactory
      * @classdesc
-     * Egret引擎使用的dragonBones工厂
+     * Egret引擎中DragonBones工厂的基类实现
      */
     class EgretFactory extends BaseFactory {
         constructor();
@@ -3814,34 +3873,11 @@ declare module dragonBones {
         _generateSlot(): Slot;
         /** @private */
         _generateDisplay(textureAtlas: EgretTextureAtlas, fullName: string, pivotX: number, pivotY: number): any;
+        _generateFastArmature(): FastArmature;
+        _generateFastSlot(): FastSlot;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.EgretSlot
@@ -3875,34 +3911,10 @@ declare module dragonBones {
         _updateDisplayColor(aOffset: number, rOffset: number, gOffset: number, bOffset: number, aMultiplier: number, rMultiplier: number, gMultiplier: number, bMultiplier: number): void;
         /** @private */
         _updateDisplayBlendMode(value: string): void;
+        _calculateRelativeParentTransform(): void;
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.EgretTextureAtlas
@@ -3929,6 +3941,7 @@ declare module dragonBones {
          */
         spriteSheet: egret.SpriteSheet;
         private _textureDatas;
+        static rotatedDic: any;
         /**
          * 创建一个新的EgretTextureAtlas实例
          * @param texture 纹理集
@@ -3947,40 +3960,21 @@ declare module dragonBones {
          */
         dispose(): void;
         /**
-         * 根据子纹理的名字获取子纹理所在的矩形区域
+         * 根据子纹理的名字获取子纹理所在的实际矩形区域
          * @param subTextureName 子纹理的名字
          * @returns {*} 子纹理所在的矩形区域
          */
         getRegion(subTextureName: string): Rectangle;
+        /**
+         * 根据子纹理的名字获取子纹理所在的真实矩形区域
+         * @param subTextureName 子纹理的名字
+         * @returns {*} 子纹理所在的矩形区域
+         */
+        getFrame(subTextureName: string): Rectangle;
         private parseData(textureAtlasRawData);
     }
 }
-/**
- * Copyright (c) 2014,Egret-Labs.org
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Egret-Labs.org nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY EGRET-LABS.ORG AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL EGRET-LABS.ORG AND CONTRIBUTORS BE LIABLE FOR ANY
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 declare module dragonBones {
     /**
      * @class dragonBones.EgretSheetAtlas
@@ -4033,3 +4027,1466 @@ declare module dragonBones {
         getRegion(subTextureName: string): Rectangle;
     }
 }
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastDBObject
+     * @classdesc
+     * FastDBObject 是 FastBone 和 FastSlot 的基类
+     * @see dragonBones.FastBone
+     * @see dragonBones.FastSlot
+     */
+    class FastDBObject {
+        private _name;
+        /**
+         * An object that can contain any user extra data.
+         */
+        userData: any;
+        /**
+         *
+         */
+        inheritRotation: boolean;
+        /**
+         *
+         */
+        inheritScale: boolean;
+        /**
+         *
+         */
+        inheritTranslation: boolean;
+        /** @private */
+        _global: DBTransform;
+        /** @private */
+        _globalTransformMatrix: Matrix;
+        /** @private */
+        _globalBackup: DBTransform;
+        /** @private */
+        _globalTransformMatrixBackup: Matrix;
+        static _tempParentGlobalTransform: DBTransform;
+        _frameCache: FrameCache;
+        /** @private */
+        updateByCache(): void;
+        /** @private */
+        switchTransformToBackup(): void;
+        /**
+         * The armature this DBObject instance belongs to.
+         */
+        armature: FastArmature;
+        /** @private */
+        _origin: DBTransform;
+        /** @private */
+        _visible: boolean;
+        /** @private */
+        _parent: FastBone;
+        /** @private */
+        setParent(value: FastBone): void;
+        constructor();
+        /**
+         * Cleans up any resources used by this DBObject instance.
+         */
+        dispose(): void;
+        private static tempOutputObj;
+        _calculateParentTransform(): any;
+        _updateGlobal(): any;
+        _calculateRelativeParentTransform(): void;
+        name: string;
+        /**
+         * This DBObject instance global transform instance.
+         * @see dragonBones.objects.DBTransform
+         */
+        global: DBTransform;
+        globalTransformMatrix: Matrix;
+        /**
+         * This DBObject instance related to parent transform instance.
+         * @see dragonBones.objects.DBTransform
+         */
+        origin: DBTransform;
+        /**
+         * Indicates the Bone instance that directly contains this DBObject instance if any.
+         */
+        parent: FastBone;
+        visible: boolean;
+        frameCache: FrameCache;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.ICacheableArmature
+     * @classdesc
+     * ICacheableArmature 接口定义了可以使用缓存的Armature的接口。
+     * 目前只有FastArmature实现了该接口。
+     * @see dragonBones.FastArmature
+     * @see dragonBones.IArmature
+     */
+    interface ICacheableArmature extends IArmature {
+        enableCache: boolean;
+        enableEventDispatch: boolean;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.AnimationCache
+     * @classdesc
+     * AnimationCache 实例是动画缓存的实体，包含一个动画的所有缓存数据。
+     * 每个Slot的缓存数据存在各个SlotTimelineCache中。
+     * 一般来说 AnimationCache 不需要开发者直接操控，而是由AnimationCacheManager代为管理。
+     * @see dragonBones.AnimationCacheManager
+     * @see dragonBones.TimelineCache
+     * @see dragonBones.SlotTimelineCache
+     * @see dragonBones.SlotFrameCache
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+        //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+        </pre>
+     */
+    class AnimationCache {
+        name: string;
+        slotTimelineCacheList: Array<SlotTimelineCache>;
+        slotTimelineCacheDic: any;
+        frameNum: number;
+        constructor();
+        static initWithAnimationData(animationData: AnimationData, armatureData: ArmatureData): AnimationCache;
+        initSlotTimelineCacheDic(slotCacheGeneratorDic: any, slotFrameCacheDic: any): void;
+        bindCacheUserSlotDic(slotDic: any): void;
+        addFrame(): void;
+        update(progress: number): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.AnimationCacheManager
+     * @classdesc
+     * AnimationCacheManager 实例是动画缓存管理器，他可以为一个或多个同类型的Armature生成动画缓存数据，从而提高动画运行效率。
+     * 目前AnimationCacheManager只支持对FastArmatrue生成缓存，以后会扩展为对任何实现ICacheableArmature接口的Armature生成缓存。
+     * @see dragonBones.ICacheableArmature
+     * @see dragonBones.FastArmature
+     * @see dragonBones.AnimationCache
+     * @see dragonBones.FrameCache
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class AnimationCacheManager {
+        cacheGeneratorArmature: ICacheableArmature;
+        armatureData: ArmatureData;
+        frameRate: number;
+        animationCacheDic: any;
+        slotFrameCacheDic: any;
+        constructor();
+        /**
+         * 通过ArmatrueData创建并初始化AnimationCacheManager。
+         * AnimationCacheManager的创建需要依赖ArmatrueData。
+         * @param armatureData {ArmatureData} 骨架数据实例。
+         * @param frameRate {number} 帧频。帧频决定生成数据缓存的采样率。
+         * @see dragonBones.ArmatureData.
+         */
+        static initWithArmatureData(armatureData: ArmatureData, frameRate?: number): AnimationCacheManager;
+        /**
+         * 为所有动画初始化AnimationCache实例。在生成动画缓存之前需要调用这个API生成相应的AnimationCache实例
+         * @see dragonBones.AnimationCache.
+         */
+        initAllAnimationCache(): void;
+        /**
+         * 指定动画名，初始化AnimationCache实例。在生成动画缓存之前需要调用这个API生成相应的AnimationCache实例
+         * @param animationName {string} 动画名。
+         * @see dragonBones.AnimationCache.
+         */
+        initAnimationCache(animationName: string): void;
+        /**
+         * 绑定Armature列表做为动画缓存的使用者。
+         * 在为Armature生成动画缓存之前，需要将其绑定为动画缓存的使用者
+         * @param armatures {Array<any>} 骨架列表。
+         * @see dragonBones.ICacheableArmature.
+         */
+        bindCacheUserArmatures(armatures: Array<any>): void;
+        /**
+         * 绑定制定Armature做为动画缓存的使用者。
+         * 在为Armature生成动画缓存之前，需要将其绑定为动画缓存的使用者
+         * @param armatures {FastArmature} 要绑定为缓存使用者的骨架对象。
+         * @see dragonBones.ICacheableArmature.
+         */
+        bindCacheUserArmature(armature: FastArmature): void;
+        /**
+         * 设置指定的Armature做为动画缓存的生成器。（同一个Armature可以既是缓存使用者，也是缓存生成器）
+         * 在为Armature生成动画缓存之前，需要设置动画缓存的生成器
+         * @param armatures {FastArmature} 要设置为缓存生成器的骨架对象。
+         * @see dragonBones.ICacheableArmature.
+         */
+        setCacheGeneratorArmature(armature: FastArmature): void;
+        /**
+         * 生成所有动画缓存数据。生成之后，所有绑定CacheUser的Armature就都能够使用这些缓存了。
+         * 在为调用这个API生成动画缓存之前，需要：
+         * 1.调用API initAllAnimationCache 初始化AnimationCache实例
+         * 2.调用API setCacheGeneratorArmature 设置动画缓存的生成器,
+         * 3.调用API bindCacheUserArmatures 绑定动画缓存的使用者
+         * @param loop {boolean} 要生成缓存的动画是否需要循环播放。如果该动画在播放时只需要播放一次，则设置为false。如果需要播放大于一次，则设置为true。
+         * @see dragonBones.AnimationCache
+         */
+        generateAllAnimationCache(loop: boolean): void;
+        /**
+         * 生成指定动画缓存数据。生成之后，所有绑定CacheUser的Armature就都能够使用这些缓存了。
+         * 在为调用这个API生成动画缓存之前，需要：
+         * 1.调用API initAnimationCache 初始化AnimationCache实例
+         * 2.调用API setCacheGeneratorArmature 设置动画缓存的生成器,
+         * 3.调用API bindCacheUserArmatures 绑定动画缓存的使用者
+         * @param animationName {string} 要生成缓存的动画名。
+         * @param loop {boolean} 要生成缓存的动画是否需要循环播放。如果该动画在播放时只需要播放一次，则设置为false。如果需要播放大于一次，则设置为true。
+         * @see dragonBones.AnimationCache
+         */
+        generateAnimationCache(animationName: string, loop: boolean): void;
+        /**
+         * 将缓存生成器骨架重置，生成动画缓存后调用。
+         * @see dragonBones.ICacheableArmature
+         */
+        resetCacheGeneratorArmature(): void;
+        /**
+         * 获取制定名称的AnimationCache实例。
+         * @param animationName {string} 动画名。
+         * @see dragonBones.AnimationCache
+         */
+        getAnimationCache(animationName: string): AnimationCache;
+    }
+}
+
+declare module dragonBones {
+    /**
+     *
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class FrameCache {
+        private static ORIGIN_TRAMSFORM;
+        private static ORIGIN_MATRIX;
+        globalTransform: DBTransform;
+        globalTransformMatrix: Matrix;
+        constructor();
+        copy(frameCache: FrameCache): void;
+        clear(): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.ICacheUser
+     * @classdesc
+     * ICacheUser 接口定义了可以使用帧缓存的接口。
+     * 目前只有FastSlot实现了该接口。
+     * @see dragonBones.FastSlot
+     * @see dragonBones.ISlotCacheGenerator
+     */
+    interface ICacheUser {
+        name: string;
+        frameCache: FrameCache;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.ISlotCacheGenerator
+     * @classdesc
+     * ICacheUser 接口定义了可以生成Slot帧缓存的接口。
+     * 目前只有FastSlot实现了该接口。
+     * @see dragonBones.FastSlot
+     * @see dragonBones.ICacheUser
+     */
+    interface ISlotCacheGenerator extends ICacheUser {
+        global: DBTransform;
+        globalTransformMatrix: Matrix;
+        colorChanged: boolean;
+        colorTransform: ColorTransform;
+        displayIndex: number;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.TimelineCache
+     * @classdesc
+     * TimelineCache 是时间轴缓存基类存。
+     * @see dragonBones.SlotTimelineCache
+     * @see dragonBones.FrameCache
+     * @see dragonBones.ICacheUser
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class TimelineCache {
+        name: string;
+        frameCacheList: Array<FrameCache>;
+        currentFrameCache: FrameCache;
+        constructor();
+        addFrame(): void;
+        update(frameIndex?: number): void;
+        bindCacheUser(cacheUser: ICacheUser): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SlotFrameCache
+     * @classdesc
+     * SlotFrameCache 存储了Slot的帧缓存数据。
+     * @see dragonBones.FastSlot
+     * @see dragonBones.ICacheUser
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class SlotFrameCache extends FrameCache {
+        colorTransform: ColorTransform;
+        displayIndex: number;
+        constructor();
+        copy(frameCache: FrameCache): void;
+        clear(): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.SlotTimelineCache
+     * @classdesc
+     * SlotTimelineCache 存储了Slot的时间轴缓存数据。
+     * @see dragonBones.TimelineCache
+     * @see dragonBones.SlotFrameCache
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class SlotTimelineCache extends TimelineCache {
+        cacheGenerator: ISlotCacheGenerator;
+        constructor();
+        addFrame(): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastArmature
+     * @classdesc
+     * FastArmature 是 DragonBones 高效率的骨骼动画系统。他能缓存动画数据，大大减少动画播放的计算
+     * 不支持动态添加Bone和Slot，换装请通过更换Slot的dispaly或子骨架childArmature来实现
+     * @extends dragonBones.EventDispatcher
+     * @see dragonBones.ArmatureData
+     *
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class FastArmature extends EventDispatcher implements ICacheableArmature {
+        /**
+         * The name should be same with ArmatureData's name
+         */
+        name: string;
+        /**
+         * An object that can contain any user extra data.
+         */
+        userData: any;
+        private _enableCache;
+        /**
+         * 保证CacheManager是独占的前提下可以开启，开启后有助于性能提高
+         */
+        isCacheManagerExclusive: boolean;
+        /** @private */
+        _animation: FastAnimation;
+        /** @private */
+        _display: any;
+        /** @private Store bones based on bones' hierarchy (From root to leaf)*/
+        boneList: Array<FastBone>;
+        _boneDic: any;
+        /** @private Store slots based on slots' zOrder*/
+        slotList: Array<FastSlot>;
+        _slotDic: any;
+        slotHasChildArmatureList: Array<FastSlot>;
+        _enableEventDispatch: boolean;
+        __dragonBonesData: DragonBonesData;
+        _armatureData: ArmatureData;
+        _slotsZOrderChanged: boolean;
+        _eventList: Array<any>;
+        private _delayDispose;
+        private _lockDispose;
+        private useCache;
+        constructor(display: any);
+        /**
+         * Cleans up any resources used by this instance.
+         */
+        dispose(): void;
+        /**
+         * Update the animation using this method typically in an ENTERFRAME Event or with a Timer.
+         * @param The amount of second to move the playhead ahead.
+         */
+        advanceTime(passedTime: number): void;
+        /**
+         * 开启动画缓存
+         * @param  {number} 帧速率，每秒缓存多少次数据，越大越流畅,若值小于零会被设置为动画数据中的默认帧率
+         * @param  {Array<any>} 需要缓存的动画列表，如果为null，则全部动画都缓存
+         * @param  {boolean} 动画是否是循环动画，仅在3.0以下的数据格式使用，如果动画不是循环动画请设置为false，默认为true。
+         * @return {AnimationCacheManager}  返回缓存管理器，可以绑定到其他armature以减少内存
+         */
+        enableAnimationCache(frameRate: number, animationList?: Array<any>, loop?: boolean): AnimationCacheManager;
+        /**
+         * 获取指定名称的 Bone
+         * @param boneName {string} Bone名称
+         * @returns {FastBone}
+         */
+        getBone(boneName: string): FastBone;
+        /**
+         * 获取指定名称的 Slot
+         * @param slotName {string} Slot名称
+         * @returns {FastSlot}
+         */
+        getSlot(slotName: string): FastSlot;
+        /**
+         * 获取包含指定显示对象的 Bone
+         * @param display {any} 显示对象实例
+         * @returns {FastBone}
+         */
+        getBoneByDisplay(display: any): FastBone;
+        /**
+         * 获取包含指定显示对象的 Slot
+         * @param displayObj {any} 显示对象实例
+         * @returns {FastSlot}
+         */
+        getSlotByDisplay(displayObj: any): FastSlot;
+        /**
+         * 获取骨架包含的所有插槽
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {FastSlot[]}
+         */
+        getSlots(returnCopy?: boolean): Array<FastSlot>;
+        _updateBonesByCache(): void;
+        /**
+         * 在骨架中为指定名称的 FastBone 添加一个子 FastBone.
+         * 和Armature不同,FastArmature的这个方法不能在运行时动态添加骨骼
+         * @param bone {FastBone} FastBone 实例
+         * @param parentName {string} 父骨头名称 默认：null
+         */
+        addBone(bone: FastBone, parentName?: string): void;
+        /**
+         * 为指定名称的 FastBone 添加一个子 FastSlot.
+         * 和Armature不同,FastArmature的这个方法不能在运行时动态添加插槽
+         * @param slot {FastSlot} FastSlot 实例
+         * @param boneName {string}
+         * @see dragonBones.Bone
+         */
+        addSlot(slot: FastSlot, parentBoneName: string): void;
+        /**
+         * 按照显示层级为所有 Slot 排序
+         */
+        updateSlotsZOrder(): void;
+        private sortBoneList();
+        /** @private When AnimationState enter a key frame, call this func*/
+        arriveAtFrame(frame: Frame, animationState: FastAnimationState): void;
+        invalidUpdate(boneName?: string): void;
+        resetAnimation(): void;
+        private sortSlot(slot1, slot2);
+        /**
+         * 获取FastAnimation实例
+         * @returns {any} FastAnimation实例
+         */
+        getAnimation(): any;
+        /**
+         * ArmatureData.
+         * @see dragonBones.objects.ArmatureData.
+         */
+        armatureData: ArmatureData;
+        /**
+         * An Animation instance
+         * @see dragonBones.animation.Animation
+         */
+        animation: FastAnimation;
+        /**
+         * Armature's display object. It's instance type depends on render engine. For example "flash.display.DisplayObject" or "startling.display.DisplayObject"
+         */
+        display: any;
+        enableCache: boolean;
+        enableEventDispatch: boolean;
+        _addEvent(event: Event): void;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastBone
+     * @classdesc
+     * FastBone 实例代表 FastArmature 中的一个骨头。一个FastArmature实例可以由很多 FastBone组成。
+     * FastBone 在骨骼动画体系中是最重要的逻辑单元之一，负责动画中的平移旋转缩放的实现
+     * 和Bone相比，FastBone不能动态添加子骨骼和子插槽
+     * @extends dragonBones.FastDBObject
+     * @see dragonBones.FastArmature
+     * @see dragonBones.FastSlot
+     * @see dragonBones.BoneData
+     */
+    class FastBone extends FastDBObject {
+        static initWithBoneData(boneData: BoneData): FastBone;
+        slotList: Array<FastSlot>;
+        boneList: Array<FastBone>;
+        /** @private */
+        _timelineState: FastBoneTimelineState;
+        /** @private */
+        _needUpdate: number;
+        constructor();
+        /**
+         * 获取当前骨头包含的所有 FastBone 实例
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {FastBone[]}
+         */
+        getBones(returnCopy?: boolean): Array<FastBone>;
+        /**
+         * 获取当前骨头包含的所有 FastSlot 实例
+         * @param returnCopy {boolean} 是否返回拷贝。默认：true
+         * @returns {FastSlot[]}
+         */
+        getSlots(returnCopy?: boolean): Array<FastSlot>;
+        /**
+         * @inheritDoc
+         */
+        dispose(): void;
+        /**
+         * 在下一帧强制更新当前 Bone 实例及其包含的所有 Slot 的动画。
+         */
+        invalidUpdate(): void;
+        _calculateRelativeParentTransform(): void;
+        /** @private */
+        updateByCache(): void;
+        /** @private */
+        update(needUpdate?: boolean): void;
+        /** @private When bone timeline enter a key frame, call this func*/
+        arriveAtFrame(frame: Frame, animationState: FastAnimationState): void;
+        /**
+         * 不推荐的API,建议使用 slot.childArmature 替代
+         */
+        childArmature: any;
+        /**
+         * 不推荐的API,建议使用 slot.display 替代
+         */
+        display: any;
+        /** @private */
+        visible: boolean;
+        /**
+         * 返回当前 FastBone 实例包含的第一个 FastSlot 实例
+         * @member {FastSlot} dragonBones.FastBone#slot
+         */
+        slot: FastSlot;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastSlot
+     * @classdesc
+     * FastSlot 实例是骨头上的一个插槽，是显示图片的容器。
+     * 一个 FastBone 上可以有多个FastSlot，每个FastSlot中同一时间都会有一张图片用于显示，不同的FastSlot中的图片可以同时显示。
+     * 每个 FastSlot 中可以包含多张图片，同一个 FastSlot 中的不同图片不能同时显示，但是可以在动画进行的过程中切换，用于实现帧动画。
+     * @extends dragonBones.DBObject
+     * @see dragonBones.FastArmature
+     * @see dragonBones.FastBone
+     * @see dragonBones.SlotData
+     */
+    class FastSlot extends FastDBObject implements ISlotCacheGenerator {
+        /** @private Need to keep the reference of DisplayData. When slot switch displayObject, it need to restore the display obect's origional pivot. */
+        _displayDataList: Array<DisplayData>;
+        /** @private */
+        _originZOrder: number;
+        /** @private */
+        _tweenZOrder: number;
+        /** @private */
+        _offsetZOrder: number;
+        _displayList: Array<any>;
+        _currentDisplayIndex: number;
+        _colorTransform: ColorTransform;
+        _isColorChanged: boolean;
+        _currentDisplay: any;
+        _blendMode: string;
+        hasChildArmature: boolean;
+        constructor(self: FastSlot);
+        /**
+         * 通过传入 SlotData 初始化FastSlot
+         * @param slotData
+         */
+        initWithSlotData(slotData: SlotData): void;
+        /**
+         * @inheritDoc
+         */
+        dispose(): void;
+        /** @private */
+        updateByCache(): void;
+        /** @private */
+        _update(): void;
+        _calculateRelativeParentTransform(): void;
+        initDisplayList(newDisplayList: Array<any>): void;
+        private clearCurrentDisplay();
+        /** @private */
+        _changeDisplayIndex(displayIndex?: number): void;
+        private changeSlotDisplay(value);
+        private initCurrentDisplay(slotIndex?);
+        /** @private */
+        visible: boolean;
+        /**
+         * 显示对象列表(包含 display 或者 子骨架)
+         * @member {any[]} dragonBones.FastSlot#displayList
+         */
+        displayList: Array<any>;
+        /**
+         * 当前的显示对象(可能是 display 或者 子骨架)
+         * @member {any} dragonBones.FastSlot#display
+         */
+        display: any;
+        /**
+         * 当前的子骨架
+         * @member {FastArmature} dragonBones.Slot#childArmature
+         */
+        childArmature: any;
+        /**
+         * 显示顺序。(支持小数用于实现动态插入slot)
+         * @member {number} dragonBones.FastSlot#zOrder
+         */
+        zOrder: number;
+        /**
+         * 混合模式
+         * @member {string} dragonBones.FastSlot#blendMode
+         */
+        blendMode: string;
+        /**
+         * Indicates the Bone instance that directly contains this DBObject instance if any.
+         */
+        colorTransform: ColorTransform;
+        displayIndex: number;
+        colorChanged: boolean;
+        /**
+         * @private
+         */
+        _updateDisplay(value: any): void;
+        /**
+         * @private
+         */
+        _getDisplayIndex(): number;
+        /**
+         * @private
+         * Adds the original display object to another display object.
+         * @param container
+         * @param index
+         */
+        _addDisplayToContainer(container: any, index?: number): void;
+        /**
+         * @private
+         * remove the original display object from its parent.
+         */
+        _removeDisplayFromContainer(): void;
+        /**
+         * @private
+         * Updates the transform of the slot.
+         */
+        _updateTransform(): void;
+        /**
+         * @private
+         */
+        _updateDisplayVisible(value: boolean): void;
+        /**
+         * @private
+         * Updates the color of the display object.
+         * @param a
+         * @param r
+         * @param g
+         * @param b
+         * @param aM
+         * @param rM
+         * @param gM
+         * @param bM
+         */
+        _updateDisplayColor(aOffset: number, rOffset: number, gOffset: number, bOffset: number, aMultiplier: number, rMultiplier: number, gMultiplier: number, bMultiplier: number, colorChanged?: boolean): void;
+        /**
+         * @private
+         * Update the blend mode of the display object.
+         * @param value The blend mode to use.
+         */
+        _updateDisplayBlendMode(value: string): void;
+        /** @private When slot timeline enter a key frame, call this func*/
+        _arriveAtFrame(frame: Frame, animationState: FastAnimationState): void;
+        /** @private */
+        hideSlots(): void;
+        _updateGlobal(): any;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastAnimation
+     * @classdesc
+     * FastAnimation实例隶属于FastArmature,用于控制FastArmature的动画播放。
+     * 和Animation相比，FastAnimation为了优化性能，不支持动画融合，在开启缓存的情况下，不支持无极的平滑补间
+     * @see dragonBones.FastBone
+     * @see dragonBones.FastArmature
+     * @see dragonBones.FastAnimationState
+     * @see dragonBones.AnimationData.
+     *
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class FastAnimation {
+        /**
+         * 所有动画名称列表.
+         * @member {string[]} dragonBones.FastAnimation#animationList
+         */
+        animationList: Array<string>;
+        /**
+         * 当前正在运行的动画实例.
+         * @member {FastAnimationState} dragonBones.FastAnimation#animationState
+         */
+        animationState: FastAnimationState;
+        /**
+         * 动画缓存管理器.
+         * @member {AnimationCacheManager} dragonBones.FastAnimation#animationCacheManager
+         */
+        animationCacheManager: AnimationCacheManager;
+        private _armature;
+        private _animationDataList;
+        private _animationDataObj;
+        private _isPlaying;
+        private _timeScale;
+        /**
+         * 创建一个新的FastAnimation实例并赋给传入的FastArmature实例
+         * @param armature {FastArmature} 骨架实例
+         */
+        constructor(armature: FastArmature);
+        /**
+         * Qualifies all resources used by this Animation instance for garbage collection.
+         */
+        dispose(): void;
+        /**
+         * 开始播放指定名称的动画。
+         * 要播放的动画将经过指定时间的淡入过程，然后开始播放，同时之前播放的动画会经过相同时间的淡出过程。
+         * @param animationName {string} 指定播放动画的名称.
+         * @param fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+         * @param duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         * @param playTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+         * @see dragonBones.FastAnimationState.
+         */
+        gotoAndPlay(animationName: string, fadeInTime?: number, duration?: number, playTimes?: number): FastAnimationState;
+        /**
+         * 播放指定名称的动画并停止于某个时间点
+         * @param animationName {string} 指定播放的动画名称.
+         * @param time {number} 动画停止的绝对时间
+         * @param normalizedTime {number} 动画停止的相对动画总时间的系数，这个参数和time参数是互斥的（例如 0.2：动画停止总时间的20%位置） 默认值：-1 意味着使用绝对时间。
+         * @param fadeInTime {number} 动画淡入时间 (>= 0), 默认值：0
+         * @param duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+         * @see dragonBones.FastAnimationState.
+         */
+        gotoAndStop(animationName: string, time: number, normalizedTime?: number, fadeInTime?: number, duration?: number): FastAnimationState;
+        /**
+         * 从当前位置继续播放动画
+         */
+        play(): void;
+        /**
+         * 暂停动画播放
+         */
+        stop(): void;
+        /** @private */
+        advanceTime(passedTime: number): void;
+        /**
+         * check if contains a AnimationData by name.
+         * @return Boolean.
+         * @see dragonBones.animation.AnimationData.
+         */
+        hasAnimation(animationName: string): boolean;
+        /**
+         * 时间缩放倍数
+         * @member {number} dragonBones.FastAnimation#timeScale
+         */
+        timeScale: number;
+        /**
+         * 包含的所有动画数据列表
+         * @member {AnimationData[]} dragonBones.FastAnimation#animationDataList
+         * @see dragonBones.AnimationData.
+         */
+        animationDataList: Array<AnimationData>;
+        /**
+         * Unrecommended API. Recommend use animationList.
+         */
+        movementList: Array<string>;
+        /**
+         * Unrecommended API. Recommend use lastAnimationName.
+         */
+        movementID: string;
+        /**
+         * 是否正在播放
+         * @member {boolean} dragonBones.FastAnimation#isPlaying
+         */
+        isPlaying(): boolean;
+        /**
+         * 是否播放完成.
+         * @member {boolean} dragonBones.FastAnimation#isComplete
+         */
+        isComplete: boolean;
+        /**
+         * 当前播放动画的实例.
+         * @member {FastAnimationState} dragonBones.FastAnimation#lastAnimationState
+         */
+        lastAnimationState: FastAnimationState;
+        /**
+         * 当前播放动画的名字.
+         * @member {string} dragonBones.FastAnimation#lastAnimationName
+         */
+        lastAnimationName: string;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastAnimationState
+     * @classdesc
+     * FastAnimationState 实例代表播放的动画， 可以对单个动画的播放进行最细致的调节。
+     * @see dragonBones.Animation
+     * @see dragonBones.AnimationData
+     * @example
+       <pre>
+        //获取动画数据
+        var skeletonData = RES.getRes("skeleton");
+        //获取纹理集数据
+        var textureData = RES.getRes("textureConfig");
+        //获取纹理集图片
+        var texture = RES.getRes("texture");
+      
+        //创建一个工厂，用来创建Armature
+        var factory:dragonBones.EgretFactory = new dragonBones.EgretFactory();
+        //把动画数据添加到工厂里
+        factory.addSkeletonData(dragonBones.DataParser.parseDragonBonesData(skeletonData));
+        //把纹理集数据和图片添加到工厂里
+        factory.addTextureAtlas(new dragonBones.EgretTextureAtlas(texture, textureData));
+      
+        //获取Armature的名字，dragonBones4.0的数据可以包含多个骨架，这里取第一个Armature
+        var armatureName:string = skeletonData.armature[0].name;
+        //从工厂里创建出Armature
+        var armature:dragonBones.FastArmature = factory.buildFastArmature(armatureName);
+        //获取装载Armature的容器
+        var armatureDisplay = armature.display;
+        //把它添加到舞台上
+        this.addChild(armatureDisplay);
+        
+        //以60fps的帧率开启动画缓存，缓存所有的动画数据
+        var animationCachManager:dragonBones.AnimationCacheManager = armature.enableAnimationCache(60);
+      
+       //取得这个Armature动画列表中的第一个动画的名字
+        var curAnimationName = armature.animation.animationList[0];
+        //播放这个动画，gotoAndPlay各个参数说明
+        //第一个参数 animationName {string} 指定播放动画的名称.
+        //第二个参数 fadeInTime {number} 动画淡入时间 (>= 0), 默认值：-1 意味着使用动画数据中的淡入时间.
+        //第三个参数 duration {number} 动画播放时间。默认值：-1 意味着使用动画数据中的播放时间.
+        //第四个参数 layTimes {number} 动画播放次数(0:循环播放, >=1:播放次数, NaN:使用动画数据中的播放时间), 默认值：NaN
+        armature.animation.gotoAndPlay(curAnimationName,0.3,-1,0);
+      
+        //把Armature添加到心跳时钟里
+        dragonBones.WorldClock.clock.add(armature);
+        //心跳时钟开启
+        egret.Ticker.getInstance().register(function (advancedTime) {
+            dragonBones.WorldClock.clock.advanceTime(advancedTime / 1000);
+        }, this);
+       </pre>
+     */
+    class FastAnimationState implements IAnimationState {
+        animationCache: AnimationCache;
+        /**
+         * 是否自动补间。
+         * @member {boolean} dragonBones.AnimationState#autoTween
+         */
+        autoTween: boolean;
+        private _progress;
+        _armature: FastArmature;
+        private _boneTimelineStateList;
+        private _slotTimelineStateList;
+        animationData: AnimationData;
+        name: string;
+        private _time;
+        private _currentFrameIndex;
+        private _currentFramePosition;
+        private _currentFrameDuration;
+        private _currentPlayTimes;
+        private _totalTime;
+        private _currentTime;
+        private _lastTime;
+        private _isComplete;
+        private _isPlaying;
+        private _timeScale;
+        private _playTimes;
+        private _fading;
+        _fadeTotalTime: number;
+        constructor();
+        dispose(): void;
+        /**
+         * 播放当前动画。如果动画已经播放完毕, 将不会继续播放.
+         * @returns {FastAnimationState} 动画播放状态实例
+         */
+        play(): FastAnimationState;
+        /**
+         * 暂停当前动画的播放。
+         * @returns {AnimationState} 动画播放状态实例
+         */
+        stop(): FastAnimationState;
+        setCurrentTime(value: number): FastAnimationState;
+        _resetTimelineStateList(): void;
+        /** @private */
+        _fadeIn(aniData: AnimationData, playTimes: number, timeScale: number, fadeTotalTime: number): void;
+        /**
+         * @private
+         * Update timeline state based on mixing transforms and clip.
+         */
+        _updateTimelineStateList(): void;
+        /** @private */
+        _advanceTime(passedTime: number): void;
+        private advanceTimelinesTime(passedTime);
+        private updateTransformTimeline(progress);
+        private updateMainTimeline(isThisComplete);
+        private setTimeScale(value);
+        private setPlayTimes(value?);
+        /**
+         * 播放次数 (0:循环播放， >0:播放次数)
+         * @member {number} dragonBones.FastAnimationState#playTimes
+         */
+        playTimes: number;
+        /**
+         * 当前播放次数
+         * @member {number} dragonBones.FastAnimationState#currentPlayTimes
+         */
+        currentPlayTimes: number;
+        /**
+         * 是否播放完成
+         * @member {boolean} dragonBones.FastAnimationState#isComplete
+         */
+        isComplete: boolean;
+        /**
+         * 是否正在播放
+         * @member {boolean} dragonBones.FastAnimationState#isPlaying
+         */
+        isPlaying: boolean;
+        /**
+         * 动画总时长（单位：秒）
+         * @member {number} dragonBones.FastAnimationState#totalTime
+         */
+        totalTime: number;
+        /**
+         * 动画当前播放时间（单位：秒）
+         * @member {number} dragonBones.FastAnimationState#currentTime
+         */
+        currentTime: number;
+        /**
+         * 是否使用缓存
+         * @member {boolean} dragonBones.FastAnimationState#isUseCache
+         */
+        isUseCache(): boolean;
+        private hideBones();
+        /**
+         * 动画播放进度
+         * @member {number} dragonBones.FastAnimationState#progress
+         */
+        progress: number;
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastBoneTimelineState
+     * @classdesc
+     * FastBoneTimelineState 负责计算 Bone 的时间轴动画。
+     * FastBoneTimelineState 实例隶属于 FastAnimationState. FastAnimationState在创建时会为每个包含动作的 FastBone生成一个 FastBoneTimelineState 实例.
+     * @see dragonBones.FastAnimation
+     * @see dragonBones.FastAnimationState
+     * @see dragonBones.FastBone
+     */
+    class FastBoneTimelineState {
+        private static _pool;
+        /** @private */
+        static borrowObject(): FastBoneTimelineState;
+        /** @private */
+        static returnObject(timeline: FastBoneTimelineState): void;
+        /** @private */
+        static clear(): void;
+        name: string;
+        private _totalTime;
+        private _currentTime;
+        private _lastTime;
+        private _currentFrameIndex;
+        private _currentFramePosition;
+        private _currentFrameDuration;
+        private _bone;
+        private _timelineData;
+        private _durationTransform;
+        private _tweenTransform;
+        private _tweenEasing;
+        private _tweenCurve;
+        private _updateMode;
+        private _transformToFadein;
+        /** @private */
+        _animationState: FastAnimationState;
+        /** @private */
+        _isComplete: boolean;
+        /** @private */
+        _transform: DBTransform;
+        constructor();
+        private clear();
+        /** @private */
+        fadeIn(bone: FastBone, animationState: FastAnimationState, timelineData: TransformTimeline): void;
+        /** @private */
+        updateFade(progress: number): void;
+        /** @private */
+        update(progress: number): void;
+        private updateSingleFrame();
+        private updateMultipleFrame(progress);
+        private updateToNextFrame(currentPlayTimes?);
+        private updateTween();
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.FastSlotTimelineState
+     * @classdesc
+     * FastSlotTimelineState 负责计算 Slot 的时间轴动画。
+     * FastSlotTimelineState 实例隶属于 FastAnimationState. FastAnimationState在创建时会为每个包含动作的 Slot生成一个 FastSlotTimelineState 实例.
+     * @see dragonBones.FastAnimation
+     * @see dragonBones.FastAnimationState
+     * @see dragonBones.FastSlot
+     */
+    class FastSlotTimelineState {
+        private static HALF_PI;
+        private static DOUBLE_PI;
+        private static _pool;
+        /** @private */
+        static borrowObject(): FastSlotTimelineState;
+        /** @private */
+        static returnObject(timeline: FastSlotTimelineState): void;
+        /** @private */
+        static clear(): void;
+        name: string;
+        /** @private */
+        _weight: number;
+        /** @private */
+        _blendEnabled: boolean;
+        /** @private */
+        _isComplete: boolean;
+        /** @private */
+        _animationState: FastAnimationState;
+        private _totalTime;
+        private _currentTime;
+        private _currentFrameIndex;
+        private _currentFramePosition;
+        private _currentFrameDuration;
+        private _tweenEasing;
+        private _tweenCurve;
+        private _tweenColor;
+        private _colorChanged;
+        private _updateMode;
+        private _armature;
+        private _animation;
+        private _slot;
+        private _timelineData;
+        private _durationColor;
+        constructor();
+        private clear();
+        /** @private */
+        fadeIn(slot: FastSlot, animationState: FastAnimationState, timelineData: SlotTimeline): void;
+        /** @private */
+        updateFade(progress: number): void;
+        /** @private */
+        update(progress: number): void;
+        private updateMultipleFrame(progress);
+        private updateToNextFrame(currentPlayTimes?);
+        private updateTween();
+        private updateSingleFrame();
+    }
+}
+
+declare module dragonBones {
+    class CurveData {
+        private static SamplingTimes;
+        private static SamplingStep;
+        private _dataChanged;
+        private _pointList;
+        sampling: Array<Point>;
+        constructor();
+        getValueByProgress(progress: number): number;
+        refreshSampling(): void;
+        private bezierCurve(t, outputPoint);
+        pointList: Array<any>;
+        isCurve(): boolean;
+        point1: Point;
+        point2: Point;
+    }
+}
+
+declare module dragonBones {
+    class ColorTransformUtil {
+        static originalColor: ColorTransform;
+        static cloneColor(color: ColorTransform): ColorTransform;
+        static isEqual(color1: ColorTransform, color2: ColorTransform): boolean;
+        static minus(color1: ColorTransform, color2: ColorTransform, outputColor: ColorTransform): void;
+        constructor();
+    }
+}
+
+declare module dragonBones {
+    /**
+     * @class dragonBones.EgretSlot
+     * @extends dragonBones.Slot
+     * @classdesc
+     * egret引擎使用的插槽
+     */
+    class EgretFastSlot extends FastSlot {
+        private _egretDisplay;
+        /**
+         * 创建一个新的 EgretSlot 实例
+         */
+        constructor();
+        /**
+         * 释放资源
+         */
+        dispose(): void;
+        /** @private */
+        _updateDisplay(value: any): void;
+        /** @private */
+        _getDisplayIndex(): number;
+        /** @private */
+        _addDisplayToContainer(container: any, index?: number): void;
+        /** @private */
+        _removeDisplayFromContainer(): void;
+        /** @private */
+        _updateTransform(): void;
+        /** @private */
+        _updateDisplayVisible(value: boolean): void;
+        /** @private */
+        _updateDisplayColor(aOffset: number, rOffset: number, gOffset: number, bOffset: number, aMultiplier: number, rMultiplier: number, gMultiplier: number, bMultiplier: number, colorChanged?: boolean): void;
+        /** @private */
+        _updateDisplayBlendMode(value: string): void;
+    }
+}
+
