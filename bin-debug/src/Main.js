@@ -82,9 +82,11 @@ var Main = (function (_super) {
      * 创建游戏场景
      */
     __egretProto__.createGameScene = function () {
-        egret.Profiler.getInstance().run();
-        var three1 = new ThreeD.Perspective();
-        this.addChild(three1);
+        // egret.Profiler.getInstance().run();
+        var m = new Animation.MultiAngleBounce();
+        this.addChild(m);
+        // var three1:ThreeD.Perspective = new ThreeD.Perspective();
+        // this.addChild( three1 );
         //var three2:ThreeD.Bounce3D = new ThreeD.Bounce3D();
         //this.addChild( three2 );
         //var three3:ThreeD.MultiBounce3D = new ThreeD.MultiBounce3D();
@@ -112,8 +114,8 @@ var Main = (function (_super) {
         //
         //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
         //this.addChild( p );
-        //var trees:ThreeD.Trees = new ThreeD.Trees();
-        //this.addChild( trees );
+        var trees = new ThreeD.Trees();
+        this.addChild(trees);
         //var btm:egret.Bitmap = new egret.Bitmap(RES.getRes("egretIcon"));
         //var jmp:Fun.Jump = new Fun.Jump(btm);
         //jmp.active();

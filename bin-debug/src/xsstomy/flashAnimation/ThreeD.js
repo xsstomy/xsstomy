@@ -49,7 +49,7 @@ var ThreeD;
         };
         __egretProto__.onEnterFrame = function (evt) {
             this.xpos = this.touchX - this.vpX;
-            this.ypos = this.touchY - this.vpY;
+            //this.ypos = this.touchY - this.vpY;
             this.zpos = Math.sqrt(this.xpos * this.xpos + this.ypos * this.ypos);
             //this.zpos = Math.min(Math.abs(this.xpos),Math.abs(this.ypos));
             var scale = this.fl / (this.fl + this.zpos);

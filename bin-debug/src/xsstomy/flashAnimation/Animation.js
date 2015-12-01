@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 /**
  * Created by xiashishi on 15/1/17.
  */
@@ -22,7 +16,8 @@ var Animation;
             this.gravity = 0.5;
             this.init();
         }
-        Throwing.prototype.init = function () {
+        var __egretProto__ = Throwing.prototype;
+        __egretProto__.init = function () {
             this.ball = new DemoObject.Ball();
             this.ball.x = Const.Const.stageWidth * 0.5;
             this.ball.y = Const.Const.stageHeigth * 0.5;
@@ -35,7 +30,7 @@ var Animation;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Throwing.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.vy += this.gravity;
             this.ball.x += this.vx;
             this.ball.y += this.vy;
@@ -60,7 +55,7 @@ var Animation;
                 this.vy *= this.bounce;
             }
         };
-        Throwing.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             this.vx = 0;
             this.vy = 0;
             this.oldX = this.ball.x;
@@ -72,19 +67,19 @@ var Animation;
             this.removeEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.trackVelocity, this);
         };
-        Throwing.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             this.ball.x += evt.stageX - this.oldStageX;
             this.ball.y += evt.stageY - this.oldStageY;
             this.oldStageX = evt.stageX;
             this.oldStageY = evt.stageY;
         };
-        Throwing.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
             this.removeEventListener(egret.Event.ENTER_FRAME, this.trackVelocity, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Throwing.prototype.trackVelocity = function (evt) {
+        __egretProto__.trackVelocity = function (evt) {
             this.vx = this.ball.x - this.oldX;
             this.vy = this.ball.y - this.oldY;
             this.oldX = this.ball.x;
@@ -115,7 +110,8 @@ var Animation;
             this.isTouching = false;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Spring.prototype.init = function () {
+        var __egretProto__ = Spring.prototype;
+        __egretProto__.init = function () {
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
@@ -135,23 +131,23 @@ var Animation;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Spring.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             this.isTouching = true;
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Spring.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
         };
-        Spring.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.isTouching = false;
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Spring.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             /* 多个小球事例*/
             if (this.isTouching) {
                 this.touchX = this.touchX || Const.Const.stageWidth * 0.5;
@@ -180,7 +176,7 @@ var Animation;
          * @param targetX
          * @param targetY
          */
-        Spring.prototype.moveBall = function (ball, targetX, targetY) {
+        __egretProto__.moveBall = function (ball, targetX, targetY) {
             ball.vx = (targetX - ball.x) * this.spring;
             ball.vy = (targetY - ball.y) * this.spring;
             ball.vy += this.mass * this.gravity;
@@ -192,7 +188,7 @@ var Animation;
         /**
          * 一个小球的列子
          */
-        Spring.prototype.oneBall = function () {
+        __egretProto__.oneBall = function () {
             var dx = this.touchX - this.ball.x;
             var dy = this.touchY - this.ball.y;
             var ax = dx * this.spring;
@@ -234,7 +230,8 @@ var Animation;
             this.ball1OldY = 0;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        DoubleSpring.prototype.init = function () {
+        var __egretProto__ = DoubleSpring.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.touchEnabled = true;
             this.width = Const.Const.stageWidth;
@@ -256,7 +253,7 @@ var Animation;
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        DoubleSpring.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.newTimer = Date.now();
             if (this.newTimer - this.oldTimer > this.timer) {
                 this.oldTimer = this.newTimer;
@@ -282,7 +279,7 @@ var Animation;
          * @param ball
          * @param bounce
          */
-        DoubleSpring.prototype.squeueBall = function (ball, bounce) {
+        __egretProto__.squeueBall = function (ball, bounce) {
             var left = 0;
             var right = Const.Const.stageWidth;
             var top = 0;
@@ -305,7 +302,7 @@ var Animation;
                 ball.vy *= bounce;
             }
         };
-        DoubleSpring.prototype.springTo = function (balla, ballb) {
+        __egretProto__.springTo = function (balla, ballb) {
             var dx = ballb.x - balla.x;
             var dy = ballb.y - ballb.y;
             var angle = Math.atan2(dy, dx);
@@ -316,7 +313,7 @@ var Animation;
             balla.x += balla.vx * this.friction;
             balla.y += balla.vy * this.friction;
         };
-        DoubleSpring.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             if (evt.target == this.ball0) {
                 this.ball0OldX = evt.stageX;
                 this.ball0OldY = evt.stageY;
@@ -330,7 +327,7 @@ var Animation;
                 this.ball1.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             }
         };
-        DoubleSpring.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             if (evt.target == this.ball0) {
                 this.ball0.x += evt.stageX - this.ball0OldX;
                 this.ball0OldX = evt.stageX;
@@ -344,7 +341,7 @@ var Animation;
                 this.ball1OldY = evt.stageY;
             }
         };
-        DoubleSpring.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.ball0.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.ball1.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.ball0Dragging = false;
@@ -368,7 +365,8 @@ var Animation;
             this.gravity = 0.1;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Bubbles.prototype.init = function () {
+        var __egretProto__ = Bubbles.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.balls = [];
             for (var i = 0; i < this.numBalls; i++) {
@@ -382,7 +380,7 @@ var Animation;
             }
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Bubbles.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             for (var i = 0; i < this.numBalls - 1; i++) {
                 var ball0 = this.balls[i];
                 for (var j = i + 1; j < this.numBalls; j++) {
@@ -412,7 +410,7 @@ var Animation;
          * 限制显示范围
          * @param ball
          */
-        Bubbles.prototype.move = function (ball) {
+        __egretProto__.move = function (ball) {
             ball.vy += this.gravity;
             ball.x += ball.vx;
             ball.y += ball.vy;
@@ -454,7 +452,8 @@ var Animation;
             this.touchY = 0;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Rotate.prototype.init = function (evt) {
+        var __egretProto__ = Rotate.prototype;
+        __egretProto__.init = function (evt) {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -470,19 +469,19 @@ var Animation;
             this.touchEnabled = true;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
         };
-        Rotate.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Rotate.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
         };
-        Rotate.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        Rotate.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             var angle = (this.touchX - Const.Const.stageWidth * 0.5) * 0.001;
             var cos = Math.cos(angle);
             var sin = Math.sin(angle);
@@ -513,7 +512,8 @@ var Animation;
             this.touchY = 0;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        AngleBounce.prototype.init = function () {
+        var __egretProto__ = AngleBounce.prototype;
+        __egretProto__.init = function () {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.ball = new DemoObject.Ball();
             this.addChild(this.ball);
@@ -532,19 +532,19 @@ var Animation;
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegin, this);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        AngleBounce.prototype.onTouchBegin = function (evt) {
+        __egretProto__.onTouchBegin = function (evt) {
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        AngleBounce.prototype.onTouchMove = function (evt) {
+        __egretProto__.onTouchMove = function (evt) {
             this.touchX = evt.stageX;
             this.touchY = evt.stageY;
         };
-        AngleBounce.prototype.onTouchEnd = function (evt) {
+        __egretProto__.onTouchEnd = function (evt) {
             this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
             this.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
         };
-        AngleBounce.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.ball.vy += this.gravity;
             this.ball.x += this.ball.vx;
             this.ball.y += this.ball.vy;
@@ -578,7 +578,7 @@ var Animation;
          * 限制显示范围
          * @param ball
          */
-        AngleBounce.prototype.move = function (ball) {
+        __egretProto__.move = function (ball) {
             //ball.vy += this.gravity;
             //ball.x += ball.vx;
             //ball.y += ball.vy;
@@ -622,7 +622,8 @@ var Animation;
             this.sin = 0;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        MultiAngleBounce.prototype.init = function (evt) {
+        var __egretProto__ = MultiAngleBounce.prototype;
+        __egretProto__.init = function (evt) {
             this.ball = new DemoObject.Ball();
             this.addChild(this.ball);
             this.ball.x = 100;
@@ -653,7 +654,7 @@ var Animation;
             this.lines[4].rotation = -30;
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        MultiAngleBounce.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.ball.vy += this.gravity;
             this.ball.x += this.ball.vx;
             this.ball.y += this.ball.vy;
@@ -666,7 +667,7 @@ var Animation;
          * 限制显示范围
          * @param ball
          */
-        MultiAngleBounce.prototype.move = function (ball) {
+        __egretProto__.move = function (ball) {
             //ball.vy += this.gravity;
             //ball.x += ball.vx;
             //ball.y += ball.vy;
@@ -695,7 +696,7 @@ var Animation;
          * 检测每条线的碰撞
          * @param line
          */
-        MultiAngleBounce.prototype.checkLine = function (line) {
+        __egretProto__.checkLine = function (line) {
             this.angle = line.rotation * Math.PI / 180;
             this.cos = Math.cos(this.angle);
             this.sin = Math.sin(this.angle);
@@ -737,7 +738,8 @@ var Animation;
             this.bounce = -1;
             this.addEventListener(egret.Event.ENTER_FRAME, this.init, this);
         }
-        Billiard.prototype.init = function (evt) {
+        var __egretProto__ = Billiard.prototype;
+        __egretProto__.init = function (evt) {
             this.removeEventListener(egret.Event.ENTER_FRAME, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -757,7 +759,7 @@ var Animation;
             this.addChild(this.ball1);
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Billiard.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             this.ball0.x += this.ball0.vx;
             this.ball0.y += this.ball0.vy;
             this.ball1.x += this.ball1.vx;
@@ -771,7 +773,7 @@ var Animation;
          * @param ball0
          * @param ball1
          */
-        Billiard.prototype.checkCollision = function (ball0, ball1) {
+        __egretProto__.checkCollision = function (ball0, ball1) {
             var dx = ball0.x - ball1.x;
             var dy = ball0.y - ball1.y;
             var dis = Math.sqrt(dx * dx + dy * dy);
@@ -804,7 +806,7 @@ var Animation;
                 ball1.vy = vel1F.y;
             }
         };
-        Billiard.prototype.rotate = function (x, y, sin, cos, reverse) {
+        __egretProto__.rotate = function (x, y, sin, cos, reverse) {
             var result = new egret.Point();
             if (reverse) {
                 result.x = x * cos + y * sin;
@@ -820,7 +822,7 @@ var Animation;
          * 检测与四周环境碰撞
          * @param ball
          */
-        Billiard.prototype.checkWalls = function (ball) {
+        __egretProto__.checkWalls = function (ball) {
             var left = 0;
             var right = Const.Const.stageWidth;
             var top = 0;
@@ -846,6 +848,9 @@ var Animation;
     })(egret.Sprite);
     Animation.Billiard = Billiard;
     Billiard.prototype.__class__ = "Animation.Billiard";
+    /**
+     * 粒子引力和重力
+     */
     var Particle = (function (_super) {
         __extends(Particle, _super);
         function Particle() {
@@ -854,7 +859,8 @@ var Animation;
             this.numParticle = 3;
             this.addEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
         }
-        Particle.prototype.init = function (evt) {
+        var __egretProto__ = Particle.prototype;
+        __egretProto__.init = function (evt) {
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.init, this);
             this.width = Const.Const.stageWidth;
             this.height = Const.Const.stageHeigth;
@@ -870,7 +876,7 @@ var Animation;
             }
             this.addEventListener(egret.Event.ENTER_FRAME, this.onEnterFrame, this);
         };
-        Particle.prototype.onEnterFrame = function (evt) {
+        __egretProto__.onEnterFrame = function (evt) {
             for (var i = 0; i < this.numParticle; i++) {
                 var particle = this.particles[i];
                 particle.x += particle.vx;
@@ -890,7 +896,7 @@ var Animation;
          * 检测与四周环境碰撞
          * @param ball
          */
-        Particle.prototype.checkWalls = function (ball) {
+        __egretProto__.checkWalls = function (ball) {
             var left = 0;
             var right = Const.Const.stageWidth;
             var top = 0;
@@ -917,7 +923,7 @@ var Animation;
          * @param ballA
          * @param ballB
          */
-        Particle.prototype.gravitate = function (ballA, ballB) {
+        __egretProto__.gravitate = function (ballA, ballB) {
             var dx = ballB.x - ballA.x;
             var dy = ballB.y - ballA.y;
             var distSQ = dx * dx + dy * dy;
@@ -935,7 +941,7 @@ var Animation;
          * @param ball0
          * @param ball1
          */
-        Particle.prototype.checkCollision = function (ball0, ball1) {
+        __egretProto__.checkCollision = function (ball0, ball1) {
             var dx = ball0.x - ball1.x;
             var dy = ball0.y - ball1.y;
             var dis = Math.sqrt(dx * dx + dy * dy);
@@ -968,7 +974,7 @@ var Animation;
                 ball1.vy = vel1F.y;
             }
         };
-        Particle.prototype.rotate = function (x, y, sin, cos, reverse) {
+        __egretProto__.rotate = function (x, y, sin, cos, reverse) {
             var result = new egret.Point();
             if (reverse) {
                 result.x = x * cos + y * sin;

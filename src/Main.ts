@@ -94,10 +94,13 @@ class Main extends egret.DisplayObjectContainer {
      */
     private createGameScene(): void {
 
-        egret.Profiler.getInstance().run();
+        // egret.Profiler.getInstance().run();
 
-        var three1:ThreeD.Perspective = new ThreeD.Perspective();
-        this.addChild( three1 );
+        var m = new Animation.MultiAngleBounce();
+        this.addChild(m);
+        
+        // var three1:ThreeD.Perspective = new ThreeD.Perspective();
+        // this.addChild( three1 );
 
         //var three2:ThreeD.Bounce3D = new ThreeD.Bounce3D();
         //this.addChild( three2 );
@@ -131,8 +134,8 @@ class Main extends egret.DisplayObjectContainer {
         //var p:DesignPattern.FactoryPattern.PizzaTestDrive = new DesignPattern.FactoryPattern.PizzaTestDrive();
         //this.addChild( p );
 
-        //var trees:ThreeD.Trees = new ThreeD.Trees();
-        //this.addChild( trees );
+        var trees:ThreeD.Trees = new ThreeD.Trees();
+        this.addChild( trees );
 
         //var btm:egret.Bitmap = new egret.Bitmap(RES.getRes("egretIcon"));
         //var jmp:Fun.Jump = new Fun.Jump(btm);

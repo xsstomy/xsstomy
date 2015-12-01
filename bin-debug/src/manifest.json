@@ -2,6 +2,7 @@
 	"xsstomy/flashAnimation/Const.ts",
 	"xsstomy/flashAnimation/DemoObject.ts",
 	"LoadingUI.ts",
+	"xsstomy/flashAnimation/Animation.ts",
 	"xsstomy/flashAnimation/ThreeD.ts",
 	"Main.ts"
 ]
